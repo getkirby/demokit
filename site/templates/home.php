@@ -15,7 +15,7 @@
         <strong>demodemo</strong>
       </p>
       <p>
-        <a href="<?= url('panel') ?>">Open the panel &rarr;</a>
+        <a href="<?= url('panel') ?>">Open the Panel &rarr;</a>
       </p>
     </div>
     <div class="column text" style="--columns: 6">
