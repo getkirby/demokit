@@ -41,7 +41,7 @@ Email: mail@restaurant.com
 Starters:
 
 - 
-  dish: Potatoe soup
+  dish: Potato soup
   description: Indefinable hot fluid
   price: 7.99
 - 
