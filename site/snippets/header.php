@@ -2,7 +2,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?= $site->title()->html(false) ?></title>
+  <meta name="robots" content="noindex">
+
+  <title><?= $site->title()->html() . ' / ' . html(implode(' / ', $site->breadcrumb()->not('home')->pluck('title'))) ?></title>
 
   <?= css('assets/css/index.css') ?>
   <?= css('assets/css/' . ($example ?? 'home') . '.css') ?>
