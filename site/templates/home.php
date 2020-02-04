@@ -21,13 +21,16 @@
     <div class="column text" style="--columns: 6">
       <h2>About this demo</h2>
       <p>
-        Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Aenean lacinia bibendum nulla sed consectetur.
+        We've collected a set of example sites that show the flexibility of Kirby. Everything you see in this demo
+        can be customized and extended to fit your own project. If you get stuck or if you have questions, please let us know: <?= Html::email('support@getkirby.com') ?>
+      </p>
+      <p>
+        The source code for this demo can be found on Github: <a href="https://github.com/getkirby/demokit">https://github.com/getkirby/demokit</a>
       </p>
       <ul>
         <li><a href="https://getkirby.com/docs">Kirby Docs &rarr;</a></li>
         <li><a href="https://forum.getkirby.com">Kirby Forum &rarr;</a></li>
       </ul>
-
     </div>
   </div>
 </section>
