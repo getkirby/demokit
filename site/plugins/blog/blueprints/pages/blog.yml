@@ -1,0 +1,23 @@
+title: Blog
+icon: 📝
+
+columns:
+  - width: 1/2
+    sections:
+      drafts:
+        headline: Drafts
+        status: draft
+        extends: sections/articles
+
+      unlisted:
+        headline: Unlisted
+        status: unlisted
+        extends: sections/articles
+
+  - width: 1/2
+    sections:
+      listed:
+        headline: Published
+        status: listed
+        extends: sections/articles
+

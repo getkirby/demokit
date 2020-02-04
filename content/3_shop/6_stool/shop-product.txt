@@ -1,0 +1,33 @@
+Title: Stool
+
+----
+
+Price: 39
+
+----
+
+Brand: 
+
+----
+
+Link: 
+
+----
+
+Shipping: 
+
+----
+
+Summary: It's a stool. We get them from IKEA and then pretend it's a design masterpiece.
+
+----
+
+Description: Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
+
+----
+
+Design: 
+
+----
+
+Sizes: S, M, L, XL, XXL

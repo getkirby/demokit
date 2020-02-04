@@ -1,0 +1,21 @@
+title: Shop
+icon: 🛍
+
+options:
+  title: false
+  duplicate: false
+  status: false
+  url: false
+  delete: false
+
+sections:
+  products:
+    type: pages
+    empty: No products yet
+    layout: cards
+    size: small
+    template: shop-product
+    info: "€ {{ page.price }}"
+    image:
+      ratio: 1/1
+      cover: true

@@ -1,0 +1,280 @@
+@import
+    'abstracts/_variables.scss',
+    'abstracts/_mixins.scss';
+@import
+    'vendors/_leaflet.scss';
+@import
+    'components/_map.scss';
+
+
+.k-locator-field {
+
+	/* Input
+	----------------------------*/
+
+	.k-locator-input {
+		position: relative;
+		display: flex;
+		align-items: center;
+		overflow: visible;
+		z-index: 3;
+		.k-text-input {
+			@include text-truncate;
+		}
+		button {
+			display: block;
+			border: none;
+			display: inline-block;
+			background: $color-dark;
+			color: $color-white;
+			padding: 0 25px 0 20px;
+			height: 2.25rem;
+			font-size: $font-size-small;
+			outline: 0;
+			display: flex;
+			align-items: center;
+			svg {
+				width: 14px;
+				height: 14px;
+				fill: white;
+				margin-right: 10px;
+			}
+			&.disabled {
+				background: darken($color-background, 0%);
+				color: darken($color-background, 12%);
+				pointer-events: none;
+				svg {
+					fill: darken($color-background, 12%);
+				}
+			}
+		}
+		.k-dropdown-content {
+			max-width: 100%;
+			overflow: hidden;
+			.k-location-type {
+				color: #999;
+    			margin-left: .25rem;
+    			&:before {
+    				content: " (";
+    			}
+    			&:after {
+    				content: ")";
+    			}
+			}
+		}
+	}
+
+
+	/* Map
+	----------------------------*/
+
+	.map-container {
+		position: relative;
+		margin-top: 1rem;
+		.map {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	&:not(.closed) {
+		.map-container {
+			padding-top: 65%;
+			@include responsive-height;
+		}
+	}
+
+
+	/* Content
+	----------------------------*/
+
+	.content {
+		width: 100%;
+		background: white;
+		display: flex;
+		flex-wrap: wrap;
+		padding: 0.25rem 1rem;
+		&.columns {
+			.content-block {
+				position: relative;
+				width: 50%;
+				padding: 0.75rem 0;
+				border-bottom: 1px solid lighten($color-border-light, 2%);
+
+				// no border on the nth-last(2) only if it's an odd number,
+				// in case there's only one block in the last row
+				&:nth-last-child(2):nth-child(odd),
+				&:last-child {
+					border-bottom: none;
+				}
+				&:nth-child(odd) {
+					padding-right: 1.25rem;
+					&:not(:last-child) {
+						&:after {
+							position: absolute;
+							content: " ";
+							right: 0;
+							top: 1rem;
+							height: calc(100% - 2rem);
+							width: 1px;
+							background: $color-border-light;
+						}
+					}
+				}
+				&:nth-child(even) {
+					padding-left: 1.25rem;
+				}
+				.title {
+					color: lighten($color-dark, 60%);
+					letter-spacing: 0.15px;
+					text-transform: uppercase;
+					margin-bottom: 3px;
+					font-size: $font-size-tiny;
+				}
+			}
+		}
+		&.table {
+			.content-block {
+				position: relative;
+				width: 100%;
+				padding: 0.5rem 0;
+				border-bottom: 1px solid lighten($color-border-light, 2%);
+				display: flex;
+				align-items: center;
+				&:last-child {
+					border-bottom: none;
+				}
+				.title {
+					position: relative;
+					color: lighten($color-dark, 60%);
+					letter-spacing: 0.15px;
+					text-transform: uppercase;
+					margin-bottom: 3px;
+					font-size: $font-size-tiny;
+					width: 115px;
+					&:after {
+						position: absolute;
+						content: " ";
+						right: 0;
+						top: 0;
+						height: 100%;
+						width: 1px;
+						background: $color-border-light;
+					}
+				}
+				.value {
+					padding-left: 0.75rem;
+				}
+			}
+		}
+	}
+	.k-empty {
+	    padding: 0;
+	    display: flex;
+	    align-items: center;
+	    flex-direction: row;
+	    justify-content: flex-start;
+	    border-top: none;
+	    .k-icon {
+	        width: 38px;
+	        height: 38px;
+	        border-right: 1px solid #d6d6d6;
+	        margin-bottom: 0;
+	        display: flex;
+	        justify-content: center;
+	        align-items: center;
+	        svg {
+	            width: 14px;
+	        }
+	    }
+	    p {
+	        line-height: 1.25rem;
+	        padding: .5rem .75rem;
+	    }
+	}
+
+
+	/* Filled
+	----------------------------*/
+
+	&.filled.closed {
+		.k-locator-container {
+			display: flex;
+		}
+		.k-locator-input {
+			display: none;
+		}
+		.map-container {
+			width: 200px;
+			padding-top: 0;
+			margin-top: 0;
+            pointer-events: none;
+			.leaflet-bottom.leaflet-right,
+			.leaflet-top.leaflet-left {
+				display: none;
+			}
+            .leaflet-marker-icon {
+                cursor: default;
+            }
+		}
+	}
+}
+
+
+/* Columns adjustments
+----------------------------*/
+
+.k-sections > .k-column[data-width="1/1"] {
+	.k-locator-field:not(.closed) {
+		.map-container {
+			padding-top: 35%;
+			@include responsive-height;
+		}
+	}
+}
+
+.k-sections > .k-column[data-width="3/4"] {
+	.k-locator-field:not(.closed) {
+		.map-container {
+			padding-top: 45%;
+			@include responsive-height;
+		}
+	}
+}
+
+.k-sections > .k-column[data-width="2/3"] {
+	.k-locator-field:not(.closed) {
+		.map-container {
+			padding-top: 50%;
+			@include responsive-height;
+		}
+	}
+}
+
+.k-sections > .k-column[data-width="1/3"],
+.k-sections > .k-column[data-width="1/4"] {
+	.k-locator-field {
+		&.filled.closed {
+			.k-locator-container {
+				display: block
+			}
+			.k-locator-input {
+				display: none;
+			}
+			.map-container {
+				width: 100%;
+				padding-top: 50%;
+				margin-top: 0;
+				.leaflet-bottom.leaflet-right,
+				.leaflet-top.leaflet-left {
+					display: none;
+				}
+			}
+		}
+	}
+	.leaflet-control-zoom-in, .leaflet-control-zoom-out {
+		@include small-controls;
+	}
+}

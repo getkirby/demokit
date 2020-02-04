@@ -1,0 +1,11 @@
+type: pages
+headline: Photography
+parent: site.find("portfolio/projects")
+size: tiny
+info: "{{ page.images.count }} image(s)"
+layout: cards
+template: portfolio-project
+empty: No projects yet
+image:
+  cover: true
+  ratio: 5/4

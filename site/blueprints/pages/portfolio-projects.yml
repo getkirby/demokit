@@ -1,0 +1,26 @@
+title: Projects
+icon: 📸
+
+status:
+  draft: Locked
+  unlisted: Locked
+  listed: Locked
+
+options:
+  title: false
+  status: false
+  duplicate: false
+  url: false
+  delete: false
+
+sections:
+  drafts:
+    extends: sections/portfolio/projects
+    headline: Drafts
+    layout: list
+    status: draft
+
+  listed:
+    extends: sections/portfolio/projects
+    headline: Published Projects
+    status: listed

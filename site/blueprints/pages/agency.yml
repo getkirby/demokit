@@ -1,0 +1,32 @@
+title: Agency
+icon: 💼
+
+options:
+  title: false
+  duplicate: false
+  status: false
+  url: false
+  delete: false
+
+columns:
+  - width: 1/2
+    sections:
+      projects:
+        extends: sections/agency/projects
+
+  - width: 1/2
+    sections:
+      team:
+        extends: sections/agency/team
+
+      clients:
+        extends: sections/agency/clients
+        layout: list
+
+      pages:
+        type: pages
+        layout: list
+        template:
+          - agency-home
+          - agency-company
+          - agency-contact

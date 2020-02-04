@@ -1,0 +1,32 @@
+title: Microsite
+icon: 📱
+
+options:
+  title: false
+  duplicate: false
+  status: false
+  url: false
+  delete: false
+
+tabs:
+  content:
+    fields:
+      modules:
+        label: Modules
+        type: builder
+        fieldsets:
+          cover: fieldsets/cover
+          grid: fieldsets/grid
+          gallery: fieldsets/gallery
+  images:
+    sections:
+      images:
+        type: files
+        label: Images
+        layout: cards
+        size: small
+        info: "{{ file.dimensions }}"
+        template: image
+        image:
+          ratio: 1/1
+

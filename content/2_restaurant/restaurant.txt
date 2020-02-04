@@ -1,0 +1,144 @@
+Title: Restaurant
+
+----
+
+Openingheading: Opening hours
+
+----
+
+Openinghours:
+
+**Monday - Friday:**
+10:00 am - 02:00 pm
+05:00 pm - 11:00 pm
+
+**Saturday & Sunday:**
+10:00 am - 02:00 pm
+05:00 pm - 01:00 am
+
+----
+
+Reservationheading: Make a reservation
+
+----
+
+Reservationtext: You are looking for a nice table for two or a group reservation? We'd love to welcome you in our cosy restaurant. Don't hesitate to get in contact: <reservations@restaurant.com>
+
+----
+
+Contactheading: Get in contact
+
+----
+
+Phone: +49 1234 5678
+
+----
+
+Email: mail@restaurant.com
+
+----
+
+Starters:
+
+- 
+  dish: Potatoe soup
+  description: Indefinable hot fluid
+  price: 7.99
+- 
+  dish: Wurst salad
+  description: "It's not really salad"
+  price: 5.99
+- 
+  dish: Chicken nuggets
+  description: Vegetarian
+  price: 10.99
+
+----
+
+Meat:
+
+- 
+  dish: Beef
+  description: With Ketchup
+  price: 25.99
+- 
+  dish: Pigeon
+  description: With Ketchup
+  price: 26.99
+- 
+  dish: Pork
+  description: With Ketchup
+  price: 24.99
+
+----
+
+Desert:
+
+- 
+  dish: Deep fried Mars
+  description: "Don't judge"
+  price: 3.99
+- 
+  dish: Nespresso
+  description: You can keep the capsule
+  price: 7.99
+
+----
+
+Location:
+
+lat: 44.70599
+lon: -73.481484
+city: Plattsburgh
+country: United States of America
+postcode: "129001"
+address: Sesame Street
+
+----
+
+Restaurant: Finer Diner
+
+----
+
+Street: 127th Sesame Street
+
+----
+
+Zip: 129001
+
+----
+
+City: Pattsburgh
+
+----
+
+Country: USA
+
+----
+
+Contacttext:
+
+Phone: +49 1234 5678
+Email: <hello@restaurant.com>
+Twitter: (twitter: restaurant)
+
+----
+
+Description: A delicious site for your restaurant
+
+----
+
+Pasta:
+
+-
+  dish: Tortellini with some cheese sauce
+  description: We take the cheapest cheese
+  price: 19.99
+-
+  dish: Lasagne
+  description: Minced meat / dough ratio = 1:12
+  price: 17.99
+-
+  dish: Spaghetti alla Vongole
+  description: "Don't take them in all months with a R, I, J, D, E, S or N"
+  price: 22.99

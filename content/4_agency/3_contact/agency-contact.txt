@@ -1,0 +1,81 @@
+Title: Contact
+
+----
+
+Heading: Get in contact
+
+----
+
+Company: Agency Inc.
+
+----
+
+Street: Gneisenaustraße 12b
+
+----
+
+Zip: 10961
+
+----
+
+City: Berlin
+
+----
+
+Country: Germany
+
+----
+
+Email: mail@agency.com
+
+----
+
+Phone: +49 1234 5678
+
+----
+
+Location:
+
+lat: 52.4913085
+lon: 13.3940852
+city: Berlin
+country: Germany
+postcode: "10961"
+address: Gneisenaustraße
+
+----
+
+Socialheading: On the web
+
+----
+
+Social:
+
+- 
+  platform: Twitter
+  link: https://twitter.com/agency
+- 
+  platform: Instagram
+  link: https://instagram.com/agency
+- 
+  platform: Pinterest
+  link: https://pinterest.com/agency
+- 
+  platform: LinkedIn
+  link: https://linkedin.com/agency
+
+----
+
+Twitter: agency
+
+----
+
+Instagram: agency
+
+----
+
+Linkedin: agency
+
+----
+
+Pinterest: agency

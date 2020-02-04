@@ -1,0 +1,10 @@
+type: pages
+headline: Team
+parent: site.find("agency/team")
+size: tiny
+info: "{{ page.position }}"
+template: agency-employee
+empty: No team members yet
+image:
+  cover: true
+  ratio: 1/1

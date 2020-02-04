@@ -1,0 +1,41 @@
+Title: BeautyBox
+
+----
+
+Clientid: 3
+
+----
+
+Contact: 
+
+----
+
+Vip: false
+
+----
+
+Link: https://beautybox.shop
+
+----
+
+Email: 
+
+----
+
+Phone: 
+
+----
+
+Address: 
+
+----
+
+Notes: 
+
+----
+
+Vatid: 
+
+----
+
+Text: 

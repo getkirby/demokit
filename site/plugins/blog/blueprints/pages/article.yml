@@ -1,0 +1,20 @@
+title: Article
+preset: page
+icon: 📝
+num: date
+
+fields:
+  text:
+    type: textarea
+
+sidebar:
+  meta:
+    type: fields
+    fields:
+      date:
+        type: date
+        time: true
+      tags:
+        type: tags
+      author:
+        type: users

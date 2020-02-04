@@ -1,0 +1,143 @@
+Title: Microsite
+
+----
+
+Modules:
+
+- 
+  cover:
+    - micro-5.jpg
+  _key: cover
+  _uid: cover_1580807146138_133
+- 
+  heading: Our app is quite good
+  columns:
+    - 
+      heading: ""
+      text: >
+        It can do all of this here. Morbi leo
+        risus, porta ac consectetur ac,
+        vestibulum at eros. Cum sociis natoque
+        penatibus et magnis dis parturient
+        montes, nascetur ridiculus mus.
+      _key: text
+      _uid: text_1580809642937_388
+    - 
+      heading: ""
+      text: "It's also capable of lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna."
+      _key: text
+      _uid: text_1580809644490_516
+    - 
+      heading: ""
+      text: "Furthermore it's quite good at aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper. Donec id elit non mi porta gravida at eget metus."
+      _key: text
+      _uid: text_1580809645515_644
+  _key: grid
+  _uid: grid_1580807264995_188
+- 
+  heading: ""
+  ratio: --w:1;--h:1
+  images:
+    - micro-1.jpg
+    - micro-4.jpg
+    - micro-2.jpg
+  _key: gallery
+  _uid: gallery_1580807383281_363
+- 
+  heading: We pretend to use design tools
+  ratio: --w:4;--h:5
+  images:
+    - micro-3.jpg
+    - micro-6.jpg
+  _key: gallery
+  _uid: gallery_1580807546859_398
+- 
+  heading: More nice features
+  columns:
+    - 
+      heading: Simple
+      text: >
+        Cras justo odio, dapibus ac facilisis
+        in, egestas eget quam. Praesent commodo
+        cursus magna, vel scelerisque nisl
+        consectetur et. Cras justo odio, dapibus
+        ac facilisis in, egestas eget quam. Duis
+        mollis, est non commodo luctus, nisi
+        erat porttitor ligula, eget lacinia odio
+        sem nec elit.
+      _key: text
+      _uid: text_1580809782563_495
+    - 
+      heading: So simple
+      text: >
+        Aenean eu leo quam. Pellentesque ornare
+        sem lacinia quam venenatis vestibulum.
+        Nullam id dolor id nibh ultricies
+        vehicula ut id elit. Duis mollis, est
+        non commodo luctus, nisi erat porttitor
+        ligula, eget lacinia odio sem nec elit.
+        Sed posuere consectetur est at lobortis.
+        Morbi leo risus, porta ac consectetur
+        ac, vestibulum at eros.
+      _key: text
+      _uid: text_1580809784885_578
+    - 
+      heading: Really simple
+      text: >
+        Aenean eu leo quam. Pellentesque ornare
+        sem lacinia quam venenatis vestibulum.
+        Sed posuere consectetur est at lobortis.
+        Nulla vitae elit libero, a pharetra
+        augue. Nullam id dolor id nibh ultricies
+        vehicula ut id elit.
+      _key: text
+      _uid: text_1580809796178_675
+    - 
+      heading: Incredibly simple
+      text: >
+        Nullam id dolor id nibh ultricies
+        vehicula ut id elit. Nulla vitae elit
+        libero, a pharetra augue. Donec id elit
+        non mi porta gravida at eget metus.
+        Etiam porta sem malesuada magna mollis
+        euismod. Cras mattis consectetur purus
+        sit amet fermentum. Donec ullamcorper
+        nulla non metus auctor fringilla.
+      _key: text
+      _uid: text_1580809798821_758
+    - 
+      heading: Did we mention it is simple?
+      text: >
+        Praesent commodo cursus magna, vel
+        scelerisque nisl consectetur et.
+        Maecenas sed diam eget risus varius
+        blandit sit amet non magna. Aenean
+        lacinia bibendum nulla sed consectetur.
+        Curabitur blandit tempus porttitor.
+        Nullam quis risus eget urna mollis
+        ornare vel eu leo. Praesent commodo
+        cursus magna, vel scelerisque nisl
+        consectetur et.
+      _key: text
+      _uid: text_1580809803688_830
+    - 
+      heading: It really is simple
+      text: >
+        Praesent commodo cursus magna, vel
+        scelerisque nisl consectetur et. Cras
+        justo odio, dapibus ac facilisis in,
+        egestas eget quam. Cum sociis natoque
+        penatibus et magnis dis parturient
+        montes, nascetur ridiculus mus.
+        Vestibulum id ligula porta felis euismod
+        semper. Cras mattis consectetur purus
+        sit amet fermentum. Vestibulum id ligula
+        porta felis euismod semper.
+      _key: text
+      _uid: text_1580809810743_895
+  _key: grid
+  _uid: grid_1580807579105_748
+
+----
+
+Description: Representative one-pagers for your product

@@ -1,0 +1,54 @@
+Title: Blog
+
+----
+
+Heading: Around the world
+
+----
+
+Subheading: in 80 ways
+
+----
+
+Limit: 6
+
+----
+
+Dateformat: d M, Y
+
+----
+
+Twitter: getkirby
+
+----
+
+Instagram: getkirby
+
+----
+
+Tags:
+
+- 
+  name: Design
+- 
+  name: Environment
+- 
+  name: Jungle
+- 
+  name: Mountains
+- 
+  name: Nature
+- 
+  name: Nepal
+- 
+  name: Photography
+- 
+  name: Sky
+- 
+  name: Travel
+- 
+  name: Universe
+
+----
+
+Description: Just like Medium, but better

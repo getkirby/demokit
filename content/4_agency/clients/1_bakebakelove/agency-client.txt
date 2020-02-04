@@ -1,0 +1,41 @@
+Title: BakeBakeLove
+
+----
+
+Clientid: 2
+
+----
+
+Contact: 
+
+----
+
+Vip: false
+
+----
+
+Link: https://bakebakelove.bakery
+
+----
+
+Email: 
+
+----
+
+Phone: 
+
+----
+
+Address: 
+
+----
+
+Notes: 
+
+----
+
+Vatid: 
+
+----
+
+Text: 

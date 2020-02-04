@@ -1,0 +1,27 @@
+{
+  "name": "kirby-locator",
+  "version": "0.0.1",
+  "description": "A map & geolocation field, built on top of open-source services / Mapbox",
+  "main": "index.js",
+  "author": "Sylvain Julé",
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel watch src/index.js --no-source-maps -d ./",
+    "build": "parcel build src/index.js --no-source-maps --experimental-scope-hoisting -d ./"
+  },
+  "posthtml": {
+    "recognizeSelfClosing": true
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 11"
+  ],
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.0.0",
+    "cssnano": "^4.1.10",
+    "leaflet": "^1.5.1",
+    "sass": "^1.21.0",
+    "vue-template-compiler": "^2.6.10"
+  }
+}

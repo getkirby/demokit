@@ -1,0 +1,41 @@
+Title: Campfire Solitude
+
+----
+
+Clientid: 1
+
+----
+
+Contact: 
+
+----
+
+Vip: false
+
+----
+
+Link: https://campfire.solitude
+
+----
+
+Email: 
+
+----
+
+Phone: 
+
+----
+
+Address: 
+
+----
+
+Notes: 
+
+----
+
+Vatid: 
+
+----
+
+Text: 

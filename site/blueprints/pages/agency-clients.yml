@@ -1,0 +1,16 @@
+title: Clients
+
+status:
+  draft: Locked
+  unlisted: Locked
+  listed: Locked
+
+options:
+  title: false
+  status: false
+  duplicate: false
+  url: false
+  delete: false
+
+sections:
+  clients: sections/agency/clients

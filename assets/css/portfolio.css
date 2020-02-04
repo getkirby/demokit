@@ -1,0 +1,9 @@
+.portfolio-project-gallery {
+  line-height: 0;
+  columns: 2;
+  column-gap: 3rem;
+}
+.portfolio-project-gallery li {
+  display: inline-block;
+  margin-bottom: 3rem;
+}

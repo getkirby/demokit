@@ -1,0 +1,99 @@
+title: Restaurant
+icon: 🍕
+
+options:
+  title: false
+  duplicate: false
+  status: false
+  url: false
+  delete: false
+
+columns:
+  - width: 1/1
+    sections:
+      cover:
+        type: files
+        template: restaurant-cover
+        layout: cards
+        max: 1
+        image:
+          ratio: 2/1
+          cover: true
+
+  - width: 1/3
+    fields:
+      openingHeading:
+        label: Opening Hours Heading
+        type: text
+      openingHours:
+        label: Opening Hours
+        type: textarea
+        buttons: false
+        size: medium
+  - width: 1/3
+    fields:
+      reservationHeading:
+        label: Reservation Heading
+        type: text
+      reservationText:
+        label: Reservation Text
+        type: textarea
+        buttons: false
+        size: medium
+  - width: 1/3
+    fields:
+      contactHeading:
+        label: Contact Heading
+        type: text
+      phone:
+        label: Phone
+        type: tel
+      email:
+        label: Email
+        type: email
+
+  - width: 1/1
+    fields:
+      starters:
+        extends: fields/restaurant/dishes
+        label: Starter
+      meat:
+        extends: fields/restaurant/dishes
+        label: Main
+      desert:
+        extends: fields/restaurant/dishes
+        label: Dessert
+
+  - width: 1/1
+    sections:
+      gallery:
+        headline: Impressions
+        type: files
+        template: restaurant-gallery
+        layout: cards
+        size: medium
+        image:
+          ratio: 4/3
+          cover: true
+
+
+  - width: 1/2
+    fields:
+      location:
+        label: Map
+        type: locator
+  - width: 1/2
+    fields:
+      restaurant:
+        label: Restaurant name
+        type: text
+      street:
+        type: text
+      zip:
+        type: text
+        width: 1/2
+      city:
+        type: text
+        width: 1/2
+      country:
+        type: text

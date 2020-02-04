@@ -1,0 +1,41 @@
+Title: SpaceCube
+
+----
+
+Clientid: 12
+
+----
+
+Contact: 
+
+----
+
+Vip: false
+
+----
+
+Link: https://spacecube.app
+
+----
+
+Email: 
+
+----
+
+Phone: 
+
+----
+
+Address: 
+
+----
+
+Notes: 
+
+----
+
+Vatid: 
+
+----
+
+Text: 

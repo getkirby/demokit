@@ -1,0 +1,11 @@
+type: pages
+headline: Clients
+parent: kirby.page("agency/clients")
+template: agency-client
+empty: No clients yet
+layout: cards
+size: small
+image:
+  cover: true
+  ratio: 1/1
+  back: white

@@ -1,0 +1,15 @@
+title: Site
+
+sections:
+  pages:
+    headline: Examples
+    type: pages
+    status: listed
+    info: "{{ page.description }}"
+    layout: cards
+    size: medium
+    sortable: false
+    image:
+      query: page.cover
+      ratio: 4/3
+      cover: true

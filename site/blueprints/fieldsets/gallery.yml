@@ -1,0 +1,28 @@
+name: Gallery
+preview:
+  snippet: blocks/gallery
+  css: /assets/css/index.css
+fields:
+  heading:
+    label: Heading
+    type: text
+    width: 3/4
+  ratio:
+    label: Image Ratio
+    type: select
+    width: 1/4
+    empty: false
+    default: "--w:3;--h:2"
+    options:
+      "--w:1;--h:1": 1/1
+      "--w:3;--h:2": 3/2
+      "--w:4;--h:5": 4/5
+  images:
+    label: Images
+    type: files
+    layout: cards
+    uploads:
+      template: image
+    image:
+      ratio: 1/1
+      cover: true

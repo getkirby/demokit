@@ -1,0 +1,23 @@
+.header {
+  margin-bottom: 3rem;
+}
+
+.restaurant-menu {
+  line-height: 1.5em;
+  text-align: center;
+  padding: 3rem;
+}
+.restaurant-menu h3 {
+  text-transform: uppercase;
+  font-size: .875rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: .15em;
+}
+.restaurant-menu li:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+.restaurant-dish-description {
+  font-style: italic;
+  color: var(--color-text-grey);
+}

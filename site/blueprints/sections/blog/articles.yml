@@ -1,0 +1,7 @@
+type: pages
+headline: Notes
+parent: site.find("blog")
+info: "{{ page.date }}"
+template: blog-article
+empty: No notes yet
+sortBy: date desc

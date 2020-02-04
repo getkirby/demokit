@@ -1,0 +1,33 @@
+Title: Bike
+
+----
+
+Price: 2490
+
+----
+
+Brand: 
+
+----
+
+Link: 
+
+----
+
+Shipping: 
+
+----
+
+Summary: The bike is so black and dark that you will hardly notice you are on a bike.
+
+----
+
+Description: Aenean lacinia bibendum nulla sed consectetur. Donec sed odio dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec sed odio dui. Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida at eget metus.
+
+----
+
+Design: 
+
+----
+
+Sizes: S, M, L, XL, XXL

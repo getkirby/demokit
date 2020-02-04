@@ -1,0 +1,21 @@
+title: Portfolio
+icon: 📸
+
+options:
+  title: false
+  duplicate: false
+  status: false
+  url: false
+  delete: false
+
+columns:
+  - width: 2/3
+    sections:
+      projects:
+        extends: sections/portfolio/projects
+        headline: Projects
+  - width: 1/3
+    sections:
+      pages:
+        template:
+          - portfolio-profile

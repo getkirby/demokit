@@ -1,0 +1,33 @@
+title: Team
+
+status:
+  draft: Locked
+  unlisted: Locked
+  listed: Locked
+
+options:
+  title: false
+  status: false
+  duplicate: false
+  url: false
+  delete: false
+
+columns:
+  - width: 1/3
+    sections:
+      drafts:
+        extends: sections/agency/team
+        headline: To be hired
+        status: draft
+      noImage:
+        extends: sections/agency/team
+        status: unlisted
+        headline: No image
+  - width: 2/3
+    sections:
+      listed:
+        extends: sections/agency/team
+        status: listed
+        headline: On company page
+        layout: cards
+        size: small

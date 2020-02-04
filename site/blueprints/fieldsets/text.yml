@@ -1,0 +1,10 @@
+name: Text
+fields:
+  heading:
+    label: Heading
+    type: text
+  text:
+    label: Text
+    type: textarea
+    size: medium
+    buttons: false

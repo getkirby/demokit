@@ -1,0 +1,100 @@
+Title: Home
+
+----
+
+Heading: We are a digital product agency that focuses on strategy and design.
+
+----
+
+Cover:
+
+- agency/company/agency-1.jpg
+
+----
+
+Featuredprojectsheading: Featured work
+
+----
+
+Featuredprojects:
+
+- agency/projects/creatious-labs
+- agency/projects/heinz-sons
+- agency/projects/frontacular
+
+----
+
+Shuffleprojects: false
+
+----
+
+Maxprojects: 3
+
+----
+
+Featuredclientsheading: Our clients
+
+----
+
+Featuredclients:
+
+- agency/clients/bakebakelove
+- agency/clients/beautybox
+- agency/clients/heinz-sons
+- agency/clients/spacecube
+- agency/clients/campfire-solitude
+- agency/clients/orange-superfood
+
+----
+
+Shuffleclients: true
+
+----
+
+Maxclients: 6
+
+----
+
+Contactheading: Let's work together
+
+----
+
+Contacttext: We would love to work with you, because that will probably earn us some money and after all this is a capitalist world and money sounds great.
+
+----
+
+Contactaddress: mail@agency.com
+
+----
+
+Featuredheading: Featured work
+
+----
+
+Clients:
+
+- agency/clients/bakebakelove
+- agency/clients/beautybox
+- agency/clients/campfire-solitude
+- agency/clients/spacecube
+- agency/clients/heinz-sons
+
+----
+
+Clientsheading: Our clients
+
+----
+
+Projects:
+
+- agency/projects/trusty-trust
+- agency/projects/frontacular
+- agency/projects/heinz-sons
+
+----
+
+Featured:
+
+- agency/projects/creatious-labs
+- agency/projects/frontacular
+- agency/projects/trusty-trust

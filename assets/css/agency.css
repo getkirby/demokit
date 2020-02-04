@@ -1,0 +1,13 @@
+hr {
+  margin: 6rem auto;
+}
+
+.agency-clients li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.agency-clients img {
+  width: auto;
+  height: 3rem;
+}

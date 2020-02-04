@@ -1,0 +1,39 @@
+{
+  "name": "kirby-builder-asset-pipeline",
+  "description": "Kirby Builder Asset Pipeline",
+  "author": "Tim Ötting",
+  "version": "0.0.1",
+  "type": "kirby-field",
+  "license": "MIT",
+  "scripts": {
+    "watch": "parcel watch src/index.js --no-source-maps -d ./",
+    "build": "parcel build src/index.js --no-source-maps --experimental-scope-hoisting -d ./"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "last 2 versions"
+  ],
+  "posthtml": {
+    "recognizeSelfClosing": true
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@vue/component-compiler-utils": "^2.3.0",
+    "autoprefixer": "^9.6.0",
+    "mustache": "^3.0.1",
+    "parcel-bundler": "^1.12.3",
+    "sass": "^1.15.1",
+    "stylus": "^0.54.5",
+    "vue-hot-reload-api": "^2.3.1",
+    "vue-template-compiler": "^2.5.17",
+    "vuedraggable": "^2.20.0"
+  },
+  "dependencies": {
+    "vue": "^2.5.17"
+  }
+}

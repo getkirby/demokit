@@ -1,0 +1,71 @@
+title: Blog
+icon: 📖
+
+options:
+  title: false
+  duplicate: false
+  status: false
+  url: false
+  delete: false
+
+tabs:
+  articles:
+    columns:
+      - width: 1/3
+        sections:
+          drafts:
+            extends: sections/blog/articles
+            headline: Drafts
+            info: ""
+            status: draft
+
+          unlisted:
+            extends: sections/blog/articles
+            headline: In Review
+            info: ""
+            status: unlisted
+
+      - width: 2/3
+        sections:
+          listed:
+            extends: sections/blog/articles
+            headline: Published
+            status: listed
+            layout: cards
+            image:
+              ratio: 2/1
+              cover: true
+
+  options:
+    columns:
+      - width: 1/2
+        fields:
+          heading:
+            type: text
+            icon: title
+          subheading:
+            type: text
+            icon: title
+      - width: 1/2
+        fields:
+          limit:
+            label: Articles per page
+            type: number
+            width: 1/2
+            placeholder: 6
+          dateFormat:
+            label: Date format
+            type: text
+            width: 1/2
+            icon: calendar
+            placeholder: d M, Y
+          twitter:
+            label: Twitter name
+            type: text
+            icon: twitter
+            width: 1/2
+          instagram:
+            label: Instagram name
+            type: text
+            icon: instagram
+            width: 1/2
