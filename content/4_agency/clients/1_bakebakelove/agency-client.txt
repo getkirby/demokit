@@ -14,11 +14,11 @@ Vip: false
 
 ----
 
-Link: https://bakebakelove.bakery
+Link: https://bakebakelove.example.com
 
 ----
 
-Email: 
+Email: bakebakelove@example.com
 
 ----
 

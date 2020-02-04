@@ -14,11 +14,11 @@ Vip: false
 
 ----
 
-Link: https://beautybox.shop
+Link: https://beautybox.example.com
 
 ----
 
-Email: 
+Email: beautybox@example.com
 
 ----
 

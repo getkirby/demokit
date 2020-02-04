@@ -14,11 +14,11 @@ Vip: false
 
 ----
 
-Link: https://campfire.solitude
+Link: https://campfire.example.com
 
 ----
 
-Email: 
+Email: camp@example.com
 
 ----
 

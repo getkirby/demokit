@@ -14,11 +14,11 @@ Vip: false
 
 ----
 
-Link: https://spacecube.app
+Link: https://spacecube.example.com
 
 ----
 
-Email: 
+Email: spacecube@example.com
 
 ----
 

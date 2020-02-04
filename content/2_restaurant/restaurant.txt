@@ -22,7 +22,7 @@ Reservationheading: Make a reservation
 
 ----
 
-Reservationtext: You are looking for a nice table for two or a group reservation? We'd love to welcome you in our cosy restaurant. Don't hesitate to get in contact: <reservations@restaurant.com>
+Reservationtext: You are looking for a nice table for two or a group reservation? We'd love to welcome you in our cosy restaurant. Don't hesitate to get in contact: <reservations@example.com>
 
 ----
 
@@ -34,7 +34,7 @@ Phone: +49 1234 5678
 
 ----
 
-Email: mail@restaurant.com
+Email: hello@example.com
 
 ----
 

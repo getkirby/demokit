@@ -14,11 +14,11 @@ Vip: false
 
 ----
 
-Link: https://heinz-and-sons.bikes
+Link: https://heinz-and-sons.example.com
 
 ----
 
-Email: 
+Email: heinz@example.com
 
 ----
 

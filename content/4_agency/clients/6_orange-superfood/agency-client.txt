@@ -14,11 +14,11 @@ Vip: false
 
 ----
 
-Link: https://orange.super.food
+Link: https://orange.example.com
 
 ----
 
-Email: 
+Email: super.food@example.com
 
 ----
 
