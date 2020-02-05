@@ -1,4 +1,5 @@
 title: Image
+accept: image/*
 
 columns:
   - width: 1/2

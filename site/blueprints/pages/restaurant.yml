@@ -13,7 +13,7 @@ columns:
     sections:
       cover:
         type: files
-        template: restaurant-cover
+        template: restaurant-cover-image
         layout: cards
         max: 1
         image:
@@ -69,7 +69,7 @@ columns:
       gallery:
         headline: Impressions
         type: files
-        template: restaurant-gallery
+        template: restaurant-gallery-image
         layout: cards
         size: medium
         image:

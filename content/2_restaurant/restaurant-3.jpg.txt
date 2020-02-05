@@ -1,4 +1,4 @@
-Template: restaurant-gallery
+Template: restaurant-gallery-image
 
 ----
 

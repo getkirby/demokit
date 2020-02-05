@@ -1,6 +1,6 @@
 <?php snippet('restaurant/header') ?>
 
-<?php if ($cover = $page->images()->template('restaurant-cover')->first()): ?>
+<?php if ($cover = $page->images()->template('restaurant-cover-image')->first()): ?>
 <figure class="hero img" style="--w: 2; --h: 1">
   <?= $cover->crop(1200, 600) ?>
 </figure>
@@ -59,7 +59,7 @@
   <h2 class="h2">Impressions</h2>
 
   <ul class="grid">
-    <?php foreach ($page->images()->template('restaurant-gallery')->sortBy('sort') as $image): ?>
+    <?php foreach ($page->images()->template('restaurant-gallery-image')->sortBy('sort') as $image): ?>
     <li class="column" style="--columns: 4">
       <a href="<?= $image->url() ?>" class="img" style="--w: 4; --h: 3"><?= $image->crop(400, 300) ?></a>
     </li>
