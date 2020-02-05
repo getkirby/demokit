@@ -1,1 +1,41 @@
 Title: Home
+
+----
+
+Heading: Welcome to the Kirby Demo
+
+----
+
+Subheading: Have fun
+
+----
+
+Panelheading: Panel login
+
+----
+
+Aboutheading: About this demo
+
+----
+
+Paneltext:
+
+Email:
+**demo@getkirby.com**
+
+Password:
+**demodemo**
+
+----
+
+Abouttext:
+
+We've collected a set of example sites that show the flexibility of Kirby. Everything you see in this demo can be customized and extended to fit your own project. 
+
+The source code for this demo can be found on Github: <https://github.com/getkirby/demokit>
+
+Learn how Kirby works with our extensive docs: 
+<https://getkirby.com/docs>
+
+Become a part of Kirby's community: 
+<https://forum.getkirby.com>

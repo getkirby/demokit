@@ -21,7 +21,7 @@
 
     <div class="column" style="--columns: 8">
       <?php if ($cover = $page->cover()): ?>
-      <figure class="margin-l">
+      <figure class="img margin-l" style="--w:<?= $cover->width() ?>; --h:<?= $cover->height() ?>">
         <?= $cover->resize(800) ?>
       </figure>
       <?php endif ?>

@@ -1,0 +1,12 @@
+headline: Examples
+type: pages
+status: listed
+parent: site
+info: "{{ page.description }}"
+layout: cards
+size: medium
+sortable: false
+image:
+  query: page.cover
+  ratio: 4/3
+  cover: true

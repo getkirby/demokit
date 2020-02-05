@@ -4,6 +4,8 @@
   column-gap: 3rem;
 }
 .portfolio-project-gallery li {
-  display: inline-block;
+  display: block;
   margin-bottom: 3rem;
+  break-inside: avoid;
 }
+

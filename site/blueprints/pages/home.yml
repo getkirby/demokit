@@ -1,0 +1,29 @@
+title: Home
+
+sections:
+  content:
+    type: fields
+    fields:
+      heading:
+        type: text
+      subheading:
+        type: text
+      panelHeading:
+        label: Panel heading
+        type: text
+        width: 1/2
+      aboutHeading:
+        label: About heading
+        type: text
+        width: 1/2
+      panelText:
+        label: Panel text
+        type: textarea
+        size: large
+        width: 1/2
+      aboutText:
+        label: About text
+        type: textarea
+        size: large
+        width: 1/2
+  examples: sections/home/examples

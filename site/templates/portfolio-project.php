@@ -11,7 +11,13 @@
     <div class="column" style="--columns: 8">
       <ul class="portfolio-project-gallery">
         <?php foreach ($page->images()->sortBy('sort') as $image): ?>
-        <li><?= $image->resize(800) ?></li>
+        <li>
+          <a href="<?= $image->url() ?>">
+            <figure class="img" style="--w:<?= $image->width() ?>;--h:<?= $image->height() ?>">
+              <?= $image->resize(800) ?>
+            </figure>
+          </a>
+        </li>
         <?php endforeach ?>
       </ul>
     </div>
