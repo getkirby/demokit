@@ -2,6 +2,9 @@
 
 return [
   'debug' => true,
+  'panel' => [
+    'css' => 'assets/css/panel.css'
+  ],
   'kirby' => [
     'blog' => [
       'date' => 'd M, Y',

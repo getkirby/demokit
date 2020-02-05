@@ -1,4 +1,25 @@
 title: Site
 
-sections:
-  pages: sections/home/examples
+columns:
+  - width: 2/3
+    sections:
+      pages:
+        extends: sections/home/examples
+        size: small
+
+  - width: 1/3
+    sections:
+      info:
+        headline: Info
+        type: info
+        theme: white
+        text: |
+          Welcome to the Panel of your Kirby demo! Here you can find find several examples for you to explore and play around.
+
+          Each example stands for a different type of site with completely different Panel setups.
+
+          We tried to make them feel as real as possible and give you a nice set of placeholder data to experiment with.
+
+          Every aspect of the Panel interface can be customized with our blueprints and plugins. You can find out more about all the possibilities in our **(link: https://getkirby.com/docs/guide/blueprints/introduction text: docs)**.
+
+          The Panel setup cannot be changed in the Panel though. If you want to play around with blueprints and templates, you should install the **(link: https://github.com/getkirby/starterkit text: Starterkit)** on your own machine.
