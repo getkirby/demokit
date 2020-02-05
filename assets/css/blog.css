@@ -33,9 +33,16 @@
   margin-bottom: 1.5rem;
 }
 .blog-article-tags li {
-  padding: .5rem 1rem;
-  background: var(--color-light);
   margin-right: .5rem;
+}
+.blog-article-tags a {
+  padding: .5rem 1rem;
+  display: block;
+  background: var(--color-light);
+}
+.blog-article-tags a:hover {
+  background: var(--color-black);
+  color: var(--color-white);
 }
 
 .blog-pagination {

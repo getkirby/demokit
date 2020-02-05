@@ -20,7 +20,9 @@
     <?php if (!empty($tags)): ?>
     <ul class="blog-article-tags">
       <?php foreach ($tags as $tag): ?>
-      <li><?= $tag ?></li>
+      <li>
+        <a href="<?= url('blog', ['params' => ['tag' => $tag]]) ?>"><?= $tag ?></a>
+      </li>
       <?php endforeach ?>
     </ul>
     <?php endif ?>

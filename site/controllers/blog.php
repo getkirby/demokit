@@ -2,11 +2,18 @@
 
 return function ($page) {
 
-    $default = option('kirby.blog.pagination.limit', 6);
-    $limit   = $page->limit()->or($default)->toInt();
+    $tag      = strip_tags(urldecode(param('tag')));
+    $default  = option('kirby.blog.pagination.limit', 6);
+    $limit    = $page->limit()->or($default)->toInt();
+    $articles = collection('blog/articles');
+
+    if (empty($tag) === false) {
+        $articles = $articles->filterBy('tags', $tag, ',');
+    }
 
     return [
-        'articles' => collection('blog/articles')->paginate($limit)
+        'tag'      => $tag,
+        'articles' => $articles->paginate($limit)
     ];
 
 };

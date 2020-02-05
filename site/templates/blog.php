@@ -1,10 +1,19 @@
 <?php snippet('blog/header') ?>
 
 <header class="h1">
+
+  <?php if (empty($tag) === false): ?>
+  <h1>
+    <small>Tag:</small> <?= html($tag) ?>
+    <a href="<?= $page->url() ?>">&times;</a>
+  </h1>
+  <?php else: ?>
   <h1><?= $page->heading()->html() ?></h1>
   <?php if ($page->subheading()->isNotEmpty()): ?>
   <p><small><?= $page->subheading()->html() ?></small></p>
   <?php endif ?>
+  <?php endif ?>
+
 </header>
 
 <ul class="grid">
