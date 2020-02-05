@@ -70,25 +70,24 @@ small {
   flex-direction: column;
   background: var(--color-black);
   color: var(--color-white);
-  padding: .5rem 1rem .75rem;
   display: none;
   z-index: 1;
   max-width: 25rem;
+  box-shadow: rgba(0,0,0, .1) 0 5px 10px;
 }
 .logo-dropdown-box header {
   border-bottom: 1px solid #555;
-  margin-bottom: .5rem;
-  padding-bottom: .75rem;
 }
 .logo-dropdown-box header a {
   display: block;
-  padding: .5rem 0;
+  padding: .75rem 1rem;
   font-weight: 600;
 }
 .logo-dropdown-box-content {
   line-height: 1.5em;
   display: flex;
   flex-wrap: wrap;
+  padding: 1rem;
 }
 .logo-dropdown-box-content > div {
   flex-grow: 1;
@@ -130,6 +129,14 @@ small {
   color: #999;
   font-size: .875rem;
   display: block;
+}
+.logo-dropdown-box footer {
+  border-top: 1px solid #555;
+  padding: .75rem 1rem;
+  line-height: 1.5em;
+  margin-top: .5rem;
+  color: #999;
+  font-size: .875rem;
 }
 
 .menu {
