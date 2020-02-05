@@ -36,6 +36,7 @@ sidebar:
     layout: cards
     info: "{{ file.dimensions }}"
     max: 1
+    template: agency-employee-image
     image:
       ratio: 1/1
       cover: true
