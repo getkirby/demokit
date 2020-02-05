@@ -18,4 +18,4 @@ Link: https://unsplash.com/photos/MEBqI9fzqao
 
 ----
 
-Template: image
+Template: portfolio-project-image

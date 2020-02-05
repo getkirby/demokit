@@ -18,7 +18,7 @@ Link: https://unsplash.com/photos/7_TTPznVIQI
 
 ----
 
-Template: image
+Template: portfolio-project-image
 
 ----
 

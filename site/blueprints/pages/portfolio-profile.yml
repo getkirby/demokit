@@ -14,7 +14,7 @@ columns:
         headline: Profile image
         type: files
         layout: cards
-        template: image
+        template: portfolio-profile-image
         info: "{{ file.dimensions }}"
         max: 1
         image:

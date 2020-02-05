@@ -2,4 +2,20 @@ Caption:
 
 ----
 
-Template: image
+Alt: 
+
+----
+
+Photographer: 
+
+----
+
+License: 
+
+----
+
+Link: 
+
+----
+
+Template: portfolio-project-image

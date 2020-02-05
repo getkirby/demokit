@@ -18,7 +18,7 @@ columns:
       images:
         type: files
         layout: cards
-        template: image
+        template: portfolio-project-image
         info: "{{ file.dimensions }}"
         image:
           ratio: 5/4
