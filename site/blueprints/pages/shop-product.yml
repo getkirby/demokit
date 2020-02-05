@@ -40,7 +40,7 @@ tabs:
         sections:
           image:
             extends: sections/shop/image
-            template: cover
+            template: shop-product-cover
             min: 1
             image:
               ratio: 1/1

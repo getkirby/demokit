@@ -1,1 +1,1 @@
-Template: cover
+Template: shop-product-cover
