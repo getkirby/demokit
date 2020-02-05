@@ -6,6 +6,7 @@
 
   <title><?= $site->title()->html() . ' / ' . html(implode(' / ', $site->breadcrumb()->not('home')->pluck('title'))) ?></title>
 
+  <?= css('assets/lightbox/lightbox.css') ?>
   <?= css('assets/css/index.css') ?>
   <?= css('assets/css/' . ($example ?? 'home') . '.css') ?>
   <?= css('@auto') ?>

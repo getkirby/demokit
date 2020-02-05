@@ -1,8 +1,8 @@
 <?php snippet('blog/header') ?>
 
 <?php if ($cover = $page->cover()): ?>
-<figure class="img" style="--w:2; --h:1">
-  <?= $cover->crop(1200, 600) ?>
+<figure>
+  <a href="<?= $cover->url() ?>" data-lightbox class="img" style="--w:2; --h:1"><?= $cover->crop(1200, 600) ?></a>
 </figure>
 <?php endif ?>
 

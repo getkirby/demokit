@@ -12,7 +12,7 @@
       <ul class="portfolio-project-gallery">
         <?php foreach ($page->images()->sortBy('sort') as $image): ?>
         <li>
-          <a href="<?= $image->url() ?>">
+          <a href="<?= $image->url() ?>" data-lightbox>
             <figure class="img" style="--w:<?= $image->width() ?>;--h:<?= $image->height() ?>">
               <?= $image->resize(800) ?>
             </figure>

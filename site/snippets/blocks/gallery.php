@@ -6,8 +6,8 @@
   <div class="autogrid">
     <?php foreach ($data->images()->toFiles() as $image): ?>
     <div class="column">
-      <figure class="img" style="<?= $data->ratio()->or('--w:3;--h:2') ?>">
-        <a href="<?= $image->url() ?>"><?= $image ?></a>
+      <figure>
+        <a href="<?= $image->url() ?>" data-lightbox class="img" style="<?= $data->ratio()->or('--w:3;--h:2') ?>"><?= $image ?></a>
       </figure>
     </div>
     <?php endforeach ?>

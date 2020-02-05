@@ -1,8 +1,10 @@
 <?php snippet('restaurant/header') ?>
 
 <?php if ($cover = $page->images()->template('restaurant-cover-image')->first()): ?>
-<figure class="hero img" style="--w: 2; --h: 1">
-  <?= $cover->crop(1200, 600) ?>
+<figure>
+  <a href="<?= $cover->url() ?>" data-lightbox class="hero img" style="--w: 2; --h: 1">
+    <?= $cover->crop(1200, 600) ?>
+  </a>
 </figure>
 <?php endif ?>
 
@@ -61,7 +63,7 @@
   <ul class="grid">
     <?php foreach ($page->images()->template('restaurant-gallery-image')->sortBy('sort') as $image): ?>
     <li class="column" style="--columns: 4">
-      <a href="<?= $image->url() ?>" class="img" style="--w: 4; --h: 3"><?= $image->crop(400, 300) ?></a>
+      <a href="<?= $image->url() ?>" class="img" data-lightbox style="--w: 4; --h: 3"><?= $image->crop(400, 300) ?></a>
     </li>
     <?php endforeach ?>
   </ul>

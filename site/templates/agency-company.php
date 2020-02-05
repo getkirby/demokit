@@ -1,8 +1,10 @@
 <?php snippet('agency/header') ?>
 
 <?php if ($cover = $page->cover()->toFile()): ?>
-<figure class="img" style="--w: 2; --h:1">
-  <?= $cover->crop(1200, 600) ?>
+<figure>
+  <a href="<?= $cover->url() ?>" data-lightbox class="img" style="--w: 2; --h:1">
+    <?= $cover->crop(1200, 600) ?>
+  </a>
 </figure>
 
 <hr>
@@ -19,17 +21,19 @@
 
 <ul class="grid">
   <?php foreach (collection('agency/team') as $member): ?>
+  <?php if ($image = $member->image()): ?>
   <li class="column" style="--columns: <?= (12 / $page->teamColumns()->or(3)->toInt()) ?>">
     <figure>
-      <span class="img">
-        <?= $member->image()->html(['alt' => 'A picture of ' . $member->title()->html() . ' - ' . $member->position()->html() ]) ?>
-      </span>
+      <a href="<?= $image->url() ?>" class="img" data-lightbox>
+        <?= $image->html(['alt' => 'A picture of ' . $member->title()->html() . ' - ' . $member->position()->html() ]) ?>
+      </a>
       <figcaption class="img-caption">
         <p><strong><?= $member->title()->html() ?></strong></p>
         <p><small><?= $member->position()->html() ?></small></p>
       </figcaption>
     </figure>
   </li>
+  <?php endif ?>
   <?php endforeach ?>
 </ul>
 

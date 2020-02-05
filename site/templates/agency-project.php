@@ -21,15 +21,19 @@
 
     <div class="column" style="--columns: 8">
       <?php if ($cover = $page->cover()): ?>
-      <figure class="img margin-l" style="--w:<?= $cover->width() ?>; --h:<?= $cover->height() ?>">
-        <?= $cover->resize(800) ?>
-      </figure>
+      <a href="<?= $cover->url() ?>" data-lightbox>
+        <figure class="img margin-l" style="--w:<?= $cover->width() ?>; --h:<?= $cover->height() ?>">
+          <?= $cover->resize(800) ?>
+        </figure>
+      </a>
       <?php endif ?>
 
       <ul class="grid">
         <?php foreach ($page->images()->template('agency-project-image')->sortBy('sort', 'asc', 'filename', 'asc') as $image): ?>
         <li class="column" style="--columns: 3">
-          <a href="<?= $image->url() ?>" class="img"><?= $image->crop(200) ?></a>
+          <a href="<?= $image->url() ?>" data-lightbox class="img">
+            <?= $image->crop(200) ?>
+          </a>
         </li>
         <?php endforeach ?>
       </ul>
