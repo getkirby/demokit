@@ -20,8 +20,13 @@ columns:
         type: text
       cover:
         type: files
+        max: 1
+        uploads:
+          template: blog-article-image
       text:
         type: editor
+        uploads:
+          template: blog-article-image
 
   - width: 1/3
     sections:
@@ -40,3 +45,4 @@ columns:
             query: page.siblings.pluck("tags", ",", true)
       images:
         type: files
+        template: blog-article-image
