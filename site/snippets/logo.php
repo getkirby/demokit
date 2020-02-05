@@ -39,7 +39,7 @@
           <li><a target="_blank" href="https://getkirby.com">Website</a></li>
           <li><a target="_blank" href="https://getkirby.com/docs">Docs</a></li>
           <li><a target="_blank" href="https://forum.getkirby.com">Forum</a></li>
-          <li><a target="_blank" href="https://github.com/getkirby">Github</a></li>
+          <li><a target="_blank" href="https://github.com/getkirby">GitHub</a></li>
         </ul>
       </div>
     </div>
