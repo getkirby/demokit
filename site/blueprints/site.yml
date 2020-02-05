@@ -8,7 +8,7 @@ columns:
         type: info
         theme: white
         text: |
-          Welcome to the Panel of your Kirby demo! Here you can find find several examples for you to explore and play around.
+          Welcome to the Panel of your Kirby demo! Here you can find several examples for you to explore and play around.
 
           Each example stands for a different type of site with completely different Panel setups.
 
