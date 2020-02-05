@@ -24,5 +24,6 @@ return [
         ]);
       }
     ],
-  ]
+  ],
+  'sylvainjule.locator.tiles' => 'voyager',
 ];
