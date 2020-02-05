@@ -1,1 +1,21 @@
+Caption: 
+
+----
+
+Alt: A portrait of me while taking a picture
+
+----
+
+Photographer: 
+
+----
+
+License: 
+
+----
+
+Link: 
+
+----
+
 Template: portfolio-profile-image
