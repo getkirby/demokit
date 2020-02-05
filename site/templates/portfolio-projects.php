@@ -2,7 +2,7 @@
 
 <h1 class="h1">My work</h1>
 
-<ul class="grid">
+<ul class="grid" style="--gutter: 1.5rem">
   <?php foreach (collection('portfolio/projects') as $project): ?>
   <li class="column" style="--columns: 3">
     <a href="<?= $project->url() ?>">

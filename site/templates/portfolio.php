@@ -2,7 +2,7 @@
 
 <h1 class="intro">Award-winning photographer, director & cinematographer based somewhere</h1>
 
-<ul class="grid">
+<ul class="grid" style="--gutter: 1.5rem">
   <?php foreach ($page->find('projects')->children()->shuffle()->limit(4) as $project): ?>
   <li class="column" style="--columns: 6">
     <a href="<?= $project->url() ?>">

@@ -48,6 +48,7 @@ small {
 .header {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-right: -1rem;
   margin-left: -1rem;
@@ -155,13 +156,14 @@ small {
 }
 
 .grid {
-  --gutter: 3rem;
   --columns: 12;
+  --gutter: 3rem;
   display: grid;
   grid-gap: var(--gutter);
+  grid-template-columns: 1fr;
 }
 .grid > .column {
-  grid-column: span var(--columns);
+  margin-bottom: var(--gutter);
 }
 
 .autogrid {
@@ -376,7 +378,12 @@ hr {
   body {
     --padding: 3rem;
   }
+
   .grid {
     grid-template-columns: repeat(12, 1fr);
   }
+  .grid > .column {
+    grid-column: span var(--columns);
+  }
+
 }
