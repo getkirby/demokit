@@ -61,6 +61,7 @@ files:
   headline: Logo
   max: 1
   layout: cards
+  template: agency-client-logo
   image:
     back: white
     ratio: 1/1

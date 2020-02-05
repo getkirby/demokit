@@ -21,6 +21,9 @@ columns:
         type: files
         layout: cards
         query: kirby.page("agency/company").images
+        uploads:
+          parent: kirby.page("agency/company")
+          template: agency-image
         image:
           ratio: 2/1
           cover: true

@@ -21,6 +21,8 @@ tabs:
             type: files
             layout: cards
             max: 1
+            uploads:
+              template: agency-image
             image:
               ratio: 2/1
               cover: true
@@ -105,5 +107,6 @@ tabs:
         info: "{{ file.dimensions }}"
         sortable: false
         sortBy: filename asc
+        template: agency-image
         image:
           ratio: 1/1

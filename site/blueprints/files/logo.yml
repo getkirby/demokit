@@ -1,0 +1,6 @@
+title: Icon
+accept: image/*
+
+fields:
+  info:
+    text: We don't store additional information for logos
