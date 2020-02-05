@@ -25,5 +25,7 @@
 </ul>
 
 <?php snippet('blog/pagination', ['pagination' => $articles->pagination()]) ?>
+
+
 <?php snippet('blog/footer') ?>
 

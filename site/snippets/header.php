@@ -11,9 +11,9 @@
   <?= css('assets/css/' . ($example ?? 'home') . '.css') ?>
   <?= css('@auto') ?>
 
-  <?php if ($example === 'shop'): ?>
-  <?= css('https://cdn.snipcart.com/themes/v3.0.6/default/snipcart.css') ?>
-  <?php endif ?>
+  <?php snippet($example . '/meta') ?>
+
+  <link rel="shortcut icon" type="image/x-icon" href="<?= url('favicon.ico') ?>">
 
 </head>
 <body>
