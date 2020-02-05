@@ -44,7 +44,8 @@
       </div>
     </div>
     <footer>
-      Expires <?= $site->expiresIn() ?>
+      Expires <?= $site->expiresIn() ?> (based on your activity),
+      but no later than <?= $site->expiresIn(true) ?>.
     </footer>
   </nav>
 </span>
