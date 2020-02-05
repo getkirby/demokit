@@ -22,7 +22,7 @@
   <li class="column" style="--columns: <?= (12 / $page->teamColumns()->or(3)->toInt()) ?>">
     <figure>
       <span class="img">
-        <?= $member->image() ?>
+        <?= $member->image()->html(['alt' => 'A picture of ' . $member->title()->html() . ' - ' . $member->position()->html() ]) ?>
       </span>
       <figcaption class="img-caption">
         <p><strong><?= $member->title()->html() ?></strong></p>

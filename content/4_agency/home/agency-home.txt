@@ -63,7 +63,7 @@ Contacttext: We would love to work with you, because that will probably earn us 
 
 ----
 
-Contactaddress: mail@agency.com
+Contactaddress: agency@example.com
 
 ----
 
