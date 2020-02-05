@@ -32,7 +32,7 @@ Abouttext:
 
 We've collected a set of example sites that show the flexibility of Kirby. Everything you see in this demo can be customized and extended to fit your own project. 
 
-The source code for this demo can be found on Github: <https://github.com/getkirby/demokit>
+The source code for this demo can be found on GitHub: <https://github.com/getkirby/demokit>
 
 Learn how Kirby works with our extensive docs: 
 <https://getkirby.com/docs>
