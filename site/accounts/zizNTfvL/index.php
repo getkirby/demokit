@@ -3,6 +3,6 @@
 return [
     'email' => 'demo@getkirby.com',
     'language' => 'en',
-    'name' => '',
+    'name' => 'Demo DeVito',
     'role' => 'admin'
 ];
