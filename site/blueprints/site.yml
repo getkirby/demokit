@@ -1,12 +1,6 @@
 title: Site
 
 columns:
-  - width: 2/3
-    sections:
-      pages:
-        extends: sections/home/examples
-        size: small
-
   - width: 1/3
     sections:
       info:
@@ -23,3 +17,9 @@ columns:
           Every aspect of the Panel interface can be customized with our blueprints and plugins. You can find out more about all the possibilities in our **(link: https://getkirby.com/docs/guide/blueprints/introduction text: docs)**.
 
           The Panel setup cannot be changed in the Panel though. If you want to play around with blueprints and templates, you should install the **(link: https://github.com/getkirby/starterkit text: Starterkit)** on your own machine.
+
+  - width: 2/3
+    sections:
+      pages:
+        extends: sections/home/examples
+        size: small

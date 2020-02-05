@@ -13,6 +13,7 @@ columns:
     sections:
       projects:
         extends: sections/agency/projects
+        size: tiny
 
   - width: 1/2
     sections:
