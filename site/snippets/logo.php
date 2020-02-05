@@ -5,6 +5,7 @@
   <nav class="logo-dropdown-box">
     <header>
       <a href="<?= $site->url() ?>"><?= $site->title()->html() ?></a>
+      Expires <?= $site->expiresIn() ?>
     </header>
     <div class="logo-dropdown-box-content">
       <div>

@@ -6,8 +6,6 @@ sections:
     fields:
       heading:
         type: text
-      subheading:
-        type: text
       panelHeading:
         label: Panel heading
         type: text

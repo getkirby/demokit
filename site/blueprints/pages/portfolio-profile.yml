@@ -1,6 +1,12 @@
 title: Profile
 icon: 🖼
 
+options:
+  duplicate: false
+  status: false
+  url: false
+  delete: false
+
 columns:
   - width: 1/3
     sections:

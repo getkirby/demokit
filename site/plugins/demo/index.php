@@ -4,6 +4,7 @@ use Kirby\Demo\Demo;
 use Kirby\Demo\Instances;
 
 $instance = null;
+
 if (class_exists(Demo::class) === true) {
     $instance = (new Demo)->instances()->current();
 
@@ -16,24 +17,13 @@ if (class_exists(Demo::class) === true) {
 }
 
 Kirby::plugin('getkirby/demo', [
-    'tags' => [
-        'demo-time' => [
-            'html' => function ($tag) use ($instance) {
-                if (!$instance) {
-                    return '...';
-                }
-
-                switch ($tag->value) {
-                    case 'created':
-                        return $instance->createdHuman();
-                    case 'expiry':
-                        return $instance->expiryHuman();
-                    case 'expiry-max':
-                        return $instance->expiryMaxHuman();
-                    default:
-                        return '';
-                }
+    'siteMethods' => [
+        'expiresIn' => function () use ($instance) {
+            if ($instance) {
+                return $instance->expiryHuman();
+            } else {
+                return 'in ' . rand(2,100) . ' quadrillion minutes';
             }
-        ]
+        }
     ]
 ]);
