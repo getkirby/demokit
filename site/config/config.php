@@ -44,6 +44,13 @@ return [
           ]);
         }
       }
+    ],
+    [
+      'pattern' => '/delete-demo',
+      'method'  => 'POST',
+      'action' => function () {
+        go('https://getkirby.com/try');
+      }
     ]
   ],
   'sylvainjule.locator.tiles' => 'voyager',

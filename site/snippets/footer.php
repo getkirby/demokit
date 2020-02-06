@@ -44,6 +44,13 @@
 
   <?= js('assets/lightbox/lightbox.js') ?>
   <script>
+
+  document.querySelector("#killer").addEventListener("submit", (e) => {
+    if (!confirm("Do you really want to delete your instance?")) {
+      e.preventDefault();
+    }
+  });
+
   let box = null;
 
   Array.from(document.querySelectorAll('[data-lightbox]')).forEach(element => {

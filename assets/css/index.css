@@ -48,6 +48,10 @@ a {
 }
 button {
   font: inherit;
+  background: none;
+  border: 0;
+  color: currentColor;
+  cursor: pointer;
 }
 strong, b {
   font-weight: 600;
@@ -88,13 +92,24 @@ small {
   box-shadow: rgba(0,0,0, .1) 0 5px 10px;
 }
 .logo-dropdown-box header {
+  display: flex;
   border-bottom: 1px solid #555;
+  justify-content: space-between;
+  color: #fff;
 }
 .logo-dropdown-box header a {
   display: block;
   padding: .75rem 1rem;
   font-weight: 600;
 }
+
+.killer-button {
+  padding: .75rem 1rem;
+}
+.killer-button svg * {
+  fill: #fff;
+}
+
 .logo-dropdown-box-content {
   line-height: 1.5em;
   display: flex;

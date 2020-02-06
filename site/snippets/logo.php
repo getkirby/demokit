@@ -5,6 +5,9 @@
   <nav class="logo-dropdown-box">
     <header>
       <a href="<?= $site->url() ?>"><?= $site->title()->html() ?></a>
+      <form class="killer-form" id="killer" method="POST" action="<?= url('delete-demo') ?>">
+        <button class="killer-button"><?= svg('assets/icons/trash.svg') ?></button>
+      </form>
     </header>
     <div class="logo-dropdown-box-content">
       <div>
