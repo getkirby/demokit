@@ -72,22 +72,33 @@ small {
 }
 
 .logo {
-  padding: 1rem;
-  display: block;
-  font-weight: 600;
 }
 
+.logo summary {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+}
+.logo summary svg {
+  margin-right: .75rem;
+}
+.logo summary::-webkit-details-marker {
+  display: none;
+}
+.logo summary:focus {
+  outline: 0;
+}
 .logo-dropdown-box {
   position: absolute;
-  top: 100%;
+  top: 3rem;
   left: 1rem;
-  right: 1rem;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   background: var(--color-black);
   color: var(--color-white);
-  display: none;
-  z-index: 1;
   max-width: 25rem;
   box-shadow: rgba(0,0,0, .1) 0 5px 10px;
 }
@@ -131,9 +142,6 @@ small {
   letter-spacing: .1em;
   color: #999;
   margin-bottom: .5rem;
-}
-.logo-dropdown:hover .logo-dropdown-box {
-  display: block;
 }
 .logo-dropdown-box ul:not(:last-child) {
   margin-bottom: 1.5rem;

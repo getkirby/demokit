@@ -1,6 +1,8 @@
 <?php if ($section = page($section)): ?>
-<span class="logo-dropdown">
-  <a class="logo" href="<?= $section->url() ?>"><?= $section->isHomePage() ? $site->title()->html() : $section->title()->html() ?></a>
+<details class="logo">
+  <summary>
+    <?= svg('assets/icons/menu.svg') ?> <?= $section->isHomePage() ? $site->title()->html() : $section->title()->html() ?>
+  </summary>
 
   <nav class="logo-dropdown-box">
     <header>
@@ -51,5 +53,5 @@
       latest <?= $site->expiresIn(true) ?>.
     </footer>
   </nav>
-</span>
+</details>
 <?php endif ?>
