@@ -2,6 +2,10 @@ Title: Blog
 
 ----
 
+Description: Just like Medium, but better
+
+----
+
 Heading: Around the world
 
 ----
@@ -23,32 +27,3 @@ Twitter: getkirby
 ----
 
 Instagram: getkirby
-
-----
-
-Tags:
-
-- 
-  name: Design
-- 
-  name: Environment
-- 
-  name: Jungle
-- 
-  name: Mountains
-- 
-  name: Nature
-- 
-  name: Nepal
-- 
-  name: Photography
-- 
-  name: Sky
-- 
-  name: Travel
-- 
-  name: Universe
-
-----
-
-Description: Just like Medium, but better

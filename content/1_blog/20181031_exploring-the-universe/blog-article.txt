@@ -24,9 +24,9 @@ Text:
     {
         "attrs": {
             "guid": "/pages/blog+exploring-the-universe/files/universe.jpg",
-            "src": "http://demo.getkirby.test/media/pages/blog/exploring-the-universe/2903108393-1580662033/universe.jpg",
+            "src": "/media/pages/blog/exploring-the-universe/2903108393-1580834529/universe.jpg",
             "id": "blog/exploring-the-universe/universe.jpg",
-            "ratio": 1.5,
+            "ratio": 1.5005359056806002,
             "caption": "This is spectacular"
         },
         "content": "",
@@ -151,11 +151,3 @@ Author:
 ----
 
 Tags: universe, sky
-
-----
-
-Gallery: - photography/animals
-
-----
-
-Headline: Super nicer scheiss

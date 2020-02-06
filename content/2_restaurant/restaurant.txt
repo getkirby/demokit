@@ -2,6 +2,10 @@ Title: Restaurant
 
 ----
 
+Description: A delicious site for your restaurant
+
+----
+
 Openingheading: Opening hours
 
 ----
@@ -113,32 +117,3 @@ City: Pattsburgh
 ----
 
 Country: USA
-
-----
-
-Contacttext:
-
-Phone: +49 1234 5678
-Email: <hello@restaurant.com>
-Twitter: (twitter: restaurant)
-
-----
-
-Description: A delicious site for your restaurant
-
-----
-
-Pasta:
-
--
-  dish: Tortellini with some cheese sauce
-  description: We take the cheapest cheese
-  price: 19.99
--
-  dish: Lasagne
-  description: Minced meat / dough ratio = 1:12
-  price: 17.99
--
-  dish: Spaghetti alla Vongole
-  description: "Don't take them in all months with a R, I, J, D, E, S or N"
-  price: 22.99

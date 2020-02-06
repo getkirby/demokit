@@ -6,13 +6,13 @@ Category: Branding
 
 ----
 
-Featured: false
-
-----
-
 Client:
 
 - agency/clients/beautybox
+
+----
+
+Link: 
 
 ----
 

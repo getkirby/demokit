@@ -6,10 +6,6 @@ Heading: Welcome to the Kirby Demo
 
 ----
 
-Subheading: Have fun
-
-----
-
 Panelheading: Panel login
 
 ----

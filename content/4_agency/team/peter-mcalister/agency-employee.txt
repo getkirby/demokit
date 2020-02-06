@@ -2,4 +2,20 @@ Title: Peter McAlister
 
 ----
 
-Text: 
+Position: 
+
+----
+
+Phone: 
+
+----
+
+Email: 
+
+----
+
+Account: 
+
+----
+
+About: 

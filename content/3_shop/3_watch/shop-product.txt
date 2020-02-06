@@ -2,6 +2,10 @@ Title: Watch
 
 ----
 
+Description: Nulla vitae elit libero, a pharetra augue. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.
+
+----
+
 Price: 249
 
 ----
@@ -19,15 +23,3 @@ Shipping: DHL standard, DHL express
 ----
 
 Summary: A watch without a face. No longer get distracted by the vague concept of time.
-
-----
-
-Description: Nulla vitae elit libero, a pharetra augue. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.
-
-----
-
-Design: 
-
-----
-
-Sizes: S, M, L, XL, XXL

@@ -63,19 +63,3 @@ Social:
 - 
   platform: LinkedIn
   link: https://linkedin.com/agency
-
-----
-
-Twitter: agency
-
-----
-
-Instagram: agency
-
-----
-
-Linkedin: agency
-
-----
-
-Pinterest: agency

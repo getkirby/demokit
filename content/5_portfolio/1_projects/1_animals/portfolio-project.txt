@@ -2,24 +2,12 @@ Title: Animals
 
 ----
 
+Description: What does the fox say?
+
+----
+
 Text:
 
 Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Donec ullamcorper nulla non metus auctor fringilla. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod. Donec id elit non mi porta gravida at eget metus.
 
 Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.
-
-----
-
-Cover: - peter-fox.jpg
-
-----
-
-Headline: Animals as leaders
-
-----
-
-Description: What does the fox say?
-
-----
-
-Tags: animals

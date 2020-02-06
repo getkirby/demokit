@@ -2,6 +2,10 @@ Title: Microsite
 
 ----
 
+Description: Representative one-pagers for your product
+
+----
+
 Modules:
 
 - 
@@ -137,7 +141,3 @@ Modules:
       _uid: text_1580809810743_895
   _key: grid
   _uid: grid_1580807579105_748
-
-----
-
-Description: Representative one-pagers for your product

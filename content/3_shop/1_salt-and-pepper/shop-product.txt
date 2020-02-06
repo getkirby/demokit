@@ -2,6 +2,10 @@ Title: Salt & Pepper
 
 ----
 
+Description: Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec ullamcorper nulla non metus auctor fringilla.
+
+----
+
 Price: 59
 
 ----
@@ -19,19 +23,3 @@ Shipping:
 ----
 
 Summary: Salt & pepper in style with this modern design classic bla bla
-
-----
-
-Description: Nulla vitae elit libero, a pharetra augue. Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec ullamcorper nulla non metus auctor fringilla.
-
-----
-
-Design: 
-
-----
-
-Sizes: 
-
-----
-
-Text: 

@@ -2,4 +2,20 @@ Title: Heather Walker
 
 ----
 
-Text: 
+Position: 
+
+----
+
+Phone: 
+
+----
+
+Email: 
+
+----
+
+Account: 
+
+----
+
+About: 
