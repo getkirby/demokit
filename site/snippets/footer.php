@@ -16,11 +16,19 @@
       </div>
       <div class="column" style="--columns: 2">
         <h2>View source</h2>
+        <?php if ($page->isHomePage()): ?>
+        <ul>
+          <li><a href="<?= $site->url() ?>/home.yml">Blueprint</a></li>
+          <li><a href="<?= $site->url() ?>/home.txt">Textfile</a></li>
+          <li><a href="<?= $site->url() ?>/home.html">Template</a></li>
+        </ul>
+        <?php else: ?>
         <ul>
           <li><a href="<?= $page->url() ?>.yml">Blueprint</a></li>
           <li><a href="<?= $page->url() ?>.txt">Textfile</a></li>
           <li><a href="<?= $page->url() ?>.html">Template</a></li>
         </ul>
+        <?php endif ?>
       </div>
       <div class="column" style="--columns: 2">
         <h2>Kirby</h2>
