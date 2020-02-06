@@ -44,15 +44,15 @@ Email: hello@example.com
 
 Starters:
 
-- 
+-
   dish: Potato soup
   description: Indefinable hot fluid
   price: 7.99
-- 
+-
   dish: Wurst salad
   description: "It's not really salad"
   price: 5.99
-- 
+-
   dish: Chicken nuggets
   description: Vegetarian
   price: 10.99
@@ -61,28 +61,28 @@ Starters:
 
 Meat:
 
-- 
+-
   dish: Beef
   description: With Ketchup
   price: 25.99
-- 
+-
   dish: Pigeon
   description: With Ketchup
   price: 26.99
-- 
+-
   dish: Pork
   description: With Ketchup
   price: 24.99
 
 ----
 
-Desert:
+Dessert:
 
-- 
+-
   dish: Deep fried Mars
   description: "Don't judge"
   price: 3.99
-- 
+-
   dish: Nespresso
   description: You can keep the capsule
   price: 7.99

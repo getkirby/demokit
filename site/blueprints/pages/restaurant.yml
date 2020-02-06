@@ -60,7 +60,7 @@ columns:
       meat:
         extends: fields/restaurant/dishes
         label: Main
-      desert:
+      dessert:
         extends: fields/restaurant/dishes
         label: Dessert
 

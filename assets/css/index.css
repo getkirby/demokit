@@ -12,6 +12,16 @@
   --color-text: var(--color-black);
   --color-text-grey: var(--color-grey);
   --color-background: var(--color-white);
+  --color-code-light-grey:  #cacbd1;
+  --color-code-comment:     #a9aaad;
+  --color-code-white:       #c5c9c6;
+  --color-code-red:         #d16464;
+  --color-code-orange:      #de935f;
+  --color-code-yellow:      #f0c674;
+  --color-code-green:       #a7bd68;
+  --color-code-aqua:        #8abeb7;
+  --color-code-blue:        #7e9abf;
+  --color-code-purple:      #b294bb;
   --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
@@ -341,6 +351,7 @@ hr {
 
 .footer {
   padding: 9rem 0 6rem;
+  line-height: 1.5em;
 }
 .footer:before {
   content: "";
@@ -350,6 +361,22 @@ hr {
   background: var(--color-black);
   margin-bottom: 1.5rem;
 }
+
+.footer h2 {
+  font-weight: 600;
+  margin-bottom: .75rem;
+}
+.footer ul,
+.footer p {
+  color: var(--color-text-grey);
+}
+.footer p {
+  max-width: 15rem;
+}
+.footer a:hover {
+  color: var(--color-text);
+}
+
 
 .map {
   --w: 2;

@@ -51,7 +51,7 @@
     </div>
     <div class="column" style="--columns: 4">
       <h3>Dessert</h3>
-      <?php snippet('restaurant/dishes', ['dishes' => $page->desert()->toStructure()]) ?>
+      <?php snippet('restaurant/dishes', ['dishes' => $page->dessert()->toStructure()]) ?>
     </div>
   </div>
 
