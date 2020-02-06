@@ -16,15 +16,13 @@ tabs:
           drafts:
             extends: sections/blog/articles
             headline: Drafts
-            info: ""
+            info: false
             status: draft
-
           unlisted:
             extends: sections/blog/articles
             headline: In Review
-            info: ""
+            info: false
             status: unlisted
-
       - width: 2/3
         sections:
           listed:
@@ -35,7 +33,6 @@ tabs:
             image:
               ratio: 2/1
               cover: true
-
   options:
     columns:
       - width: 1/2
