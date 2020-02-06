@@ -33,8 +33,11 @@ Kirby::plugin('getkirby/demo', [
             'method'  => 'POST',
             'action' => function () use ($instance) {
                 if ($instance) {
+                    // prepare the response before the Kirby files are deleted as well...
+                    $response = Response::redirect('https://getkirby.com/try/status:deleted', 302);
+
                     $instance->delete();
-                    return Response::redirect('https://getkirby.com/try/status:deleted', 302);
+                    die($response);
                 } else {
                     return new Response('Error: Could not fetch instance object', 'text/plain', 500);
                 }
