@@ -1,9 +1,9 @@
 <template>
   <div :class="[
-    'kBuilderBlock', 
-    'kBuilderBlock--col-' + columnsCount, 
+    'kBuilderBlock',
+    'kBuilderBlock--col-' + columnsCount,
     'kBuilderBlock--type-' + block._key,
-    {'kBuilderBlock--previewMode': showPreview && expanded }, 
+    {'kBuilderBlock--previewMode': showPreview && expanded },
     {'kBuilderBlock--expanded': expanded },
     {'kBuilderBlock--pending': isNew },
     {'kBuilderBlock--collapsed': !expanded },
@@ -424,16 +424,18 @@ export default {
     }
   }
 
+  &__content {
+    border: 4px solid #fff;
+    border-top: 0;
+  }
+
   &__form {
-    padding 0.625rem 0.75rem 2.25rem 0.75rem
+    padding 1.75rem
+    background: #efefef;
   }
 
   .sortable-drag {
     cursor -webkit-grab
-  }
-
-  .kBuilderBlock, .k-structure-table, .k-card, .k-list-item {
-    box-shadow 0 2px 5px rgba(22, 23, 26, 0.15), 0 0 0 1px rgba(22, 23, 26, 0.05)
   }
 
   .k-structure {
@@ -441,9 +443,9 @@ export default {
   }
 }
 
-.k-sortable-ghost > .k-column-content > .kBuilderBlock, 
-.k-sortable-ghost > .kBuilderBlock, 
-.sortable-ghost > .k-column-content > .kBuilderBlock , 
+.k-sortable-ghost > .k-column-content > .kBuilderBlock,
+.k-sortable-ghost > .kBuilderBlock,
+.sortable-ghost > .k-column-content > .kBuilderBlock ,
 .sortable-ghost > .kBuilderBlock {
   box-shadow 0 0 0 2px #4271ae, 0 5px 10px 2px rgba(22, 23, 26, 0.25)
 }

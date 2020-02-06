@@ -150,12 +150,15 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .kBuilderPreview
-    font-size 0
-    &__frame
-      border none
-      width 100%
-      height 200px
+.kBuilderPreview
+  font-size 0
+  border: 1.75rem solid #efefef
+  &__frame
+    border none
+    width 100%
+    height 200px
+    box-shadow: var(--box-shadow-item)
+
 </style>
 
 

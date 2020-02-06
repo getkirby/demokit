@@ -346,13 +346,11 @@ export default {
 .kBuilder__addButton {
   width: 100%;
   background-color: transparent;
-  padding: calc(0.625rem * 4) 0.75rem;
+  height: 38px;
+  line-height: 1;
+  padding: 0 0.75rem;
   border: 1px dashed #ccc;
   transition: background-color 0.3s, border-color 0.3s;
-}
-.kBuilder__addButton:hover {
-  background-color: #81a2be;
-  border-color: transparent;
 }
 .kBuilder__addBlockButton {
   cursor: pointer;
