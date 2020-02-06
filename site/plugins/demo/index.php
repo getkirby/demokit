@@ -2,6 +2,7 @@
 
 use Kirby\Demo\Demo;
 use Kirby\Demo\Instances;
+use Kirby\Http\Response;
 
 $instance = null;
 
@@ -25,5 +26,19 @@ Kirby::plugin('getkirby/demo', [
                 return 'in ' . rand(2,100) . ' quadrillion minutes';
             }
         }
+    ],
+    'routes' => [
+        [
+            'pattern' => '/delete-demo',
+            'method'  => 'POST',
+            'action' => function () use ($instance) {
+                if ($instance) {
+                    $instance->delete();
+                    return Response::redirect('https://getkirby.com/try/status:deleted', 302);
+                } else {
+                    return new Response('Error: Could not fetch instance object', 'text/plain', 500);
+                }
+            }
+        ]
     ]
 ]);
