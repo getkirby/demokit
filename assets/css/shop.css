@@ -4,10 +4,12 @@
 }
 .shop-products figcaption {
   position: absolute;
+  top: 100%;
   left: 0;
   right: 0;
   display: flex;
   justify-content: space-between;
+  padding-top: .5rem;
 }
 .shop-products figcaption span {
   color: var(--color-text-grey);

@@ -11,7 +11,7 @@
   <?= css('assets/css/' . ($example ?? 'home') . '.css') ?>
   <?= css('@auto') ?>
 
-  <?php snippet($example . '/meta') ?>
+  <?php snippet(($example ?? 'home') . '/meta') ?>
 
   <link rel="shortcut icon" type="image/x-icon" href="<?= url('favicon.ico') ?>">
 

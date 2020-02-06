@@ -1,5 +1,10 @@
-<?php snippet('header') ?>
+<?php snippet('home/header') ?>
 
-<h1><?= $page->title() ?></h1>
+<article>
+  <h1 class="h1"><?= $page->title() ?></h1>
+  <div class="text">
+    <?= $page->text()->kt() ?>
+  </div>
+</article>
 
 <?php snippet('footer') ?>
