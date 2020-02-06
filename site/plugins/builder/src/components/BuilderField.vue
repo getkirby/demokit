@@ -88,7 +88,6 @@
 
 <script>
 import BuilderBlock from "./BuilderBlock.vue";
-import draggable from "vuedraggable";
 export default {
   props: {
     counter: [Boolean, Object],
@@ -120,7 +119,7 @@ export default {
   },
   mounted() {
     for (const [fieldSetKey, cssUrl] of Object.entries(this.cssUrls)) {
-      fetch("/" + cssUrl.replace(/^\/+/g, "")) //regex removes leading slashes
+      fetch(cssUrl) //regex removes leading slashes
         .then(res => {
           return res.text();
         })
@@ -129,7 +128,7 @@ export default {
         });
     }
     for (const [fieldSetKey, jsUrls] of Object.entries(this.jsUrls)) {
-      fetch("/" + jsUrls.replace(/^\/+/g, "")) //regex removes leading slashes
+      fetch(jsUrls) //regex removes leading slashes
         .then(res => {
           return res.text();
         })
@@ -338,7 +337,7 @@ export default {
 <style>
 /* Allow line breaks in validation error message */
 .k-error-details li {
-  white-space: pre-line; 
+  white-space: pre-line;
   word-wrap: break-word;
   font-family: inherit;
   margin-top: -1.25em;
