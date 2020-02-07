@@ -1,7 +1,7 @@
 <?php if ($section = page($section)): ?>
 <details class="logo">
   <summary>
-    <?= svg('assets/icons/menu.svg') ?> <?= $section->isHomePage() ? $site->title()->html() : $section->title()->html() ?>
+    <span><?= svg('assets/icons/menu.svg') ?> <?= $section->isHomePage() ? $site->title()->html() : $section->title()->html() ?></span>
   </summary>
 
   <nav class="logo-dropdown-box">

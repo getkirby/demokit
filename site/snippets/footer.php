@@ -52,8 +52,9 @@
   });
 
   let box = null;
+  let logo = document.querySelector(".logo");
 
-  Array.from(document.querySelectorAll('[data-lightbox]')).forEach(element => {
+  Array.from(document.querySelectorAll("[data-lightbox]")).forEach(element => {
     element.onclick = (e) => {
       e.preventDefault();
       box = basicLightbox.create(`<img src="${element.href}">`);
@@ -61,9 +62,20 @@
     };
   });
 
+  logo.onclick = (e) => {
+    e.stopPropagation();
+  };
+
+  document.onclick = () => {
+    logo.removeAttribute("open");
+  };
+
   document.onkeydown = (e) => {
-    if (box && e.key === "Escape") {
-      box.close();
+    if (e.key === "Escape") {
+      if (box) {
+        box.close();
+      }
+      logo.removeAttribute("open");
     }
   }
   </script>

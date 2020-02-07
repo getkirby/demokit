@@ -71,10 +71,7 @@ small {
   margin-bottom: 6rem;
 }
 
-.logo {
-}
-
-.logo summary {
+.logo summary span {
   padding: 1rem;
   display: flex;
   align-items: center;
