@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'hook' => function ($demo) {
+    'build:after' => function ($demo) {
         // disable license check
         $systemFile = __DIR__ . '/kirby/src/Cms/System.php';
         $systemPHP = file_get_contents($systemFile);
