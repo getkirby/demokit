@@ -13,13 +13,13 @@
 <hr>
 
 <?php if ($projects->count()): ?>
-<h2 class="h1">Featured work</h2>
+<h2 class="h1" id="projects">Featured work</h2>
 <?php snippet('agency/projects', ['projects' => $projects, 'columns' => 4]) ?>
 <hr>
 <?php endif ?>
 
 <?php if ($clients->count()): ?>
-<h2 class="h1">Our clients</h2>
+<h2 class="h1" id="clients">Our clients</h2>
 <?php snippet('agency/clients', ['clients' => $clients]) ?>
 <hr>
 <?php endif ?>

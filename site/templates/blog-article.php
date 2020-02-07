@@ -1,9 +1,9 @@
 <?php snippet('blog/header') ?>
 
 <?php if ($cover = $page->cover()): ?>
-<figure>
-  <a href="<?= $cover->url() ?>" data-lightbox class="img" style="--w:2; --h:1"><?= $cover->crop(1200, 600) ?></a>
-</figure>
+<a href="<?= $cover->url() ?>" data-lightbox class="img" style="--w:2; --h:1">
+  <?= $cover->crop(1200, 600) ?>
+</a>
 <?php endif ?>
 
 <article class="blog-article">

@@ -17,7 +17,7 @@
 
 <hr>
 
-<h2 class="h1"><?= $page->teamHeading()->html() ?></h2>
+<h2 class="h1" id="team"><?= $page->teamHeading()->html() ?></h2>
 
 <ul class="grid">
   <?php foreach (collection('agency/team') as $member): ?>
@@ -25,7 +25,9 @@
   <li class="column" style="--columns: <?= (12 / $page->teamColumns()->or(3)->toInt()) ?>">
     <figure>
       <a href="<?= $image->url() ?>" class="img" data-lightbox>
-        <?= $image->html(['alt' => 'A picture of ' . $member->title()->html() . ' - ' . $member->position()->html() ]) ?>
+        <?= $image->html([
+          'alt' => 'A picture of ' . $member->title()->html() . ' - ' . $member->position()->html()
+        ]) ?>
       </a>
       <figcaption class="img-caption">
         <p><strong><?= $member->title()->html() ?></strong></p>
@@ -39,7 +41,7 @@
 
 <hr>
 
-<h2 class="h1"><?= $page->valuesHeading()->html() ?></h2>
+<h2 class="h1" id="values"><?= $page->valuesHeading()->html() ?></h2>
 
 <div class="grid">
   <?php foreach ($page->values()->toStructure() as $value): ?>

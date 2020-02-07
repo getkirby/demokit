@@ -4,9 +4,14 @@
 
 <div class="grid" style="--gutter: 4.5rem">
   <div class="column" style="--columns: 8">
-    <?= $page->image() ?>
 
-    <hr>
+    <?php if ($image = $page->image()): ?>
+    <a href="<?= $image->url() ?>" data-lightbox class="img" style="--w: <?= $image->width() ?>; --h: <?= $image->height() ?>">
+      <?= $image ?>
+    </a>
+    <?php else: ?>
+    <figure class="img" style="--w: <?= $w ?? 1 ?>; --h: <?= $h ?? 1 ?>"></figure>
+    <?php endif ?>
 
     <section class="section">
       <h2 class="h2">You might also like</h2>
