@@ -65,7 +65,7 @@
     return hours + ":" + minutes + " " + ampm;
   }
   var span = document.querySelector(".absolute-time");
-  span.innerText = formatTime(new Date(span.dataset.timestamp * 1000));
+  span.innerText = "at " + formatTime(new Date(span.dataset.timestamp * 1000));
 
   // Lightbox
   let box = null;
