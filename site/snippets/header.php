@@ -6,13 +6,9 @@
 
   <title><?= $site->title()->html() . ' / ' . html(implode(' / ', $site->breadcrumb()->not('home')->pluck('title'))) ?></title>
 
-  <?= css('assets/lightbox/lightbox.css') ?>
-  <?= css('assets/css/index.css') ?>
-  <?= css('assets/css/' . ($example ?? 'home') . '.css') ?>
-  <?= css('@auto') ?>
+  <?= styles($example) ?>
 
-  <?php snippet(($example ?? 'home') . '/meta') ?>
-
+  <?= snippet(($example ?? 'home') . '/meta') ?>
   <link rel="shortcut icon" type="image/x-icon" href="<?= url('favicon.ico') ?>">
 
 </head>
