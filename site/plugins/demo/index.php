@@ -19,11 +19,18 @@ if (class_exists(Demo::class) === true) {
 
 Kirby::plugin('getkirby/demo', [
     'siteMethods' => [
-        'expiresIn' => function (bool $max = false) use ($instance) {
+        'demoExpiry' => function (bool $max = false) use ($instance) {
+            if ($instance) {
+                return $max ? $instance->expiryMax() : $instance->expiry();
+            } else {
+                return time() + rand(600, 18000);
+            }
+        },
+        'demoExpiryHuman' => function (bool $max = false) use ($instance) {
             if ($instance) {
                 return $max ? $instance->expiryMaxHuman() : $instance->expiryHuman();
             } else {
-                return 'in ' . rand(2,100) . ' quadrillion minutes';
+                return 'in ' . rand(2, 100) . ' quadrillion minutes';
             }
         }
     ],

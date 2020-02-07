@@ -49,8 +49,8 @@
       </div>
     </div>
     <footer>
-      This demo expires <?= $site->expiresIn() ?> (based on your activity),
-      latest <?= $site->expiresIn(true) ?>.
+      This demo expires <?= $site->demoExpiryHuman() ?> (based on your activity),
+      latest <span class="absolute-time" data-timestamp="<?= $site->demoExpiry(true) ?>"><?= $site->demoExpiryHuman(true) ?></span>.
     </footer>
   </nav>
 </details>

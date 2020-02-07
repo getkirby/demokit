@@ -45,12 +45,29 @@
   <?= js('assets/lightbox/lightbox.js') ?>
   <script>
 
-  document.querySelector("#killer").addEventListener("submit", (e) => {
-    if (!confirm("Do you really want to delete your instance?")) {
+  // Instance deletion button
+  document.querySelector('#killer').addEventListener('submit', (e) => {
+    if (!confirm('Do you really want to delete your instance?')) {
       e.preventDefault();
     }
   });
 
+  // Expiry time text in the dropdown
+  function formatTime(date) {
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? 'pm' : 'am';
+
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+
+    return hours + ':' + minutes + ' ' + ampm;
+  }
+  var span = document.querySelector('.absolute-time');
+  span.innerText = formatTime(new Date(span.dataset.timestamp * 1000));
+
+  // Lightbox
   let box = null;
   let logo = document.querySelector(".logo");
 

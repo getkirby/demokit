@@ -2,7 +2,7 @@
 
 <header class="h1">
   <h1><?= $page->heading()->html() ?></h1>
-  <p><small>This demo expires <?= $site->expiresIn() ?></small></p>
+  <p><small>This demo expires <?= $site->demoExpiryHuman() ?></small></p>
 </header>
 
 <section class="section">
