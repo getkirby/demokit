@@ -3,7 +3,8 @@
 return [
   'debug' => true,
   'panel' => [
-    'css' => 'assets/css/panel.css'
+    'css' => 'assets/css/panel.css',
+    'js'  => 'assets/js/panel.js'
   ],
   'kirby' => [
     'blog' => [
