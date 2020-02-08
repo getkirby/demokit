@@ -12,9 +12,11 @@ if (file_exists(__DIR__ . '/../../src/Demo/Demo.php') === true) {
 
     // autoload demo classes
     load([
+        'Kirby\Demo\Config'    => __DIR__ . '/../../src/Demo/Config.php',
         'Kirby\Demo\Demo'      => __DIR__ . '/../../src/Demo/Demo.php',
         'Kirby\Demo\Instance'  => __DIR__ . '/../../src/Demo/Instance.php',
-        'Kirby\Demo\Instances' => __DIR__ . '/../../src/Demo/Instances.php'
+        'Kirby\Demo\Instances' => __DIR__ . '/../../src/Demo/Instances.php',
+        'Kirby\Demo\Lock'      => __DIR__ . '/../../src/Demo/Lock.php'
     ]);
 }
 
