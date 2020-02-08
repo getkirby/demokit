@@ -9,8 +9,17 @@ $instance = null;
 if (class_exists(Demo::class) === true) {
     $instance = (new Demo)->instances()->current();
 
-    // ensure that the request came from the correct visitor
-    if ($instance->ipHash() !== Instances::ipHash()) {
+    // if the current visitor is the first visitor,
+    // remember them using a session
+    $sessions   = glob(kirby()->roots()->sessions() . '/*.sess');
+    $noSessions = is_array($sessions) === true && empty($sessions) === true;
+    if ($noSessions === true) {
+        kirby()->session()->set('demo.creator', true);
+    }
+
+    // ensure that the request came from the correct visitor;
+    // check by IP address but fall back to the session if the IP address has changed
+    if ($instance->ipHash() !== Instances::ipHash() && kirby()->session()->get('demo.creator') !== true) {
         http_response_code(403);
         require __DIR__ . '/etc/fail_ip.php';
         die();
