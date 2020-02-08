@@ -14,9 +14,11 @@
 .shop-products figcaption span {
   color: var(--color-text-grey);
 }
-.shop-products li:first-child {
-  grid-column: 2 span;
-  grid-row: 2 span;
+@media screen and (min-width: 60rem) {
+  .shop-products li:first-child {
+    grid-column: 2 span;
+    grid-row: 2 span;
+  }
 }
 .shop-product-description {
   margin-bottom: 1.5rem;
