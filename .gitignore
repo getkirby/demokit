@@ -12,6 +12,7 @@ Icon
 
 # Lock files
 # ---------------
+
 .lock
 
 # -------------SECURITY-------------
@@ -27,8 +28,7 @@ Icon
 # Accounts
 # ---------------
 
-# /site/accounts/*
-# !/site/accounts/index.html
+/site/accounts/.logins
 
 # Sessions
 # ---------------
@@ -38,8 +38,10 @@ Icon
 
 # License
 # ---------------
+
 /site/config/.license
 
 # Custom
 # ---------------
+
 /scripts
