@@ -14,6 +14,11 @@ function keycdn($url, $params = [])
     $query = null;
 
     if (empty($params) === false) {
+        if (empty($params['crop']) === false && $params['crop'] !== false) {
+            // use the width as height if the height is not set
+            $params['height'] = $params['height'] ?? $params['width'];
+        }
+
         $query = '?' . http_build_query($params);
     }
 
