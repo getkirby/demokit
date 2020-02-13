@@ -1,6 +1,6 @@
 # Kirby Demokit
 
-This demo site is used for the Kirby demo at <https://demo.getkirby.com>.
+This demo site is used for the Kirby demo at <https://trykirby.com>.
 
 ## Copyright
 
