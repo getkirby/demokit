@@ -6,11 +6,11 @@ use Kirby\Http\Response;
 
 $instance = null;
 
-
 if (class_exists(Demo::class) === true) {
 
     $kirby    = kirby();
-    $instance = (new Demo)->instances()->current();
+    $demo     = new Demo();
+    $instance = $demo->instances()->current();
 
     // if the current visitor is the first visitor,
     // remember them using a session
@@ -22,13 +22,17 @@ if (class_exists(Demo::class) === true) {
     }
 
     // ensure that the request came from the correct visitor;
-    // check by IP address but fall back to the session if the IP address has changed
-    if ($instance->ipHash() !== Instances::ipHash() && $kirby->session()->get('demo.creator') !== true) {
-        if (defined('CDN_PULL_KEY') !== true || $kirby->request()->header('X-Pull') !== CDN_PULL_KEY) {
-            http_response_code(403);
-            require __DIR__ . '/etc/fail_ip.php';
-            die();
-        }
+    // check by IP address but fall back to the session if the IP address has changed;
+    // the pullzone CDN can always access the files
+    $cdnKey = $demo->config()->custom()['cdn-key'] ?? null;
+    if (
+        $instance->ipHash() !== Instances::ipHash() &&
+        $kirby->session()->get('demo.creator') !== true &&
+        $kirby->request()->header('X-Pull') !== $cdnKey
+    ) {
+        http_response_code(403);
+        require __DIR__ . '/etc/fail_ip.php';
+        die();
     }
 }
 

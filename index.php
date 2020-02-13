@@ -10,13 +10,6 @@ if (file_exists(__DIR__ . '/../../src/Demo/Demo.php') === true) {
     require __DIR__ . '/../../vendor/getkirby/cms/src/Database/Sql.php';
     require __DIR__ . '/../../vendor/getkirby/cms/src/Database/Sql/Sqlite.php';
 
-    // pull key file
-    $pullKey = '/home/kdemo/key.php';
-
-    if (file_exists($pullKey) === true) {
-        define('CDN_PULL_KEY', require $pullKey);
-    }
-
     // autoload demo classes
     load([
         'Kirby\Demo\Config'    => __DIR__ . '/../../src/Demo/Config.php',
