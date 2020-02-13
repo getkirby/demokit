@@ -6,23 +6,29 @@ use Kirby\Http\Response;
 
 $instance = null;
 
+
 if (class_exists(Demo::class) === true) {
+
+    $kirby    = kirby();
     $instance = (new Demo)->instances()->current();
 
     // if the current visitor is the first visitor,
     // remember them using a session
-    $sessions   = glob(kirby()->roots()->sessions() . '/*.sess');
+    $sessions   = glob($kirby->roots()->sessions() . '/*.sess');
     $noSessions = is_array($sessions) === true && empty($sessions) === true;
+
     if ($noSessions === true) {
-        kirby()->session()->set('demo.creator', true);
+        $kirby->session()->set('demo.creator', true);
     }
 
     // ensure that the request came from the correct visitor;
     // check by IP address but fall back to the session if the IP address has changed
-    if ($instance->ipHash() !== Instances::ipHash() && kirby()->session()->get('demo.creator') !== true) {
-        http_response_code(403);
-        require __DIR__ . '/etc/fail_ip.php';
-        die();
+    if ($instance->ipHash() !== Instances::ipHash() && $kirby->session()->get('demo.creator') !== true) {
+        if (defined('CDN_PULL_KEY') !== true || $kirby->request()->header('X-Pull') !== CDN_PULL_KEY) {
+            http_response_code(403);
+            require __DIR__ . '/etc/fail_ip.php';
+            die();
+        }
     }
 }
 
