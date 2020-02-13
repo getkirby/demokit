@@ -13,6 +13,9 @@ return [
       ]
     ]
   ],
+  'keycdn' => [
+    'domain' => 'https://trykirby-1653.kxcdn.com'
+  ],
   'thumbs' => [
     'driver' => 'im',
   ],
