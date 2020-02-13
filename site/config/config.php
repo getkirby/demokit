@@ -13,12 +13,6 @@ return [
       ]
     ]
   ],
-  'cache' => [
-    'pages' => [
-      'active' => true,
-      'ignore' => ['home', 'agency']
-    ]
-  ],
   'thumbs' => [
     'driver' => 'im',
   ],
