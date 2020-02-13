@@ -6,7 +6,9 @@ use Kirby\Toolkit\Dir;
 return [
     'build:after' => function ($demo) {
         // prevent the demo plugin from interfering
-        define('DEMO_BUILD_MODE', true);
+        if (defined('DEMO_BUILD_MODE') === false) {
+            define('DEMO_BUILD_MODE', true);
+        }
 
         // disable license check
         $systemFile = __DIR__ . '/kirby/src/Cms/System.php';
