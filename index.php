@@ -20,4 +20,9 @@ if (file_exists(__DIR__ . '/../../src/Demo/Demo.php') === true) {
     ]);
 }
 
+// load the build ID
+if (is_file(__DIR__ . '/.id.php') === true) {
+    define('DEMO_BUILD_ID', require __DIR__ . '/.id.php');
+}
+
 echo (new Kirby)->render();

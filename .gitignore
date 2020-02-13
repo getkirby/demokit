@@ -9,6 +9,7 @@ Icon
 
 /media/*
 !/media/index.html
+/.id.php
 
 # Lock files
 # ---------------

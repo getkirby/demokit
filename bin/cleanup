@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Cleans up media directories of old template builds
+ */
+
+$path = dirname(__DIR__, 3) . '/public/_media';
+
+// find out our what our own media directory is
+$ownName = require(dirname(__DIR__) . '/.id.php');
+$ownPath = $path . '/' . $ownName;
+
+// only continue if our own build is older than three hours
+// (all instances using the old build have expired)
+if (filemtime($ownPath) >= time() - 3 * 60 * 60) {
+    exit(0);
+}
+
+// find all current media directories except ours
+$dirs = glob($path . '/*');
+$dirs = array_diff($dirs, [$ownPath]);
+
+// delete each remaining directory
+foreach ($dirs as $dir) {
+    exec('rm -R ' . escapeshellarg($dir), $output, $return);
+
+    if ($return !== 0) {
+        echo 'Error deleting directory ' . $dir . ', got error: ' . $output . "\n";
+        exit(1);
+    }
+}
