@@ -16,7 +16,7 @@ return [
   'cache' => [
     'pages' => [
       'active' => true,
-      'ignore' => ['agency']
+      'ignore' => ['home', 'agency']
     ]
   ],
   'thumbs' => [
