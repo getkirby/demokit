@@ -43,6 +43,6 @@ return [
         }
 
         // ensure that the cleanup script is executable
-        chmod(__DIR__ . '/bin/cleanup', 755);
+        chmod(__DIR__ . '/bin/cleanup', 0755);
     }
 ];
