@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'debug' => true,
+  'debug' => false,
   'panel' => [
     'css' => 'assets/css/panel.css'
   ],
@@ -12,6 +12,15 @@ return [
         'limit' => 6
       ]
     ]
+  ],
+  'cache' => [
+    'pages' => [
+      'active' => true,
+      'ignore' => ['agency']
+    ]
+  ],
+  'thumbs' => [
+    'driver' => 'im',
   ],
   'routes' => [
     [
