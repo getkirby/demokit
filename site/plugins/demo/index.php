@@ -7,7 +7,7 @@ use Kirby\Http\Response;
 
 $instance = null;
 
-if (class_exists(Demo::class) === true) {
+if (class_exists(Demo::class) === true && defined('DEMO_BUILD_MODE') === false) {
 
     $kirby    = kirby();
     $demo     = new Demo();
