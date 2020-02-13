@@ -1,6 +1,7 @@
 <?php
 
 use Kirby\Demo\Demo;
+use Kirby\Demo\Instance;
 use Kirby\Demo\Instances;
 use Kirby\Http\Response;
 
@@ -11,6 +12,13 @@ if (class_exists(Demo::class) === true) {
     $kirby    = kirby();
     $demo     = new Demo();
     $instance = $demo->instances()->current();
+
+    // ensure we have a valid instance object
+    if (is_a($instance, Instance::class) !== true) {
+        http_response_code(500);
+        require __DIR__ . '/etc/fail_unexpected.php';
+        die();
+    }
 
     // if the current visitor is the first visitor,
     // remember them using a session
