@@ -55,6 +55,15 @@ return [
 
         // ensure that the cleanup script is executable
         chmod(__DIR__ . '/bin/cleanup', 0755);
+    },
+
+    'create:after' => function ($demo, $instance) {
+        // set RewriteBase
+        modifyFile(
+            '.htaccess',
+            '# RewriteBase /mysite',
+            'RewriteBase /' . $instance->name()
+        );
     }
 ];
 
