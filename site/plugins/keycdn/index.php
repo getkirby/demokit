@@ -2,15 +2,10 @@
 
 use Kirby\Cms\File;
 use Kirby\Cms\FileVersion;
+use Kirby\Http\Uri;
 
-function keycdn($url, $params = [])
+function keycdn($file, $params = [])
 {
-    if (is_object($url) === true) {
-        $url = $url->url();
-    }
-
-    // always convert urls to absolute urls
-    $url   = url($url);
     $query = null;
 
     if (empty($params) === false) {
@@ -22,17 +17,31 @@ function keycdn($url, $params = [])
         $query = '?' . http_build_query($params);
     }
 
-    return option('keycdn.domain') . '/' . Url::path($url) . $query;
+    if ($file->demo()->isTrue() && defined('DEMO_BUILD_ID') === true) {
+        $uri  = new Uri($file->mediaUrl());
+        $path = '_media/' . DEMO_BUILD_ID . '/' . $uri->path()->offset(1);
+    } else {
+        $path = Url::path($file->mediaUrl());
+    }
+
+    return option('keycdn.domain') . '/' . $path . $query;
 }
 
 Kirby::plugin('getkirby/keycdn', [
     'components' => [
+        'url' => function ($kirby, $path, $options, $original) {
+            if (defined('DEMO_BUILD_ID') && option('keycdn', false) !== false && preg_match('!assets!', $path)) {
+                return option('keycdn.domain') . '/_media/' . DEMO_BUILD_ID . '/' . $path;
+            }
+
+            return $original($path, $options);
+        },
         'file::version' => function (Kirby $kirby, File $file, array $options = []) {
 
             static $originalComponent;
 
             if (option('keycdn', false) !== false) {
-                $url = keycdn($file->mediaUrl(), $options);
+                $url = keycdn($file, $options);
 
                 return new FileVersion([
                     'modifications' => $options,
@@ -52,7 +61,7 @@ Kirby::plugin('getkirby/keycdn', [
             static $originalComponent;
 
             if ($file->type() === 'image') {
-                return keycdn($file->mediaUrl());
+                return keycdn($file);
             }
 
             if ($originalComponent === null) {
