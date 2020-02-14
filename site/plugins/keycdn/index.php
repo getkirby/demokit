@@ -3,6 +3,7 @@
 use Kirby\Cms\File;
 use Kirby\Cms\FileVersion;
 use Kirby\Http\Uri;
+use Kirby\Toolkit\Str;
 
 function keycdn($file, $params = [])
 {
@@ -17,11 +18,16 @@ function keycdn($file, $params = [])
         $query = '?' . http_build_query($params);
     }
 
-    if ($file->demo()->isTrue() && defined('DEMO_BUILD_ID') === true) {
-        $uri  = new Uri($file->mediaUrl());
-        $path = '_media/' . DEMO_BUILD_ID . '/' . $uri->path()->offset(1);
+    $mediaPath  = Url::path($file->mediaUrl());
+    $globalPath = null;
+    if (defined('DEMO_BUILD_ID') === true) {
+        $globalPath = '_media/' . DEMO_BUILD_ID . '/' . Str::after($mediaPath, '/');
+    }
+
+    if ($globalPath !== null && is_file(dirname(__DIR__, 4) . '/' . $globalPath) === true) {
+        $path = $globalPath;
     } else {
-        $path = Url::path($file->mediaUrl());
+        $path = $mediaPath;
     }
 
     return option('keycdn.domain') . '/' . $path . $query;
