@@ -12,6 +12,13 @@ return [
         $systemPHP = str_replace($licenseFunc, $licenseFunc . "return 'K3-DEMO';", $systemPHP);
         file_put_contents($systemFile, $systemPHP);
 
+        // always use mtime for F::modified()
+        // otherwise the detection of global media file breaks
+        $fFile = __DIR__ . '/kirby/src/Toolkit/F.php';
+        $fPHP = file_get_contents($fFile);
+        $fPHP = str_replace('$modified = max([$mtime, $ctime]);', '', $fPHP);
+        file_put_contents($fFile, $fPHP);
+
         // create a unique-ish build ID
         $buildId = uniqid();
         file_put_contents(__DIR__ . '/.id.php', "<?php\n\nreturn '$buildId';");
