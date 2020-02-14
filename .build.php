@@ -1,23 +1,26 @@
 <?php
 
+namespace Kirby\Demokit;
+
 use Kirby\Cms\App;
 use Kirby\Toolkit\Dir;
 
 return [
     'build:after' => function ($demo) {
         // disable license check
-        $systemFile = __DIR__ . '/kirby/src/Cms/System.php';
-        $systemPHP = file_get_contents($systemFile);
-        $licenseFunc = "public function license()\n    {";
-        $systemPHP = str_replace($licenseFunc, $licenseFunc . "return 'K3-DEMO';", $systemPHP);
-        file_put_contents($systemFile, $systemPHP);
+        modifyFile(
+            'kirby/src/Cms/System.php',
+            "public function license()\n    {",
+            "public function license()\n    {return 'K3-DEMO';"
+        );
 
         // always use mtime for F::modified()
         // otherwise the detection of global media file breaks
-        $fFile = __DIR__ . '/kirby/src/Toolkit/F.php';
-        $fPHP = file_get_contents($fFile);
-        $fPHP = str_replace('$modified = max([$mtime, $ctime]);', '$modified = $mtime;', $fPHP);
-        file_put_contents($fFile, $fPHP);
+        modifyFile(
+            'kirby/src/Toolkit/F.php',
+            '$modified = max([$mtime, $ctime]);',
+            '$modified = $mtime;'
+        );
 
         // create a unique-ish build ID
         $buildId = uniqid();
@@ -54,3 +57,21 @@ return [
         chmod(__DIR__ . '/bin/cleanup', 0755);
     }
 ];
+
+/**
+ * Replaces specific file contents in a file
+ * inside the Demokit
+ *
+ * @param string $path Relative path inside the Demokit
+ * @param string $search String to search
+ * @param string $replace String to replace with
+ * @return void
+ */
+function modifyFile(string $path, string $search, string $replace): void
+{
+    $path = __DIR__ . '/' . $path;
+
+    $contents = file_get_contents($path);
+    $contents = str_replace($search, $replace, $contents);
+    file_put_contents($path, $contents);
+}
