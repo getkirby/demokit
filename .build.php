@@ -16,7 +16,7 @@ return [
         // otherwise the detection of global media file breaks
         $fFile = __DIR__ . '/kirby/src/Toolkit/F.php';
         $fPHP = file_get_contents($fFile);
-        $fPHP = str_replace('$modified = max([$mtime, $ctime]);', '', $fPHP);
+        $fPHP = str_replace('$modified = max([$mtime, $ctime]);', '$modified = $mtime;', $fPHP);
         file_put_contents($fFile, $fPHP);
 
         // create a unique-ish build ID
