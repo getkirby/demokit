@@ -5,11 +5,6 @@ use Kirby\Toolkit\Dir;
 
 return [
     'build:after' => function ($demo) {
-        // prevent the demo plugin from interfering
-        if (defined('DEMO_BUILD_MODE') === false) {
-            define('DEMO_BUILD_MODE', true);
-        }
-
         // disable license check
         $systemFile = __DIR__ . '/kirby/src/Cms/System.php';
         $systemPHP = file_get_contents($systemFile);
@@ -37,7 +32,11 @@ return [
 
         // build a media folder with all content images
         Dir::make($root . '/media');
-        $kirby = new App(['roots' => ['index' => __DIR__, 'media' => $root . '/media']]);
+        $kirby = new App(['roots' => [
+            'index'   => __DIR__,
+            'media'   => $root . '/media',
+            'plugins' => '/dev/null'
+        ]]);
         foreach ($kirby->site()->index() as $page) {
             foreach ($page->files() as $file) {
                 $file->publish();
