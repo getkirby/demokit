@@ -65,10 +65,10 @@ Kirby::plugin('getkirby/demo', [
         [
             'pattern' => '/delete-demo',
             'method'  => 'POST',
-            'action' => function () use ($instance) {
+            'action' => function () use ($demo, $instance) {
                 if ($instance) {
                     // prepare the response before the Kirby files are deleted as well...
-                    $response = Response::redirect('https://getkirby.com/try/status:deleted', 302);
+                    $response = $demo->config()->statusResponse($demo, 'status', 'deleted');
 
                     $instance->delete();
                     die($response);
