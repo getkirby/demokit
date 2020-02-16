@@ -19,7 +19,7 @@ $modifyFile = function (string $path, string $search, string $replace): void
     $contents = file_get_contents($path);
     $contents = str_replace($search, $replace, $contents);
     file_put_contents($path, $contents);
-}
+};
 
 return [
     'build:after' => function ($demo) use ($modifyFile) {
