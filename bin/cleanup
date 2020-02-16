@@ -18,8 +18,10 @@ $dirs = array_diff($dirs, [$ownPath]);
 
 // delete each remaining directory if more than three hours older than ours
 // (= if no instance can be still using the media directory)
+// or if our media directory is also older than three hours
+// (= no other instance directory can still be used)
 foreach ($dirs as $dir) {
-    if (filemtime($dir) < $ownMTime - 3 * 60 * 60) {
+    if ($ownMTime < time() - 3 * 60 * 60 || filemtime($dir) < $ownMTime - 3 * 60 * 60) {
         exec('rm -R ' . escapeshellarg($dir), $output, $return);
 
         if ($return !== 0) {
