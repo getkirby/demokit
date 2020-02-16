@@ -1,14 +1,30 @@
 <?php
 
-namespace Kirby\Demokit;
-
 use Kirby\Cms\App;
 use Kirby\Toolkit\Dir;
 
+/**
+ * Replaces specific file contents in a file
+ * inside the Demokit
+ *
+ * @param string $path Relative path inside the Demokit
+ * @param string $search String to search
+ * @param string $replace String to replace with
+ * @return void
+ */
+$modifyFile = function (string $path, string $search, string $replace): void
+{
+    $path = __DIR__ . '/' . $path;
+
+    $contents = file_get_contents($path);
+    $contents = str_replace($search, $replace, $contents);
+    file_put_contents($path, $contents);
+}
+
 return [
-    'build:after' => function ($demo) {
+    'build:after' => function ($demo) use ($modifyFile) {
         // disable license check
-        modifyFile(
+        $modifyFile(
             'kirby/src/Cms/System.php',
             "public function license()\n    {",
             "public function license()\n    {return 'K3-DEMO';"
@@ -16,7 +32,7 @@ return [
 
         // always use mtime for F::modified()
         // otherwise the detection of global media file breaks
-        modifyFile(
+        $modifyFile(
             'kirby/src/Toolkit/F.php',
             '$modified = max([$mtime, $ctime]);',
             '$modified = $mtime;'
@@ -57,30 +73,12 @@ return [
         chmod(__DIR__ . '/bin/cleanup', 0755);
     },
 
-    'create:after' => function ($demo, $instance) {
+    'create:after' => function ($demo, $instance) use ($modifyFile) {
         // set RewriteBase
-        modifyFile(
+        $modifyFile(
             '.htaccess',
             '# RewriteBase /mysite',
             'RewriteBase /' . $instance->name()
         );
     }
 ];
-
-/**
- * Replaces specific file contents in a file
- * inside the Demokit
- *
- * @param string $path Relative path inside the Demokit
- * @param string $search String to search
- * @param string $replace String to replace with
- * @return void
- */
-function modifyFile(string $path, string $search, string $replace): void
-{
-    $path = __DIR__ . '/' . $path;
-
-    $contents = file_get_contents($path);
-    $contents = str_replace($search, $replace, $contents);
-    file_put_contents($path, $contents);
-}
