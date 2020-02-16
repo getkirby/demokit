@@ -5,7 +5,7 @@ use Kirby\Demo\Instance;
 use Kirby\Demo\Instances;
 use Kirby\Http\Response;
 
-$instance = null;
+$demo = $instance = null;
 
 if (class_exists(Demo::class) === true) {
 
