@@ -28,9 +28,7 @@ columns:
         type: text
       openingHours:
         label: Opening Hours
-        type: textarea
-        buttons: false
-        size: medium
+        type: writer
   - width: 1/3
     fields:
       reservationHeading:
@@ -38,9 +36,7 @@ columns:
         type: text
       reservationText:
         label: Reservation Text
-        type: textarea
-        buttons: false
-        size: medium
+        type: writer
   - width: 1/3
     fields:
       contactHeading:

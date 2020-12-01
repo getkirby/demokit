@@ -12,12 +12,34 @@ tabs:
   content:
     fields:
       modules:
-        label: Modules
-        type: builder
+        label: Layout
+        type: layout
+        layouts:
+          - "1/1"
+          - "1/3, 1/3, 1/3"
         fieldsets:
-          cover: fieldsets/cover
-          grid: fieldsets/grid
-          gallery: fieldsets/gallery
+          heading: true
+          text: true
+          gallery: true
+          image:
+            extends: blocks/image
+            fields:
+              ratio:
+                options:
+                  - 16/9
+                  - 5/2
+        settings:
+          fields:
+            class:
+              type: text
+              width: 1/2
+            id:
+              type: text
+              width: 1/2
+            image:
+              label: Background image
+              type: files
+
   images:
     sections:
       images:
