@@ -2,23 +2,11 @@ Title: Restaurant
 
 ----
 
-Description: A delicious site for your restaurant
-
-----
-
 Openingheading: Opening hours
 
 ----
 
-Openinghours:
-
-**Monday - Friday:**
-10:00 am - 02:00 pm
-05:00 pm - 11:00 pm
-
-**Saturday & Sunday:**
-10:00 am - 02:00 pm
-05:00 pm - 01:00 am
+Openinghours: <p><strong>Monday - Friday:</strong><br>10:00 am - 02:00 pm <br>05:00 pm - 11:00 pm <br><br><strong>Saturday &amp; Sunday:</strong><br>10:00 am - 02:00 pm <br>05:00 pm - 01:00 am</p>
 
 ----
 
@@ -26,7 +14,7 @@ Reservationheading: Make a reservation
 
 ----
 
-Reservationtext: You are looking for a nice table for two or a group reservation? We'd love to welcome you in our cosy restaurant. Don't hesitate to get in contact: <reservations@example.com>
+Reservationtext: <p>You are looking for a nice table for two or a group reservation? We'd love to welcome you in our cosy restaurant. Don't hesitate to get in contact:</p>
 
 ----
 
@@ -44,15 +32,15 @@ Email: hello@example.com
 
 Starters:
 
--
+- 
   dish: Potato soup
   description: Indefinable hot fluid
   price: 7.99
--
+- 
   dish: Wurst salad
   description: "It's not really salad"
   price: 5.99
--
+- 
   dish: Chicken nuggets
   description: Vegetarian
   price: 10.99
@@ -61,15 +49,15 @@ Starters:
 
 Meat:
 
--
+- 
   dish: Beef
   description: With Ketchup
   price: 25.99
--
+- 
   dish: Pigeon
   description: With Ketchup
   price: 26.99
--
+- 
   dish: Pork
   description: With Ketchup
   price: 24.99
@@ -78,11 +66,11 @@ Meat:
 
 Dessert:
 
--
+- 
   dish: Deep fried Mars
   description: "Don't judge"
   price: 3.99
--
+- 
   dish: Nespresso
   description: You can keep the capsule
   price: 7.99
@@ -117,3 +105,7 @@ City: Pattsburgh
 ----
 
 Country: USA
+
+----
+
+Description: A delicious site for your restaurant
