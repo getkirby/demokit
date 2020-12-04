@@ -30,11 +30,10 @@ tabs:
               - DHL express
               - DHL overnight
           summary:
-            type: textarea
+            type: writer
             buttons: false
           description:
-            type: textarea
-            size: medium
+            type: writer
 
       - width: 1/3
         sections:
@@ -42,6 +41,7 @@ tabs:
             extends: sections/shop/image
             template: shop-product-cover
             min: 1
+            size: medium
             image:
               ratio: 1/1
 

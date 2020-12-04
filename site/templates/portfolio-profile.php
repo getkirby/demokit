@@ -9,9 +9,8 @@
       <?php endif ?>
     </div>
     <div class="column" style="--columns: 6">
-      <h1 class="intro"><?= $page->heading()->html() ?></h1>
       <div class="text">
-        <?= $page->text()->kt() ?>
+        <?= $page->text()->toBlocks() ?>
       </div>
     </div>
   </div>

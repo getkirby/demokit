@@ -62,6 +62,7 @@ files:
   max: 1
   layout: cards
   template: agency-client-logo
+  size: medium
   image:
     back: white
     ratio: 1/1

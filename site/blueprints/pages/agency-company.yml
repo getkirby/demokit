@@ -21,6 +21,7 @@ tabs:
             type: files
             layout: cards
             max: 1
+            size: large
             uploads:
               template: agency-image
             image:

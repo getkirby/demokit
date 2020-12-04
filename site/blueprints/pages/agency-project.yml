@@ -37,6 +37,7 @@ columns:
         type: files
         template: agency-project-cover
         layout: cards
+        size: medium
         image:
           cover: true
           ratio: 4/3

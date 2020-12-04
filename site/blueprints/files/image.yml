@@ -9,7 +9,7 @@ columns:
         fields:
           caption:
             label: Caption
-            type: textarea
+            type: writer
             size: medium
   - width: 1/2
     sections:
