@@ -2,19 +2,15 @@ Title: Blog
 
 ----
 
-Description: Just like Medium, but better
-
-----
-
 Heading: Around the world
 
 ----
 
-Subheading: in 80 ways
+Subheading: in 90 ways
 
 ----
 
-Limit: 6
+Limit: 10
 
 ----
 
@@ -27,3 +23,7 @@ Twitter: getkirby
 ----
 
 Instagram: getkirby
+
+----
+
+Description: Just like Medium, but better

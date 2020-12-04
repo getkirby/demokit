@@ -16,29 +16,30 @@ tabs:
         type: layout
         layouts:
           - "1/1"
-          - "1/3, 1/3, 1/3"
+          - "1/1, 1/2, 1/2"
+          - "1/1, 1/3, 1/3, 1/3"
+          - "1/1, 1/3, 1/3, 1/3, 1/3, 1/3, 1/3"
         fieldsets:
-          heading: true
+          heading:
+            extends: blocks/heading
+            fields:
+              level:
+                options:
+                  - h1
+                  - h2
+                  - h3
           text: true
           gallery: true
           image:
             extends: blocks/image
             fields:
               ratio:
+                empty: false
                 options:
-                  - 16/9
-                  - 5/2
-        settings:
-          fields:
-            class:
-              type: text
-              width: 1/2
-            id:
-              type: text
-              width: 1/2
-            image:
-              label: Background image
-              type: files
+                  1/1: "1:1"
+                  3/2: "3:2"
+                  4/5: "4:5"
+                  5/2: "5:2"
 
   images:
     sections:

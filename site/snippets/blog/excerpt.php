@@ -12,7 +12,7 @@
     </header>
     <?php if (($excerpt ?? true) !== false): ?>
     <div class="blog-article-excerpt-text">
-      <?= $article->text()->blocks()->excerpt(280) ?>
+      <?= $article->text()->toBlocks()->excerpt(280) ?>
     </div>
     <?php endif ?>
   </a>
