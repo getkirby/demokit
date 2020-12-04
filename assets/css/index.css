@@ -369,6 +369,9 @@ hr {
   object-fit: cover;
   border: 0;
 }
+.img[data-contain] img {
+  object-fit: contain;
+}
 .img-caption,
 .video-caption {
   padding-top: .75rem;

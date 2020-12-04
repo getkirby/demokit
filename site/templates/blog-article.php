@@ -14,7 +14,7 @@
     <?php endif ?>
   </header>
   <div class="blog-article text">
-    <?= $page->text()->blocks() ?>
+    <?= $page->text()->toBlocks() ?>
   </div>
   <footer class="blog-article-footer">
     <?php if (!empty($tags)): ?>
