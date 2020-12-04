@@ -36,6 +36,7 @@
           <li><a href="https://getkirby.com">Website</a></li>
           <li><a href="https://getkirby.com/docs">Docs</a></li>
           <li><a href="https://forum.getkirby.com">Forum</a></li>
+          <li><a href="https://chat.getkirby.com">Chat</a></li>
           <li><a href="https://github.com/getkirby">GitHub</a></li>
         </ul>
       </div>

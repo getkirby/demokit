@@ -2,8 +2,8 @@ Title: Plants
 
 ----
 
-Description: They call me Dr. Greenthumb.
+Text: <p>This was a very special project. Plants are nice and quite beautiful Nulla vitae elit libero, a pharetra augue. Donec ullamcorper nulla non metus auctor fringilla. </p><p>Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue.</p>
 
 ----
 
-Text: This was a very special project. Plants are nice and quite beautiful Nulla vitae elit libero, a pharetra augue. Donec ullamcorper nulla non metus auctor fringilla. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue.
+Description: They call me Dr. Greenthumb.

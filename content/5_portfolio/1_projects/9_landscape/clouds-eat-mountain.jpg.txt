@@ -1,4 +1,4 @@
-Caption: Licancabur
+Caption: <p>Licancabur</p>
 
 ----
 

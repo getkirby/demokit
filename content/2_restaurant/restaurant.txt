@@ -14,7 +14,7 @@ Reservationheading: Make a reservation
 
 ----
 
-Reservationtext: <p>You are looking for a nice table for two or a group reservation? We'd love to welcome you in our cosy restaurant. Don't hesitate to get in contact:</p>
+Reservationtext: <p>You are looking for a nice table for two or a group reservation? We'd love to welcome you in our cosy restaurant. Don't hesitate to get in contact: <a href="mailto:reservation@example.com" rel="noopener noreferrer nofollow">reservation@example.com</a></p>
 
 ----
 

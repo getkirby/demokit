@@ -17,6 +17,7 @@ columns:
         template: portfolio-profile-image
         info: "{{ file.dimensions }}"
         max: 1
+        size: medium
         image:
           ratio: 5/4
           cover: true
@@ -27,5 +28,5 @@ columns:
         type: text
       text:
         label: Bio
-        type: textarea
+        type: blocks
         size: large
