@@ -1,0 +1,7 @@
+# git
+.gitattributes export-ignore
+.github export-ignore
+
+# app
+.build.php export-ignore
+/bin export-ignore
