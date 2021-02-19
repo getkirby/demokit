@@ -18,7 +18,6 @@ Icon
 
 # Editors
 # ---------------
-*.sublime-project
 *.sublime-workspace
 /.vscode
 /.idea
