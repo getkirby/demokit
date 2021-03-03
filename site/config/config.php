@@ -2,6 +2,11 @@
 
 return [
   'debug' => false,
+  'content' => [
+    // make the media tokens independent from the instance
+    // otherwise the global _media CDN directory won't work
+    'salt' => 'demodemo'
+  ],
   'panel' => [
     'css' => 'assets/css/panel.css'
   ],
