@@ -22,7 +22,7 @@ $modifyFile = function (string $path, string $search, string $replace): void
 };
 
 return [
-    'build:after' => function ($demo) use ($modifyFile) {
+    'build:after' => function () use ($modifyFile) {
         // disable license check
         $modifyFile(
             'kirby/src/Cms/System.php',
@@ -68,11 +68,9 @@ return [
                 $file->publish();
             }
         }
-
-        // ensure that the cleanup script is executable
-        chmod(__DIR__ . '/bin/cleanup', 0755);
     },
 
+    // TODO: Can be removed when nginx is used
     'create:after' => function ($demo, $instance) use ($modifyFile) {
         // set RewriteBase
         $modifyFile(
@@ -80,5 +78,44 @@ return [
             '# RewriteBase /mysite',
             'RewriteBase /' . $instance->name()
         );
+    },
+
+    'cleanup' => function () {
+        $path = dirname(__DIR__, 2) . '/public/_media';
+
+        // find out our what our own media directory is
+        $ownName  = require(__DIR__ . '/.id.php');
+        $ownPath  = $path . '/' . $ownName;
+        $ownMTime = filemtime($ownPath);
+
+        // find all current media directories except ours
+        $dirs = glob($path . '/*');
+        $dirs = array_diff($dirs, [$ownPath]);
+
+        // delete each remaining directory if more than three hours older than ours
+        // (= if no instance can be still using the media directory)
+        // or if our media directory is also older than three hours
+        // (= no other instance directory can still be used)
+        foreach ($dirs as $dir) {
+            if ($ownMTime < time() - 3 * 60 * 60 || filemtime($dir) < $ownMTime - 3 * 60 * 60) {
+                exec('rm -R ' . escapeshellarg($dir), $output, $return);
+
+                if ($return !== 0) {
+                    echo 'Error deleting directory ' . $dir . ', got error: ' . $output . "\n";
+                    exit(1);
+                }
+            }
+        }
+    },
+
+    'status' => function (): ?string {
+        $path = dirname(__DIR__, 2) . '/public/_media';
+        $dirs = glob($path . '/*');
+
+        if (count($dirs) > 20) {
+            return 'WARN:demokit:too-many-media-folders';
+        }
+
+        return null;
     }
 ];
