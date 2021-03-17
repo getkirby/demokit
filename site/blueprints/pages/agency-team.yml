@@ -13,6 +13,14 @@ options:
   delete: false
 
 columns:
+  - width: 2/3
+    sections:
+      listed:
+        extends: sections/agency/team
+        status: listed
+        headline: On company page
+        layout: cards
+        size: tiny
   - width: 1/3
     sections:
       drafts:
@@ -23,11 +31,3 @@ columns:
         extends: sections/agency/team
         status: unlisted
         headline: No image
-  - width: 2/3
-    sections:
-      listed:
-        extends: sections/agency/team
-        status: listed
-        headline: On company page
-        layout: cards
-        size: small

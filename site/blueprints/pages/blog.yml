@@ -30,6 +30,7 @@ tabs:
             headline: Published
             status: listed
             layout: cards
+            size: small
             image:
               ratio: 2/1
               cover: true

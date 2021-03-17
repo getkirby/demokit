@@ -68,6 +68,7 @@ columns:
         type: files
         template: restaurant-gallery-image
         layout: cards
+        size: small
         image:
           ratio: 4/3
           cover: true
