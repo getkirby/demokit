@@ -11,7 +11,7 @@
           <?= $project->image()->crop(400, 500) ?>
         </span>
         <figcaption class="img-caption">
-          <?= $project->title()->html() ?>
+          <?= $project->title()->escape() ?>
         </figcaption>
       </figure>
     </a>

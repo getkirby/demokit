@@ -10,7 +10,7 @@
         <h2>Examples</h2>
         <ul>
           <?php foreach ($pages->listed() as $example): ?>
-          <li><a href="<?= $example->url() ?>"><?= $example->title()->html() ?></a></li>
+          <li><a href="<?= $example->url() ?>"><?= $example->title()->escape() ?></a></li>
           <?php endforeach ?>
         </ul>
       </div>

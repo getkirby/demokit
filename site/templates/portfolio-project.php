@@ -1,11 +1,11 @@
 <?php snippet('portfolio/header') ?>
 <article>
-  <h1 class="intro"><?= $page->title()->html() ?></h1>
+  <h1 class="intro"><?= $page->title()->escape() ?></h1>
 
   <div class="grid">
 
     <div class="column text" style="--columns: 4">
-      <?= $page->text()->kt() ?>
+      <?= $page->text()->escape()->kt() ?>
     </div>
 
     <div class="column" style="--columns: 8">

@@ -11,15 +11,15 @@
 <section class="section">
   <div class="grid">
     <div class="column text" style="--columns: 4">
-      <h2><?= $page->openingHeading()->html() ?></h2>
-      <?= $page->openingHours()->kt() ?>
+      <h2><?= $page->openingHeading()->escape() ?></h2>
+      <?= $page->openingHours()->escape()->kt() ?>
     </div>
     <div class="column text" style="--columns: 4">
-      <h2><?= $page->reservationHeading()->html() ?></h2>
-      <?= $page->reservationText()->kt() ?>
+      <h2><?= $page->reservationHeading()->escape() ?></h2>
+      <?= $page->reservationText()->escape()->kt() ?>
     </div>
     <div class="column text" style="--columns: 4">
-      <h2><?= $page->contactHeading()->html() ?></h2>
+      <h2><?= $page->contactHeading()->escape() ?></h2>
       <dl>
         <?php if ($page->email()->isNotEmpty()): ?>
         <dt>Email</dt>
@@ -78,11 +78,11 @@
       <?php snippet('map') ?>
     </div>
     <div class="column text" style="--columns: 4">
-      <h2><?= $page->restaurant()->html() ?></h2>
+      <h2><?= $page->restaurant()->escape() ?></h2>
       <p>
-        <?= $page->street()->html() ?><br>
-        <?= $page->zip()->html() ?> <?= $page->city()->html() ?><br>
-        <?= $page->country()->html() ?>
+        <?= $page->street()->escape() ?><br>
+        <?= $page->zip()->escape() ?> <?= $page->city()->escape() ?><br>
+        <?= $page->country()->escape() ?>
       </p>
       <p>
         Email: <?= Html::email($page->email()) ?><br>

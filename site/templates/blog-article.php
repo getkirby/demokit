@@ -8,9 +8,9 @@
 
 <article class="blog-article">
   <header class="blog-article-header h1">
-    <h1 class="blog-article-title"><?= $page->title() ?></h1>
+    <h1 class="blog-article-title"><?= $page->title()->escape() ?></h1>
     <?php if ($page->subheading()->isNotEmpty()): ?>
-    <p class="blog-article-subheading"><small><?= $page->subheading() ?></small></p>
+    <p class="blog-article-subheading"><small><?= $page->subheading()->escape() ?></small></p>
     <?php endif ?>
   </header>
   <div class="blog-article text">
@@ -21,13 +21,13 @@
     <ul class="blog-article-tags">
       <?php foreach ($tags as $tag): ?>
       <li>
-        <a href="<?= url('blog', ['params' => ['tag' => $tag]]) ?>"><?= $tag ?></a>
+        <a href="<?= url('blog', ['params' => ['tag' => $tag]]) ?>"><?= esc($tag) ?></a>
       </li>
       <?php endforeach ?>
     </ul>
     <?php endif ?>
 
-    <time class="blog-article-date" datetime="<?= $page->date('c') ?>">Published on <?= $page->date() ?></time>
+    <time class="blog-article-date" datetime="<?= esc($page->date('c'), 'attr') ?>">Published on <?= esc($page->date()) ?></time>
   </footer>
 
   <?php snippet('blog/prevnext') ?>

@@ -1,7 +1,7 @@
 <?php snippet('agency/header') ?>
 
 <header class="intro">
-  <h1><?= $page->heading()->html() ?></h1>
+  <h1><?= $page->heading()->escape() ?></h1>
 </header>
 
 <div class="margin-l">
@@ -10,11 +10,11 @@
 
 <div class="grid">
   <div class="column text" style="--columns: 6">
-    <h2><?= $page->company() ?></h2>
+    <h2><?= $page->company()->escape() ?></h2>
     <p>
-      <?= $page->street() ?><br>
-      <?= $page->zip() ?> <?= $page->city() ?><br>
-      <?= $page->country() ?>
+      <?= $page->street()->escape() ?><br>
+      <?= $page->zip()->escape() ?> <?= $page->city()->escape() ?><br>
+      <?= $page->country()->escape() ?>
     </p>
     <p>
       Email: <?= Html::email($page->email()) ?><br>
@@ -23,11 +23,11 @@
   </div>
 
   <div class="column text" style="--columns: 6">
-    <h2><?= $page->socialHeading() ?></h2>
+    <h2><?= $page->socialHeading()->escape() ?></h2>
     <ul>
       <?php foreach ($page->social()->toStructure() as $profile): ?>
       <li>
-        <a href=""><?= $profile->link() ?></a>
+        <a href=""><?= $profile->link()->escape() ?></a>
       </li>
       <?php endforeach ?>
     </ul>
