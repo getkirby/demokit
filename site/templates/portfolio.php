@@ -1,6 +1,6 @@
 <?php snippet('portfolio/header') ?>
 
-<h1 class="intro"><?= page('portfolio/about')->heading()->html() ?></h1>
+<h1 class="intro"><?= page('portfolio/about')->heading()->escape() ?></h1>
 
 <ul class="grid" style="--gutter: 1.5rem">
   <?php foreach ($page->find('projects')->children()->shuffle()->limit(4) as $project): ?>
@@ -11,7 +11,7 @@
           <?= $project->image()->crop(800, 1000) ?>
         </span>
         <figcaption class="img-caption">
-          <?= $project->title()->html() ?>
+          <?= $project->title()->escape() ?>
         </figcaption>
       </figure>
     </a>

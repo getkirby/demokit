@@ -7,8 +7,8 @@
           <?= $product->image()->crop(800) ?>
         </span>
         <figcaption class="img-caption">
-          <?= $product->title()->html() ?>
-          <span>€ <?= $product->price()->html() ?></span>
+          <?= $product->title()->escape() ?>
+          <span>€ <?= $product->price()->escape() ?></span>
         </figcaption>
       </figure>
     </a>

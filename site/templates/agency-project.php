@@ -1,17 +1,17 @@
 <?php snippet('agency/header') ?>
 <article>
   <header class="h1">
-    <h1><?= $page->title()->html() ?></h1>
-    <p><small><?= $page->category()->html() ?></small></p>
+    <h1><?= $page->title()->escape() ?></h1>
+    <p><small><?= $page->category()->escape() ?></small></p>
   </header>
 
   <div class="grid">
 
     <div class="column text" style="--columns: 4">
-      <?= $page->text()->kt() ?>
+      <?= $page->text()->escape()->kt() ?>
 
       <?php if ($client = $page->client()->toPage()): ?>
-      <p>Client: <?= $client->title() ?></p>
+      <p>Client: <?= $client->title()->escape() ?></p>
       <?php endif ?>
 
       <?php if ($page->link()->isNotEmpty()): ?>

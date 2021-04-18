@@ -1,6 +1,6 @@
 <?php snippet('shop/header') ?>
 
-<h1 class="shop-product-title h1"><?= $page->title()->html() ?></h1>
+<h1 class="shop-product-title h1"><?= $page->title()->escape() ?></h1>
 
 <div class="grid" style="--gutter: 4.5rem">
   <div class="column" style="--columns: 8">
@@ -24,8 +24,8 @@
                 <?= $product->image()->crop(800) ?>
               </span>
               <figcaption class="img-caption">
-                <p><?= $product->title()->html() ?></p>
-                <p><small>€ <?= $product->price()->html() ?></small></p>
+                <p><?= $product->title()->escape() ?></p>
+                <p><small>€ <?= $product->price()->escape() ?></small></p>
               </figcaption>
             </figure>
           </a>
@@ -38,17 +38,17 @@
 
   <div class="column" style="--columns: 4">
     <div class="shop-product-description text">
-      <?= $page->description()->kt() ?>
+      <?= $page->description()->escape()->kt() ?>
     </div>
-    <p class="shop-product-price">€ <?= $page->price() ?></p>
+    <p class="shop-product-price">€ <?= $page->price()->escape() ?></p>
 
     <button class="cta snipcart-add-item"
       data-item-id="<?= $page->slug() ?>"
-      data-item-price="<?= $page->price()->html() ?>"
+      data-item-price="<?= $page->price()->escape() ?>"
       data-item-url="<?= $page->url() ?>"
-      data-item-description="<?= $page->summary()->html() ?>"
+      data-item-description="<?= $page->summary()->escape() ?>"
       data-item-image="<?= $page->image()->url() ?>"
-      data-item-name="<?= $page->title()->html() ?>">
+      data-item-name="<?= $page->title()->escape() ?>">
       Add to cart
     </button>
   </div>

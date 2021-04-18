@@ -1,12 +1,12 @@
 <?php if ($section = page($section)): ?>
 <details class="logo">
   <summary>
-    <span><?= svg('assets/icons/menu.svg') ?> <?= $section->isHomePage() ? $site->title()->html() : $section->title()->html() ?></span>
+    <span><?= svg('assets/icons/menu.svg') ?> <?= $section->isHomePage() ? $site->title()->escape() : $section->title()->escape() ?></span>
   </summary>
 
   <nav class="logo-dropdown-box">
     <header>
-      <a href="<?= $site->url() ?>"><?= $site->title()->html() ?></a>
+      <a href="<?= $site->url() ?>"><?= $site->title()->escape() ?></a>
       <form class="killer-form" id="killer" method="POST" action="<?= url('delete-demo') ?>">
         <button class="killer-button"><?= svg('assets/icons/trash.svg') ?></button>
       </form>
@@ -17,7 +17,7 @@
         <ul>
           <?php foreach ($site->children()->listed() as $section): ?>
           <li>
-            <a <?php e($section->isOpen(), 'aria-current ') ?> href="<?= $section->url() ?>"><?= $section->title()->html() ?></a>
+            <a <?php e($section->isOpen(), 'aria-current ') ?> href="<?= $section->url() ?>"><?= $section->title()->escape() ?></a>
           </li>
           <?php endforeach ?>
         </ul>

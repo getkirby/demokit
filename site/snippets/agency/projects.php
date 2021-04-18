@@ -9,9 +9,9 @@
           <?php endif ?>
         </span>
         <figcaption class="img-caption">
-          <p><?= $project->title()->html() ?></p>
+          <p><?= $project->title()->escape() ?></p>
           <?php if ($project->category()->isNotEmpty()): ?>
-          <p><small><?= $project->category()->html() ?></small></p>
+          <p><small><?= $project->category()->escape() ?></small></p>
           <?php endif ?>
         </figcaption>
       </figure>

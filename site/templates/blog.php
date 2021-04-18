@@ -4,13 +4,13 @@
 
   <?php if (empty($tag) === false): ?>
   <h1>
-    <small>Tag:</small> <?= html($tag) ?>
+    <small>Tag:</small> <?= esc($tag) ?>
     <a href="<?= $page->url() ?>">&times;</a>
   </h1>
   <?php else: ?>
-  <h1><?= $page->heading()->html() ?></h1>
+  <h1><?= $page->heading()->escape() ?></h1>
   <?php if ($page->subheading()->isNotEmpty()): ?>
-  <p><small><?= $page->subheading()->html() ?></small></p>
+  <p><small><?= $page->subheading()->escape() ?></small></p>
   <?php endif ?>
   <?php endif ?>
 

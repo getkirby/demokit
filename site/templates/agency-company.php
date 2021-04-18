@@ -11,13 +11,13 @@
 <?php endif ?>
 
 <header class="intro">
-  <h1><?= $page->heading()->html() ?></h1>
-  <?= $page->intro()->kt() ?>
+  <h1><?= $page->heading()->escape() ?></h1>
+  <?= $page->intro()->escape()->kt() ?>
 </header>
 
 <hr>
 
-<h2 class="h1" id="team"><?= $page->teamHeading()->html() ?></h2>
+<h2 class="h1" id="team"><?= $page->teamHeading()->escape() ?></h2>
 
 <ul class="grid">
   <?php foreach (collection('agency/team') as $member): ?>
@@ -26,12 +26,12 @@
     <figure>
       <a href="<?= $image->url() ?>" class="img" data-lightbox>
         <?= $image->html([
-          'alt' => 'A picture of ' . $member->title()->html() . ' - ' . $member->position()->html()
+          'alt' => 'A picture of ' . $member->title() . ' - ' . $member->position()
         ]) ?>
       </a>
       <figcaption class="img-caption">
-        <p><strong><?= $member->title()->html() ?></strong></p>
-        <p><small><?= $member->position()->html() ?></small></p>
+        <p><strong><?= $member->title()->escape() ?></strong></p>
+        <p><small><?= $member->position()->escape() ?></small></p>
       </figcaption>
     </figure>
   </li>
@@ -41,13 +41,13 @@
 
 <hr>
 
-<h2 class="h1" id="values"><?= $page->valuesHeading()->html() ?></h2>
+<h2 class="h1" id="values"><?= $page->valuesHeading()->escape() ?></h2>
 
 <div class="grid">
   <?php foreach ($page->values()->toStructure() as $value): ?>
   <div class="column text" style="--columns: <?= (12 / $page->valuesColumns()->or(3)->toInt()) ?>">
-    <h2><?= $value->heading()->html() ?></h2>
-    <?= $value->text()->kt() ?>
+    <h2><?= $value->heading()->escape() ?></h2>
+    <?= $value->text()->escape()->kt() ?>
   </div>
   <?php endforeach ?>
 </div>
