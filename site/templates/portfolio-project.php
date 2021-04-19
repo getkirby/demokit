@@ -5,7 +5,7 @@
   <div class="grid">
 
     <div class="column text" style="--columns: 4">
-      <?= $page->text()->escape()->kt() ?>
+      <?= $page->text()->kt() ?>
     </div>
 
     <div class="column" style="--columns: 8">

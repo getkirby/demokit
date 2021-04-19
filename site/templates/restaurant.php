@@ -12,11 +12,11 @@
   <div class="grid">
     <div class="column text" style="--columns: 4">
       <h2><?= $page->openingHeading()->escape() ?></h2>
-      <?= $page->openingHours()->escape()->kt() ?>
+      <?= $page->openingHours()->kt() ?>
     </div>
     <div class="column text" style="--columns: 4">
       <h2><?= $page->reservationHeading()->escape() ?></h2>
-      <?= $page->reservationText()->escape()->kt() ?>
+      <?= $page->reservationText()->kt() ?>
     </div>
     <div class="column text" style="--columns: 4">
       <h2><?= $page->contactHeading()->escape() ?></h2>

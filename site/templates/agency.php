@@ -28,7 +28,7 @@
   <div class="column" style="--columns: 4">
     <h2 class="intro"><?= $home->contactHeading()->escape() ?></h2>
     <div class="text">
-      <?= $home->contactText()->escape()->kt() ?>
+      <?= $home->contactText()->kt() ?>
       <p><?= Html::email($home->contactAddress()) ?></p>
     </div>
   </div>

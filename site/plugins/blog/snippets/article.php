@@ -4,7 +4,7 @@
         <time class="blog-article-date" datetime="<?= $page->date()->toDate('c') ?>"><?= $page->date()->toDate(option('kirby.blog.date')) ?></time>
     </header>
     <div class="blog-article">
-        <?= $page->text()->escape()->kt() ?>
+        <?= $page->text()->kt() ?>
     </div>
 
     <?php snippet('blog/prevnext') ?>

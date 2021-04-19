@@ -8,7 +8,7 @@
   <div class="grid">
 
     <div class="column text" style="--columns: 4">
-      <?= $page->text()->escape()->kt() ?>
+      <?= $page->text()->kt() ?>
 
       <?php if ($client = $page->client()->toPage()): ?>
       <p>Client: <?= $client->title()->escape() ?></p>

@@ -3,7 +3,7 @@
 <article>
   <h1 class="h1"><?= $page->title()->escape() ?></h1>
   <div class="text">
-    <?= $page->text()->escape()->kt() ?>
+    <?= $page->text()->kt() ?>
   </div>
 </article>
 
