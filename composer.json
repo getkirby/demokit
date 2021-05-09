@@ -1,8 +1,8 @@
 {
-    "name": "getkirby/plainkit",
-    "description": "Kirby Plainkit",
+    "name": "getkirby/demokit",
+    "description": "Kirby Demokit",
     "type": "project",
-    "keywords": ["kirby", "cms", "starterkit"],
+    "keywords": ["kirby", "cms", "demokit"],
     "homepage": "https://getkirby.com",
     "authors": [
         {
@@ -13,13 +13,13 @@
     ],
     "support": {
         "email": "support@getkirby.com",
-        "issues": "https://github.com/getkirby/starterkit/issues",
+        "issues": "https://github.com/getkirby/demokit/issues",
         "forum": "https://forum.getkirby.com",
-        "source": "https://github.com/getkirby/starterkit"
+        "source": "https://github.com/getkirby/demokit"
     },
     "require": {
-        "php": ">=7.1.0",
-        "getkirby/cms": "^3.0"
+        "php": ">=7.3.0 <8.1.0",
+        "getkirby/cms": "^3.5"
     },
     "scripts": {
         "start": [
