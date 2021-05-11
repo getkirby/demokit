@@ -18,7 +18,7 @@ Shipping:
 
 ----
 
-Summary: <p>Just some ordinary bluetooth headphones. They probably don't connect well and the sound quality is crap.</p>
+Summary: Just some ordinary bluetooth headphones. They probably don't connect well and the sound quality is crap.
 
 ----
 
