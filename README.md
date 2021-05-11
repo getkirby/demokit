@@ -6,6 +6,8 @@ This demo site is used for the Kirby demo at [trykirby.com](https://trykirby.com
 
 <img src="http://getkirby.com/assets/images/github/demokit-screen.png" />
 
+It's not recommended to be used "as is" in production. Please, follow our documentation closely for more features and guides on how to build secure, high-quality websites with Kirby.
+
 ## What's Kirby?
 - **[getkirby.com](https://getkirby.com)** – Get to know the CMS.
 - **[Try it](https://getkirby.com/try)** – Take a test ride with our online demo. Or download one of our kits to get started.
