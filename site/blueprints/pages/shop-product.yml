@@ -31,7 +31,9 @@ tabs:
               - DHL overnight
           summary:
             type: writer
-            buttons: false
+            inline: true
+            marks: false
+            help: To be displayed in the shopping cart
           description:
             type: writer
 
