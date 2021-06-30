@@ -35,17 +35,14 @@ function keycdn($file, $params = [])
 
 Kirby::plugin('getkirby/keycdn', [
     'components' => [
-        'url' => function ($kirby, $path, $options, $original) {
+        'url' => function ($kirby, $path, $options) {
             if (defined('DEMO_BUILD_ID') && option('keycdn', false) !== false && preg_match('!assets!', $path)) {
                 return option('keycdn.domain') . '/_media/' . DEMO_BUILD_ID . '/' . $path;
             }
 
-            return $original($path, $options);
+            return $kirby->nativeComponent('url')($kirby, $path, $options);
         },
         'file::version' => function (Kirby $kirby, File $file, array $options = []) {
-
-            static $originalComponent;
-
             if (option('keycdn', false) !== false) {
                 $url = keycdn($file, $options);
 
@@ -57,24 +54,14 @@ Kirby::plugin('getkirby/keycdn', [
                 ]);
             }
 
-            if ($originalComponent === null) {
-                $originalComponent = (require $kirby->root('kirby') . '/config/components.php')['file::version'];
-            }
-
-            return $originalComponent($kirby, $file, $options);
+            return $kirby->nativeComponent('file::version')($kirby, $file, $options);
         },
         'file::url' => function (Kirby $kirby, File $file): string {
-            static $originalComponent;
-
             if ($file->type() === 'image') {
                 return keycdn($file);
             }
 
-            if ($originalComponent === null) {
-                $originalComponent = (require $kirby->root('kirby') . '/config/components.php')['file::url'];
-            }
-
-            return $originalComponent($kirby, $file);
+            return $kirby->nativeComponent('file::url')($kirby, $file);
         }
     ]
 ]);
