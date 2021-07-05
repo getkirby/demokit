@@ -16,6 +16,10 @@ $modifyFile = function (string $path, string $search, string $replace): void
 {
     $path = __DIR__ . '/' . $path;
 
+    if (is_file($path) !== true) {
+        return;
+    }
+
     $contents = file_get_contents($path);
     $contents = str_replace($search, $replace, $contents);
     file_put_contents($path, $contents);
@@ -32,6 +36,7 @@ return [
 
         // always use mtime for F::modified()
         // otherwise the detection of global media file breaks
+        // TODO: not needed in 3.6
         $modifyFile(
             'kirby/src/Toolkit/F.php',
             '$modified = max([$mtime, $ctime]);',
