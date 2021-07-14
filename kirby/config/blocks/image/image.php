@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Kirby\Cms\Block $block */
-$alt     = $block->alt()->html();
+$alt     = $block->alt();
 $caption = $block->caption();
 $crop    = $block->crop()->isTrue();
 $link    = $block->link();
@@ -11,7 +11,7 @@ $src     = null;
 if ($block->location() == 'web') {
     $src = $block->src();
 } elseif ($image = $block->image()->toFile()) {
-    $alt = $alt ?? $image->alt()->html();
+    $alt = $alt ?? $image->alt();
     $src = $image->url();
 }
 
@@ -20,10 +20,10 @@ if ($block->location() == 'web') {
 <figure<?= attr(['data-ratio' => $ratio, 'data-crop' => $crop], ' ') ?>>
   <?php if ($link->isNotEmpty()): ?>
   <a href="<?= $link->toUrl() ?>">
-    <img src="<?= $src ?>" alt="<?= $alt ?>">
+    <img src="<?= $src ?>" alt="<?= $alt->esc() ?>">
   </a>
   <?php else: ?>
-  <img src="<?= $src ?>" alt="<?= $alt ?>">
+  <img src="<?= $src ?>" alt="<?= $alt->esc() ?>">
   <?php endif ?>
 
   <?php if ($caption->isNotEmpty()): ?>
