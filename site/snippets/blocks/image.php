@@ -1,6 +1,6 @@
 <?php
 
-$alt      = $block->alt()->html();
+$alt      = $block->alt();
 $caption  = $block->caption();
 $contain  = $block->crop()->isFalse();
 $link     = $block->link();
@@ -12,7 +12,7 @@ $lightbox = $link->isEmpty();
 if ($block->location() == 'web') {
     $src = $block->src();
 } elseif ($image = $block->image()->toFile()) {
-    $alt = $alt ?? $image->alt()->html();
+    $alt = $alt ?? $image->alt();
     $src = $image->url();
 }
 
@@ -34,7 +34,7 @@ $attrs = attr([
 <?php if ($src): ?>
 <figure>
   <a <?= $attrs ?>>
-    <img src="<?= $src ?>" alt="<?= $alt ?>">
+    <img src="<?= $src ?>" alt="<?= $alt->esc() ?>">
   </a>
 
   <?php if ($caption->isNotEmpty()): ?>
