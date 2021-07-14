@@ -1,7 +1,7 @@
 <?php
 
 /** @var \Kirby\Cms\Block $block */
-$alt     = $block->alt();
+$alt     = $block->alt()->html();
 $caption = $block->caption();
 $crop    = $block->crop()->isTrue();
 $link    = $block->link();
@@ -11,7 +11,7 @@ $src     = null;
 if ($block->location() == 'web') {
     $src = $block->src();
 } elseif ($image = $block->image()->toFile()) {
-    $alt = $alt ?? $image->alt();
+    $alt = $alt ?? $image->alt()->html();
     $src = $image->url();
 }
 
