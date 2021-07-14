@@ -1,6 +1,6 @@
 <?php
 
-$alt      = $block->alt();
+$alt      = $block->alt()->html();
 $caption  = $block->caption();
 $contain  = $block->crop()->isFalse();
 $link     = $block->link();
@@ -12,7 +12,7 @@ $lightbox = $link->isEmpty();
 if ($block->location() == 'web') {
     $src = $block->src();
 } elseif ($image = $block->image()->toFile()) {
-    $alt = $alt ?? $image->alt();
+    $alt = $alt ?? $image->alt()->html();
     $src = $image->url();
 }
 
