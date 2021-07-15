@@ -9,7 +9,7 @@ $ratio   = $block->ratio()->or('auto');
 $src     = null;
 
 if ($block->location() == 'web') {
-    $src = $block->src()->esc();
+    $src = $block->src();
 } elseif ($image = $block->image()->toFile()) {
     $alt = $alt ?? $image->alt();
     $src = $image->url();
@@ -19,11 +19,11 @@ if ($block->location() == 'web') {
 <?php if ($src): ?>
 <figure<?= attr(['data-ratio' => $ratio, 'data-crop' => $crop], ' ') ?>>
   <?php if ($link->isNotEmpty()): ?>
-  <a href="<?= esc($link->toUrl()) ?>">
-    <img src="<?= $src ?>" alt="<?= $alt->esc() ?>">
+  <a href="<?= $link->toUrl() ?>">
+    <img src="<?= $src ?>" alt="<?= $alt ?>">
   </a>
   <?php else: ?>
-  <img src="<?= $src ?>" alt="<?= $alt->esc() ?>">
+  <img src="<?= $src ?>" alt="<?= $alt ?>">
   <?php endif ?>
 
   <?php if ($caption->isNotEmpty()): ?>
