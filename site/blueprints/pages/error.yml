@@ -1,7 +1,5 @@
 title: Default Page
-preset: page
-pages: false
-files: false
+
 fields:
   text:
     label: Error message
