@@ -1,5 +1,4 @@
 title: Client
-preset: page
 num: zero
 
 status:
@@ -13,58 +12,62 @@ status:
     label: Current
     text: Active client with current projects
 
+columns:
+  main:
+    width: 2/3
+    fields:
+      clientId:
+        label: Client ID
+        type: text
+        width: 1/4
+      contact:
+        label: Contact person
+        type: text
+        width: 1/2
+      vip:
+        label: VIP
+        type: toggle
+        width: 1/4
+        text:
+          - "No"
+          - "Yes"
+      link:
+        label: Website
+        type: url
+      email:
+        label: Email
+        type: email
+        width: 1/2
+      phone:
+        label: Phone
+        type: tel
+        width: 1/2
+      address:
+        label: Address
+        type: textarea
+        size: medium
+        buttons: false
+        width: 1/2
+      notes:
+        label: Notes
+        type: textarea
+        size: medium
+        buttons: false
+        width: 1/2
+      vatId:
+        label: VAT ID
+        type: text
 
-fields:
-  clientId:
-    label: Client ID
-    type: text
-    width: 1/4
-  contact:
-    label: Contact person
-    type: text
-    width: 1/2
-  vip:
-    label: VIP
-    type: toggle
-    width: 1/4
-    text:
-      - "No"
-      - "Yes"
-  link:
-    label: Website
-    type: url
-  email:
-    label: Email
-    type: email
-    width: 1/2
-  phone:
-    label: Phone
-    type: tel
-    width: 1/2
-  address:
-    label: Address
-    type: textarea
-    size: medium
-    buttons: false
-    width: 1/2
-  notes:
-    label: Notes
-    type: textarea
-    size: medium
-    buttons: false
-    width: 1/2
-  vatId:
-    label: VAT ID
-    type: text
+  sidebar:
+    width: 1/3
+    sections:
+      files:
+        headline: Logo
+        max: 1
+        layout: cards
+        template: agency-client-logo
+        size: medium
+        image:
+          back: white
+          ratio: 1/1
 
-files:
-  headline: Logo
-  max: 1
-  layout: cards
-  template: agency-client-logo
-  size: medium
-  image:
-    back: white
-    ratio: 1/1
-
-pages: false
