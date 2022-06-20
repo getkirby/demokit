@@ -23,12 +23,14 @@ tabs:
           link:
             type: url
           shipping:
-            type: checkboxes
-            columns: 3
+            type: toggles
             options:
-              - DHL standard
-              - DHL express
-              - DHL overnight
+              - value: DHL standard
+                icon: box
+              - value: DHL express
+                icon: bolt
+              - value: DHL overnight
+                icon: moon
           summary:
             type: writer
             inline: true
@@ -46,4 +48,3 @@ tabs:
             size: medium
             image:
               ratio: 1/1
-
