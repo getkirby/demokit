@@ -11,7 +11,7 @@ use NumberFormatter;
  * @package   Kirby Toolkit
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class I18n
@@ -26,7 +26,7 @@ class I18n
     /**
      * Current locale
      *
-     * @var string
+     * @var string|\Closure
      */
     public static $locale = 'en';
 
@@ -41,7 +41,7 @@ class I18n
      * The fallback locale or a
      * list of fallback locales
      *
-     * @var string|array
+     * @var string|array|\Closure
      */
     public static $fallback = ['en'];
 
@@ -56,14 +56,16 @@ class I18n
      * Returns the first fallback locale
      *
      * @deprecated 3.5.1 Use `\Kirby\Toolkit\I18n::fallbacks()` instead
-     * @todo Add deprecated() helper warning in 3.6.0
      * @todo Remove in 3.7.0
      *
      * @return string
      */
     public static function fallback(): string
     {
+        // @codeCoverageIgnoreStart
+        deprecated('I18n::fallback() has been deprecated. Use I18n::fallbacks() instead.');
         return static::fallbacks()[0];
+        // @codeCoverageIgnoreEnd
     }
 
     /**
@@ -113,7 +115,7 @@ class I18n
      */
     public static function formatNumber($number, string $locale = null): string
     {
-        $locale = $locale ?? static::locale();
+        $locale ??= static::locale();
 
         $formatter = static::decimalNumberFormatter($locale);
         if ($formatter !== null) {
@@ -152,7 +154,7 @@ class I18n
      */
     public static function translate($key, $fallback = null, string $locale = null)
     {
-        $locale = $locale ?? static::locale();
+        $locale ??= static::locale();
 
         if (is_array($key) === true) {
             if (isset($key[$locale])) {
@@ -205,7 +207,11 @@ class I18n
         }
 
         $template = static::translate($key, $fallback, $locale);
-        return Str::template($template, $replace, '-', '{', '}');
+        return Str::template($template, $replace, [
+            'fallback' => '-',
+            'start'    => '{',
+            'end'      => '}'
+        ]);
     }
 
     /**
@@ -218,7 +224,7 @@ class I18n
      */
     public static function translation(string $locale = null): array
     {
-        $locale = $locale ?? static::locale();
+        $locale ??= static::locale();
 
         if (isset(static::$translations[$locale]) === true) {
             return static::$translations[$locale];
@@ -271,14 +277,13 @@ class I18n
      *
      * @param string $key
      * @param int $count
-     * @param string $locale
+     * @param string|null $locale
      * @param bool $formatNumber If set to `false`, the count is not formatted
      * @return mixed
      */
     public static function translateCount(string $key, int $count, string $locale = null, bool $formatNumber = true)
     {
-        $locale = $locale ?? static::locale();
-
+        $locale    ??= static::locale();
         $translation = static::translate($key, null, $locale);
 
         if ($translation === null) {
@@ -291,12 +296,10 @@ class I18n
 
         if (is_string($translation) === true) {
             $message = $translation;
+        } elseif (isset($translation[$count]) === true) {
+            $message = $translation[$count];
         } else {
-            if (isset($translation[$count]) === true) {
-                $message = $translation[$count];
-            } else {
-                $message = end($translation);
-            }
+            $message = end($translation);
         }
 
         if ($formatNumber === true) {

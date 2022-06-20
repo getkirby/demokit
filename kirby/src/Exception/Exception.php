@@ -13,7 +13,7 @@ use Kirby\Toolkit\Str;
  * @package   Kirby Exception
  * @author    Nico Hoffmann <nico@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Exception extends \Exception
@@ -121,10 +121,14 @@ class Exception extends \Exception
             }
 
             // format message with passed data
-            $message = Str::template($message, $this->data, '-', '{', '}');
+            $message = Str::template($message, $this->data, [
+                'fallback' => '-',
+                'start'    => '{',
+                'end'      => '}'
+            ]);
 
             // handover to Exception parent class constructor
-            parent::__construct($message, null, $args['previous'] ?? null);
+            parent::__construct($message, 0, $args['previous'] ?? null);
         }
 
         // set the Exception code to the key

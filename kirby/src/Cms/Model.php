@@ -10,12 +10,20 @@ use Kirby\Toolkit\Properties;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 abstract class Model
 {
     use Properties;
+
+    /**
+     * Each model must define a CLASS_ALIAS
+     * which will be used in template queries.
+     * The CLASS_ALIAS is a short human-readable
+     * version of the class name. I.e. page.
+     */
+    public const CLASS_ALIAS = null;
 
     /**
      * The parent Kirby instance
@@ -59,7 +67,7 @@ abstract class Model
      */
     public function kirby()
     {
-        return static::$kirby = static::$kirby ?? App::instance();
+        return static::$kirby ??= App::instance();
     }
 
     /**
@@ -69,7 +77,7 @@ abstract class Model
      */
     public function site()
     {
-        return $this->site = $this->site ?? $this->kirby()->site();
+        return $this->site ??= $this->kirby()->site();
     }
 
     /**

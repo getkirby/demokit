@@ -15,7 +15,7 @@ use Throwable;
  * @package   Kirby Database
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Database
@@ -205,12 +205,18 @@ class Database
         }
 
         // fetch the dsn and store it
-        $this->dsn = static::$types[$this->type]['dsn']($options);
+        $this->dsn = (static::$types[$this->type]['dsn'])($options);
 
         // try to connect
         $this->connection = new PDO($this->dsn, $options['user'], $options['password']);
         $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $this->connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+        // TODO: behavior without this attribute would be preferrable
+        // (actual types instead of all strings) but would be a breaking change
+        if ($this->type === 'sqlite') {
+            $this->connection->setAttribute(PDO::ATTR_STRINGIFY_FETCHES, true);
+        }
 
         // store the connection
         static::$connections[$this->id] = $this;
@@ -504,7 +510,7 @@ class Database
     {
         if ($this->tables === null) {
             // Get the list of tables from the database
-            $sql     = $this->sql()->tables($this->database);
+            $sql     = $this->sql()->tables();
             $results = $this->query($sql['query'], $sql['bindings']);
 
             if ($results) {

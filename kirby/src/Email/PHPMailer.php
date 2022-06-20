@@ -12,7 +12,7 @@ use PHPMailer\PHPMailer\PHPMailer as Mailer;
  * @author    Bastian Allgeier <bastian@getkirby.com>,
  *            Nico Hoffmann <nico@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class PHPMailer extends Email
@@ -36,7 +36,7 @@ class PHPMailer extends Email
             $mailer->addReplyTo($replyTo, $this->replyToName() ?? '');
         }
 
-        // add (multiple) recepient, CC & BCC addresses
+        // add (multiple) recipient, CC & BCC addresses
         foreach ($this->to() as $email => $name) {
             $mailer->addAddress($email, $name ?? '');
         }

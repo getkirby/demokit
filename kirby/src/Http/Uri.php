@@ -12,7 +12,7 @@ use Throwable;
  * @package   Kirby Http
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Uri
@@ -130,7 +130,7 @@ class Uri
      * Creates a new URI object
      *
      * @param array|string $props
-     * @param array $inject
+     * @param array $inject Additional props to inject if a URL string is passed
      */
     public function __construct($props = [], array $inject = [])
     {
@@ -144,10 +144,7 @@ class Uri
 
         // parse the path and extract params
         if (empty($props['path']) === false) {
-            $extract         = Params::extract($props['path']);
-            $props['params'] = $props['params'] ?? $extract['params'];
-            $props['path']   = $extract['path'];
-            $props['slash']  = $props['slash'] ?? $extract['slash'];
+            $props = static::parsePath($props);
         }
 
         $this->setProperties($this->props = $props);
@@ -237,7 +234,7 @@ class Uri
 
     /**
      * @param array $props
-     * @param bool $forwarded
+     * @param bool $forwarded Deprecated! Todo: remove in 3.7.0
      * @return static
      */
     public static function current(array $props = [], bool $forwarded = false)
@@ -246,16 +243,13 @@ class Uri
             return static::$current;
         }
 
-        $uri = Server::get('REQUEST_URI');
-        $uri = preg_replace('!^(http|https)\:\/\/' . Server::get('HTTP_HOST') . '!', '', $uri);
-        $uri = parse_url('http://getkirby.com' . $uri);
-
+        $uri = Server::requestUri();
         $url = new static(array_merge([
             'scheme' => Server::https() === true ? 'https' : 'http',
-            'host'   => Server::host($forwarded),
-            'port'   => Server::port($forwarded),
-            'path'   => $uri['path'] ?? null,
-            'query'  => $uri['query'] ?? null,
+            'host'   => Server::host(),
+            'port'   => Server::port(),
+            'path'   => $uri['path'],
+            'query'  => $uri['query'],
         ], $props));
 
         return $url;
@@ -331,34 +325,16 @@ class Uri
      * or any other executed script.
      *
      * @param array $props
-     * @param bool $forwarded
+     * @param bool $forwarded Deprecated! Todo: remove in 3.7.0
      * @return string
      */
     public static function index(array $props = [], bool $forwarded = false)
     {
-        if (Server::cli() === true) {
-            $path = null;
-        } else {
-            $path = Server::get('SCRIPT_NAME');
-            // replace Windows backslashes
-            $path = str_replace('\\', '/', $path);
-            // remove the script
-            $path = dirname($path);
-            // replace those fucking backslashes again
-            $path = str_replace('\\', '/', $path);
-            // remove the leading and trailing slashes
-            $path = trim($path, '/');
-        }
-
-        if ($path === '.') {
-            $path = null;
-        }
-
         return static::current(array_merge($props, [
-            'path'     => $path,
+            'path'     => Server::scriptPath(),
             'query'    => null,
             'fragment' => null,
-        ]), $forwarded);
+        ]));
     }
 
 
@@ -393,11 +369,17 @@ class Uri
     }
 
     /**
-     * @param \Kirby\Http\Params|string|array|null $params
+     * @param \Kirby\Http\Params|string|array|false|null $params
      * @return $this
      */
     public function setParams($params = null)
     {
+        // ensure that the special constructor value of `false`
+        // is never passed through as it's not supported by `Params`
+        if ($params === false) {
+            $params = [];
+        }
+
         $this->params = is_a($params, 'Kirby\Http\Params') === true ? $params : new Params($params);
         return $this;
     }
@@ -559,5 +541,34 @@ class Uri
             $this->setHost(Idn::encode($this->host));
         }
         return $this;
+    }
+
+    /**
+     * Parses the path inside the props and extracts
+     * the params unless disabled
+     *
+     * @param array $props
+     * @return array Modified props array
+     */
+    protected static function parsePath(array $props): array
+    {
+        // extract params, the rest is the path;
+        // only do this if not explicitly disabled (set to `false`)
+        if (isset($props['params']) === false || $props['params'] !== false) {
+            $extract           = Params::extract($props['path']);
+            $props['params'] ??= $extract['params'];
+            $props['path']     = $extract['path'];
+            $props['slash']  ??= $extract['slash'];
+
+            return $props;
+        }
+
+        // use the full path;
+        // automatically detect the trailing slash from it if possible
+        if (is_string($props['path']) === true) {
+            $props['slash'] = substr($props['path'], -1, 1) === '/';
+        }
+
+        return $props;
     }
 }

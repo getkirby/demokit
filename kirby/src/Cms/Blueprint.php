@@ -6,9 +6,9 @@ use Exception;
 use Kirby\Data\Data;
 use Kirby\Exception\InvalidArgumentException;
 use Kirby\Exception\NotFoundException;
+use Kirby\Filesystem\F;
 use Kirby\Form\Field;
 use Kirby\Toolkit\A;
-use Kirby\Toolkit\F;
 use Kirby\Toolkit\I18n;
 use Throwable;
 
@@ -20,7 +20,7 @@ use Throwable;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class Blueprint
@@ -58,6 +58,10 @@ class Blueprint
             throw new InvalidArgumentException('A blueprint model is required');
         }
 
+        if (is_a($props['model'], ModelWithContent::class) === false) {
+            throw new InvalidArgumentException('Invalid blueprint model');
+        }
+
         $this->model = $props['model'];
 
         // the model should not be included in the props array
@@ -70,7 +74,7 @@ class Blueprint
         $props = $this->preset($props);
 
         // normalize the name
-        $props['name'] = $props['name'] ?? 'default';
+        $props['name'] ??= 'default';
 
         // normalize and translate the title
         $props['title'] = $this->i18n($props['title'] ?? ucfirst($props['name']));
@@ -199,12 +203,14 @@ class Blueprint
             return $props;
         }
 
-        try {
-            $mixin = static::find($extends);
-            $mixin = static::extend($mixin);
-            $props = A::merge($mixin, $props, A::MERGE_REPLACE);
-        } catch (Exception $e) {
-            // keep the props unextended if the snippet wasn't found
+        foreach (A::wrap($extends) as $extend) {
+            try {
+                $mixin = static::find($extend);
+                $mixin = static::extend($mixin);
+                $props = A::merge($mixin, $props, A::MERGE_REPLACE);
+            } catch (Exception $e) {
+                // keep the props unextended if the snippet wasn't found
+            }
         }
 
         // remove the extends flag
@@ -283,6 +289,11 @@ class Blueprint
             $file = $kirby->extension('blueprints', $name);
         }
 
+        // callback option can be return array or blueprint file path
+        if (is_callable($file) === true) {
+            $file = $file($kirby);
+        }
+
         // now ensure that we always return the data array
         if (is_string($file) === true && F::exists($file) === true) {
             return static::$loaded[$name] = Data::read($file);
@@ -331,7 +342,7 @@ class Blueprint
 
         $normalize = function ($props) use ($name) {
             // inject the filename as name if no name is set
-            $props['name'] = $props['name'] ?? $name;
+            $props['name'] ??= $name;
 
             // normalize the title
             $title = $props['title'] ?? ucfirst($props['name']);
@@ -561,9 +572,7 @@ class Blueprint
 
         // set all options to false
         if ($options === false) {
-            return array_map(function () {
-                return false;
-            }, $defaults);
+            return array_map(fn () => false, $defaults);
         }
 
         // extend options if possible
@@ -573,7 +582,7 @@ class Blueprint
             $alias = $aliases[$key] ?? null;
 
             if ($alias !== null) {
-                $options[$alias] = $options[$alias] ?? $value;
+                $options[$alias] ??= $value;
                 unset($options[$key]);
             }
         }
@@ -697,6 +706,7 @@ class Blueprint
                 'columns' => $this->normalizeColumns($tabName, $tabProps['columns'] ?? []),
                 'icon'    => $tabProps['icon']  ?? null,
                 'label'   => $this->i18n($tabProps['label'] ?? ucfirst($tabName)),
+                'link'    => $this->model->panel()->url(true) . '/?tab=' . $tabName,
                 'name'    => $tabName,
             ]);
         }
@@ -720,7 +730,13 @@ class Blueprint
             return $props;
         }
 
-        return static::$presets[$props['preset']]($props);
+        $preset = static::$presets[$props['preset']];
+
+        if (is_string($preset) === true) {
+            $preset = require $preset;
+        }
+
+        return $preset($props);
     }
 
     /**
@@ -752,19 +768,24 @@ class Blueprint
      */
     public function sections(): array
     {
-        return array_map(function ($section) {
-            return $this->section($section['name']);
-        }, $this->sections);
+        return A::map(
+            $this->sections,
+            fn ($section) => $this->section($section['name'])
+        );
     }
 
     /**
      * Returns a single tab by name
      *
-     * @param string $name
+     * @param string|null $name
      * @return array|null
      */
-    public function tab(string $name): ?array
+    public function tab(?string $name = null): ?array
     {
+        if ($name === null) {
+            return A::first($this->tabs);
+        }
+
         return $this->tabs[$name] ?? null;
     }
 

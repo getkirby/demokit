@@ -21,5 +21,5 @@ It's not recommended to be used "as is" in production. Please, follow our docume
 
 ---
 
-© 2009-2020 Bastian Allgeier (Bastian Allgeier GmbH)  
+© 2009-2022 Bastian Allgeier  
 [getkirby.com](https://getkirby.com) · [License agreement](https://getkirby.com/license)

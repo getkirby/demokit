@@ -18,12 +18,12 @@ use Throwable;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class Blocks extends Items
 {
-    const ITEM_CLASS = '\Kirby\Cms\Block';
+    public const ITEM_CLASS = '\Kirby\Cms\Block';
 
     /**
      * Return HTML when the collection is
@@ -97,6 +97,18 @@ class Blocks extends Items
         }
 
         return $blocks;
+    }
+
+    /**
+     * Checks if a given block type exists in the collection
+     * @since 3.6.0
+     *
+     * @param string $type
+     * @return bool
+     */
+    public function hasType(string $type): bool
+    {
+        return $this->filterBy('type', $type)->count() > 0;
     }
 
     /**

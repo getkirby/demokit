@@ -112,22 +112,23 @@ return function (App $app) {
          * Converts the field value to a timestamp or a formatted date
          *
          * @param \Kirby\Cms\Field $field
-         * @param string|null $format PHP date formatting string
+         * @param string|\IntlDateFormatter|null $format PHP date formatting string
          * @param string|null $fallback Fallback string for `strtotime` (since 3.2)
          * @return string|int
          */
-        'toDate' => function (Field $field, string $format = null, string $fallback = null) use ($app) {
+        'toDate' => function (Field $field, $format = null, string $fallback = null) use ($app) {
             if (empty($field->value) === true && $fallback === null) {
                 return null;
             }
 
-            $time = empty($field->value) === true ? strtotime($fallback) : $field->toTimestamp();
-
-            if ($format === null) {
-                return $time;
+            if (empty($field->value) === false) {
+                $time = $field->toTimestamp();
+            } else {
+                $time = strtotime($fallback);
             }
 
-            return ($app->option('date.handler', 'date'))($format, $time);
+            $handler = $app->option('date.handler', 'date');
+            return Str::date($time, $format, $handler);
         },
 
         /**
@@ -192,7 +193,7 @@ return function (App $app) {
          * @return \Kirby\Cms\Layouts
          */
         'toLayouts' => function (Field $field) {
-            return Layouts::factory(Data::decode($field->value, 'json'), [
+            return Layouts::factory(Layouts::parse($field->value()), [
                 'parent' => $field->parent()
             ]);
         },
@@ -366,7 +367,7 @@ return function (App $app) {
          * @return \Kirby\Cms\Field
          */
         'html' => function (Field $field) {
-            $field->value = htmlentities($field->value, ENT_COMPAT, 'utf-8');
+            $field->value = Html::encode($field->value);
             return $field;
         },
 
@@ -384,7 +385,7 @@ return function (App $app) {
             // Obsolete elements, script tags, image maps and form elements have
             // been excluded for safety reasons and as they are most likely not
             // needed in most cases.
-            $field->value = strip_tags($field->value, '<b><i><small><abbr><cite><code><dfn><em><kbd><strong><samp><var><a><bdo><br><img><q><span><sub><sup>');
+            $field->value = strip_tags($field->value, Html::$inlineList);
             return $field;
         },
 
@@ -392,13 +393,14 @@ return function (App $app) {
          * Converts the field content from Markdown/Kirbytext to valid HTML
          *
          * @param \Kirby\Cms\Field $field
+         * @param array $options
          * @return \Kirby\Cms\Field
          */
-        'kirbytext' => function (Field $field) use ($app) {
-            $field->value = $app->kirbytext($field->value, [
+        'kirbytext' => function (Field $field, array $options = []) use ($app) {
+            $field->value = $app->kirbytext($field->value, A::merge($options, [
                 'parent' => $field->parent(),
                 'field'  => $field
-            ]);
+            ]));
 
             return $field;
         },
@@ -409,13 +411,17 @@ return function (App $app) {
          * @since 3.1.0
          *
          * @param \Kirby\Cms\Field $field
+         * @param array $options
          * @return \Kirby\Cms\Field
          */
-        'kirbytextinline' => function (Field $field) use ($app) {
-            $field->value = $app->kirbytext($field->value, [
-                'parent' => $field->parent(),
-                'field'  => $field
-            ], true);
+        'kirbytextinline' => function (Field $field, array $options = []) use ($app) {
+            $field->value = $app->kirbytext($field->value, A::merge($options, [
+                'parent'   => $field->parent(),
+                'field'    => $field,
+                'markdown' => [
+                    'inline' => true
+                ]
+            ]));
 
             return $field;
         },
@@ -450,10 +456,11 @@ return function (App $app) {
          * Converts markdown to valid HTML
          *
          * @param \Kirby\Cms\Field $field
+         * @param array $options
          * @return \Kirby\Cms\Field
          */
-        'markdown' => function (Field $field) use ($app) {
-            $field->value = $app->markdown($field->value);
+        'markdown' => function (Field $field, array $options = []) use ($app) {
+            $field->value = $app->markdown($field->value, $options);
             return $field;
         },
 
@@ -498,13 +505,14 @@ return function (App $app) {
          */
         'replace' => function (Field $field, array $data = [], string $fallback = '') use ($app) {
             if ($parent = $field->parent()) {
-                $field->value = $field->parent()->toString($field->value, $data, $fallback);
+                // never pass `null` as the $template to avoid the fallback to the model ID
+                $field->value = $parent->toString($field->value ?? '', $data, $fallback);
             } else {
                 $field->value = Str::template($field->value, array_replace([
                     'kirby' => $app,
                     'site'  => $app->site(),
                     'page'  => $app->page()
-                ], $data), $fallback);
+                ], $data), ['fallback' => $fallback]);
             }
 
             return $field;

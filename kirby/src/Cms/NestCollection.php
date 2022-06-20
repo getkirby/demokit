@@ -11,7 +11,7 @@ use Kirby\Toolkit\Collection as BaseCollection;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class NestCollection extends BaseCollection
@@ -26,8 +26,6 @@ class NestCollection extends BaseCollection
      */
     public function toArray(Closure $map = null): array
     {
-        return parent::toArray($map ?? function ($object) {
-            return $object->toArray();
-        });
+        return parent::toArray($map ?? fn ($object) => $object->toArray());
     }
 }

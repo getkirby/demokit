@@ -3,7 +3,7 @@
 namespace Kirby\Cms;
 
 use Kirby\Exception\DuplicateException;
-use Kirby\Toolkit\F;
+use Kirby\Filesystem\F;
 
 /**
  * A collection of all defined site languages
@@ -11,7 +11,7 @@ use Kirby\Toolkit\F;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class Languages extends Collection
@@ -25,9 +25,10 @@ class Languages extends Collection
      */
     public function __construct($objects = [], $parent = null)
     {
-        $defaults = array_filter($objects, function ($language) {
-            return $language->isDefault() === true;
-        });
+        $defaults = array_filter(
+            $objects,
+            fn ($language) => $language->isDefault() === true
+        );
 
         if (count($defaults) > 1) {
             throw new DuplicateException('You cannot have multiple default languages. Please check your language config files.');
@@ -87,8 +88,9 @@ class Languages extends Collection
             $props = F::load($file);
 
             if (is_array($props) === true) {
-                // inject the language code from the filename if it does not exist
-                $props['code'] = $props['code'] ?? F::name($file);
+                // inject the language code from the filename
+                // if it does not exist
+                $props['code'] ??= F::name($file);
 
                 $languages[] = new Language($props);
             }

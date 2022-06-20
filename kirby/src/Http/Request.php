@@ -6,7 +6,6 @@ use Kirby\Http\Request\Auth\BasicAuth;
 use Kirby\Http\Request\Auth\BearerAuth;
 use Kirby\Http\Request\Body;
 use Kirby\Http\Request\Files;
-use Kirby\Http\Request\Method;
 use Kirby\Http\Request\Query;
 use Kirby\Toolkit\A;
 use Kirby\Toolkit\Str;
@@ -19,7 +18,7 @@ use Kirby\Toolkit\Str;
  * @package   Kirby Http
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Request
@@ -175,7 +174,7 @@ class Request
      */
     public function body()
     {
-        return $this->body = $this->body ?? new Body();
+        return $this->body ??= new Body();
     }
 
     /**
@@ -221,7 +220,7 @@ class Request
         $methods = ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'CONNECT', 'OPTIONS', 'TRACE', 'PATCH'];
 
         // the request method can be overwritten with a header
-        $methodOverride = strtoupper($_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE'] ?? null);
+        $methodOverride = strtoupper($_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE'] ?? '');
 
         if ($method === null && in_array($methodOverride, $methods) === true) {
             $method = $methodOverride;
@@ -270,7 +269,7 @@ class Request
      */
     public function files()
     {
-        return $this->files = $this->files ?? new Files();
+        return $this->files ??= new Files();
     }
 
     /**
@@ -380,7 +379,7 @@ class Request
      */
     public function query()
     {
-        return $this->query = $this->query ?? new Query();
+        return $this->query ??= new Query();
     }
 
     /**
@@ -408,6 +407,6 @@ class Request
             return $this->url()->clone($props);
         }
 
-        return $this->url = $this->url ?? Uri::current();
+        return $this->url ??= Uri::current();
     }
 }

@@ -17,7 +17,7 @@ use Kirby\Toolkit\V;
  * @package   Kirby Form
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Field extends Component
@@ -71,8 +71,8 @@ class Field extends Component
         $this->formFields = $formFields;
 
         // use the type as fallback for the name
-        $attrs['name'] = $attrs['name'] ?? $type;
-        $attrs['type'] = $type;
+        $attrs['name'] ??= $type;
+        $attrs['type']   = $type;
 
         parent::__construct($type, $attrs);
     }
@@ -238,7 +238,7 @@ class Field extends Component
                 'help' => function () {
                     /** @var \Kirby\Form\Field $this */
                     if ($this->help) {
-                        $help = $this->model()->toString($this->help);
+                        $help = $this->model()->toSafeString($this->help);
                         $help = $this->kirby()->kirbytext($help);
                         return $help;
                     }
@@ -440,9 +440,10 @@ class Field extends Component
 
         ksort($array);
 
-        return array_filter($array, function ($item) {
-            return $item !== null;
-        });
+        return array_filter(
+            $array,
+            fn ($item) => $item !== null && is_object($item) === false
+        );
     }
 
     /**

@@ -10,14 +10,14 @@ use Kirby\Toolkit\V;
  * @package   Kirby Image
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Exif
 {
     /**
      * the parent image object
-     * @var Image
+     * @var \Kirby\Image\Image
      */
     protected $image;
 
@@ -207,9 +207,11 @@ class Exif
      */
     protected function read(): array
     {
+        // @codeCoverageIgnoreStart
         if (function_exists('exif_read_data') === false) {
             return [];
         }
+        // @codeCoverageIgnoreEnd
 
         $data = @exif_read_data($this->image->root());
         return is_array($data) ? $data : [];
@@ -253,7 +255,7 @@ class Exif
     }
 
     /**
-     * Teturn the focal length
+     * Return the focal length
      *
      * @return string|null
      */

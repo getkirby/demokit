@@ -17,7 +17,7 @@ use Kirby\Toolkit\Pagination as BasePagination;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class Pagination extends BasePagination
@@ -69,9 +69,9 @@ class Pagination extends BasePagination
         $config  = $kirby->option('pagination', []);
         $request = $kirby->request();
 
-        $params['limit']    = $params['limit']    ?? $config['limit']    ?? 20;
-        $params['method']   = $params['method']   ?? $config['method']   ?? 'param';
-        $params['variable'] = $params['variable'] ?? $config['variable'] ?? 'page';
+        $params['limit']    ??= $config['limit']    ?? 20;
+        $params['method']   ??= $config['method']   ?? 'param';
+        $params['variable'] ??= $config['variable'] ?? 'page';
 
         if (empty($params['url']) === true) {
             $params['url'] = new Uri($kirby->url('current'), [
@@ -81,9 +81,9 @@ class Pagination extends BasePagination
         }
 
         if ($params['method'] === 'query') {
-            $params['page'] = $params['page'] ?? $params['url']->query()->get($params['variable']);
+            $params['page'] ??= $params['url']->query()->get($params['variable']);
         } elseif ($params['method'] === 'param') {
-            $params['page'] = $params['page'] ?? $params['url']->params()->get($params['variable']);
+            $params['page'] ??= $params['url']->params()->get($params['variable']);
         }
 
         parent::__construct($params);

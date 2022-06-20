@@ -14,12 +14,12 @@ use Kirby\Toolkit\Str;
  * @package   Kirby Database
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Query
 {
-    const ERROR_INVALID_QUERY_METHOD = 0;
+    public const ERROR_INVALID_QUERY_METHOD = 0;
 
     /**
      * Parent Database object
@@ -341,7 +341,7 @@ class Query
      */
     public function innerJoin($table, $on)
     {
-        return $this->join($table, $on, 'inner');
+        return $this->join($table, $on, 'inner join');
     }
 
     /**
@@ -710,7 +710,7 @@ class Query
             $this->database->fail();
         }
 
-        $result = $this->database->execute($sql['query'], $sql['bindings'], $params);
+        $result = $this->database->execute($sql['query'], $sql['bindings']);
 
         $this->reset();
 
@@ -775,7 +775,11 @@ class Query
 
         // apply it to the dataset and retrieve all rows. make sure to use Collection as the iterator to be able to attach the pagination object
         $iterator   = $this->iterator;
-        $collection = $this->offset($pagination->offset())->limit($pagination->limit())->iterator('Collection')->all();
+        $collection = $this
+            ->offset($pagination->offset())
+            ->limit($pagination->limit())
+            ->iterator('Kirby\Toolkit\Collection')
+            ->all();
 
         $this->iterator($iterator);
 
@@ -968,6 +972,11 @@ class Query
                     $this->bindings($sql['bindings']);
                 } elseif (is_callable($args[0]) === true) {
                     $query = clone $this;
+
+                    // since the callback uses its own where condition
+                    // it is necessary to clear/reset the cloned where condition
+                    $query->where = null;
+
                     call_user_func($args[0], $query);
 
                     // copy over the bindings from the nested query
@@ -1009,9 +1018,8 @@ class Query
                     $key = $sql->columnName($this->table, $args[0]);
 
                     // ->where('username', 'in', ['myuser', 'myotheruser']);
+                    $predicate = trim(strtoupper($args[1]));
                     if (is_array($args[2]) === true) {
-                        $predicate = trim(strtoupper($args[1]));
-
                         if (in_array($predicate, ['IN', 'NOT IN']) === false) {
                             throw new InvalidArgumentException('Invalid predicate ' . $predicate);
                         }
@@ -1029,11 +1037,8 @@ class Query
                         // add that to the where clause in parenthesis
                         $result = $key . ' ' . $predicate . ' (' . implode(', ', $values) . ')';
 
-                        $this->bindings($bindings);
-
                     // ->where('username', 'like', 'myuser');
                     } else {
-                        $predicate  = trim(strtoupper($args[1]));
                         $predicates = [
                             '=', '>=', '>', '<=', '<', '<>', '!=', '<=>',
                             'IS', 'IS NOT',
@@ -1051,9 +1056,8 @@ class Query
                         $bindings[$valueBinding] = $args[2];
 
                         $result = $key . ' ' . $predicate . ' ' . $valueBinding;
-
-                        $this->bindings($bindings);
                     }
+                    $this->bindings($bindings);
                 }
 
                 break;

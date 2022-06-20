@@ -10,7 +10,7 @@ use SimpleXMLElement;
  * @package   Kirby Toolkit
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Xml
@@ -106,9 +106,10 @@ class Xml
             if (isset($value['value'], $value['escape'])) {
                 $value = $value['escape'] === true ? static::encode($value['value']) : $value['value'];
             } else {
-                $value = implode(' ', array_filter($value, function ($value) {
-                    return !empty($value) || is_numeric($value);
-                }));
+                $value = implode(' ', array_filter(
+                    $value,
+                    fn ($value) => !empty($value) || is_numeric($value)
+                ));
             }
         } else {
             $value = static::encode($value);
@@ -129,7 +130,7 @@ class Xml
      * @param string $name The name of the root element
      * @param bool $head Include the XML declaration head or not
      * @param string $indent Indentation string, defaults to two spaces
-     * @param int $level The indendation level (used internally)
+     * @param int $level The indentation level (used internally)
      * @return string The XML string
      */
     public static function create($props, string $name = 'root', bool $head = true, string $indent = '  ', int $level = 0): string
@@ -144,7 +145,7 @@ class Xml
                 $value      = $props['@value'] ?? null;
                 if (isset($props['@namespaces'])) {
                     foreach ($props['@namespaces'] as $key => $namespace) {
-                        $key = 'xmlns' . (($key)? ':' . $key : '');
+                        $key = 'xmlns' . (($key) ? ':' . $key : '');
                         $attributes[$key] = $namespace;
                     }
                 }
@@ -293,7 +294,7 @@ class Xml
         // also check for attributes without any namespace
         $attributeArray = [];
         foreach (array_merge([0 => null], array_keys($usedNamespaces)) as $namespace) {
-            $prefix = ($namespace)? $namespace . ':' : '';
+            $prefix = ($namespace) ? $namespace . ':' : '';
             $attributes = $element->attributes($namespace, true);
 
             foreach ($attributes as $key => $value) {
@@ -313,7 +314,7 @@ class Xml
         // also check for children without any namespace
         $hasChildren = false;
         foreach (array_merge([0 => null], array_keys($usedNamespaces)) as $namespace) {
-            $prefix = ($namespace)? $namespace . ':' : '';
+            $prefix = ($namespace) ? $namespace . ':' : '';
             $children = $element->children($namespace, true);
 
             if (count($children) > 0) {
@@ -420,7 +421,8 @@ class Xml
             return $value;
         }
 
-        $encoded = htmlentities($value);
+        // TODO: in 3.7.0 use ENT_NOQUOTES | ENT_XML1 instead
+        $encoded = htmlentities($value, ENT_COMPAT);
         if ($encoded === $value) {
             // no CDATA block needed
             return $value;

@@ -1,6 +1,6 @@
 <?php
 
-use Kirby\Cms\Form;
+use Kirby\Form\Form;
 
 return [
     'props' => [
@@ -12,7 +12,8 @@ return [
         'form' => function () {
             $fields   = $this->fields;
             $disabled = $this->model->permissions()->update() === false;
-            $content  = $this->model->content()->toArray();
+            $lang     = $this->model->kirby()->languageCode();
+            $content  = $this->model->content($lang)->toArray();
 
             if ($disabled === true) {
                 foreach ($fields as $key => $props) {

@@ -3,8 +3,8 @@
 namespace Kirby\Cache;
 
 use Kirby\Exception\Exception;
-use Kirby\Toolkit\Dir;
-use Kirby\Toolkit\F;
+use Kirby\Filesystem\Dir;
+use Kirby\Filesystem\F;
 use Kirby\Toolkit\Str;
 
 /**
@@ -13,7 +13,7 @@ use Kirby\Toolkit\Str;
  * @package   Kirby Cache
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class FileCache extends Cache

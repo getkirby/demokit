@@ -9,7 +9,7 @@ namespace Kirby\Cms;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 abstract class Picker
@@ -54,6 +54,8 @@ abstract class Picker
             'image' => [],
             // query template for the info field
             'info' => false,
+            // listing style: list, cards, cardlets
+            'layout' =>'list',
             // number of users displayed per pagination page
             'limit' => 20,
             // optional mapping function for the result array
@@ -98,11 +100,12 @@ abstract class Picker
             if (empty($this->options['map']) === false) {
                 $result[] = $this->options['map']($item);
             } else {
-                $result[] = $item->panelPickerData([
-                    'image' => $this->options['image'],
-                    'info'  => $this->options['info'],
-                    'model' => $this->options['model'],
-                    'text'  => $this->options['text'],
+                $result[] = $item->panel()->pickerData([
+                    'image'  => $this->options['image'],
+                    'info'   => $this->options['info'],
+                    'layout' => $this->options['layout'],
+                    'model'  => $this->options['model'],
+                    'text'   => $this->options['text'],
                 ]);
             }
         }

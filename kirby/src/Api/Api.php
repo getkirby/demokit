@@ -5,9 +5,9 @@ namespace Kirby\Api;
 use Closure;
 use Exception;
 use Kirby\Exception\NotFoundException;
+use Kirby\Filesystem\F;
 use Kirby\Http\Response;
 use Kirby\Http\Router;
-use Kirby\Toolkit\F;
 use Kirby\Toolkit\Pagination;
 use Kirby\Toolkit\Properties;
 use Kirby\Toolkit\Str;
@@ -22,7 +22,7 @@ use Throwable;
  * @package   Kirby Api
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class Api
@@ -162,7 +162,7 @@ class Api
      */
     public function call(string $path = null, string $method = 'GET', array $requestData = [])
     {
-        $path = rtrim($path, '/');
+        $path = rtrim($path ?? '', '/');
 
         $this->setRequestMethod($method);
         $this->setRequestData($requestData);
@@ -181,7 +181,7 @@ class Api
 
                 // get the locale from the translation
                 $translation = $user->kirby()->translation($language);
-                $locale = ($translation !== null)? $translation->locale() : $language;
+                $locale = ($translation !== null) ? $translation->locale() : $language;
 
                 // provide some variants as fallbacks to be
                 // compatible with as many systems as possible

@@ -2,8 +2,8 @@
 
 namespace Kirby\Cms;
 
-use Kirby\Toolkit\Dir;
-use Kirby\Toolkit\F;
+use Kirby\Filesystem\Dir;
+use Kirby\Filesystem\F;
 
 /**
  * A collection of all available Translations.
@@ -14,7 +14,7 @@ use Kirby\Toolkit\F;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class Translations extends Collection

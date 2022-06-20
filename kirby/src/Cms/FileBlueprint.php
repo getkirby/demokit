@@ -2,7 +2,7 @@
 
 namespace Kirby\Cms;
 
-use Kirby\Toolkit\F;
+use Kirby\Filesystem\F;
 use Kirby\Toolkit\Str;
 
 /**
@@ -12,7 +12,7 @@ use Kirby\Toolkit\Str;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class FileBlueprint extends Blueprint
@@ -81,7 +81,7 @@ class FileBlueprint extends Blueprint
 
             if (is_array($accept['extension']) === true) {
                 // determine the main MIME type for each extension
-                $restrictions[] = array_map(['Kirby\Toolkit\Mime', 'fromExtension'], $accept['extension']);
+                $restrictions[] = array_map(['Kirby\Filesystem\Mime', 'fromExtension'], $accept['extension']);
             }
 
             if (is_array($accept['type']) === true) {
@@ -89,7 +89,7 @@ class FileBlueprint extends Blueprint
                 $mimes = [];
                 foreach ($accept['type'] as $type) {
                     if ($extensions = F::typeToExtensions($type)) {
-                        $mimes[] = array_map(['Kirby\Toolkit\Mime', 'fromExtension'], $extensions);
+                        $mimes[] = array_map(['Kirby\Filesystem\Mime', 'fromExtension'], $extensions);
                     }
                 }
 
@@ -163,17 +163,24 @@ class FileBlueprint extends Blueprint
 
         // normalize the MIME, extension and type from strings into arrays
         if (is_string($accept['mime']) === true) {
-            $accept['mime'] = array_map(function ($mime) {
-                return $mime['value'];
-            }, Str::accepted($accept['mime']));
+            $accept['mime'] = array_map(
+                fn ($mime) => $mime['value'],
+                Str::accepted($accept['mime'])
+            );
         }
 
         if (is_string($accept['extension']) === true) {
-            $accept['extension'] = array_map('trim', explode(',', $accept['extension']));
+            $accept['extension'] = array_map(
+                'trim',
+                explode(',', $accept['extension'])
+            );
         }
 
         if (is_string($accept['type']) === true) {
-            $accept['type'] = array_map('trim', explode(',', $accept['type']));
+            $accept['type'] = array_map(
+                'trim',
+                explode(',', $accept['type'])
+            );
         }
 
         return $accept;

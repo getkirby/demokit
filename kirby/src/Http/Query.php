@@ -12,7 +12,7 @@ use Kirby\Toolkit\Obj;
  * @package   Kirby Http
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Query extends Obj
@@ -43,7 +43,7 @@ class Query extends Obj
 
     public function toString($questionMark = false): string
     {
-        $query = http_build_query($this);
+        $query = http_build_query($this, '', '&', PHP_QUERY_RFC3986);
 
         if (empty($query) === true) {
             return '';

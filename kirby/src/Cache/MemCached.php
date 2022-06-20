@@ -10,13 +10,13 @@ use Memcached as MemcachedExt;
  * @package   Kirby Cache
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class MemCached extends Cache
 {
     /**
-     * store for the memache connection
+     * store for the memcache connection
      * @var \Memcached
      */
     protected $connection;

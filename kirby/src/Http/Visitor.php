@@ -2,8 +2,8 @@
 
 namespace Kirby\Http;
 
+use Kirby\Filesystem\Mime;
 use Kirby\Toolkit\Collection;
-use Kirby\Toolkit\Mime;
 use Kirby\Toolkit\Obj;
 use Kirby\Toolkit\Str;
 
@@ -15,7 +15,7 @@ use Kirby\Toolkit\Str;
  * @package   Kirby Http
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Visitor

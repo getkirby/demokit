@@ -11,7 +11,7 @@ use Kirby\Exception\Exception;
  * @package   Kirby Toolkit
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Pagination
@@ -75,7 +75,12 @@ class Pagination
 
         $params = [];
 
-        if (is_array($a) === true) {
+        if (is_a($a, static::class) === true) {
+            /**
+             * First argument is a pagination/self object
+             */
+            return $a;
+        } elseif (is_array($a) === true) {
 
             /**
              * First argument is an option array

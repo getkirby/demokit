@@ -10,7 +10,7 @@ namespace Kirby\Cms;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class BlockConverter
@@ -165,6 +165,14 @@ class BlockConverter
     public static function editorH6(array $params): array
     {
         return static::editorHeading($params, 'h6');
+    }
+
+    public static function editorHr(array $params): array
+    {
+        return [
+            'content' => [],
+            'type'    => 'line'
+        ];
     }
 
     public static function editorHeading(array $params, string $level): array

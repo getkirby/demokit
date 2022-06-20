@@ -1,15 +1,14 @@
 {
   "name": "getkirby/cms",
-  "type": "kirby-cms",
   "description": "The Kirby 3 core",
+  "license": "proprietary",
+  "type": "kirby-cms",
+  "version": "3.6.6",
   "keywords": [
     "kirby",
     "cms",
     "core"
   ],
-  "homepage": "https://getkirby.com",
-  "version": "3.5.6",
-  "license": "proprietary",
   "authors": [
     {
       "name": "Kirby Team",
@@ -17,22 +16,30 @@
       "homepage": "https://getkirby.com"
     }
   ],
+  "homepage": "https://getkirby.com",
+  "support": {
+    "email": "support@getkirby.com",
+    "issues": "https://github.com/getkirby/kirby/issues",
+    "forum": "https://forum.getkirby.com",
+    "source": "https://github.com/getkirby/kirby"
+  },
+  "_comment": "TODO: psr/log is not used by Kirby; drop pinned version when Kirby no longer supports PHP 7",
   "require": {
-    "php": ">=7.3.0 <8.1.0",
+    "php": ">=7.4.0 <8.2.0",
     "ext-ctype": "*",
     "ext-mbstring": "*",
-    "claviska/simpleimage": "3.6.3",
-    "filp/whoops": "2.12.1",
-    "getkirby/composer-installer": "^1.2.0",
-    "laminas/laminas-escaper": "2.7.0",
+    "claviska/simpleimage": "3.6.5",
+    "filp/whoops": "2.14.5",
+    "getkirby/composer-installer": "^1.2.1",
+    "laminas/laminas-escaper": "2.10.0",
     "michelf/php-smartypants": "1.8.1",
-    "mustangostang/spyc": "0.6.3",
-    "phpmailer/phpmailer": "6.4.1",
-    "true/punycode": "2.1.1"
+    "phpmailer/phpmailer": "6.5.4",
+    "psr/log": "1.1.4",
+    "symfony/polyfill-intl-idn": "1.25.0",
+    "symfony/polyfill-mbstring": "1.25.0"
   },
-  "config": {
-    "optimize-autoloader": true,
-    "platform-check": false
+  "replace": {
+    "symfony/polyfill-php72": "*"
   },
   "autoload": {
     "psr-4": {
@@ -44,6 +51,18 @@
     "files": [
       "config/setup.php",
       "config/helpers.php"
+    ]
+  },
+  "config": {
+    "allow-plugins": {
+      "getkirby/composer-installer": true
+    },
+    "optimize-autoloader": true,
+    "platform-check": false
+  },
+  "extra": {
+    "unused": [
+      "symfony/polyfill-intl-idn"
     ]
   },
   "scripts": {
@@ -67,11 +86,5 @@
     "fix": "php-cs-fixer fix",
     "test": "phpunit --stderr --coverage-html=tests/coverage",
     "zip": "composer archive --format=zip --file=dist"
-  },
-  "support": {
-    "email": "support@getkirby.com",
-    "issues": "https://github.com/getkirby/kirby/issues",
-    "forum": "https://forum.getkirby.com",
-    "source": "https://github.com/getkirby/kirby"
   }
 }

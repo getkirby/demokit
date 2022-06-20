@@ -10,7 +10,7 @@ use Kirby\Database\Sql;
  * @package   Kirby Database
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Sqlite extends Sql
@@ -53,7 +53,7 @@ class Sqlite extends Sql
      *
      * @param $table string
      * @param $column string
-     * @param $values boolean Whether the identifier is going to be used for a VALUES clause;
+     * @param $values bool Whether the identifier is going to be used for a VALUES clause;
      *                        only relevant for SQLite
      * @return string
      */
@@ -82,9 +82,10 @@ class Sqlite extends Sql
         $keys = [];
         foreach ($inner['keys'] as $key => $columns) {
             // quote each column name and make a list string out of the column names
-            $columns = implode(', ', array_map(function ($name) {
-                return $this->quoteIdentifier($name);
-            }, $columns));
+            $columns = implode(', ', array_map(
+                fn ($name) => $this->quoteIdentifier($name),
+                $columns
+            ));
 
             if ($key === 'primary') {
                 $inner['query'] .= ',' . PHP_EOL . 'PRIMARY KEY (' . $columns . ')';
@@ -136,7 +137,7 @@ class Sqlite extends Sql
     public function tables(): array
     {
         return [
-            'query'    => 'SELECT name FROM sqlite_master WHERE type = "table"',
+            'query'    => 'SELECT name FROM sqlite_master WHERE type = "table" OR type = "view"',
             'bindings' => []
         ];
     }

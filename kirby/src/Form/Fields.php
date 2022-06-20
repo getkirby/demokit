@@ -11,7 +11,7 @@ use Kirby\Toolkit\Collection;
  * @package   Kirby Form
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Fields extends Collection
@@ -29,7 +29,7 @@ class Fields extends Collection
     {
         if (is_array($field) === true) {
             // use the array key as name if the name is not set
-            $field['name'] = $field['name'] ?? $name;
+            $field['name'] ??= $name;
             $field = Field::factory($field['type'], $field, $this);
         }
 

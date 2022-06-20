@@ -15,7 +15,7 @@ use ParsedownExtra;
  * @package   Kirby Text
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Markdown
@@ -37,8 +37,9 @@ class Markdown
     public function defaults(): array
     {
         return [
+            'breaks' => true,
             'extra'  => false,
-            'breaks' => true
+            'safe'   => false
         ];
     }
 
@@ -69,6 +70,7 @@ class Markdown
         }
 
         $parser->setBreaksEnabled($this->options['breaks']);
+        $parser->setSafeMode($this->options['safe']);
 
         if ($inline === true) {
             return @$parser->line($text);

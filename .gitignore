@@ -17,8 +17,8 @@ Icon
 .lock
 
 # Editors
-# ---------------
-*.sublime-project
+# (sensitive workspace files)
+# ---------------------------
 *.sublime-workspace
 /.vscode
 /.idea

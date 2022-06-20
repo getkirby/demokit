@@ -2,6 +2,9 @@
 
 namespace Kirby\Cms;
 
+use Kirby\Exception\InvalidArgumentException;
+use Kirby\Filesystem\F;
+
 /**
  * The `$files` object extends the general
  * `Collection` class and refers to a
@@ -13,7 +16,7 @@ namespace Kirby\Cms;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class Files extends Collection
@@ -30,12 +33,13 @@ class Files extends Collection
      * an entire second collection to the
      * current collection
      *
-     * @param mixed $object
+     * @param \Kirby\Cms\Files|\Kirby\Cms\File|string $object
      * @return $this
+     * @throws \Kirby\Exception\InvalidArgumentException When no `File` or `Files` object or an ID of an existing file is passed
      */
     public function add($object)
     {
-        // add a page collection
+        // add a files collection
         if (is_a($object, self::class) === true) {
             $this->data = array_merge($this->data, $object->data);
 
@@ -46,6 +50,11 @@ class Files extends Collection
         // add a file object
         } elseif (is_a($object, 'Kirby\Cms\File') === true) {
             $this->__set($object->id(), $object);
+
+        // give a useful error message on invalid input;
+        // silently ignore "empty" values for compatibility with existing setups
+        } elseif (in_array($object, [null, false, true], true) !== true) {
+            throw new InvalidArgumentException('You must pass a Files or File object or an ID of an existing file to the Files collection');
         }
 
         return $this;
@@ -118,6 +127,45 @@ class Files extends Collection
     public function findByKey(string $key)
     {
         return $this->findById($key);
+    }
+
+    /**
+     * Returns the file size for all
+     * files in the collection in a
+     * human-readable format
+     * @since 3.6.0
+     *
+     * @param string|null|false $locale Locale for number formatting,
+     *                                  `null` for the current locale,
+     *                                  `false` to disable number formatting
+     * @return string
+     */
+    public function niceSize($locale = null): string
+    {
+        return F::niceSize($this->size(), $locale);
+    }
+
+    /**
+     * Returns the raw size for all
+     * files in the collection
+     * @since 3.6.0
+     *
+     * @return int
+     */
+    public function size(): int
+    {
+        return F::size($this->values(fn ($file) => $file->root()));
+    }
+
+    /**
+     * Returns the collection sorted by
+     * the sort number and the filename
+     *
+     * @return static
+     */
+    public function sorted()
+    {
+        return $this->sort('sort', 'asc', 'filename', 'asc');
     }
 
     /**

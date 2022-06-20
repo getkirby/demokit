@@ -2,7 +2,7 @@
 
 return function ($page) {
 
-    $tag      = strip_tags(urldecode(param('tag')));
+    $tag      = strip_tags(urldecode(param('tag') ?? ''));
     $default  = option('kirby.blog.pagination.limit', 6);
     $limit    = $page->limit()->or($default)->toInt();
     $articles = collection('blog/articles');

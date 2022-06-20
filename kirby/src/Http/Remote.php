@@ -5,7 +5,7 @@ namespace Kirby\Http;
 use Exception;
 use Kirby\Cms\App;
 use Kirby\Exception\InvalidArgumentException;
-use Kirby\Toolkit\F;
+use Kirby\Filesystem\F;
 use Kirby\Toolkit\Str;
 
 /**
@@ -15,13 +15,13 @@ use Kirby\Toolkit\Str;
  * @package   Kirby Http
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Remote
 {
-    const CA_INTERNAL = 1;
-    const CA_SYSTEM   = 2;
+    public const CA_INTERNAL = 1;
+    public const CA_SYSTEM   = 2;
 
     /**
      * @var array
@@ -103,6 +103,13 @@ class Remote
     public function __construct(string $url, array $options = [])
     {
         $defaults = static::$defaults;
+
+        // use the system CA store by default if
+        // one has been configured in php.ini
+        $cainfo = ini_get('curl.cainfo');
+        if (empty($cainfo) === false && is_file($cainfo) === true) {
+            $defaults['ca'] = self::CA_SYSTEM;
+        }
 
         // update the defaults with App config if set;
         // request the App instance lazily

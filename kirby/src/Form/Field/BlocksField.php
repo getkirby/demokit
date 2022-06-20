@@ -5,10 +5,10 @@ namespace Kirby\Form\Field;
 use Kirby\Cms\Block;
 use Kirby\Cms\Blocks as BlocksCollection;
 use Kirby\Cms\Fieldsets;
-use Kirby\Cms\Form;
 use Kirby\Exception\InvalidArgumentException;
 use Kirby\Exception\NotFoundException;
 use Kirby\Form\FieldClass;
+use Kirby\Form\Form;
 use Kirby\Form\Mixin\EmptyState;
 use Kirby\Form\Mixin\Max;
 use Kirby\Form\Mixin\Min;
@@ -49,7 +49,7 @@ class BlocksField extends FieldClass
                 $type = $block['type'];
 
                 // get and cache fields at the same time
-                $fields[$type] = $fields[$type] ?? $this->fields($block['type']);
+                $fields[$type] ??= $this->fields($block['type']);
 
                 // overwrite the block content with form values
                 $block['content'] = $this->form($fields[$type], $block['content'])->$to();
@@ -142,8 +142,15 @@ class BlocksField extends FieldClass
         return [
             [
                 'pattern' => 'uuid',
-                'action'  => function () {
-                    return ['uuid' => uuid()];
+                'action'  => fn () => ['uuid' => uuid()]
+            ],
+            [
+                'pattern' => 'paste',
+                'method'  => 'POST',
+                'action'  => function () use ($field) {
+                    $value  = BlocksCollection::parse(get('html'));
+                    $blocks = BlocksCollection::factory($value);
+                    return $field->blocksToValues($blocks->toArray());
                 }
             ],
             [
@@ -181,6 +188,13 @@ class BlocksField extends FieldClass
     public function store($value)
     {
         $blocks = $this->blocksToValues((array)$value, 'content');
+
+        // returns empty string to avoid storing empty array as string `[]`
+        // and to consistency work with `$field->isEmpty()`
+        if (empty($blocks) === true) {
+            return '';
+        }
+
         return $this->valueToJson($blocks, $this->pretty());
     }
 

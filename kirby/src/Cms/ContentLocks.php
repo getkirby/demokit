@@ -4,7 +4,7 @@ namespace Kirby\Cms;
 
 use Kirby\Data\Data;
 use Kirby\Exception\Exception;
-use Kirby\Toolkit\F;
+use Kirby\Filesystem\F;
 
 /**
  * Manages all content lock files
@@ -13,7 +13,7 @@ use Kirby\Toolkit\F;
  * @author    Nico Hoffmann <nico@getkirby.com>,
  *            Lukas Bestle <lukas@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class ContentLocks

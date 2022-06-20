@@ -21,7 +21,7 @@ use Kirby\Exception\InvalidArgumentException;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class Field
@@ -75,14 +75,14 @@ class Field
         $method = strtolower($method);
 
         if (isset(static::$methods[$method]) === true) {
-            return static::$methods[$method](clone $this, ...$arguments);
+            return (static::$methods[$method])(clone $this, ...$arguments);
         }
 
         if (isset(static::$aliases[$method]) === true) {
             $method = strtolower(static::$aliases[$method]);
 
             if (isset(static::$methods[$method]) === true) {
-                return static::$methods[$method](clone $this, ...$arguments);
+                return (static::$methods[$method])(clone $this, ...$arguments);
             }
         }
 

@@ -3,7 +3,7 @@
 namespace Kirby\Http;
 
 use Exception;
-use Kirby\Toolkit\F;
+use Kirby\Filesystem\F;
 use Throwable;
 
 /**
@@ -14,7 +14,7 @@ use Throwable;
  * @package   Kirby Http
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Response
@@ -160,14 +160,14 @@ class Response
             throw new Exception('The file could not be found');
         }
 
-        $filename = $filename ?? basename($file);
-        $modified = filemtime($file);
-        $body     = file_get_contents($file);
-        $size     = strlen($body);
+        $filename ??= basename($file);
+        $modified   = filemtime($file);
+        $body       = file_get_contents($file);
+        $size       = strlen($body);
 
         $props = array_replace_recursive([
             'body'    => $body,
-            'type'    => 'application/force-download',
+            'type'    => F::mime($file),
             'headers' => [
                 'Pragma'                    => 'public',
                 'Cache-Control'             => 'no-cache, no-store, must-revalidate',
@@ -234,7 +234,7 @@ class Response
     public static function json($body = '', ?int $code = null, ?bool $pretty = null, array $headers = [])
     {
         if (is_array($body) === true) {
-            $body = json_encode($body, $pretty === true ? JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES : null);
+            $body = json_encode($body, $pretty === true ? JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES : 0);
         }
 
         return new static([

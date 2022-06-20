@@ -27,7 +27,7 @@ return [
          * Sets the default text when a new page/file/user is created
          */
         'default' => function (string $default = null) {
-            return trim($default);
+            return trim($default ?? '');
         },
 
         /**
@@ -81,7 +81,7 @@ return [
         },
 
         'value' => function (string $value = null) {
-            return trim($value);
+            return trim($value ?? '');
         }
     ],
     'api' => function () {
@@ -109,7 +109,7 @@ return [
 
                         return [
                             'filename' => $file->filename(),
-                            'dragText' => $file->dragText('auto', $absolute),
+                            'dragText' => $file->panel()->dragText('auto', $absolute),
                         ];
                     });
                 }

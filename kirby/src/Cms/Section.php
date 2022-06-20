@@ -11,7 +11,7 @@ use Kirby\Toolkit\Component;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class Section extends Component
@@ -49,8 +49,8 @@ class Section extends Component
         }
 
         // use the type as fallback for the name
-        $attrs['name'] = $attrs['name'] ?? $type;
-        $attrs['type'] = $type;
+        $attrs['name'] ??= $type;
+        $attrs['type']   = $type;
 
         parent::__construct($type, $attrs);
     }

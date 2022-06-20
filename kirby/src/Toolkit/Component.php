@@ -5,6 +5,7 @@ namespace Kirby\Toolkit;
 use ArgumentCountError;
 use Kirby\Exception\Exception;
 use Kirby\Exception\InvalidArgumentException;
+use Kirby\Filesystem\F;
 use TypeError;
 
 /**
@@ -13,7 +14,7 @@ use TypeError;
  * @package   Kirby Toolkit
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Component
@@ -262,6 +263,11 @@ class Component
         if (isset($options['mixins']) === true) {
             foreach ($options['mixins'] as $mixin) {
                 if (isset(static::$mixins[$mixin]) === true) {
+                    if (is_string(static::$mixins[$mixin]) === true) {
+                        // resolve a path to a mixin on demand
+                        static::$mixins[$mixin] = include static::$mixins[$mixin];
+                    }
+
                     $options = array_replace_recursive(static::$mixins[$mixin], $options);
                 }
             }

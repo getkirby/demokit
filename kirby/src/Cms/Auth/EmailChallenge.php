@@ -13,7 +13,7 @@ use Kirby\Toolkit\Str;
  * @package   Kirby Cms
  * @author    Lukas Bestle <lukas@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
 class EmailChallenge extends Challenge
@@ -66,6 +66,7 @@ class EmailChallenge extends Challenge
             'template' => 'auth/' . $mode,
             'data' => [
                 'user'    => $user,
+                'site'    => $kirby->system()->title(),
                 'code'    => $formatted,
                 'timeout' => round($options['timeout'] / 60)
             ]

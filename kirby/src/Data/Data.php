@@ -3,7 +3,7 @@
 namespace Kirby\Data;
 
 use Kirby\Exception\Exception;
-use Kirby\Toolkit\F;
+use Kirby\Filesystem\F;
 
 /**
  * The `Data` class provides readers and
@@ -19,7 +19,7 @@ use Kirby\Toolkit\F;
  * @package   Kirby
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Data
@@ -65,7 +65,7 @@ class Data
                    static::$handlers[static::$aliases[$type] ?? null] ??
                    null;
 
-        if (class_exists($handler)) {
+        if ($handler !== null && class_exists($handler)) {
             return new $handler();
         }
 

@@ -13,7 +13,7 @@ use IteratorAggregate;
  * @package   Kirby Toolkit
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Iterator implements IteratorAggregate
@@ -40,7 +40,7 @@ class Iterator implements IteratorAggregate
      *
      * @return \ArrayIterator
      */
-    public function getIterator()
+    public function getIterator(): ArrayIterator
     {
         return new ArrayIterator($this->data);
     }
@@ -98,7 +98,7 @@ class Iterator implements IteratorAggregate
     }
 
     /**
-     * Moves the cusor to the first element
+     * Moves the cursor to the first element
      */
     public function rewind()
     {

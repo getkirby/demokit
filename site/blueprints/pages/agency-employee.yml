@@ -1,43 +1,47 @@
 title: Employee
 icon: 👩‍💼
 num: 0
-preset: page
 
 status:
   draft: To be hired
   unlisted: No image
   listed: On company page
 
-fields:
-  position:
-    label: Position
-    type: text
-  phone:
-    label: Phone
-    type: tel
-    width: 1/2
-  email:
-    label: Email
-    type: email
-    width: 1/2
-  account:
-    label: CMS Account
-    type: users
-    multiple: false
-  about:
-    label: Bio
-    type: textarea
-    size: medium
+columns:
+  main:
+    width: 2/3
+    fields:
+      position:
+        label: Position
+        type: text
+      phone:
+        label: Phone
+        type: tel
+        width: 1/2
+      email:
+        label: Email
+        type: email
+        width: 1/2
+      account:
+        label: CMS Account
+        type: users
+        multiple: false
+      about:
+        label: Bio
+        type: textarea
+        size: medium
 
-sidebar:
-  image:
-    type: files
-    headline: Profile image
-    layout: cards
-    info: "{{ file.dimensions }}"
-    max: 1
-    size: medium
-    template: agency-employee-image
-    image:
-      ratio: 1/1
-      cover: true
+  sidebar:
+    width: 1/3
+    sections:
+      image:
+        type: files
+        headline: Profile image
+        layout: cards
+        info: "{{ file.dimensions }}"
+        max: 1
+        size: medium
+        template: agency-employee-image
+        image:
+          ratio: 1/1
+          cover: true

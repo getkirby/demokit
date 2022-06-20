@@ -11,7 +11,7 @@ use Kirby\Toolkit\Xml as XmlConverter;
  * @package   Kirby Data
  * @author    Lukas Bestle <lukas@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier GmbH
+ * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
 class Xml extends Handler
@@ -35,7 +35,7 @@ class Xml extends Handler
      */
     public static function decode($string): array
     {
-        if ($string === null) {
+        if ($string === null || $string === '') {
             return [];
         }
 
