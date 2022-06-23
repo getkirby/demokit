@@ -2,7 +2,7 @@ Title: In the jungle of Sumatra
 
 ----
 
-Subheading: 
+Subheading: Green leaves and stuff
 
 ----
 
@@ -16,7 +16,7 @@ Text: [{"content":{"text":"<p>Far far away, behind the word mountains, far from 
 
 ----
 
-Date: 2018-07-31
+Date: 2020-07-31
 
 ----
 

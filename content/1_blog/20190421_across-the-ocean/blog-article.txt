@@ -2,7 +2,7 @@ Title: Across the ocean
 
 ----
 
-Subheading: 
+Subheading: In a nutshell
 
 ----
 
@@ -14,7 +14,7 @@ Text: [{"content":{"text":"<p>Far far away, behind the word mountains, far from 
 
 ----
 
-Date: 2018-04-21
+Date: 2019-04-21
 
 ----
 

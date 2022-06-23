@@ -1,0 +1,25 @@
+Title: Himalaya and back
+
+----
+
+Subheading: High mountains, high hope
+
+----
+
+Cover: 
+
+----
+
+Text: [{"content":[],"id":"_C7Dbd6Soi","isHidden":false,"type":"paragraph"},{"content":[],"id":"_qhP9cWavh","isHidden":false,"type":"paragraph"},{"content":[],"id":"_dtHS2QAqW","isHidden":false,"type":"paragraph"},{"content":[],"id":"_dgyWFoPxU","isHidden":false,"type":"paragraph"}]
+
+----
+
+Date: 2021-09-13
+
+----
+
+Author: 
+
+----
+
+Tags: environment, nepal, mountains
