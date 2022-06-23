@@ -1,0 +1,19 @@
+{
+    "name": "getkirby/blog",
+    "type": "kirby-plugin",
+    "license": "MIT",
+    "description": "Simplify the process of creating blogs",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Bastian Allgeier",
+            "email": "bastian@getkirby.com"
+        }
+    ],
+    "require": {
+        "getkirby/composer-installer": "^1.2"
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}

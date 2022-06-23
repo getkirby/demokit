@@ -1,0 +1,19 @@
+{
+  "name": "getkirby/keycdn",
+  "type": "kirby-plugin",
+  "license": "MIT",
+  "description": "Server images and assets via KeyCDN",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Bastian Allgeier",
+      "email": "bastian@getkirby.com"
+    }
+  ],
+  "require": {
+    "getkirby/composer-installer": "^1.2"
+  },
+  "config": {
+    "optimize-autoloader": true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "getkirby/demo",
+  "type": "kirby-plugin",
+  "license": "MIT",
+  "description": "Small internal plugin for our demo instances",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Lukas Bestle",
+      "email": "lukas@getkirby.com"
+    }
+  ],
+  "require": {
+    "getkirby/composer-installer": "^1.2"
+  },
+  "config": {
+    "optimize-autoloader": true
+  }
+}

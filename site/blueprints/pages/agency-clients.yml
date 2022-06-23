@@ -13,4 +13,6 @@ options:
   delete: false
 
 sections:
-  clients: sections/agency/clients
+  clients:
+    extends: sections/agency/clients
+    layout: table
