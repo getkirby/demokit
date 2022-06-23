@@ -27,7 +27,7 @@
 
         <?php if ($kirby->user()): ?>
         <ul>
-          <li><a href="<?= $page->panelUrl() ?>">Edit this page</a></li>
+          <li><a href="<?= $page->panel()->url() ?>">Edit this page</a></li>
         </ul>
         <?php else: ?>
         <p class="logo-dropdown-box-login">
