@@ -12,4 +12,9 @@ class BlogArticlePage extends Page
         $format = $format ?? $this->parent()->dateFormat()->or(option('kirby.blog.date') ?? 'd M, Y');
         return parent::date()->toDate($format);
     }
+
+    public function timestamp()
+    {
+        return parent::date()->toTimestamp();
+    }
 }
