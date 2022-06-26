@@ -1,0 +1,27 @@
+Title: How to create a dummy blog
+
+----
+
+Subheading: 
+
+----
+
+Cover: 
+
+----
+
+Text: 
+
+----
+
+Date: 
+
+----
+
+Author:
+
+- zizNTfvL
+
+----
+
+Tags: 
