@@ -1,0 +1,25 @@
+Title: Shoes
+
+----
+
+Price: 299
+
+----
+
+Brand: Shoobidoo
+
+----
+
+Link: 
+
+----
+
+Shipping: DHL overnight
+
+----
+
+Summary: 
+
+----
+
+Description: <p>Shoes with a pattern</p>

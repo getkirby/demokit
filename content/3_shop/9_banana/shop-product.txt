@@ -1,0 +1,25 @@
+Title: Banana
+
+----
+
+Price: 10
+
+----
+
+Brand: Yummy Fruits
+
+----
+
+Link: 
+
+----
+
+Shipping: DHL standard
+
+----
+
+Summary: 
+
+----
+
+Description: <p>It's healthy and yellow</p>
