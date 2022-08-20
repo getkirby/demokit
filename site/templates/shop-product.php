@@ -38,7 +38,7 @@
 
   <div class="column" style="--columns: 4">
     <div class="shop-product-description text">
-      <?= $page->description()->kt() ?>
+      <?= $page->description() ?>
     </div>
     <p class="shop-product-price">€ <?= $page->price()->escape() ?></p>
 
