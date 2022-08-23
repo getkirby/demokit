@@ -3,7 +3,7 @@
   'heading'    => 'Template',
   'subheading' => '/site/templates/' . $page->template()->name() . '.php',
   'text'       => 'template',
-  'source'     => htmlspecialchars(F::read($page->template()->file())),
+  'source'     => F::read($page->template()->file()),
   'language'   => 'php'
 ]) ?>
 <?php snippet([$example . '/footer', 'footer']) ?>

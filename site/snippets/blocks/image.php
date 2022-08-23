@@ -11,7 +11,7 @@ $lightbox = $link->isEmpty();
 
 if ($block->location() == 'web') {
     $src      = $block->src();
-    $srcValue = $src->esc();
+    $srcValue = $src->escape('attr');
 } elseif ($image = $block->image()->toFile()) {
     $alt = $alt ?? $image->alt();
     $src = $srcValue = $image->url();
@@ -35,7 +35,7 @@ $attrs = attr([
 <?php if ($srcValue): ?>
 <figure>
   <a <?= $attrs ?>>
-    <img src="<?= $srcValue ?>" alt="<?= $alt->esc() ?>">
+    <img src="<?= $srcValue ?>" alt="<?= $alt->escape('attr') ?>">
   </a>
 
   <?php if ($caption->isNotEmpty()): ?>

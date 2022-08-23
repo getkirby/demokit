@@ -10,7 +10,7 @@
       <?= $image ?>
     </a>
     <?php else: ?>
-    <figure class="img" style="--w: <?= $w ?? 1 ?>; --h: <?= $h ?? 1 ?>"></figure>
+    <figure class="img" style="--w: <?= esc($w ?? 1, 'css') ?>; --h: <?= esc($h ?? 1, 'css') ?>"></figure>
     <?php endif ?>
 
     <section class="section">

@@ -1,7 +1,7 @@
 <?= css('assets/prism/prism.css') ?>
 
 <header class="h1">
-  <h1>View source: <?= $heading ?></h1>
+  <h1>View source: <?= esc($heading) ?></h1>
 </header>
 
 <div class="grid">
@@ -16,7 +16,7 @@
   <div class="column text" style="--columns: 9">
     <figure class="codeblock">
       <figcaption><?= $subheading ?></figcaption>
-      <pre><code class="language-<?= $language ?>"><?= $source ?></code></pre>
+      <pre><code class="language-<?= $language ?>"><?= esc($source) ?></code></pre>
     </figure>
   </div>
 </div>
