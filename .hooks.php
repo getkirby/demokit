@@ -34,15 +34,6 @@ return [
 			"public function license()\n	{return 'K3-DEMO';"
 		);
 
-		// always use mtime for F::modified()
-		// otherwise the detection of global media file breaks
-		// TODO: not needed in 3.6
-		$modifyFile(
-			'kirby/src/Toolkit/F.php',
-			'$modified = max([$mtime, $ctime]);',
-			'$modified = $mtime;'
-		);
-
 		// create a unique-ish build ID
 		$buildId = uniqid();
 		file_put_contents(__DIR__ . '/.id.php', "<?php\n\nreturn '$buildId';");
