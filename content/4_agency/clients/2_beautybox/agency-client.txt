@@ -2,18 +2,6 @@ Title: BeautyBox
 
 ----
 
-Clientid: 3
-
-----
-
-Contact: 
-
-----
-
-Vip: false
-
-----
-
 Link: https://beautybox.example.com
 
 ----
@@ -22,11 +10,20 @@ Email: beautybox@example.com
 
 ----
 
-Phone: 
+Contact:
+
+name: Peter
+email: peter@example.com
+phone: 1234 5678
 
 ----
 
-Address: 
+Address:
+
+street: Elmstreet 1
+zip: "56381"
+city: Hogwarts
+country: Middle Earth
 
 ----
 
@@ -34,7 +31,19 @@ Notes:
 
 ----
 
+Clientid: 3
+
+----
+
+Vip: false
+
+----
+
 Vatid: 
+
+----
+
+Phone: 
 
 ----
 
