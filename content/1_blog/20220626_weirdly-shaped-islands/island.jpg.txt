@@ -19,3 +19,7 @@ Link: https://unsplash.com/photos/zN7wRrxXjik
 ----
 
 Template: blog-article-image
+
+----
+
+Uuid: MramIlt073AyiyTv

@@ -6,9 +6,7 @@ Subheading: Our quest to the edge of nowhere
 
 ----
 
-Cover:
-
-- dark-forest.jpg
+Cover: - dark-forest.jpg
 
 ----
 
@@ -25,3 +23,7 @@ Author:
 ----
 
 Tags: universe, sky
+
+----
+
+Uuid: TB4YihCuVWuUjgTp

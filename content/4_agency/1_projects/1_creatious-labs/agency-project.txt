@@ -6,9 +6,7 @@ Category: Product Design
 
 ----
 
-Client:
-
-- agency/clients/beautybox
+Client: - agency/clients/beautybox
 
 ----
 
@@ -23,3 +21,7 @@ Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus 
 Aenean lacinia bibendum nulla sed consectetur. Aenean lacinia bibendum nulla sed consectetur. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas faucibus mollis interdum. Donec ullamcorper nulla non metus auctor fringilla.
 
 Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus. Aenean lacinia bibendum nulla sed consectetur.
+
+----
+
+Uuid: XIjHqXtH9ulA2EeN

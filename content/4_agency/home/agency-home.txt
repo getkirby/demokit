@@ -6,9 +6,7 @@ Heading: We are a digital product agency that focuses on strategy and design.
 
 ----
 
-Cover:
-
-- agency/company/agency-1.jpg
+Cover: - agency/company/agency-1.jpg
 
 ----
 
@@ -64,3 +62,7 @@ Contacttext: We would love to work with you, because that will probably earn us 
 ----
 
 Contactaddress: agency@example.com
+
+----
+
+Uuid: 6fX1fzF2j3Hqo9RQ

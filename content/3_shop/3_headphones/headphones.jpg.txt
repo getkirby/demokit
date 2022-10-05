@@ -19,3 +19,7 @@ Link:
 ----
 
 Template: shop-product-cover
+
+----
+
+Uuid: 1PMRD2pxpRx6U3i1

@@ -23,3 +23,7 @@ Template: restaurant-gallery-image
 ----
 
 Sort: 3
+
+----
+
+Uuid: N4K0BxqrX5GbJHhs
