@@ -2,18 +2,6 @@ Title: Orange Superfood
 
 ----
 
-Clientid: 4
-
-----
-
-Contact: 
-
-----
-
-Vip: false
-
-----
-
 Link: https://orange.example.com
 
 ----
@@ -22,7 +10,7 @@ Email: super.food@example.com
 
 ----
 
-Phone: 
+Contact: 
 
 ----
 
@@ -34,7 +22,19 @@ Notes:
 
 ----
 
+Clientid: 4
+
+----
+
+Vip: false
+
+----
+
 Vatid: 
+
+----
+
+Phone: 
 
 ----
 

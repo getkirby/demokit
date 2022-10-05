@@ -2,18 +2,6 @@ Title: BakeBakeLove
 
 ----
 
-Clientid: 2
-
-----
-
-Contact: 
-
-----
-
-Vip: false
-
-----
-
 Link: https://bakebakelove.example.com
 
 ----
@@ -22,11 +10,20 @@ Email: bakebakelove@example.com
 
 ----
 
-Phone: 
+Contact:
+
+name: Jennifer
+email: jennifer@example.com
+phone: 1234 5678
 
 ----
 
-Address: 
+Address:
+
+street: Sesamestreet 1
+zip: "1234"
+city: Gotham
+country: Narnia
 
 ----
 
@@ -34,7 +31,19 @@ Notes:
 
 ----
 
+Clientid: 2
+
+----
+
+Vip: false
+
+----
+
 Vatid: 
+
+----
+
+Phone: 
 
 ----
 
