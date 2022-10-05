@@ -3,3 +3,7 @@ Title: Shop
 ----
 
 Description: Create a custom store front with Kirby
+
+----
+
+Uuid: MLUvTQOUoFqufazp

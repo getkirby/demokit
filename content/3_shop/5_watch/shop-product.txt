@@ -23,3 +23,7 @@ Shipping: DHL standard, DHL express
 ----
 
 Summary: A watch without a face. No longer get distracted by the vague concept of time.
+
+----
+
+Uuid: F9tefKqRLrZ7QFr2

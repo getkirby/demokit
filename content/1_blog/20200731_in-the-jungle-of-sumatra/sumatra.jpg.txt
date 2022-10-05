@@ -1,1 +1,5 @@
 Template: blog-article-image
+
+----
+
+Uuid: Ub2B5ZA1r0i0biYS

@@ -6,9 +6,7 @@ Subheading:
 
 ----
 
-Cover:
-
-- island.jpg
+Cover: - island.jpg
 
 ----
 
@@ -20,10 +18,12 @@ Date: 2022-06-26
 
 ----
 
-Author:
-
-- zizNTfvL
+Author: - zizNTfvL
 
 ----
 
 Tags: island, nature, photography, ocean
+
+----
+
+Uuid: 098M8iZHYIrBtoua

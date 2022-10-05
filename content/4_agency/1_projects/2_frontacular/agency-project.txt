@@ -6,9 +6,7 @@ Category: Product Design
 
 ----
 
-Client:
-
-- agency/clients/dino-inc
+Client: - agency/clients/dino-inc
 
 ----
 
@@ -21,3 +19,7 @@ Text:
 Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna mollis ornare vel eu leo. Etiam porta sem malesuada magna mollis euismod. Sed posuere consectetur est at lobortis.
 
 Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id elit non mi porta gravida at eget metus. Donec sed odio dui. Vestibulum id ligula porta felis euismod semper.
+
+----
+
+Uuid: oPgW0pm14TCyiE43

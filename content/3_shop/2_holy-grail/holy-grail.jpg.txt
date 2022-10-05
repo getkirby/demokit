@@ -3,3 +3,7 @@ Sort: 1
 ----
 
 Template: shop-product-cover
+
+----
+
+Uuid: AsaTHxaNaU47Yf4G

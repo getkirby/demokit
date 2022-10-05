@@ -2,9 +2,7 @@ Title: Company
 
 ----
 
-Cover:
-
-- agency-3.jpg
+Cover: - agency-3.jpg
 
 ----
 
@@ -68,3 +66,7 @@ Values:
 ----
 
 Valuescolumns: 3
+
+----
+
+Uuid: h949tB3qnOo0IHh0

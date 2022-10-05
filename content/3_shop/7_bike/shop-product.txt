@@ -23,3 +23,7 @@ Shipping:
 ----
 
 Summary: The bike is so black and dark that you will hardly notice you are on a bike.
+
+----
+
+Uuid: xeG3wkl6T8DyZiva

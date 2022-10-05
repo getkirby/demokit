@@ -23,3 +23,7 @@ Shipping:
 ----
 
 Summary: It's a stool. We get them from IKEA and then pretend it's a design masterpiece.
+
+----
+
+Uuid: i6DCn81QZ4Q2xgcn

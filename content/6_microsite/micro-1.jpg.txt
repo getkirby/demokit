@@ -19,3 +19,7 @@ Link:
 ----
 
 Template: image
+
+----
+
+Uuid: y3c8TuQhVK2cPQdi
