@@ -7,14 +7,9 @@ class BlogArticlePage extends Page
         return $this->content()->cover()->toFile() ?? $this->image();
     }
 
-    public function date($format = null)
+    public function dateFormatted($format = null)
     {
         $format = $format ?? $this->parent()->dateFormat()->or(option('kirby.blog.date') ?? 'd M, Y');
         return parent::date()->toDate($format);
-    }
-
-    public function timestamp()
-    {
-        return parent::date()->toTimestamp();
     }
 }

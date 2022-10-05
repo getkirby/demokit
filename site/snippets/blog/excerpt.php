@@ -8,7 +8,7 @@
       </figure>
 
       <h2 class="blog-article-excerpt-title"><?= $article->title()->escape() ?></h2>
-      <time class="blog-article-excerpt-date" datetime="<?= esc($article->date('c'), 'attr') ?>"><?= esc($article->date()) ?></time>
+      <time class="blog-article-excerpt-date" datetime="<?= esc($article->dateFormatted('c'), 'attr') ?>"><?= esc($article->dateFormatted()) ?></time>
     </header>
     <?php if (($excerpt ?? true) !== false): ?>
     <div class="blog-article-excerpt-text">
