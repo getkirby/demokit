@@ -27,7 +27,7 @@
     </ul>
     <?php endif ?>
 
-    <time class="blog-article-date" datetime="<?= esc($page->date('c'), 'attr') ?>">Published on <?= esc($page->date()) ?></time>
+    <time class="blog-article-date" datetime="<?= esc($page->dateFormatted('c'), 'attr') ?>">Published on <?= esc($page->dateFormatted()) ?></time>
   </footer>
 
   <?php snippet('blog/prevnext') ?>

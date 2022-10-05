@@ -1,7 +1,7 @@
 type: pages
 headline: Notes
 parent: site.find("blog")
-info: "{{ page.date }}"
+info: "{{ page.dateFormatted }}"
 template: blog-article
 empty: No notes yet
-sortBy: timestamp desc
+sortBy: date desc
