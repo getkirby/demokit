@@ -1,7 +1,7 @@
 <?php
 
 return function () {
-    return blog()
+    return page('blog')
         ->children()
         ->listed()
         ->sortBy('date', 'desc');
