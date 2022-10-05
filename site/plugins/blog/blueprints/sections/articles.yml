@@ -1,3 +1,0 @@
-type: pages
-info: "{{ page.date.toDate('d.m.Y') }}"
-template: article
