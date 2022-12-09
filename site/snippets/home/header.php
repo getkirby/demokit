@@ -3,6 +3,7 @@
 <header class="header">
   <?php snippet('logo', ['section' => 'home']) ?>
   <nav class="menu">
+    <?php snippet('user') ?>
     <?php snippet('social') ?>
   </nav>
 </header>
