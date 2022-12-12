@@ -42,7 +42,9 @@
     An unexpected error occurred.
   </p>
   <p class="admin-advice">
-    Please let us know <a href="https://twitter.com/getkirby">on Twitter</a> or <a href="https://forum.getkirby.com">in the forum</a>
+    Please let us know <a href="https://mastodon.social/@getkirby">in the fediverse</a>,
+    <a href="https://chat.getkirby.com">on Discord</a> or
+    <a href="https://forum.getkirby.com">in the forum</a>
     with the URL of your instance and this error message so that we can fix this error. Thanks!
   </p>
 
