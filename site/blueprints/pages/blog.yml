@@ -56,10 +56,10 @@ tabs:
             width: 1/2
             icon: calendar
             placeholder: d M, Y
-          twitter:
-            label: Twitter name
-            type: text
-            icon: twitter
+          fediverse:
+            label: Fediverse URL
+            type: url
+            icon: mastodon
             width: 1/2
           instagram:
             label: Instagram name

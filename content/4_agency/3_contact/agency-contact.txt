@@ -52,8 +52,8 @@ Socialheading: On the web
 Social:
 
 -
-  platform: Twitter
-  link: https://twitter.com/agency
+  platform: Fediverse
+  link: https://example.com/@agency
 -
   platform: Instagram
   link: https://instagram.com/agency
