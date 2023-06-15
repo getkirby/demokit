@@ -36,9 +36,7 @@ columns:
             type: tel
       notes:
         label: Notes
-        type: textarea
-        size: medium
-        buttons: false
+        type: writer
       clientId:
         label: Client ID
         type: text

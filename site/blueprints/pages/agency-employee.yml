@@ -28,8 +28,7 @@ columns:
         multiple: false
       about:
         label: Bio
-        type: textarea
-        size: medium
+        type: writer
 
   sidebar:
     width: 1/3

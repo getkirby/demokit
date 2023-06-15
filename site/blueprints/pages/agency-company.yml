@@ -30,8 +30,7 @@ tabs:
           heading:
             type: text
           intro:
-            type: textarea
-            buttons: false
+            type: writer
 
       - width: 2/3
         sections:
@@ -84,7 +83,7 @@ tabs:
               heading:
                 type: text
               text:
-                type: textarea
+                type: writer
 
       - width: 1/3
         fields:

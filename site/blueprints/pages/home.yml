@@ -16,12 +16,10 @@ sections:
         width: 1/2
       panelText:
         label: Panel text
-        type: textarea
-        size: large
+        type: writer
         width: 1/2
       aboutText:
         label: About text
-        type: textarea
-        size: large
+        type: writer
         width: 1/2
   examples: sections/home/examples

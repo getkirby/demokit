@@ -29,8 +29,7 @@ columns:
             type: url
           text:
             label: Description
-            size: medium
-            type: textarea
+            type: writer
   - width: 1/3
     sections:
       cover:
