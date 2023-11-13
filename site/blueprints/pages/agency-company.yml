@@ -21,7 +21,7 @@ tabs:
             type: files
             layout: cards
             max: 1
-            size: large
+            size: full
             uploads:
               template: agency-image
             image:
@@ -46,6 +46,7 @@ tabs:
             extends: sections/agency/team
             status: listed
             layout: cards
+            size: small
       - width: 1/3
         fields:
           line1b:

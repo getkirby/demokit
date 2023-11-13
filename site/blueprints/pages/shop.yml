@@ -30,9 +30,6 @@ sections:
         value: €15.20
         info: +10.5%
         theme: positive
-      - label: Discount sales
-        value: €1,422
-        info: n/a
 
   products:
     type: pages

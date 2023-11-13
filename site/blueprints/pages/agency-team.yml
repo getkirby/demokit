@@ -20,7 +20,7 @@ columns:
         status: listed
         headline: On company page
         layout: cards
-        size: tiny
+        size: small
   - width: 1/3
     sections:
       drafts:

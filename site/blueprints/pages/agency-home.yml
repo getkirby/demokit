@@ -22,7 +22,7 @@ columns:
         type: files
         layout: cards
         query: kirby.page("agency/company").images
-        size: large
+        size: full
         uploads:
           parent: kirby.page("agency/company")
           template: agency-image
@@ -43,7 +43,7 @@ columns:
         query: kirby.collection("agency/projects")
         layout: cards
         info: "{{ page.category }}"
-        size: small
+        size: medium
         image:
           ratio: 4/3
           cover: true

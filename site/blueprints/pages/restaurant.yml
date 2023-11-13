@@ -16,7 +16,7 @@ columns:
         template: restaurant-cover-image
         layout: cards
         max: 1
-        size: huge
+        size: full
         image:
           ratio: 2/1
           cover: true
@@ -68,11 +68,10 @@ columns:
         type: files
         template: restaurant-gallery-image
         layout: cards
-        size: medium
+        size: huge
         image:
           ratio: 4/3
           cover: true
-
 
   - width: 1/2
     fields:

@@ -1,7 +1,7 @@
 type: pages
 headline: Photography
 parent: site.find("portfolio/projects")
-size: tiny
+size: small
 info: "{{ page.images.count }} image(s)"
 layout: cards
 template: portfolio-project
