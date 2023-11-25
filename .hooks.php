@@ -23,8 +23,6 @@ $modifyFile = function (string $path, string $search, string $replace): void
 	$contents = file_get_contents($path);
 	$contents = str_replace($search, $replace, $contents);
 
-	var_dump('<pre>' . $contents . '</pre>');
-
 	file_put_contents($path, $contents);
 };
 
