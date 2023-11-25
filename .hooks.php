@@ -22,16 +22,20 @@ $modifyFile = function (string $path, string $search, string $replace): void
 
 	$contents = file_get_contents($path);
 	$contents = str_replace($search, $replace, $contents);
+
+	var_dump('<pre>' . $contents . '</pre>');
+
 	file_put_contents($path, $contents);
 };
 
 return [
 	'build:after' => function () use ($modifyFile) {
+
 		// disable license check
 		$modifyFile(
-			'kirby/src/Cms/System.php',
-			"public function license()\n	{",
-			"public function license()\n	{return 'K3-DEMO';"
+			'kirby/src/Cms/License.php',
+			"public function status(): LicenseStatus\n	{",
+			"public function status(): LicenseStatus\n	{return LicenseStatus::Demo;"
 		);
 
 		// create a unique-ish build ID
