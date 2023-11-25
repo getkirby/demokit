@@ -8,7 +8,7 @@ A simple map & geolocation field, built on top of open-source services and Mapbo
 
 ## Overview
 
-> This plugin is completely free and published under the MIT license. However, if you are using it in a commercial project and want to help me keep up with maintenance, please consider [making a donation of your choice](https://www.paypal.me/sylvainjule) or purchasing your license(s) through [my affiliate link](https://a.paddle.com/v2/click/1129/36369?link=1170).
+> This plugin is completely free and published under the MIT license. However, if you are using it in a commercial project and want to help me keep up with maintenance, please consider [making a donation of your choice](https://www.paypal.me/sylvainjl) or purchasing your license(s) through [my affiliate link](https://a.paddle.com/v2/click/1129/36369?link=1170).
 
 - [1. Installation](#1-installation)
 - [2. Setup](#2-setup)
@@ -36,9 +36,11 @@ Alternatively, you can install it with composer: ```composer require sylvainjule
 
 ## 2. Setup
 
-Out of the box, the field is set to use open-source services both for geocoding (Nominatim) and tiles-rendering (Wikimedia), without any API-key requirements.
+Out of the box, the field is set to use open-source services both for geocoding (Nominatim) and tiles-rendering (Positron), without any API-key requirements.
 
 Keep in mind that **these services are bound by strict usage policies**, always double-check if your usage is compatible. Otherwise, please set-up the field to use Mapbox, see details below.
+
+You can also directly enter latitude / longitude coordinates and bypass the geolocation (in a format such as: `15.23456, -30.67890`).
 
 ```yaml
 mymap:
@@ -56,22 +58,22 @@ mymap:
 
 You can pick one of the 4 free tile servers included:
 
-1. `wikimedia` (default, [Terms of Use](https://foundation.wikimedia.org/wiki/Maps_Terms_of_Use))
+1. ~~`wikimedia` ([Terms of Use](https://foundation.wikimedia.org/wiki/Maps_Terms_of_Use))~~ → Public usage is now forbidden
 2. `openstreetmap` ([Terms of Use](https://wiki.openstreetmap.org/wiki/Tile_usage_policy))
-3. `positron` ([Terms of Use](https://carto.com/location-data-services/basemaps/))
-4. `voyager` ([Terms of Use](https://carto.com/location-data-services/basemaps/))
+3. `positron` (default, [Terms of Use](https://carto.com/legal/) [Under *Free Basemaps Terms of Service*])
+4. `voyager` ([Terms of Use](https://carto.com/legal/) [Under *Free Basemaps Terms of Service*])
 
 ```yaml
 mymap:
   type: locator
-  tiles: wikimedia
+  tiles: positron
 ```
 
 You can also set this globally in your installation's main `config.php`, then you won't have to configure it in every blueprint:
 
 ```php
 return array(
-    'sylvainjule.locator.tiles' => 'wikimedia',
+    'sylvainjule.locator.tiles' => 'positron',
 );
 ```
 
@@ -79,20 +81,18 @@ return array(
 
 ![tiles-mapbox-2](https://user-images.githubusercontent.com/14079751/48648037-2c542380-e9ee-11e8-916d-ca240a40bc20.jpg)
 
-1. `mapbox.outdoors` (default mapbox theme)
-2. `mapbox.streets`
-3. `mapbox.light`
-4. `mapbox.dark`
+1. ~~mapbox.outdoors~~ → `mapbox/outdoors-v11` (default mapbox theme)
+2. ~~mapbox.streets~~ → `mapbox/streets-v11`
+3. ~~mapbox.light~~ → `mapbox/light-v10`
+4. ~~mapbox.dark~~ → `mapbox/dark-v10`
 
 In case your usage doesn't fall into the above policies (or if you don't want to rely on those services), you can set-up the field to use Mapbox' tiles.
-
-Leaflet doesn't render vector-maps, therefore you will not be able to use custom-styles edited with Mapbox Studio, only the public Mapbox tile-layers (listed above).
 
 You will have to set both the `id` of the tiles you want to use and your mapbox `public key` in your installation's main `config.php`:
 
 ```php
 return array(
-    'sylvainjule.locator.mapbox.id'    => 'mapbox.outdoors',
+    'sylvainjule.locator.mapbox.id'    => 'mapbox/outdoors-v11',
     'sylvainjule.locator.mapbox.token' => 'pk.vdf561vf8...',
 );
 ```
@@ -206,7 +206,11 @@ mymap:
 
 #### 5.5. `display`
 
-The informations to be displayed in the panel. Note that it will only hide them from the panel view, they will still be stored (if available) in the .txt file. To be picked from `lat`, `lon`, `number`, `address`, `postcode`, `city` and `country`. Default includes them all.
+The informations to be displayed in the panel. Note that it will only hide them from the panel view, they will still be stored (if available) in the .txt file. To be picked from `lat`, `lon`, `number`, `address`, `postcode`, `city`, `region`, `country` and `countryCode`. Default includes them all but `countryCode`.
+
+If you are using Nominatim, the field also stores the OpenStreetMap ID under the `osm`  key, which you can also display by adding it to the list.
+
+If you don't want any information to show up, set it to `false`.
 
 ```yaml
 mymap:
@@ -218,7 +222,9 @@ mymap:
     - address
     - postcode
     - city
+    - region
     - country
+    - countryCode
 ```
 
 
@@ -247,12 +253,32 @@ mymap:
 
 #### 5.9. `marker`
 
-The color of the marker used, either `dark` or `light` (in case you are using `mapbox.dark` as your tile-layer). Default is `dark`.
+The color of the marker used, either `dark`, `light` or your own HEX value. Default is `dark`.
 
 ```yaml
 mymap:
   type: locator
   marker: dark
+```
+
+#### 5.10. `language`
+
+If this option is set with an [ISO 639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (en, fr, de, etc.), the geocoding service will return results in the requested language if available. Default is `false`.
+
+```yaml
+mymap:
+  type: locator
+  language: false # or 'de' | 'fr' | 'en' | …
+```
+
+#### 5.11. `dblclick`
+
+Whether a double click on the map should trigger a zoom (`zoom`) or add a marker / move the existing marker to the coordinates of the click event (`marker`). Default is `zoom`.
+
+```yaml
+mymap:
+  type: locator
+  dblclick: zoom # or 'marker'
 ```
 
 <br/>
@@ -275,6 +301,8 @@ return array(
     'sylvainjule.locator.autocomplete' => true,
     'sylvainjule.locator.liststyle'    => 'columns',
     'sylvainjule.locator.marker'       => 'dark',
+    'sylvainjule.locator.language'     => false,
+    'sylvainjule.locator.dblclick'     => 'zoom',
 );
 ```
 
@@ -295,7 +323,10 @@ Potential stored keys are:
 - `number` (Street number)
 - `address` (Street / road / place)
 - `city` (city / village)
+- `region` (region / state)
 - `country` (country)
+- `countryCode` (country code)
+- `osm` (OpenStreetMap ID, if using Nominatim)
 
 
 It is possible that the found location doesn't have one of those keys, which will therefore not be saved. It is important to always check if the key exists, and if it's not empty. Here's one way to do it:
@@ -340,7 +371,7 @@ else {
 
 **Services:**
 - [Openstreetmap](https://www.openstreetmap.org/#map=5/46.449/2.210), [Wikimedia](https://maps.wikimedia.org), [Carto](https://carto.com/) or [Mapbox](https://www.mapbox.com/) as tile servers.
-- [Nominatim](https://nominatim.openstreetmap.org/) or [Mapbox Search](https://www.mapbox.com/search/) as an geocoding API
+- [Nominatim](https://nominatim.openstreetmap.org/) or [Mapbox Search](https://www.mapbox.com/search/) as a geocoding API
 - [Leaflet](https://leafletjs.com/) as a mapping library.
 
 **K2 fields:**

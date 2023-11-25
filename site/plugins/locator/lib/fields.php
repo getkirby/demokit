@@ -36,6 +36,12 @@ return array(
             'autoSaveZoom' => function($autoSaveZoom = null) {
                 return $autoSaveZoom ?? option('sylvainjule.locator.autoSaveZoom');
             },
+            'language' => function($language = null) {
+                return $language ?? option('sylvainjule.locator.language');
+            },
+            'dblclick' => function($dblclick = null) {
+                return $dblclick ?? option('sylvainjule.locator.dblclick');
+            },
             'center' => function($center = []) {
             	return array(
             		'lat'     => $center['lat'] ?? option('sylvainjule.locator.center.lat'),
@@ -47,13 +53,22 @@ return array(
             },
 		),
 		'computed' => array(
-			'markerUrl' => function() {
-				$tint = in_array($this->marker, ['light', 'dark']) ? $this->marker : option('sylvainjule.locator.marker');
-				return kirby()->url('media') . '/plugins/sylvainjule/locator/images/marker-icon-'. $tint .'.png';
+			'markerColor' => function() {
+				return $this->marker ?? option('sylvainjule.locator.marker');
 			},
 			'mapbox' => function() {
+                $idSwap = [
+                    'mapbox.outdoors' => 'mapbox/outdoors-v11',
+                    'mapbox.streets'  => 'mapbox/streets-v11',
+                    'mapbox.light'    => 'mapbox/light-v10',
+                    'mapbox.dark'     => 'mapbox/dark-v10',
+                ];
+
+                $setId = option('sylvainjule.locator.mapbox.id');
+                $id    = array_key_exists($setId, $idSwap) ? $idSwap[$setId] : $setId;
+
 				return array(
-					'id'    => option('sylvainjule.locator.mapbox.id'),
+					'id'    => $id,
                 	'token' => option('sylvainjule.locator.mapbox.token', ''),
 				);
 			}
