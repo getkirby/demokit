@@ -24,5 +24,5 @@ It's not recommended to use this Demokit "as is" in production. Please, follow o
 
 ---
 
-© 2009-2022 Bastian Allgeier  
+© 2009-2023 Content Folder GmbH & Co. KG  
 [getkirby.com](https://getkirby.com) · [License agreement](https://getkirby.com/license)
