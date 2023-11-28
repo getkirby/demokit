@@ -45,6 +45,6 @@ tabs:
             extends: sections/shop/image
             template: shop-product-cover
             min: 1
-            size: medium
+            size: large
             image:
               ratio: 1/1

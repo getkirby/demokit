@@ -61,7 +61,7 @@ columns:
         max: 1
         layout: cards
         template: agency-client-logo
-        size: medium
+        size: large
         image:
           back: white
           ratio: 1/1
