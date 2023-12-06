@@ -1,5 +1,5 @@
-title: Default Page
-
+title: Error Page
+icon: 🚨
 fields:
   text:
     label: Error message
