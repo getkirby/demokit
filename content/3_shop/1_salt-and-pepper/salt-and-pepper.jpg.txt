@@ -23,3 +23,7 @@ Template: shop-product-cover
 ----
 
 Uuid: LeFjPGxuhKr9EQW0
+
+----
+
+Focus: 42.3% 58.7%

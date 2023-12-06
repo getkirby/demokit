@@ -18,6 +18,14 @@ Shipping:
 
 ----
 
+Colors:
+
+- 
+  color: '#000000'
+  name: Black Hole Sun
+
+----
+
 Summary: Just some ordinary bluetooth headphones. They probably don't connect well and the sound quality is crap.
 
 ----

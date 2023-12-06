@@ -1,3 +1,23 @@
+Caption: 
+
+----
+
+Alt: 
+
+----
+
+Photographer: 
+
+----
+
+License: 
+
+----
+
+Link: 
+
+----
+
 Sort: 1
 
 ----
@@ -7,3 +27,7 @@ Template: shop-product-cover
 ----
 
 Uuid: lCMcZWQC3JrztnYz
+
+----
+
+Focus: 49.9% 53.2%

@@ -6,7 +6,27 @@ Link: https://dino.inc
 
 ----
 
+Email: dino@example.com
+
+----
+
+Contact: 
+
+----
+
 Notes: 
+
+----
+
+Clientid: 
+
+----
+
+Vip: false
+
+----
+
+Vatid: 
 
 ----
 

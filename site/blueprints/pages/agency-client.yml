@@ -59,10 +59,15 @@ columns:
       files:
         headline: Logo
         max: 1
-        layout: cards
+        layout: cardlets
         template: agency-client-logo
-        size: medium
+        size: small
+        info: "{{ file.dimensions }}"
         image:
           back: white
           ratio: 1/1
+      projects:
+        create: false
+        type: pages
+        query: page.projects
 

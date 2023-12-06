@@ -18,6 +18,14 @@ Shipping: DHL overnight
 
 ----
 
+Colors:
+
+- 
+  color: '#005fa9'
+  name: Blue
+
+----
+
 Summary: 
 
 ----

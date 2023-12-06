@@ -18,6 +18,17 @@ Shipping:
 
 ----
 
+Colors:
+
+- 
+  color: '#000000'
+  name: Black
+- 
+  color: '#c1905e'
+  name: Brown
+
+----
+
 Summary: 
 
 ----

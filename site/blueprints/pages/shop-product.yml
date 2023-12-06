@@ -5,6 +5,14 @@ status:
   draft: true
   listed: true
 
+create:
+  title:
+    label: Product name
+  fields:
+    - price
+    - brand
+  redirect: false
+
 tabs:
   product:
     columns:
@@ -23,7 +31,8 @@ tabs:
           link:
             type: url
           shipping:
-            type: toggles
+            type: checkboxes
+            columns: 3
             options:
               - value: DHL standard
                 icon: box
@@ -31,6 +40,16 @@ tabs:
                 icon: bolt
               - value: DHL overnight
                 icon: moon
+
+          colors:
+            label: Available colors
+            type: structure
+            fields:
+              color:
+                type: color
+              name:
+                label: Color Name
+                type: text
           summary:
             type: writer
             inline: true

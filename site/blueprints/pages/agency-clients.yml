@@ -16,3 +16,11 @@ sections:
   clients:
     extends: sections/agency/clients
     layout: table
+    columns:
+      email:
+        type: email
+      projects:
+        type: text
+        value: "{{ page.projects.count }}"
+        width: 6rem
+        align: center

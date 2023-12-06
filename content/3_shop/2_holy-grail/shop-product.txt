@@ -18,6 +18,14 @@ Shipping:
 
 ----
 
+Colors:
+
+- 
+  color: '#ff765e'
+  name: Swim Vest Red
+
+----
+
 Summary: 
 
 ----

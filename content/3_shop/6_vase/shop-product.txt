@@ -18,6 +18,17 @@ Shipping:
 
 ----
 
+Colors:
+
+- 
+  color: '#a08080'
+  name: Lively Gray
+- 
+  color: '#9c6bd3'
+  name: Purple Rain
+
+----
+
 Summary: It's a vase family. Aren't they cute.
 
 ----

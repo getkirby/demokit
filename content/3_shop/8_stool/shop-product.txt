@@ -2,10 +2,6 @@ Title: Stool
 
 ----
 
-Description: Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
-
-----
-
 Price: 39
 
 ----
@@ -22,7 +18,19 @@ Shipping:
 
 ----
 
+Colors:
+
+- 
+  color: '#d6d0c0'
+  name: Wood
+
+----
+
 Summary: It's a stool. We get them from IKEA and then pretend it's a design masterpiece.
+
+----
+
+Description: Donec sed odio dui. Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
 
 ----
 
