@@ -51,18 +51,22 @@ Socialheading: On the web
 
 Social:
 
--
+- 
   platform: Fediverse
   link: https://example.com/@agency
--
+- 
   platform: Instagram
   link: https://instagram.com/agency
--
+- 
   platform: Pinterest
   link: https://pinterest.com/agency
--
+- 
   platform: LinkedIn
   link: https://linkedin.com/agency
+
+----
+
+Form: [{"content":{"name":"email","required":"true","width":"1/1","label":"Email","placeholder":"mail@example.com"},"id":"8c61dace-6bba-44e4-b746-9bad3ed5832a","isHidden":false,"type":"email-field"},{"content":{"name":"first-name","required":"false","width":"1/2","label":"First name","placeholder":""},"id":"b8b5e062-3ae2-4565-95de-6836a7990aa0","isHidden":false,"type":"text-field"},{"content":{"name":"last-name","required":"false","width":"1/2","label":"Last name","placeholder":""},"id":"0bd54158-2db8-47ed-bf4c-c46f6c88f7fc","isHidden":false,"type":"text-field"},{"content":{"name":"message","required":"true","width":"1/1","label":"Your message","placeholder":"Write something nice …"},"id":"7b70739b-fd09-411b-b002-93fd2541f9b3","isHidden":false,"type":"textarea-field"}]
 
 ----
 
