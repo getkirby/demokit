@@ -27,3 +27,7 @@ Sort: 2
 ----
 
 Uuid: aQ5UDAtRL7DBU7hs
+
+----
+
+Focus: 51.7% 16.9%

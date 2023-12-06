@@ -27,3 +27,7 @@ Sort: 3
 ----
 
 Uuid: anfsjDjBOQjmEnmx
+
+----
+
+Focus: 50.6% 25.0%

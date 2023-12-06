@@ -23,3 +23,7 @@ Template: portfolio-project-image
 ----
 
 Uuid: 8EmVAH7D7Hz9hfrH
+
+----
+
+Focus: 89.4% 94.5%

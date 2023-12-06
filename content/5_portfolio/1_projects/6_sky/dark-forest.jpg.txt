@@ -27,3 +27,7 @@ Sort: 4
 ----
 
 Uuid: LGPRaXt3eAwm9fnq
+
+----
+
+Focus: 53.7% 74.4%

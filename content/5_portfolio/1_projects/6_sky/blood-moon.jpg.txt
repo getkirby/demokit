@@ -27,3 +27,7 @@ Sort: 1
 ----
 
 Uuid: qb4MxDC0D7RD9oA2
+
+----
+
+Focus: 49.5% 51.4%
