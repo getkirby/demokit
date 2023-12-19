@@ -22,8 +22,8 @@
     "source": "https://github.com/getkirby/demokit"
   },
   "require": {
-    "php": ">=8.0.0 <8.3.0",
-    "getkirby/cms": "^3.9"
+    "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+    "getkirby/cms": "^4.0"
   },
   "config": {
     "allow-plugins": {
