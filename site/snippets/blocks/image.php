@@ -27,7 +27,7 @@ $attrs = attr([
   'class'         => $class,
   'data-contain'  => $contain,
   'data-lightbox' => $lightbox,
-  'href'          => $link->or($src),
+  'href'          => $link->or($src)->toUrl(),
   'style'         => '--w:' . $w . '; --h:' . $h,
 ]);
 
