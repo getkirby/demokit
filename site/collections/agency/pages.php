@@ -1,5 +1,5 @@
 <?php
 
 return function () {
-    return page('agency')->children()->listed();
+	return page('agency')->children()->listed();
 };

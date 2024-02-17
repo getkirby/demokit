@@ -2,8 +2,8 @@
 
 class MicrositePage extends Page
 {
-    public function cover()
-    {
-        return $this->image();
-    }
+	public function cover()
+	{
+		return $this->image();
+	}
 }

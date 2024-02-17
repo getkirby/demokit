@@ -1,5 +1,5 @@
 <?php
 
 return function () {
-    return page('portfolio/projects')->children()->listed();
+	return page('portfolio/projects')->children()->listed();
 };

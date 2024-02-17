@@ -2,6 +2,6 @@
 
 return [
   'thumbs' => [
-    'driver' => 'gd',
+	'driver' => 'gd',
   ],
 ];

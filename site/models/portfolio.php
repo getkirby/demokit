@@ -2,8 +2,8 @@
 
 class PortfolioPage extends Page
 {
-    public function cover()
-    {
-        return $this->find('projects')->children()->first()->image();
-    }
+	public function cover()
+	{
+		return $this->find('projects')->children()->first()->image();
+	}
 }

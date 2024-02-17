@@ -1,8 +1,8 @@
 <?php
 
 return function () {
-    return page('blog')
-        ->children()
-        ->listed()
-        ->sortBy('date', 'desc');
+	return page('blog')
+		->children()
+		->listed()
+		->sortBy('date', 'desc');
 };

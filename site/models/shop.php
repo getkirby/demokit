@@ -2,8 +2,8 @@
 
 class ShopPage extends Page
 {
-    public function cover()
-    {
-        return $this->children()->first()->image();
-    }
+	public function cover()
+	{
+		return $this->children()->first()->image();
+	}
 }

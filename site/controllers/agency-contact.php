@@ -1,9 +1,7 @@
 <?php
 
 return function ($page) {
-
-    return [
-        'location' => $page->location()->yaml(),
-    ];
-
+	return [
+		'location' => $page->location()->yaml(),
+	];
 };
