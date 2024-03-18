@@ -17,7 +17,7 @@ columns:
         template: portfolio-profile-image
         info: "{{ file.dimensions }}"
         max: 1
-        size: medium
+        size: large
         image:
           ratio: 5/4
           cover: true

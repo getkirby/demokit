@@ -39,7 +39,7 @@ columns:
         layout: cards
         info: "{{ file.dimensions }}"
         max: 1
-        size: medium
+        size: large
         template: agency-employee-image
         image:
           ratio: 1/1

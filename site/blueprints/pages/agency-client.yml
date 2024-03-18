@@ -62,7 +62,6 @@ columns:
         max: 1
         layout: cardlets
         template: agency-client-logo
-        size: small
         info: "{{ file.dimensions }}"
         image:
           back: white
