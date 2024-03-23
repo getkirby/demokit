@@ -10,14 +10,6 @@ return [
 	'panel' => [
 		'css' => 'assets/css/panel.css'
 	],
-	'kirby' => [
-		'blog' => [
-			'date' => 'd M, Y',
-			'pagination' => [
-				'limit' => 6
-			]
-		]
-	],
 	'thumbs' => [
 		'driver' => 'im',
 	],
@@ -54,5 +46,7 @@ return [
 			}
 		]
 	],
-	'sylvainjule.locator.tiles' => 'voyager',
+	'sylvainjule.locator' => [
+		'tiles' => 'voyager',
+	],
 ];

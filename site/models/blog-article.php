@@ -9,7 +9,7 @@ class BlogArticlePage extends Page
 
 	public function dateFormatted($format = null)
 	{
-		$format = $format ?? $this->parent()->dateFormat()->or(option('kirby.blog.date') ?? 'd M, Y');
+		$format = $format ?? $this->parent()->dateFormat()->or('d M, Y');
 		return parent::date()->toDate($format);
 	}
 }

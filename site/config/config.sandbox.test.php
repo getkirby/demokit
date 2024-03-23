@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'thumbs' => [
-	'driver' => 'gd',
-  ],
+	'thumbs' => [
+		'driver' => 'gd',
+	]
 ];
