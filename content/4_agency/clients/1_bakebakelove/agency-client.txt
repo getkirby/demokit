@@ -18,15 +18,6 @@ phone: 1234 5678
 
 ----
 
-Address:
-
-street: Sesamestreet 1
-zip: "1234"
-city: Gotham
-country: Narnia
-
-----
-
 Notes: 
 
 ----
@@ -40,6 +31,15 @@ Vip: false
 ----
 
 Vatid: 
+
+----
+
+Address:
+
+street: Sesamestreet 1
+zip: "1234"
+city: Gotham
+country: Narnia
 
 ----
 

@@ -18,12 +18,8 @@ Link:
 
 ----
 
-Template: agency-project-image
+Template: agency-employee-image
 
 ----
 
-Sort: 3
-
-----
-
-Uuid: mVDVLblpoEfnocSG
+Uuid: nfCbCcSWDUKyTWQR

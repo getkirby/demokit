@@ -2,6 +2,10 @@ Title: I'm running out of ideas for fake articles
 
 ----
 
+Subheading: 
+
+----
+
 Cover: 
 
 ----
@@ -14,7 +18,7 @@ Date: 2022-06-26
 
 ----
 
-Author: - zizNTfvL
+Author: - user://zizNTfvL
 
 ----
 

@@ -2,18 +2,6 @@ Title: SpaceCube
 
 ----
 
-Clientid: 12
-
-----
-
-Contact: 
-
-----
-
-Vip: false
-
-----
-
 Link: https://spacecube.example.com
 
 ----
@@ -22,11 +10,7 @@ Email: spacecube@example.com
 
 ----
 
-Phone: 
-
-----
-
-Address: 
+Contact: 
 
 ----
 
@@ -34,7 +18,23 @@ Notes:
 
 ----
 
+Clientid: 12
+
+----
+
+Vip: false
+
+----
+
 Vatid: 
+
+----
+
+Phone: 
+
+----
+
+Address: 
 
 ----
 

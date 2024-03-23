@@ -14,27 +14,11 @@ Aboutheading: About this demo
 
 ----
 
-Paneltext:
-
-Email:
-**demo@getkirby.com**
-
-Password:
-**demodemo**
+Paneltext: <p>Email:<br><strong>demo@getkirby.com</strong></p><p>Password:<br><strong>demodemo</strong></p>
 
 ----
 
-Abouttext:
-
-We've collected a set of example sites that show the flexibility of Kirby. Everything you see in this demo can be customized and extended to fit your own project. 
-
-The source code for this demo can be found on GitHub: <https://github.com/getkirby/demokit>
-
-Learn how Kirby works with our extensive docs: 
-<https://getkirby.com/docs>
-
-Become a part of Kirby's community: 
-<https://forum.getkirby.com>
+Abouttext: <p>We've collected a set of example sites that show the flexibility of Kirby. Everything you see in this demo can be customized and extended to fit your own project.</p><p>The source code for this demo can be found on GitHub: <u><a href="https://github.com/getkirby/demokit">https://github.com/getkirby/demokit</a></u></p><p>Learn how Kirby works with our extensive docs:<br><u><a href="https://getkirby.com/docs">https://getkirby.com/docs</a></u></p><p>Become a part of Kirby's community:<br><u><a href="https://forum.getkirby.com">https://forum.getkirby.com</a></u></p>
 
 ----
 

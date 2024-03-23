@@ -14,10 +14,6 @@ Contact:
 
 ----
 
-Address: 
-
-----
-
 Notes: 
 
 ----
@@ -31,6 +27,10 @@ Vip: false
 ----
 
 Vatid: 
+
+----
+
+Address: 
 
 ----
 

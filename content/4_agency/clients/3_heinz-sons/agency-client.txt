@@ -2,18 +2,6 @@ Title: Heinz & Sons
 
 ----
 
-Clientid: 9
-
-----
-
-Contact: 
-
-----
-
-Vip: false
-
-----
-
 Link: https://heinz-and-sons.example.com
 
 ----
@@ -22,11 +10,7 @@ Email: heinz@example.com
 
 ----
 
-Phone: 
-
-----
-
-Address: 
+Contact: 
 
 ----
 
@@ -34,7 +18,23 @@ Notes:
 
 ----
 
+Clientid: 9
+
+----
+
+Vip: false
+
+----
+
 Vatid: 
+
+----
+
+Phone: 
+
+----
+
+Address: 
 
 ----
 

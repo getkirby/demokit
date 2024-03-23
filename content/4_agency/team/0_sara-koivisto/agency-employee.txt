@@ -18,11 +18,7 @@ Account:
 
 ----
 
-About:
-
-Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia bibendum nulla sed consectetur.
-
-Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo.
+About: <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia bibendum nulla sed consectetur.</p><p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec sed odio dui. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
 
 ----
 
