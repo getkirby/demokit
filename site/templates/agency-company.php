@@ -12,7 +12,7 @@
 
 <header class="intro">
 	<h1><?= $page->heading()->escape() ?></h1>
-	<?= $page->intro()->kt() ?>
+	<?= $page->intro()->permalinksToUrls() ?>
 </header>
 
 <hr>
@@ -47,7 +47,7 @@
 	<?php foreach ($page->values()->toStructure() as $value): ?>
 	<div class="column text" style="--columns: <?= (12 / $page->valuesColumns()->or(3)->toInt()) ?>">
 		<h2><?= $value->heading()->escape() ?></h2>
-		<?= $value->text()->kt() ?>
+		<?= $value->text()->permalinksToUrls() ?>
 	</div>
 	<?php endforeach ?>
 </div>

@@ -4,7 +4,7 @@
 
 	<div class="grid">
 		<div class="column text" style="--columns: 4">
-			<?= $page->text() ?>
+			<?= $page->text()->permalinksToUrls() ?>
 		</div>
 
 		<div class="column" style="--columns: 8">

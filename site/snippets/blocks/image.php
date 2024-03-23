@@ -41,7 +41,7 @@ $attrs = attr([
 
 	<?php if ($caption->isNotEmpty()): ?>
 	<figcaption class="img-caption">
-		<?= $caption ?>
+		<?= $caption->permalinksToUrls() ?>
 	</figcaption>
 	<?php endif ?>
 </figure>

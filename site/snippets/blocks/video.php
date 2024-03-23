@@ -5,7 +5,7 @@
 		<?= video($block->url()) ?>
 	</span>
 	<?php if ($block->caption()->isNotEmpty()): ?>
-	<figcaption class="video-caption"><?= $block->caption() ?></figcaption>
+	<figcaption class="video-caption"><?= $block->caption()->permalinksToUrls() ?></figcaption>
 	<?php endif ?>
 </figure>
 <?php endif ?>

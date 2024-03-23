@@ -10,13 +10,13 @@
 		<div class="column panel box" style="--columns: 6">
 			<div class="text margin-l">
 				<h2><?= $page->panelHeading()->escape() ?></h2>
-				<?= $page->panelText()->kt() ?>
+				<?= $page->panelText()->permalinksToUrls() ?>
 			</div>
 			<a class="cta" href="<?= url('panel') ?>">Open the Panel</a>
 		</div>
 		<div class="column text" style="--columns: 6">
 			<h2><?= $page->aboutHeading()->escape() ?></h2>
-			<?= $page->aboutText()->kt() ?>
+			<?= $page->aboutText()->permalinksToUrls() ?>
 		</div>
 	</div>
 </section>
