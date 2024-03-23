@@ -27,7 +27,7 @@ $modifyFile = function (string $path, string $search, string $replace): void
 };
 
 return [
-	'build:after' => function () use ($modifyFile) {
+	'build:after' => function ($demo, $buildId) use ($modifyFile) {
 
 		// disable license check
 		$modifyFile(
@@ -36,9 +36,8 @@ return [
 			"public function status(): LicenseStatus\n	{return LicenseStatus::Demo;"
 		);
 
-		// create a unique-ish build ID
-		$buildId = uniqid();
-		file_put_contents(__DIR__ . '/.id.php', "<?php\n\nreturn '$buildId';");
+		// keep the build ID for later reference in the instances
+		file_put_contents(__DIR__ . '/.id.php', "<?php\n\nreturn " . var_export($buildId) . ';');
 
 		// create a new media folder for this build and copy the assets over
 		$root = dirname(__DIR__, 2) . '/public/_media/' . $buildId;
@@ -66,16 +65,6 @@ return [
 				$file->publish();
 			}
 		}
-	},
-
-	// TODO: Can be removed when nginx is used
-	'create:after' => function ($demo, $instance) use ($modifyFile) {
-		// set RewriteBase
-		$modifyFile(
-			'.htaccess',
-			'# RewriteBase /mysite',
-			'RewriteBase /' . $instance->name()
-		);
 	},
 
 	'cleanup' => function () {
