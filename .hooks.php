@@ -37,7 +37,7 @@ return [
 		);
 
 		// keep the build ID for later reference in the instances
-		file_put_contents(__DIR__ . '/.id.php', "<?php\n\nreturn " . var_export($buildId) . ';');
+		file_put_contents(__DIR__ . '/.id.php', "<?php\n\nreturn " . var_export($buildId, true) . ';');
 
 		// create a new media folder for this build and copy the assets over
 		$root = dirname(__DIR__, 2) . '/public/_media/' . $buildId;
