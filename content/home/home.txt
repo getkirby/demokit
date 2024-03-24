@@ -2,7 +2,7 @@ Title: Home
 
 ----
 
-Heading: Welcome to the Kirby Demo
+Heading: Welcome to your personal Kirby Demo
 
 ----
 
