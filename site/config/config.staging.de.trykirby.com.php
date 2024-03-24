@@ -2,6 +2,6 @@
 
 return [
 	'keycdn' => [
-		'domain' => 'https://trykirbystaging-1653.kxcdn.com'
+		'domain' => 'https://assets-staging.trykirby.com'
 	]
 ];
