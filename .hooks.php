@@ -1,7 +1,9 @@
 <?php
 
 use Kirby\Cms\App;
-use Kirby\Toolkit\Dir;
+use Kirby\Filesystem\Dir;
+use Kirby\Filesystem\F;
+use Kirby\Panel\Assets;
 
 /**
  * Replaces specific file contents in a file
@@ -39,9 +41,11 @@ return [
 		// keep the build ID for later reference in the instances
 		file_put_contents(__DIR__ . '/.id.php', "<?php\n\nreturn " . var_export($buildId, true) . ';');
 
-		// create a new media folder for this build and copy the assets over
+		// create a new media folder for this build
 		$root = dirname(__DIR__, 2) . '/public/_media/' . $buildId;
 		Dir::make($root);
+
+		// copy over frontend assets
 		exec(
 			'cp -r ' .
 			escapeshellarg(__DIR__ . '/assets') . ' ' .
@@ -53,13 +57,19 @@ return [
 			throw new Exception('Could not copy assets, got return value ' . $return);
 		}
 
-		// build a media folder with all content images
+		// copy over favicon
+		F::copy(__DIR__ . '/favicon.ico', $root . '/favicon.ico');
+
+		// build a media folder with the Panel assets and all content images
 		Dir::make($root . '/media');
 		$kirby = new App(['roots' => [
 			'index'   => __DIR__,
 			'media'   => $root . '/media',
 			'plugins' => '/dev/null'
 		]]);
+
+		(new Assets())->link();
+
 		foreach ($kirby->site()->index() as $page) {
 			foreach ($page->files() as $file) {
 				$file->publish();
