@@ -29,13 +29,10 @@ if (class_exists(Demo::class) === true) {
 	}
 
 	// ensure that the request came from the correct visitor;
-	// check by IP address but fall back to the session if the IP address has changed;
-	// the pullzone CDN can always access the files
-	$cdnKey = $demo->config()->custom()['cdn-key'] ?? null;
+	// check by IP address but fall back to the session if the IP address has changed
 	if (
 		$instance->ipHash() !== Instances::ipHash() &&
-		$kirby->session()->get('demo.creator') !== true &&
-		$kirby->request()->header('X-Pull') !== $cdnKey
+		$kirby->session()->get('demo.creator') !== true
 	) {
 		http_response_code(403);
 		require __DIR__ . '/etc/fail_ip.php';
