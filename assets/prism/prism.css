@@ -1,4 +1,4 @@
-/* PrismJS 1.19.0
+/* PrismJS 1.29.0
 https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+json+markup-templating+php+yaml */
 /**
  * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
@@ -8,7 +8,7 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
 
 code[class*="language-"],
 pre[class*="language-"] {
-  color: var(--color-code-white);
+	color: var(--color-code-white);
 	font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 	font-size: 1em;
 	text-align: left;
@@ -39,12 +39,12 @@ pre[class*="language-"] {
 /* -----  Syntax Highlighting (Prism.js) ------------------------------------ */
 
 .token.punctuation {
-  color: var(--color-code-light-grey);
+	color: var(--color-code-light-grey);
 }
 
 .token.comment,
 .token.doctype {
-  color: var(--color-code-comment);
+	color: var(--color-code-comment);
 }
 
 .token.tag,
@@ -56,7 +56,7 @@ pre[class*="language-"] {
 .token.kirbytag-bracket,
 .token.prolog,
 .token.delimiter {
-  color: var(--color-code-red);
+	color: var(--color-code-red);
 }
 
 .token.constant,
@@ -69,36 +69,36 @@ pre[class*="language-"] {
 .token.entity,
 .token.bold,
 .token.bold > .punctuation {
-  color: var(--color-code-orange);
+	color: var(--color-code-orange);
 }
 
 .token.keyword,
 .token.italic,
 .token.italic > .punctuation {
-  color: var(--color-code-purple);
+	color: var(--color-code-purple);
 }
 
 .token.function {
-  color: var(--color-code-blue);
+	color: var(--color-code-blue);
 }
 
 .token.operator,
 .token.title {
-  color: var(--color-code-aqua);
+	color: var(--color-code-aqua);
 }
 
 .token.string,
 .token.attr-value,
 .token.attr-value .punctuation,
 .token.list.punctuation {
-  color: var(--color-code-green);
+	color: var(--color-code-green);
 }
 
 .token.scope,
 .token.class-name,
 .token.property,
 .token.url {
-  color: var(--color-code-yellow);
+	color: var(--color-code-yellow);
 }
 
 /**
@@ -107,30 +107,30 @@ pre[class*="language-"] {
 .token.title,
 .token.kirbytag-bracket,
 .token.list.punctuation /* 1 */ {
-  font-weight: 700;
+	font-weight: 700;
 }
 
 .token.title .punctuation {
-  color: inherit;
+	color: inherit;
 }
 
 /**
  * 1. Markdown bold text
  */
 .token.bold /* 1 */ {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 .token.italic {
-  font-style: italic;
+	font-style: italic;
 }
 
 .codeblock {
-  background: var(--color-black);
+	background: var(--color-black);
 }
 .codeblock figcaption {
-  color: var(--color-code-white);
-  padding: .5rem 1rem;
-  font-family: var(--font-family-mono);
-  border-bottom: 1px solid #333;
+	color: var(--color-code-white);
+	padding: .5rem 1rem;
+	font-family: var(--font-family-mono);
+	border-bottom: 1px solid #333;
 }
