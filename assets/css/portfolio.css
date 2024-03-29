@@ -1,17 +1,17 @@
 .portfolio-project-gallery {
-  line-height: 0;
-  columns: 1;
-  column-gap: 1.5rem;
+	line-height: 0;
+	columns: 1;
+	column-gap: 1.5rem;
 }
 
 .portfolio-project-gallery li {
-  display: block;
-  margin-bottom: 1.5rem;
-  break-inside: avoid;
+	display: block;
+	margin-bottom: 1.5rem;
+	break-inside: avoid;
 }
 
 @media screen and (min-width: 60rem) {
-  .portfolio-project-gallery {
-    columns: 2;
-  }
+	.portfolio-project-gallery {
+		columns: 2;
+	}
 }
