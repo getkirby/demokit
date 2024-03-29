@@ -10,7 +10,7 @@
 		<div class="column box" style="--columns: 6">
 			<div class="text margin-m">
 				<h2><?= $page->panelHeading()->escape() ?></h2>
-				<a href="<?= url('panel') ?>"><?= $page->image('panel.png') ?></a>
+				<a href="<?= url('panel') ?>"><?= $page->image('panel.png')->asset()->html(['class' => 'rounded']) ?></a>
 			</div>
 			<a class="cta" href="<?= url('panel') ?>">Open the Panel</a>
 		</div>
