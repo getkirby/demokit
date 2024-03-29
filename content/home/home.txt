@@ -6,15 +6,11 @@ Heading: Welcome to your personal Kirby Demo
 
 ----
 
-Panelheading: Panel login
+Panelheading: Explore the Kirby editing experience
 
 ----
 
 Aboutheading: About this demo
-
-----
-
-Paneltext: <p>Email:<br><strong>demo@getkirby.com</strong></p><p>Password:<br><strong>demodemo</strong></p>
 
 ----
 

@@ -156,16 +156,6 @@ small {
   content: "→";
   padding-right: .5rem;
 }
-.logo-dropdown-box-login {
-  background: #222;
-  padding: .5rem .75rem;
-  margin-bottom: .75rem;
-}
-.logo-dropdown-box-login small {
-  color: #999;
-  font-size: .875rem;
-  display: block;
-}
 .logo-dropdown-box footer {
   border-top: 1px solid #555;
   padding: .75rem 1rem;
@@ -345,6 +335,11 @@ hr {
 .box {
   background: var(--color-light);
   padding: 1.5rem;
+}
+@media screen and (min-width: 60rem) {
+  .transparent-box {
+    padding-top: 1.5rem;
+  }
 }
 
 .video,

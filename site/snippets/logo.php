@@ -30,10 +30,6 @@
 					<li><a href="<?= $page->panel()->url() ?>">Edit this page</a></li>
 				</ul>
 				<?php else: ?>
-				<p class="logo-dropdown-box-login">
-					<small>Email:</small> demo@getkirby.com<br>
-					<small>Password:</small> demodemo
-				</p>
 				<ul>
 					<li><a href="<?= url('panel') ?>">Login</a></li>
 				</ul>
