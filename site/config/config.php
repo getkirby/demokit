@@ -13,6 +13,11 @@ return [
 	'thumbs' => [
 		'driver' => 'im',
 	],
+	'updates' => [
+		'plugins' => [
+			'getkirby/*'  => false
+		]
+	],
 	'routes' => [
 		[
 			'pattern' => 'blog/feed',
