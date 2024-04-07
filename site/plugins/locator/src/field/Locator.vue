@@ -6,66 +6,59 @@
     >
         <!-- Edit button -->
         <template slot="options">
-            <k-button
-                v-if="valueExists && filledStatus == 'closed'"
-                :id="_uid"
-                icon="edit"
-                @click="toggle('open')"
-            >
-                {{ $t("edit") }}
-            </k-button>
-            <k-button
-                v-if="valueExists && filledStatus == 'open'"
-                :id="_uid"
-                icon="trash"
-                @click="resetValue"
-            >
-                {{ $t("locator.reset") }}
-            </k-button>
-            <k-button
-                v-if="valueExists && filledStatus == 'open'"
-                :id="_uid"
-                icon="collapse"
-                @click="toggle('closed')"
-            >
-                {{ $t("locator.collapse") }}
-            </k-button>
+            <div class="k-button-group">
+                <k-button
+                    v-if="valueExists && filledStatus == 'closed'"
+                    :id="_uid"
+                    icon="edit"
+                    @click="toggle('open')"
+                    size="xs"
+                    variant="filled"
+                >
+                    {{ $t("edit") }}
+                </k-button>
+                <k-button
+                    v-if="valueExists && filledStatus == 'open'"
+                    :id="_uid"
+                    icon="trash"
+                    @click="resetValue"
+                    size="xs"
+                    variant="filled"
+                >
+                    {{ $t("locator.reset") }}
+                </k-button>
+                <k-button
+                    v-if="valueExists && filledStatus == 'open'"
+                    :id="_uid"
+                    icon="collapse"
+                    @click="toggle('closed')"
+                    size="xs"
+                    variant="filled"
+                >
+                    {{ $t("locator.collapse") }}
+                </k-button>
+            </div>
         </template>
         <div class="k-input k-locator-input" data-theme="field">
-            <input
-                ref="input"
-                v-model="location"
-                class="k-text-input"
-                :placeholder="$t('locator.placeholder')"
-                @input="onLocationInput"
-            />
-            <button
-                :class="[{ disabled: !location.length }]"
-                @click="getCoordinates"
-            >
-                <svg><use href="#icon-locator-locate" /></svg>
-                {{ $t("locator.locate") }}
-            </button>
-            <k-dropdown-content v-if="autocomplete" ref="dropdown">
-                <k-dropdown-item
-                    v-for="(option, index) in dropdownOptions"
-                    :key="index"
-                    @click="select(option)"
-                    @keydown.native.enter.prevent="select(option)"
-                    @keydown.native.space.prevent="select(option)"
+            <form class="k-locator-input-inner">
+                <k-text-input 
+                    ref="input"
+                    v-model="location"
+                    :placeholder="$t('locator.placeholder')"
+                    @input="onLocationInput" />
+                <button
+                    :class="[{ disabled: !location.length }]"
+                    type="submit"
+                    @click="getCoordinates"
                 >
-                    <span v-html="option.name" />
-                    <span class="k-location-type" v-html="option.type" />
-                </k-dropdown-item>
-            </k-dropdown-content>
+                    <svg><use href="#icon-locator-locate" /></svg>
+                    {{ $t("locator.locate") }}
+                </button>
+            </form>
+            <k-picklist-dropdown v-if="autocomplete" ref="dropdown" :class="['k-locator-dropdown', {'hidden': !dropdownOptions.length && (!location.length || forceHideDropdown)}]" :options="dropdownOptions" :search="false" @input="select" />
         </div>
-        <k-dialog ref="dialog" @close="error = ''">
+        <k-dialog ref="dialog" class="k-locator-error-dialog" @close="error = ''" :cancelButton="$t('close')" :submitButton="false">
             <k-text>{{ error }}</k-text>
-            <k-button-group slot="footer">
-                <k-button icon="check" @click="$refs.dialog.close()">
-                    {{ $t("confirm") }}
-                </k-button>
-            </k-button-group>
         </k-dialog>
 
         <div class="k-locator-container">
@@ -110,6 +103,7 @@ export default {
             dropdownOptions: [],
             filledStatus: "closed",
             dragged: false,
+            forceHideDropdown: false,
         };
     },
     props: {
@@ -278,26 +272,29 @@ export default {
                             // make them the dropdown options
                             this.dropdownOptions = suggestions.map((el) => {
                                 return {
-                                    name: el.place_name,
-                                    type: this.capitalize(el.place_type[0]),
+                                    text: el.place_name,
+                                    value: el.place_name,
                                 };
                             });
-                            this.$refs.dropdown.open();
+                            this.$refs.dropdown.open()
                         } else {
-                            this.$refs.dropdown.close();
+                            this.dropdownOptions = []
                         }
                     })
                     .catch((error) => {
                         this.error = this.$t("locator.error");
                         this.$refs.dialog.open();
-                        this.$refs.dropdown.close();
+                        this.dropdownOptions = []
                     });
-            } else {
-                this.$refs.dropdown.close();
+            } 
+            else {
+                this.dropdownOptions = []
             }
         },
-        select(option) {
-            this.location = option.name;
+        select(values) {
+            this.location = values[0];
+            this.dropdownOptions = []
+            this.forceHideDropdown = true
             this.getCoordinates();
         },
         translatedTitle(key) {
@@ -462,6 +459,7 @@ export default {
 
             if (this.isLatLon(this.location)) {
                 this.setCoordinates(this.location);
+                this.forceHideDropdown = false
                 return true;
             }
 
@@ -488,10 +486,12 @@ export default {
                         }
 
                         this.$emit("input", this.value);
+                        this.forceHideDropdown = false
                     })
                     .catch((error) => {
                         this.error = this.$t("locator.error");
                         this.$refs.dialog.open();
+                        this.forceHideDropdown = false
                     });
             }
         },
