@@ -96,11 +96,11 @@ Street: 127th Sesame Street
 
 ----
 
-Zip: 129001
+Zip: 12901
 
 ----
 
-City: Pattsburgh
+City: Plattsburgh, NY
 
 ----
 

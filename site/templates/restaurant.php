@@ -74,7 +74,7 @@
 	<div class="grid">
 		<div class="column" style="--columns: 8">
 			<h2 class="h2">Where to find us</h2>
-			<?php snippet('map') ?>
+			<?php snippet('map', $location) ?>
 		</div>
 		<div class="column text" style="--columns: 4">
 			<h2><?= $page->restaurant()->escape() ?></h2>
