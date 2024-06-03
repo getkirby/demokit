@@ -85,9 +85,10 @@ return [
 		$ownPath  = $path . '/' . $ownName;
 		$ownMTime = filemtime($ownPath);
 
-		// find all current media directories except ours
+		// find all current media directories except ours and the
+		// ping endpoint for uptime monitoring
 		$dirs = glob($path . '/*');
-		$dirs = array_diff($dirs, [$ownPath]);
+		$dirs = array_diff($dirs, [$ownPath, 'ping']);
 
 		// delete each remaining directory if more than three hours older than ours
 		// (= if no instance can be still using the media directory)
