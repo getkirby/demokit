@@ -2,6 +2,7 @@
 
 return [
 	'debug' => false,
+	'yaml.handler' => 'symfony',
 	'content' => [
 		// make the media tokens independent from the instance
 		// otherwise the global _media CDN directory won't work
