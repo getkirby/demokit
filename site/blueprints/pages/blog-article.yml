@@ -38,6 +38,7 @@ columns:
             time: false
             display: "DD.MM.YYYY"
             default: now
+            required: true
           author:
             type: users
           tags:
