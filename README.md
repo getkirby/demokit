@@ -21,7 +21,7 @@ It's not recommended to use this Demokit "as is" in production. Please, follow o
 -   **[Forum](https://forum.getkirby.com)** – Whenever you get stuck, don't hesitate to reach out for questions and support.
 -   **[Discord](https://chat.getkirby.com)** – Hang out and meet the community.
 -   **[Mastodon](https://mastodon.social/@getkirby)** – Spread the word.
--   **[Bluesky](https://bsky.app/profile/getkirby.com)** – Spread the word.
+-   **[Bluesky](https://bsky.app/profile/getkirby.com)** – Tell a friend.
 
 ---
 
