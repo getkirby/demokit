@@ -3,6 +3,7 @@
 use Kirby\Cms\App;
 use Kirby\Filesystem\Dir;
 use Kirby\Filesystem\F;
+use Kirby\Http\Remote;
 use Kirby\Panel\Assets;
 
 /**
@@ -106,6 +107,17 @@ return [
 	},
 
 	'status' => function (): ?string {
+		// verify that the current media folder is reachable
+		// (relevant for servers except zone1 as they rely on the single CDN pullzone)
+		$buildId = require __DIR__ . '/.id.php';
+		$url     = 'https://assets.trykirby.com/_media/' . $buildId . '/assets/css/index.css';
+		$code    = Remote::get($url)->code();
+
+		if ($code !== 200) {
+			return 'WARN:demokit:media-code-' . $code;
+		}
+
+		// verify that old media folders were cleaned up
 		$path = dirname(__DIR__, 2) . '/public/_media';
 		$dirs = glob($path . '/*');
 
