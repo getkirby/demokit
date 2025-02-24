@@ -30,7 +30,6 @@ $modifyFile = function (string $path, string $search, string $replace): void
 
 return [
 	'build:after' => function ($demo, $buildId) use ($modifyFile) {
-
 		// disable license check
 		$modifyFile(
 			'kirby/src/Cms/License.php',
@@ -81,7 +80,7 @@ return [
 		$path = dirname(__DIR__, 2) . '/public/_media';
 
 		// find out our what our own media directory is
-		$ownName  = require(__DIR__ . '/.id.php');
+		$ownName  = require __DIR__ . '/.id.php';
 		$ownPath  = $path . '/' . $ownName;
 		$ownMTime = filemtime($ownPath);
 
