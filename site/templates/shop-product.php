@@ -21,7 +21,7 @@
 					<a href="<?= $product->url() ?>">
 						<figure>
 							<span class="img">
-								<?= $product->image()->crop(800) ?>
+								<?= $product->image()?->crop(800) ?>
 							</span>
 							<figcaption class="img-caption">
 								<p><?= $product->title()->escape() ?></p>
