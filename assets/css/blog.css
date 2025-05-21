@@ -39,6 +39,7 @@
 	padding: .5rem 1rem;
 	display: block;
 	background: var(--color-light);
+	border-radius: var(--rounded);
 }
 .blog-article-tags a:hover {
 	background: var(--color-black);

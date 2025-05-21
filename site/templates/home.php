@@ -7,14 +7,14 @@
 
 <section class="section">
 	<div class="grid">
-		<div class="column box" style="--columns: 6">
+		<div class="column" style="--columns: 6">
 			<div class="text margin-m">
 				<h2><?= $page->panelHeading()->escape() ?></h2>
 				<a href="<?= url('panel') ?>"><?= $page->image('panel.png')->asset()->html(['class' => 'rounded']) ?></a>
 			</div>
 			<a class="cta" href="<?= url('panel') ?>">Open the Panel</a>
 		</div>
-		<div class="column text transparent-box" style="--columns: 6">
+		<div class="column text" style="--columns: 6">
 			<h2><?= $page->aboutHeading()->escape() ?></h2>
 			<?= $page->aboutText()->permalinksToUrls() ?>
 		</div>

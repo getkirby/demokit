@@ -6,7 +6,7 @@
 
 :root {
 	--padding: 1.5rem;
-	--rounded: 0.25rem;
+	--rounded: 0.5rem;
 	--color-black: #000;
 	--color-white: #fff;
 	--color-grey: #777;
@@ -42,7 +42,7 @@ img {
 }
 body {
 	padding: var(--padding);
-	max-width: 70rem;
+	max-width: 80rem;
 	margin: 0 auto;
 }
 li {
@@ -90,6 +90,10 @@ small {
 .logo summary svg {
 	margin-right: .75rem;
 }
+.logo summary svg {
+	width: 1.25rem;
+	height: 1.25rem;
+}
 .logo summary::-webkit-details-marker {
 	display: none;
 }
@@ -107,6 +111,7 @@ small {
 	color: var(--color-white);
 	max-width: 25rem;
 	box-shadow: rgba(0,0,0, .1) 0 5px 10px;
+	border-radius: var(--rounded);
 }
 .logo-dropdown-box header {
 	display: flex;
@@ -122,6 +127,10 @@ small {
 
 .killer-button {
 	padding: .75rem 1rem;
+}
+.killer-button svg {
+	width: 1.25rem;
+	height: 1.25rem;
 }
 .killer-button svg * {
 	fill: #fff;
@@ -181,12 +190,17 @@ small {
 	text-decoration: underline;
 }
 
+
 .social {
 	display: flex;
 	padding: 0 .5rem;
 }
 .social a {
 	padding: 1rem .5rem;
+}
+.social svg {
+	width: 1.25rem;
+	height: 1.25rem;
 }
 
 .section {
