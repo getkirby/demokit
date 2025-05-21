@@ -5,6 +5,7 @@
 }
 
 :root {
+	color-scheme: light dark;
 	--padding: 1.5rem;
 	--rounded: 0.5rem;
 	--color-black: #000;
@@ -14,6 +15,12 @@
 	--color-text: var(--color-black);
 	--color-text-grey: var(--color-grey);
 	--color-background: var(--color-white);
+	--color-border: var(--color-light);
+	--color-dropdown-background: var(--color-black);
+	--color-dropdown-border: #444;
+	--color-dropdown-text: var(--color-white);
+	--color-button-background: var(--color-black);
+	--color-button-text: var(--color-white);
 	--color-code-light-grey:  #cacbd1;
 	--color-code-comment:     #a9aaad;
 	--color-code-white:       #c5c9c6;
@@ -27,6 +34,21 @@
 	--font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	--font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-background: var(--color-black);
+		--color-light: #222;
+		--color-text: var(--color-white);
+		--color-text-grey: #aaa;
+		--color-dropdown-background: var(--color-white);
+		--color-dropdown-text: var(--color-black);
+		--color-dropdown-border: #ddd;
+		--color-button-background: var(--color-white);
+		--color-button-text: var(--color-black);
+	}
+}
+
 
 .rounded {
 	border-radius: var(--rounded);
@@ -107,17 +129,16 @@ small {
 	z-index: 1;
 	display: flex;
 	flex-direction: column;
-	background: var(--color-black);
-	color: var(--color-white);
+	background: var(--color-dropdown-background);
+	color: var(--color-dropdown-text);
 	max-width: 25rem;
 	box-shadow: rgba(0,0,0, .1) 0 5px 10px;
 	border-radius: var(--rounded);
 }
 .logo-dropdown-box header {
 	display: flex;
-	border-bottom: 1px solid #555;
+	border-bottom: 1px solid var(--color-dropdown-border);
 	justify-content: space-between;
-	color: #fff;
 }
 .logo-dropdown-box header a {
 	display: block;
@@ -133,7 +154,7 @@ small {
 	height: 1.25rem;
 }
 .killer-button svg * {
-	fill: #fff;
+	fill: currentColor;
 }
 
 .logo-dropdown-box-content {
@@ -171,11 +192,11 @@ small {
 	padding-right: .5rem;
 }
 .logo-dropdown-box footer {
-	border-top: 1px solid #555;
+	border-top: 1px solid var(--color-dropdown-border);
 	padding: .75rem 1rem;
 	line-height: 1.5em;
 	margin-top: .5rem;
-	color: #999;
+	color: var(--color-dropdown-text);
 	font-size: .875rem;
 }
 
@@ -188,6 +209,7 @@ small {
 }
 .menu a[aria-current] {
 	text-decoration: underline;
+	text-underline-offset: .25rem;
 }
 
 
@@ -238,6 +260,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .text a {
 	text-decoration: underline;
+	text-underline-offset: .25rem;
 }
 .text :first-child {
 	margin-top: 0;
@@ -343,8 +366,8 @@ hr {
 }
 
 .cta {
-	background: var(--color-black);
-	color: var(--color-white);
+	background: var(--color-button-background);
+	color: var(--color-button-text);
 	display: inline-flex;
 	justify-content: center;
 	padding: .5rem 1.5rem;

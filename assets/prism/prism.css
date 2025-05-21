@@ -127,6 +127,9 @@ pre[class*="language-"] {
 
 .codeblock {
 	background: var(--color-black);
+	border: 1px solid light-dark(transparent, #333);
+	border-radius: var(--rounded);
+	overflow: hidden;
 }
 .codeblock figcaption {
 	color: var(--color-code-white);
