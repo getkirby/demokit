@@ -18,10 +18,10 @@ trait SiteActions
 	/**
 	 * Commits a site action, by following these steps
 	 *
-	 * 1. checks the action rules
-	 * 2. sends the before hook
+	 * 1. applies the `before` hook
+	 * 2. checks the action rules
 	 * 3. commits the store action
-	 * 4. sends the after hook
+	 * 4. applies the `after` hook
 	 * 5. returns the result
 	 */
 	protected function commit(
@@ -29,19 +29,12 @@ trait SiteActions
 		array $arguments,
 		Closure $callback
 	): mixed {
-		$old            = $this->hardcopy();
-		$kirby          = $this->kirby();
-		$argumentValues = array_values($arguments);
+		$commit = new ModelCommit(
+			model: $this,
+			action: $action
+		);
 
-		$this->rules()->$action(...$argumentValues);
-		$kirby->trigger('site.' . $action . ':before', $arguments);
-
-		$result = $callback(...$argumentValues);
-
-		$kirby->trigger('site.' . $action . ':after', ['newSite' => $result, 'oldSite' => $old]);
-
-		$kirby->cache('pages')->flush();
-		return $result;
+		return $commit->call($arguments, $callback);
 	}
 
 	/**
@@ -76,14 +69,13 @@ trait SiteActions
 	 */
 	public function createChild(array $props): Page
 	{
-		$props = array_merge($props, [
+		return Page::create([
+			...$props,
 			'url'    => null,
 			'num'    => null,
 			'parent' => null,
 			'site'   => $this,
 		]);
-
-		return Page::create($props);
 	}
 
 	/**

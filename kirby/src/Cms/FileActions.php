@@ -3,10 +3,12 @@
 namespace Kirby\Cms;
 
 use Closure;
+use Kirby\Content\ImmutableMemoryStorage;
+use Kirby\Content\MemoryStorage;
+use Kirby\Content\VersionCache;
 use Kirby\Exception\InvalidArgumentException;
 use Kirby\Exception\LogicException;
 use Kirby\Filesystem\F;
-use Kirby\Form\Form;
 use Kirby\Uuid\Uuid;
 use Kirby\Uuid\Uuids;
 
@@ -25,13 +27,6 @@ trait FileActions
 		File $file,
 		string|null $extension = null
 	): File {
-		if (
-			$extension === null ||
-			$extension === $file->extension()
-		) {
-			return $file;
-		}
-
 		return $file->changeName($file->name(), false, $extension);
 	}
 
@@ -76,18 +71,20 @@ trait FileActions
 			}
 
 			if ($newFile->exists() === true) {
-				throw new LogicException('The new file exists and cannot be overwritten');
+				throw new LogicException(
+					message: 'The new file exists and cannot be overwritten'
+				);
 			}
 
 			// rename the main file
 			F::move($oldFile->root(), $newFile->root());
 
+			// hard reset for the version cache
+			// to avoid broken/overlapping file references
+			VersionCache::$cache = [];
+
 			// move the content storage versions
-			foreach ($oldFile->storage()->all() as $version => $lang) {
-				$content = $oldFile->storage()->read($version, $lang);
-				$oldFile->storage()->delete($version, $lang);
-				$newFile->storage()->create($version, $lang, $content);
-			}
+			$oldFile->storage()->moveAll(to: $newFile->storage());
 
 			// update collections
 			$newFile->parent()->files()->remove($oldFile->id());
@@ -132,16 +129,6 @@ trait FileActions
 			// convert to new template/blueprint incl. content
 			$file = $oldFile->convertTo($template);
 
-			// update template, prefer unset over writing `default`
-			if ($template === 'default') {
-				$template = null;
-			}
-
-			$file = $file->update(
-				['template' => $template],
-				'default'
-			);
-
 			// resize the file if configured by new blueprint
 			$create = $file->blueprint()->create();
 			$file   = $file->manipulate($create);
@@ -153,10 +140,10 @@ trait FileActions
 	/**
 	 * Commits a file action, by following these steps
 	 *
-	 * 1. checks the action rules
-	 * 2. sends the before hook
+	 * 1. applies the `before` hook
+	 * 2. checks the action rules
 	 * 3. commits the store action
-	 * 4. sends the after hook
+	 * 4. applies the `after` hook
 	 * 5. returns the result
 	 */
 	protected function commit(
@@ -164,25 +151,12 @@ trait FileActions
 		array $arguments,
 		Closure $callback
 	): mixed {
-		$old            = $this->hardcopy();
-		$kirby          = $this->kirby();
-		$argumentValues = array_values($arguments);
+		$commit = new ModelCommit(
+			model: $this,
+			action: $action
+		);
 
-		$this->rules()->$action(...$argumentValues);
-		$kirby->trigger('file.' . $action . ':before', $arguments);
-
-		$result = $callback(...$argumentValues);
-
-		$argumentsAfter = match ($action) {
-			'create' => ['file' => $result],
-			'delete' => ['status' => $result, 'file' => $old],
-			default  => ['newFile' => $result, 'oldFile' => $old]
-		};
-
-		$kirby->trigger('file.' . $action . ':after', $argumentsAfter);
-
-		$kirby->cache('pages')->flush();
-		return $result;
+		return $commit->call($arguments, $callback);
 	}
 
 	/**
@@ -192,16 +166,13 @@ trait FileActions
 	public function copy(Page $page): static
 	{
 		F::copy($this->root(), $page->root() . '/' . $this->filename());
-		$copy = $page->clone()->file($this->filename());
 
-		foreach ($this->storage()->all() as $version => $lang) {
-			$content = $this->storage()->read($version, $lang);
-			$copy->storage()->create($version, $lang, $content);
-		}
+		$copy = new static([
+			'parent'   => $page,
+			'filename' => $this->filename(),
+		]);
 
-		// ensure the content is re-read after copying it
-		// @todo find a more elegant way
-		$copy = $page->clone()->file($this->filename());
+		$this->storage()->copyAll(to: $copy->storage());
 
 		// overwrite with new UUID (remove old, add new)
 		if (Uuids::enabled() === true) {
@@ -221,51 +192,56 @@ trait FileActions
 	 * @throws \Kirby\Exception\InvalidArgumentException
 	 * @throws \Kirby\Exception\LogicException
 	 */
-	public static function create(array $props, bool $move = false): File
+	public static function create(array $props, bool $move = false): static
 	{
-		if (isset($props['source'], $props['parent']) === false) {
-			throw new InvalidArgumentException('Please provide the "source" and "parent" props for the File');
-		}
-
-		// prefer the filename from the props
-		$props['filename'] = F::safeName($props['filename'] ?? basename($props['source']));
-
-		$props['model'] = strtolower($props['template'] ?? 'default');
+		$props = static::normalizeProps($props);
 
 		// create the basic file and a test upload object
-		$file = static::factory($props);
+		$file = File::factory([
+			...$props,
+			'content'      => null,
+			'translations' => null,
+		]);
+
 		$upload = $file->asset($props['source']);
 
-		// gather content
-		$content = $props['content'] ?? [];
+		// merge the content with the defaults
+		$props['content'] = [
+			...$file->createDefaultContent(),
+			...$props['content'],
+		];
+
+		// reuse the existing content if the uploaded file
+		// is identical to an existing file
+		if ($file->exists() === true) {
+			$existing = $file->parent()->file($file->filename());
+
+			if (
+				$file->sha1() === $upload->sha1() &&
+				$file->template() === $existing->template()
+			) {
+				// read the content of the existing file and use it
+				$props['content'] = $existing->content()->toArray();
+			}
+		}
 
 		// make sure that a UUID gets generated
 		// and added to content right away
-		if (
-			Uuids::enabled() === true &&
-			empty($content['uuid']) === true
-		) {
-			// sets the current uuid if it is the exact same file
-			if ($file->exists() === true) {
-				$existing = $file->parent()->file($file->filename());
-
-				if (
-					$file->sha1() === $upload->sha1() &&
-					$file->template() === $existing->template()
-				) {
-					// use existing content data if it is the exact same file
-					$content = $existing->content()->toArray();
-				}
-			}
-
-			$content['uuid'] ??= Uuid::generate();
+		if (Uuids::enabled() === true) {
+			$props['content']['uuid'] ??= Uuid::generate();
 		}
 
-		// create a form for the file
-		$form = Form::for($file, ['values' => $content]);
+		// keep the initial storage class
+		$storage = $file->storage()::class;
+
+		// make sure that the temporary page is stored in memory
+		$file->changeStorage(MemoryStorage::class);
 
 		// inject the content
-		$file = $file->clone(['content' => $form->strings(true)]);
+		$file->setContent($props['content']);
+
+		// inject the translations
+		$file->setTranslations($props['translations'] ?? null);
 
 		// if the format is different from the original,
 		// we need to already rename it so that the correct file rules
@@ -274,7 +250,7 @@ trait FileActions
 
 		// run the hook
 		$arguments = compact('file', 'upload');
-		return $file->commit('create', $arguments, function ($file, $upload) use ($create, $move) {
+		return $file->commit('create', $arguments, function ($file, $upload) use ($create, $move, $storage) {
 			// remove all public versions, lock and clear UUID cache
 			$file->unpublish();
 
@@ -283,21 +259,18 @@ trait FileActions
 
 			// overwrite the original
 			if (F::$method($upload->root(), $file->root(), true) !== true) {
-				throw new LogicException('The file could not be created');
+				// @codeCoverageIgnoreStart
+				throw new LogicException(
+					message: 'The file could not be created'
+				);
+				// @codeCoverageIgnoreEnd
 			}
 
 			// resize the file on upload if configured
 			$file = $file->manipulate($create);
 
 			// store the content if necessary
-			// (always create files in the default language)
-			$file->save(
-				$file->content()->toArray(),
-				$file->kirby()->defaultLanguage()?->code()
-			);
-
-			// add the file to the list of siblings
-			$file->siblings()->append($file->id(), $file);
+			$file->changeStorage($storage);
 
 			// return a fresh clone
 			return $file->clone();
@@ -311,17 +284,23 @@ trait FileActions
 	public function delete(): bool
 	{
 		return $this->commit('delete', ['file' => $this], function ($file) {
-			// remove all public versions, lock and clear UUID cache
-			$file->unpublish();
+			$old = $file->clone();
 
-			foreach ($file->storage()->all() as $version => $lang) {
-				$file->storage()->delete($version, $lang);
-			}
+			// keep the content in iummtable memory storage
+			// to still have access to it in after hooks
+			$file->changeStorage(ImmutableMemoryStorage::class);
 
-			F::remove($file->root());
+			// clear UUID cache
+			$file->uuid()?->clear();
 
-			// remove the file from the sibling collection
-			$file->parent()->files()->remove($file);
+			// remove all public versions and clear the UUID cache
+			$old->unpublish();
+
+			// delete all versions
+			$old->versions()->delete();
+
+			// delete the file from disk
+			F::remove($old->root());
 
 			return true;
 		});
@@ -348,6 +327,31 @@ trait FileActions
 		}
 
 		return $file;
+	}
+
+	protected static function normalizeProps(array $props): array
+	{
+		if (isset($props['source'], $props['parent']) === false) {
+			throw new InvalidArgumentException(
+				message: 'Please provide the "source" and "parent" props for the File'
+			);
+		}
+
+		$content  = $props['content']  ?? [];
+		$template = $props['template'] ?? 'default';
+
+		// prefer the filename from the props
+		$filename   = $props['filename'] ?? null;
+		$filename ??= basename($props['source']);
+		$filename   = F::safeName($props['filename']);
+
+		return [
+			...$props,
+			'content'  => $content,
+			'filename' => $filename,
+			'model'    => $props['model'] ?? $template,
+			'template' => $template,
+		];
 	}
 
 	/**
@@ -390,7 +394,9 @@ trait FileActions
 
 			// overwrite the original
 			if (F::$method($upload->root(), $file->root(), true) !== true) {
-				throw new LogicException('The file could not be created');
+				throw new LogicException(
+					message: 'The file could not be created'
+				);
 			}
 
 			// apply the resizing/crop options from the blueprint
@@ -400,23 +406,6 @@ trait FileActions
 			// return a fresh clone
 			return $file->clone();
 		});
-	}
-
-	/**
-	 * Stores the content on disk
-	 * @internal
-	 */
-	public function save(
-		array|null $data = null,
-		string|null $languageCode = null,
-		bool $overwrite = false
-	): static {
-		$file = parent::save($data, $languageCode, $overwrite);
-
-		// update model in siblings collection
-		$file->parent()->files()->set($file->id(), $file);
-
-		return $file;
 	}
 
 	/**
@@ -430,9 +419,6 @@ trait FileActions
 		Media::unpublish($this->parent()->mediaRoot(), $this);
 
 		if ($onlyMedia !== true) {
-			// remove the lock
-			$this->lock()?->remove();
-
 			// clear UUID cache
 			$this->uuid()?->clear();
 		}

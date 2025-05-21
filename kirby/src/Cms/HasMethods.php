@@ -24,16 +24,17 @@ trait HasMethods
 	/**
 	 * Calls a registered method class with the
 	 * passed arguments
-	 * @internal
 	 *
 	 * @throws \Kirby\Exception\BadMethodCallException
 	 */
-	public function callMethod(string $method, array $args = []): mixed
+	protected function callMethod(string $method, array $args = []): mixed
 	{
 		$closure = $this->getMethod($method);
 
 		if ($closure === null) {
-			throw new BadMethodCallException('The method ' . $method . ' does not exist');
+			throw new BadMethodCallException(
+				message: 'The method ' . $method . ' does not exist'
+			);
 		}
 
 		return $closure->call($this, ...$args);
@@ -41,9 +42,8 @@ trait HasMethods
 
 	/**
 	 * Checks if the object has a registered method
-	 * @internal
 	 */
-	public function hasMethod(string $method): bool
+	protected function hasMethod(string $method): bool
 	{
 		return $this->getMethod($method) !== null;
 	}
