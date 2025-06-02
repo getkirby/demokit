@@ -17,10 +17,8 @@
 		const savedTheme = localStorage.getItem('theme');
 		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 		
-		// Only set data-theme if there's a saved preference
-		if (savedTheme) {
-			document.documentElement.setAttribute('data-theme', savedTheme);
-		}
+		// Set theme based on saved preference or system preference
+		document.documentElement.setAttribute('data-theme', savedTheme || (prefersDark ? 'dark' : 'light'));
 	</script>
 </head>
 <body>
