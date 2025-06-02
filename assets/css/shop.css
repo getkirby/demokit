@@ -12,7 +12,7 @@
 	padding-top: .5rem;
 }
 .shop-products figcaption span {
-	color: var(--color-text-grey);
+	color: var(--color-text-dimmed);
 }
 @media screen and (min-width: 60rem) {
 	.shop-products li:first-child {
@@ -25,6 +25,6 @@
 }
 .shop-product-price {
 	font-size: 1.25rem;
-	color: var(--color-text-grey);
+	color: var(--color-text-dimmed);
 	margin-bottom: 1.5rem;
 }

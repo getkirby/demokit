@@ -12,8 +12,9 @@
 	--color-white: #fff;
 	--color-grey: #777;
 	--color-light: #efefef;
-	--color-text: var(--color-black);
-	--color-text-grey: var(--color-grey);
+	--color-text: hsl(0, 0%, 20%);
+	--color-text-dimmed: hsl(0, 0%, 40%);
+	--color-text-highlight: hsl(0, 0%, 0%);
 	--color-background: var(--color-white);
 	--color-border: var(--color-light);
 	--color-dropdown-background: var(--color-black);
@@ -39,28 +40,14 @@
 [data-theme="dark"] {
 	--color-background: var(--color-black);
 	--color-light: #222;
-	--color-text: var(--color-white);
-	--color-text-grey: #aaa;
+	--color-text: hsl(0, 0%, 80%);
+	--color-text-dimmed: hsl(0, 0%, 60%);
+	--color-text-highlight: hsl(0, 0%, 100%);
 	--color-dropdown-background: var(--color-white);
 	--color-dropdown-text: var(--color-black);
 	--color-dropdown-border: #ddd;
 	--color-button-background: var(--color-white);
 	--color-button-text: var(--color-black);
-}
-
-/* Only apply system preference when no manual theme is set */
-@media (prefers-color-scheme: dark) {
-	:root:not([data-theme]) {
-		--color-background: var(--color-black);
-		--color-light: #222;
-		--color-text: var(--color-white);
-		--color-text-grey: #aaa;
-		--color-dropdown-background: var(--color-white);
-		--color-dropdown-text: var(--color-black);
-		--color-dropdown-border: #ddd;
-		--color-button-background: var(--color-white);
-		--color-button-text: var(--color-black);
-	}
 }
 
 .rounded {
@@ -71,9 +58,11 @@ html {
 	font-family: var(--font-family-sans);
 	color: var(--color-text);
 	background: var(--color-background);
+	line-height: 1;
 }
 img {
 	width: 100%;
+	border-radius: var(--rounded);
 }
 body {
 	padding: var(--padding);
@@ -99,7 +88,7 @@ strong, b {
 }
 small {
 	font-size: inherit;
-	color: var(--color-text-grey);
+	color: var(--color-text-dimmed);
 }
 
 .header {
@@ -113,6 +102,7 @@ small {
 }
 
 .logo summary {
+	color: var(--color-text-highlight);
 	list-style: none;
 }
 .logo summary span {
@@ -214,6 +204,7 @@ small {
 }
 
 .menu {
+	color: var(--color-text-highlight);
 	display: flex;
 	gap: .5rem;
 	align-items: center;
@@ -279,6 +270,7 @@ small {
 }
 
 h1, h2, h3, h4, h5, h6 {
+	color: var(--color-text-highlight);
 	font-size: inherit;
 	font-weight: inherit;
 	line-height: inherit;
@@ -286,6 +278,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .text {
 	line-height: 1.5em;
+}
+.text :where(h1, h2, h3, h4, h5, h6, a, strong, b) {
+	color: var(--color-text-highlight);
 }
 .text a {
 	text-decoration: underline;
@@ -301,6 +296,9 @@ h1, h2, h3, h4, h5, h6 {
 .text ul,
 .text ol {
 	margin-bottom: 1.5rem;
+}
+.text li::marker {
+	color: var(--color-text-highlight);
 }
 .text ul,
 .text ol {
@@ -363,16 +361,17 @@ h1, h2, h3, h4, h5, h6 {
 .text blockquote {
 	font-size: 1.25rem;
 	line-height: 1.5em;
-	border-left: 2px solid var(--color-black);
+	border-left: 2px solid currentColor;
 	padding-left: 1rem;
 	margin: 3rem 0 3rem -1rem;
+	color: var(--color-text-highlight);
 }
 .text figure {
 	margin: 3rem 0;
 }
 .text figcaption {
 	padding-top: .75rem;
-	color: var(--color-text-grey);
+	color: var(--color-text-dimmed);
 }
 
 hr {
@@ -465,7 +464,7 @@ hr {
 }
 .footer ul,
 .footer p {
-	color: var(--color-text-grey);
+	color: var(--color-text-dimmed);
 }
 .footer p {
 	max-width: 15rem;

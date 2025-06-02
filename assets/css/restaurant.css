@@ -19,5 +19,5 @@
 
 .restaurant-dish-description {
 	font-style: italic;
-	color: var(--color-text-grey);
+	color: var(--color-text-dimmed);
 }

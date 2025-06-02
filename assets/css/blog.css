@@ -11,7 +11,7 @@
 	font-weight: 600;
 }
 .blog-article-excerpt-date {
-	color: var(--color-text-grey);
+	color: var(--color-text-dimmed);
 }
 
 .blog-article {
@@ -26,7 +26,7 @@
 	padding: 6rem 0;
 }
 .blog-article-date {
-	color: var(--color-text-grey);
+	color: var(--color-text-dimmed);
 }
 .blog-article-tags {
 	display: flex;
@@ -51,7 +51,7 @@
 	padding-top: 6rem;
 }
 .blog-pagination > span {
-	color: var(--color-text-grey);
+	color: var(--color-text-dimmed);
 }
 .blog-pagination > * {
 	padding: .5rem;
