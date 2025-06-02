@@ -2,9 +2,7 @@
 
 <header class="header">
 	<?php snippet('logo', ['section' => 'home']) ?>
-	<nav class="menu">
-		<?php snippet('social') ?>
-	</nav>
+	<?php snippet('menu') ?>
 </header>
 
 <main class="main">

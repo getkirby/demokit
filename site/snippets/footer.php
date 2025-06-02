@@ -5,6 +5,7 @@
 				<p>
 					Kirby: the file-based CMS that adapts to any project, loved by developers and editors alike
 				</p>
+				<?php snippet('social') ?>
 			</div>
 			<div class="column" style="--columns: 2">
 				<h2>Examples</h2>
