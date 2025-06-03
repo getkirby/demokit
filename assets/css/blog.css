@@ -41,11 +41,6 @@
 	background: var(--color-light);
 	border-radius: var(--rounded);
 }
-.blog-article-tags a:hover {
-	background: var(--color-black);
-	color: var(--color-white);
-}
-
 .blog-pagination {
 	display: flex;
 	padding-top: 6rem;
@@ -59,9 +54,4 @@
 	text-align: center;
 	border: 2px solid currentColor;
 	margin-right: 1.5rem;
-}
-.blog-pagination > a:hover {
-	background: var(--color-black);
-	color: var(--color-white);
-	border-color: var(--color-black);
 }

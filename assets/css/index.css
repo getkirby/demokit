@@ -36,6 +36,10 @@
 	--font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
 }
 
+html[data-theme] {
+	transition: all .3s;
+}
+
 /* Dark theme styles */
 [data-theme="dark"] {
 	--color-background: var(--color-black);
@@ -336,7 +340,7 @@ h1, h2, h3, h4, h5, h6 {
 	background: var(--color-light);
 	padding: 0 .5rem;
 	display: inline-block;
-	color: var(--color-black);
+	color: var(--color-text-highlight);
 }
 .text pre {
 	margin: 3rem 0;
@@ -376,7 +380,7 @@ h1, h2, h3, h4, h5, h6 {
 
 hr {
 	border: 0;
-	background: currentColor;
+	background: var(--color-text-highlight);
 	height: 2px;
 	width: 1.5rem;
 	margin: 3rem auto;
@@ -419,8 +423,7 @@ hr {
 	display: block;
 	--w: 1;
 	--h: 1;
-	padding-bottom: calc(100% / var(--w) * var(--h));
-	background: var(--color-black);
+	aspect-ratio: var(--w) / var(--h);
 	border-radius: var(--rounded);
 }
 .img img,
@@ -441,6 +444,7 @@ hr {
 }
 .img-caption,
 .video-caption {
+	color: var(--color-text-highlight);
 	padding-top: .75rem;
 	line-height: 1.5em;
 }
@@ -454,7 +458,7 @@ hr {
 	display: block;
 	width: 1.5rem;
 	height: 2px;
-	background: var(--color-black);
+	background: var(--color-text-highlight);
 	margin-bottom: 1.5rem;
 }
 
@@ -476,6 +480,7 @@ hr {
 .social {
 	margin-top: 1.5rem;
 	margin-left: -.5rem;
+	color: var(--color-text-highlight);
 }
 .social a {
 	display: inline-flex;
@@ -488,15 +493,13 @@ hr {
 	height: 1.25rem;
 }
 
-
-
 .map {
 	--w: 2;
 	--h: 1;
-	padding-bottom: calc(100% / var(--w) * var(--h));
+	aspect-ratio: var(--w) / var(--h);
 	position: relative;
 	overflow: hidden;
-	background: var(--color-black);
+	background: var(--color-text-highlight);
 	border-radius: var(--rounded);
 }
 .map iframe {
