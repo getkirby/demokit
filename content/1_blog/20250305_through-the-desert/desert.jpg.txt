@@ -1,4 +1,4 @@
-Caption: 
+Caption:
 
 ----
 
@@ -6,19 +6,19 @@ Alt: A caravan of camels in the desert. The sun sets and paints the sky orange. 
 
 ----
 
-Photographer: 
+Photographer:
 
 ----
 
-License: 
+License:
 
 ----
 
-Link: 
+Link:
 
 ----
 
-Template: blog-article-image
+Template: image
 
 ----
 
