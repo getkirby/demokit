@@ -29,15 +29,14 @@ use Kirby\Toolkit\Str;
  * @link      https://getkirby.com
  * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
+ *
+ * @use \Kirby\Cms\HasSiblings<\Kirby\Cms\Files>
  */
 class File extends ModelWithContent
 {
 	use FileActions;
 	use FileModifications;
 	use HasMethods;
-	/**
-	 * @use \Kirby\Cms\HasSiblings<\Kirby\Cms\Files>
-	 */
 	use HasSiblings;
 	use IsFile;
 
@@ -234,7 +233,7 @@ class File extends ModelWithContent
 	/**
 	 * Store the template in addition to the
 	 * other content.
-	 * @internal
+	 * @unstable
 	 */
 	public function contentFileData(
 		array $data,
@@ -266,7 +265,6 @@ class File extends ModelWithContent
 
 	/**
 	 * Constructs a File object
-	 * @internal
 	 */
 	public static function factory(array $props): static
 	{
@@ -372,8 +370,8 @@ class File extends ModelWithContent
 	}
 
 	/**
-	 * Returns the absolute path to the media folder for the file and its versions
-	 * @internal
+	 * Returns the absolute path to the media folder
+	 * for the file and its versions
 	 * @since 5.0.0
 	 */
 	public function mediaDir(): string
@@ -383,7 +381,6 @@ class File extends ModelWithContent
 
 	/**
 	 * Creates a unique media hash
-	 * @internal
 	 */
 	public function mediaHash(): string
 	{
@@ -392,7 +389,6 @@ class File extends ModelWithContent
 
 	/**
 	 * Returns the absolute path to the file in the public media folder
-	 * @internal
 	 *
 	 * @param string|null $filename Optional override for the filename
 	 */
@@ -405,7 +401,6 @@ class File extends ModelWithContent
 
 	/**
 	 * Creates a non-guessable token string for this file
-	 * @internal
 	 */
 	public function mediaToken(): string
 	{
@@ -415,7 +410,6 @@ class File extends ModelWithContent
 
 	/**
 	 * Returns the absolute Url to the file in the public media folder
-	 * @internal
 	 *
 	 * @param string|null $filename Optional override for the filename
 	 */
@@ -492,7 +486,6 @@ class File extends ModelWithContent
 
 	/**
 	 * Returns the parent id if a parent exists
-	 * @internal
 	 */
 	public function parentId(): string
 	{
