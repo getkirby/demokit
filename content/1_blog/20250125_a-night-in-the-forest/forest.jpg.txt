@@ -2,7 +2,7 @@ Caption:
 
 ----
 
-Alt: 
+Alt: Two tents in the forest and the sun is shining through the leaves.
 
 ----
 
@@ -23,3 +23,7 @@ Template: blog-article-image
 ----
 
 Uuid: vy59oGWCW8LJv22v
+
+----
+
+Focus: 47.2% 61.3%

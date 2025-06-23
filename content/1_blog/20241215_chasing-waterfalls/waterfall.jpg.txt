@@ -2,7 +2,7 @@ Caption:
 
 ----
 
-Alt: 
+Alt: A huge waterfall in the background and a small figure standing at the bottom, raising their arms.
 
 ----
 
@@ -23,3 +23,7 @@ Template: blog-article-image
 ----
 
 Uuid: AlBtch06u9lyGMKI
+
+----
+
+Focus: 46.5% 82.2%

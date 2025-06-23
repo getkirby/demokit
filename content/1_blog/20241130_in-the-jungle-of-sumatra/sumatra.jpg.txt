@@ -2,7 +2,7 @@ Caption:
 
 ----
 
-Alt: 
+Alt: A hiker stands in front of an old asian building. Misty mountains in the background.
 
 ----
 
@@ -23,3 +23,7 @@ Template: blog-article-image
 ----
 
 Uuid: Ub2B5ZA1r0i0biYS
+
+----
+
+Focus: 46.8% 96.0%
