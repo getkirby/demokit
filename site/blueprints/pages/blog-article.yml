@@ -22,11 +22,11 @@ columns:
         type: files
         max: 1
         uploads:
-          template: blog-article-image
+          template: image
       text:
         type: blocks
         uploads:
-          template: blog-article-image
+          template: image
 
   - width: 1/3
     sections:
@@ -47,4 +47,4 @@ columns:
             query: page.siblings.pluck("tags", ",", true)
       images:
         type: files
-        template: blog-article-image
+        template: image

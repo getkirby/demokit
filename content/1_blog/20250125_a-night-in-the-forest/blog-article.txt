@@ -6,7 +6,7 @@ Subheading: OMG all those ants
 
 ----
 
-Cover: 
+Cover: []
 
 ----
 
@@ -14,11 +14,11 @@ Text: [{"content":{"text":"<p>Far far away, behind the word mountains, far from 
 
 ----
 
-Date: 2021-06-25
+Date: 2025-01-25
 
 ----
 
-Author: 
+Author: []
 
 ----
 

@@ -6,7 +6,7 @@ Subheading: Green leaves and stuff
 
 ----
 
-Cover: - file://Ub2B5ZA1r0i0biYS
+Cover: - 'file://Ub2B5ZA1r0i0biYS'
 
 ----
 
@@ -14,11 +14,11 @@ Text: [{"content":{"text":"<p>Far far away, behind the word mountains, far from 
 
 ----
 
-Date: 2020-07-31
+Date: 2024-11-30
 
 ----
 
-Author: 
+Author: []
 
 ----
 

@@ -6,7 +6,7 @@ Subheading: In a nutshell
 
 ----
 
-Cover: 
+Cover: []
 
 ----
 
@@ -14,11 +14,11 @@ Text: [{"content":{"text":"<p>Far far away, behind the word mountains, far from 
 
 ----
 
-Date: 2019-04-21
+Date: 2024-09-21
 
 ----
 
-Author: 
+Author: []
 
 ----
 

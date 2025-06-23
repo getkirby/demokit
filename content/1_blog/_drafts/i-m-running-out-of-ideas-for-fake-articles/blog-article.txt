@@ -6,7 +6,7 @@ Subheading:
 
 ----
 
-Cover: 
+Cover: []
 
 ----
 
@@ -14,11 +14,11 @@ Text:
 
 ----
 
-Date: 2022-06-26
+Date: 2025-06-26
 
 ----
 
-Author: - user://zizNTfvL
+Author: - 'user://zizNTfvL'
 
 ----
 
