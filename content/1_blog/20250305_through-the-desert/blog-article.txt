@@ -6,7 +6,7 @@ Subheading: Without water
 
 ----
 
-Cover: 
+Cover: []
 
 ----
 
@@ -14,11 +14,11 @@ Text: [{"content":{"text":"<p>Far far away, behind the word mountains, far from 
 
 ----
 
-Date: 2021-09-05
+Date: 2025-03-05
 
 ----
 
-Author: 
+Author: []
 
 ----
 
