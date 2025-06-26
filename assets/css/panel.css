@@ -1,0 +1,13 @@
+.k-locator-container {
+	border-radius: var(--rounded);
+	overflow: hidden;
+}
+.k-locator-field .content {
+	background-color: light-dark(
+		var(--color-gray-100),
+		var(--color-gray-850, var(--color-gray-800))
+	);
+}
+.k-locator-field .k-locator-input button.disabled {
+	background: light-dark(var(--color-gray-100), var(--color-gray-800));
+}
