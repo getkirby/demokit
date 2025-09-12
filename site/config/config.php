@@ -9,7 +9,6 @@ return [
 		'salt' => 'demodemo'
 	],
 	'panel' => [
-		'css' => 'assets/css/panel.css',
 		'vue' => [
 			'compiler' => false
 		]
