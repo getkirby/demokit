@@ -26,8 +26,9 @@
 			<?php endforeach ?>
 		</ul>
 		<?php endif ?>
-
-		<time class="blog-article-date" datetime="<?= esc($page->dateFormatted('c'), 'attr') ?>">Published on <?= esc($page->dateFormatted()) ?></time>
+		<?php if ($date = $page->dateFormatted()): ?>
+		<time class="blog-article-date" datetime="<?= esc($page->dateFormatted('c'), 'attr') ?>">Published on <?= esc($date) ?></time>
+		<?php endif ?>
 	</footer>
 
 	<?php snippet('blog/prevnext') ?>
