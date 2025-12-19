@@ -14,7 +14,7 @@ return [
 		]
 	],
 	'thumbs' => [
-		'driver' => 'im',
+		'driver' => 'imagick',
 	],
 	'updates' => [
 		'plugins' => [
