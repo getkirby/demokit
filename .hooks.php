@@ -40,6 +40,7 @@ return [
 
 		// keep the build ID for later reference in the instances
 		file_put_contents(__DIR__ . '/.id.php', "<?php\n\nreturn " . var_export($buildId, true) . ';');
+		opcache_invalidate(__DIR__ . '/.id.php');
 
 		// create a new media folder for this build
 		$root = dirname(__DIR__, 2) . '/public/_media/' . $buildId;
