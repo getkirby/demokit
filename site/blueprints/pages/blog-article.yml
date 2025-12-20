@@ -41,8 +41,9 @@ columns:
             type: users
           tags:
             type: tags
-            options: query
-            query: page.siblings.pluck("tags", ",", true)
+            options:
+              type: query
+              query: page.siblings.pluck("tags", ",", true)
       images:
         type: files
         template: image
