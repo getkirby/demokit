@@ -14,7 +14,8 @@ return [
 		]
 	],
 	'thumbs' => [
-		'driver' => 'im',
+		'driver' => 'imagick',
+		'format' => 'webp'
 	],
 	'updates' => [
 		'plugins' => [
