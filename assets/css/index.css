@@ -206,6 +206,9 @@ small {
 	color: var(--color-dropdown-text);
 	font-size: .875rem;
 }
+.logo-dropdown-box footer a {
+	text-decoration: underline;
+}
 
 .menu {
 	color: var(--color-text-highlight);

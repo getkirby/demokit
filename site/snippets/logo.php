@@ -45,8 +45,10 @@
 			</div>
 		</div>
 		<footer>
-			This demo expires <?= $site->demoExpiryHuman() ?> (based on your activity),
+			This demo expires <?= $site->demoExpiryHuman() ?> of inactivity (content changes via the Kirby Panel),
 			latest <span class="absolute-time" data-timestamp="<?= $site->demoExpiry(true) ?>"><?= $site->demoExpiryHuman(true) ?></span>.
+			After expiry, all entered data and content will be deleted from our server.
+			<a target="_blank" href="https://getkirby.com/privacy#personal-demo">Read more ›</a>
 		</footer>
 	</nav>
 </details>
