@@ -1,6 +1,7 @@
 <?php
 
 use Kirby\Cms\App;
+use Kirby\Data\Data;
 use Kirby\Filesystem\Dir;
 use Kirby\Filesystem\F;
 use Kirby\Http\Remote;
@@ -61,10 +62,16 @@ return [
 		// copy over favicon
 		F::copy(__DIR__ . '/favicon.ico', $root . '/favicon.ico');
 
+		// override the Kirby version with the one of the Demokit to
+		// generate the correct asset path (based on `$app->versionHash()`)
+		$versionProp = new ReflectionProperty(App::class, 'version');
+		$versionProp->setValue(Data::read(__DIR__ . '/kirby/composer.json')['version'] ?? null);
+
 		// build a media folder with the Panel assets and all content images
 		Dir::make($root . '/media');
 		$kirby = new App(['roots' => [
 			'index'   => __DIR__,
+			'panel'   => __DIR__ . '/kirby/panel',
 			'media'   => $root . '/media',
 			'plugins' => '/dev/null'
 		]]);
