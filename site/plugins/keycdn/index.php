@@ -9,13 +9,15 @@ use Kirby\Toolkit\Str;
 function keycdn($file, $params = []): string|null
 {
 	$mediaPath  = Url::path($file->mediaUrl());
-	$globalPath = null;
+	$cdnPath = $filePath = null;
 	if (defined('DEMO_TYPE') === true && defined('DEMO_BUILD_ID') === true) {
-		$globalPath = DEMO_TYPE . '/' . DEMO_BUILD_ID . '/' . Str::after($mediaPath, '/');
+		$buildPath = DEMO_BUILD_ID . '/' . Str::after($mediaPath, '/');
+		$cdnPath   = DEMO_TYPE . '/' . $buildPath;
+		$filePath  = dirname(__DIR__, 4) . '/_media/' . $buildPath;
 	}
 
 	// KeyCDN only manages global assets (vetted by us)
-	if ($globalPath === null || is_file(dirname(__DIR__, 4) . '/' . $globalPath) === false) {
+	if ($cdnPath === null || is_file($filePath) === false) {
 		return null;
 	}
 
@@ -29,7 +31,7 @@ function keycdn($file, $params = []): string|null
 		$query = '?' . http_build_query($params);
 	}
 
-	return option('keycdn.domain') . '/' . $globalPath . $query;
+	return option('keycdn.domain') . '/' . $cdnPath . $query;
 }
 
 App::plugin('getkirby/keycdn', [
