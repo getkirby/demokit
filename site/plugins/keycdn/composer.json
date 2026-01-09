@@ -2,7 +2,7 @@
 	"name": "getkirby/keycdn",
 	"type": "kirby-plugin",
 	"license": "MIT",
-	"description": "Server images and assets via KeyCDN",
+	"description": "Serve images and assets via KeyCDN",
 	"version": "1.0.0",
 	"authors": [
 		{

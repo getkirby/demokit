@@ -12,6 +12,8 @@ if (file_exists(__DIR__ . '/../../src/Demo/Demo.php') === true) {
 		'Kirby\Demo\Instances' => __DIR__ . '/../../src/Demo/Instances.php',
 		'Kirby\Demo\Lock'      => __DIR__ . '/../../src/Demo/Lock.php'
 	]);
+
+	define('DEMO_TYPE', require __DIR__ . '/../../data/typeName.php');
 }
 
 // load the build ID

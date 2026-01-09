@@ -111,7 +111,8 @@ return [
 		// verify that the current media folder is reachable
 		// (relevant for servers except zone1 as they rely on the single CDN pullzone)
 		$buildId = require __DIR__ . '/.id.php';
-		$url     = 'https://assets.trykirby.com/_media/' . $buildId . '/assets/css/index.css';
+		$type    = require dirname(__DIR__, 2) . '/data/typeName.php';
+		$url     = 'https://assets.trykirby.com/' . $type . '/' . $buildId . '/assets/css/index.css';
 		$code    = Remote::get($url)->code();
 
 		if ($code !== 200) {

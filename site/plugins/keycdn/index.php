@@ -9,8 +9,8 @@ function keycdn($file, $params = []): string|null
 {
 	$mediaPath  = Url::path($file->mediaUrl());
 	$globalPath = null;
-	if (defined('DEMO_BUILD_ID') === true) {
-		$globalPath = '_media/' . DEMO_BUILD_ID . '/' . Str::after($mediaPath, '/');
+	if (defined('DEMO_TYPE') === true && defined('DEMO_BUILD_ID') === true) {
+		$globalPath = DEMO_TYPE . '/' . DEMO_BUILD_ID . '/' . Str::after($mediaPath, '/');
 	}
 
 	// KeyCDN only manages global assets (vetted by us)
@@ -35,6 +35,7 @@ Kirby::plugin('getkirby/keycdn', [
 	'components' => [
 		'url' => function ($kirby, $path, $options) {
 			if (
+				defined('DEMO_TYPE') === true && 
 				defined('DEMO_BUILD_ID') === true &&
 				option('keycdn', false) !== false &&
 				(
@@ -42,7 +43,7 @@ Kirby::plugin('getkirby/keycdn', [
 					$path === 'favicon.ico'
 				)
 			) {
-				return option('keycdn.domain') . '/_media/' . DEMO_BUILD_ID . '/' . $path;
+				return option('keycdn.domain') . '/' . DEMO_TYPE . '/' . DEMO_BUILD_ID . '/' . $path;
 			}
 
 			return $kirby->nativeComponent('url')($kirby, $path, $options);
