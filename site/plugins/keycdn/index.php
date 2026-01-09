@@ -1,8 +1,9 @@
 <?php
 
+use Kirby\Cms\App;
 use Kirby\Cms\File;
 use Kirby\Cms\FileVersion;
-use Kirby\Http\Uri;
+use Kirby\Http\Url;
 use Kirby\Toolkit\Str;
 
 function keycdn($file, $params = []): string|null
@@ -31,7 +32,7 @@ function keycdn($file, $params = []): string|null
 	return option('keycdn.domain') . '/' . $globalPath . $query;
 }
 
-Kirby::plugin('getkirby/keycdn', [
+App::plugin('getkirby/keycdn', [
 	'components' => [
 		'url' => function ($kirby, $path, $options) {
 			if (
@@ -48,7 +49,7 @@ Kirby::plugin('getkirby/keycdn', [
 
 			return $kirby->nativeComponent('url')($kirby, $path, $options);
 		},
-		'file::version' => function (Kirby $kirby, File $file, array $options = []) {
+		'file::version' => function (App $kirby, File $file, array $options = []) {
 			if (
 				option('keycdn', false) !== false &&
 				$url = keycdn($file, $options)
@@ -63,7 +64,7 @@ Kirby::plugin('getkirby/keycdn', [
 
 			return $kirby->nativeComponent('file::version')($kirby, $file, $options);
 		},
-		'file::url' => function (Kirby $kirby, File $file): string {
+		'file::url' => function (App $kirby, File $file): string {
 			if (
 				$file->type() === 'image' &&
 				$url = keycdn($file)
