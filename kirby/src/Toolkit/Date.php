@@ -106,7 +106,7 @@ class Date extends DateTime implements Stringable
 	public static function firstWeekday(string $locale): int
 	{
 		// config option, if available
-		$weekday = App::instance(null, true)?->option('date.weekday');
+		$weekday = App::instance(lazy: true)?->option('date.weekday');
 
 		if (is_int($weekday) === true) {
 			return $weekday;
@@ -562,9 +562,10 @@ class Date extends DateTime implements Stringable
 	protected static function validateUnit(string $unit): void
 	{
 		$units = ['year', 'month', 'day', 'hour', 'minute', 'second'];
+
 		if (in_array($unit, $units, true) === false) {
 			throw new InvalidArgumentException(
-				message: 'Invalid rounding unit'
+				message: 'Invalid rounding unit: ' . $unit
 			);
 		}
 	}

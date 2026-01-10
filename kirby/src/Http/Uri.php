@@ -214,7 +214,7 @@ class Uri implements Stringable
 			return static::$current;
 		}
 
-		if ($app = App::instance(null, true)) {
+		if ($app = App::instance(lazy: true)) {
 			$environment = $app->environment();
 		}
 
@@ -294,7 +294,7 @@ class Uri implements Stringable
 	 */
 	public static function index(array $props = []): static
 	{
-		if ($app = App::instance(null, true)) {
+		if ($app = App::instance(lazy: true)) {
 			$url = $app->url('index');
 		}
 
@@ -339,6 +339,15 @@ class Uri implements Stringable
 	public function fragment(): string|null
 	{
 		return $this->fragment;
+	}
+
+	/**
+	 * Returns the Uri's query object
+	 * @since 6.0.0
+	 */
+	public function query(): Query
+	{
+		return $this->query;
 	}
 
 	/**

@@ -2,6 +2,7 @@
 
 namespace Kirby\Cms;
 
+use Kirby\Blueprint\Blueprint;
 use Kirby\Exception\InvalidArgumentException;
 use Kirby\Form\Form;
 use Kirby\Toolkit\I18n;
@@ -21,7 +22,7 @@ use Kirby\Toolkit\Str;
  */
 class Fieldset extends Item
 {
-	public const ITEMS_CLASS = Fieldsets::class;
+	public const string ITEMS_CLASS = Fieldsets::class;
 
 	protected bool $disabled;
 	protected bool $editable;
@@ -77,7 +78,7 @@ class Fieldset extends Item
 	protected function createFields(array $fields = []): array
 	{
 		$fields = Blueprint::fieldsProps($fields);
-		$fields = $this->form($fields)->fields()->toProps();
+		$fields = $this->form($fields)->fields()->toProps(defaults: true);
 
 		// collect all fields
 		$this->fields = [...$this->fields, ...$fields];

@@ -5,6 +5,7 @@ namespace Kirby\Cms;
 use Closure;
 use Exception as GlobalException;
 use Generator;
+use Kirby\Api\Api;
 use Kirby\Content\Storage;
 use Kirby\Content\VersionCache;
 use Kirby\Data\Data;
@@ -23,6 +24,8 @@ use Kirby\Http\Route;
 use Kirby\Http\Router;
 use Kirby\Http\Uri;
 use Kirby\Http\Visitor;
+use Kirby\Panel\Panel;
+use Kirby\Query\Query;
 use Kirby\Session\AutoSession;
 use Kirby\Session\Session;
 use Kirby\Template\Snippet;
@@ -36,6 +39,7 @@ use Kirby\Toolkit\LazyValue;
 use Kirby\Toolkit\Locale;
 use Kirby\Toolkit\Str;
 use Kirby\Uuid\Uuid;
+use Kirby\Uuid\Uuids;
 use Throwable;
 
 /**
@@ -59,7 +63,7 @@ class App
 	use AppTranslations;
 	use AppUsers;
 
-	public const CLASS_ALIAS = 'kirby';
+	public const string CLASS_ALIAS = 'kirby';
 
 	protected static App|null $instance = null;
 	protected static string|null $version = null;
@@ -77,6 +81,7 @@ class App
 	protected bool|null $multilang = null;
 	protected string|null $nonce = null;
 	protected array $options;
+	protected Panel $panel;
 	protected string|null $path = null;
 	protected Request|null $request = null;
 	protected Responder|null $response = null;
@@ -105,6 +110,12 @@ class App
 		// start with a fresh snippet and version cache
 		Snippet::$cache = [];
 		VersionCache::reset();
+
+		// start with a fresh Query runner option
+		Query::$runner = null;
+
+		// reset the UUIDs option cache
+		Uuids::$enabled = null;
 
 		// register all roots to be able to load stuff afterwards
 		$this->bakeRoots($props['roots'] ?? []);
@@ -474,7 +485,7 @@ class App
 		string $name,
 		string $contentType = 'html'
 	): Controller|null {
-		if ($contentType !== null && $contentType !== 'html') {
+		if ($contentType !== 'html') {
 			$name .= '.' . $contentType;
 		}
 
@@ -645,9 +656,9 @@ class App
 		bool $drafts = true
 	): File|null {
 		// find by global UUID
-		if (Uuid::is($path, 'file') === true) {
-			// prefer files of parent, when parent given
-			return Uuid::for($path, $parent?->files())->model();
+		// and prefer files of parent, when parent given
+		if ($uuid = Uuid::from($path, 'file', $parent?->files())) {
+			return $uuid->model();
 		}
 
 		$parent ??= $this->site();
@@ -1167,6 +1178,15 @@ class App
 		}
 
 		return null;
+	}
+
+	/**
+	 * Returns the Panel object
+	 * @since 6.0.0
+	 */
+	public function panel(): Panel
+	{
+		return $this->panel ??= new Panel($this);
 	}
 
 	/**

@@ -2,6 +2,7 @@
 
 namespace Kirby\Cms;
 
+use Kirby\Blueprint\SiteBlueprint;
 use Kirby\Content\VersionId;
 use Kirby\Exception\InvalidArgumentException;
 use Kirby\Exception\LogicException;
@@ -30,7 +31,7 @@ class Site extends ModelWithContent
 	use HasMethods;
 	use SiteActions;
 
-	public const CLASS_ALIAS = 'site';
+	public const string CLASS_ALIAS = 'site';
 
 	/**
 	 * The SiteBlueprint object

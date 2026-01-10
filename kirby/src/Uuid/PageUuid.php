@@ -8,17 +8,19 @@ use Kirby\Cms\Page;
 
 /**
  * UUID for \Kirby\Cms\Page
- * @since 3.8.0
  *
  * @package   Kirby Uuid
  * @author    Nico Hoffmann <nico@getkirby.com>
  * @link      https://getkirby.com
  * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
+ * @since     3.8.0
+ *
+ * @method \Kirby\Cms\Page|null model(bool $lazy = false)
  */
 class PageUuid extends ModelUuid
 {
-	protected const TYPE = 'page';
+	protected const string TYPE = 'page';
 
 	/**
 	 * @var \Kirby\Cms\Page|null
@@ -60,27 +62,6 @@ class PageUuid extends ModelUuid
 	 */
 	public function toPermalink(): string
 	{
-		// make sure UUID is cached because the permalink
-		// route only looks up UUIDs from cache
-		if ($this->isCached() === false) {
-			$this->populate();
-		}
-
-		$kirby = App::instance();
-		$url   = $kirby->url();
-
-		if ($language = $kirby->language('current')) {
-			$url = $language->url();
-		}
-
-		return $url . '/@/' . static::TYPE . '/' . $this->id();
-	}
-
-	/**
-	 * @deprecated 5.1.0 Use `::toPermalink()` instead
-	 */
-	public function url(): string
-	{
-		return $this->toPermalink();
+		return (new Permalink($this))->url();
 	}
 }

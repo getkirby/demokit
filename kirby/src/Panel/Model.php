@@ -4,11 +4,9 @@ namespace Kirby\Panel;
 
 use Closure;
 use Kirby\Cms\File as CmsFile;
-use Kirby\Cms\Language;
 use Kirby\Cms\ModelWithContent;
 use Kirby\Filesystem\Asset;
-use Kirby\Form\Fields;
-use Kirby\Http\Uri;
+use Kirby\Panel\Controller\View\ModelViewController;
 use Kirby\Panel\Ui\Item\ModelItem;
 use Kirby\Toolkit\A;
 
@@ -30,14 +28,26 @@ abstract class Model
 	}
 
 	/**
-	 * Returns header button names which should be displayed
+	 * Breadcrumb array
+	 * @deprecated 6.0.0 Use `Kirby\Panel\Controller\View\ModelViewController::breadcrumb()` instead
 	 */
-	abstract public function buttons(): array;
+	public function breadcrumb(): array
+	{
+		return $this->viewController()->breadcrumb();
+	}
 
 	/**
-	 * Get the content values for the model
-	 *
-	 * @deprecated 5.0.0 Use `self::versions()` instead
+	 * Returns header buttons which should be displayed
+	 * on the site view
+	 * @deprecated 6.0.0 Use `Kirby\Panel\Controller\View\ModelViewController::buttons()` instead
+	 */
+	public function buttons(): array
+	{
+		return $this->viewController()->buttons()->render();
+	}
+
+	/**
+	 * @deprecated 5.0.0 Use `Kirby\Panel\Controller\View\ModelViewController::versions()` instead
 	 */
 	public function content(): array
 	{
@@ -154,6 +164,7 @@ abstract class Model
 				// only create srcsets for resizable files
 				$settings['src']    = static::imagePlaceholder();
 				$settings['srcset'] = $this->imageSrcset($image, $layout, $settings);
+
 			} elseif ($image->isViewable() === true) {
 				$settings['src'] = $image->url();
 			}
@@ -223,76 +234,57 @@ abstract class Model
 		// depending on layout type, set different sizes
 		// to have multiple options for the srcset attribute
 		$sizes = match ($layout) {
-			'cards'    => [352, 864, 1408],
+			'auto'     => [96, 192, 400, 800, 1600, 2400],
+			'cards'    => [400, 800, 1600],
 			'cardlets' => [96, 192],
-			default    => [38, 76]
+			default    => [36, 96],
 		};
 
-		// no additional modfications needed if `cover: false`
+		$ratio = $settings['ratio'] ?? '1/1';
+
+		// no additional modifications needed if `cover: false`
 		if (($settings['cover'] ?? false) === false) {
 			return $image->srcset($sizes);
 		}
 
-		// for card layouts with `cover: true` provide
-		// crops based on the card ratio
-		if ($layout === 'cards') {
-			$ratio = $settings['ratio'] ?? '1/1';
-
-			if (is_numeric($ratio) === false) {
-				$ratio = explode('/', $ratio);
-				$ratio = $ratio[0] / $ratio[1];
-			}
-
+		// for list, table and cardlets
+		// provide square crops in two resolutions
+		if (
+			$layout === 'list' ||
+			$layout === 'cardlets'  ||
+			$layout === 'table'
+		) {
 			return $image->srcset([
-				$sizes[0] . 'w' => [
+				'1x' => [
 					'width'  => $sizes[0],
-					'height' => round($sizes[0] / $ratio),
+					'height' => $sizes[0],
 					'crop'   => true
 				],
-				$sizes[1] . 'w' => [
+				'2x' => [
 					'width'  => $sizes[1],
-					'height' => round($sizes[1] / $ratio),
-					'crop'   => true
-				],
-				$sizes[2] . 'w' => [
-					'width'  => $sizes[2],
-					'height' => round($sizes[2] / $ratio),
+					'height' => $sizes[1],
 					'crop'   => true
 				]
 			]);
 		}
 
-		// for list and cardlets with `cover: true`
-		// provide square crops in two resolutions
-		return $image->srcset([
-			'1x' => [
-				'width'  => $sizes[0],
-				'height' => $sizes[0],
-				'crop'   => true
-			],
-			'2x' => [
-				'width'  => $sizes[1],
-				'height' => $sizes[1],
-				'crop'   => true
-			]
-		]);
-	}
+		// for all other provide crops based on the card ratio
+		if (is_numeric($ratio) === false) {
+			$ratio = explode('/', $ratio);
+			$ratio = $ratio[0] / $ratio[1];
+		}
 
-	/**
-	 * Checks for disabled dropdown options according
-	 * to the given permissions
-	 */
-	public function isDisabledDropdownOption(
-		string $action,
-		array $options,
-		array $permissions
-	): bool {
-		$option = $options[$action] ?? true;
+		$srcset = [];
 
-		return
-			$permissions[$action] === false ||
-			$option === false ||
-			$option === 'false';
+		foreach ($sizes as $size) {
+			$srcset[$size . 'w'] = [
+				'width'  => $size,
+				'height' => round($size / $ratio),
+				'crop'   => true
+			];
+		}
+
+		return $image->srcset($srcset);
 	}
 
 	/**
@@ -355,40 +347,25 @@ abstract class Model
 	}
 
 	/**
+	 * Returns navigation array with
+	 * previous and next user
+	 * @deprecated 6.0.0 Use `Kirby\Panel\Controller\View\ModelViewController::prev()` and `Kirby\Panel\Controller\View\ModelViewController::next()` instead
+	 */
+	public function prevNext(): array
+	{
+		return [
+			'next' => $this->viewController()->next(...),
+			'prev' => $this->viewController()->prev(...),
+		];
+	}
+
+	/**
 	 * Returns the data array for the view's component props
+	 * @deprecated 6.0.0 Use `Kirby\Panel\Controller\View\ModelViewController::props()` instead
 	 */
 	public function props(): array
 	{
-		$blueprint = $this->model->blueprint();
-		$link      = $this->url(true);
-		$request   = $this->model->kirby()->request();
-		$tabs      = $blueprint->tabs();
-		$tab       = $blueprint->tab($request->get('tab')) ?? $tabs[0] ?? null;
-		$versions  = $this->versions();
-
-		$props = [
-			'api'         => $link,
-			'buttons'     => fn () => $this->buttons(),
-			'id'          => $this->model->id(),
-			'link'        => $link,
-			'lock'        => $this->model->lock()->toArray(),
-			'permissions' => $this->model->permissions()->toArray(),
-			'tabs'        => $tabs,
-			'uuid'        => fn () => $this->model->uuid()?->toString(),
-			'versions'    => [
-				'latest'  => (object)$versions['latest'],
-				'changes' => (object)$versions['changes']
-			]
-		];
-
-		// only send the tab if it exists
-		// this will let the vue component define
-		// a proper default value
-		if ($tab) {
-			$props['tab'] = $tab;
-		}
-
-		return $props;
+		return $this->viewController()->props();
 	}
 
 	/**
@@ -401,32 +378,6 @@ abstract class Model
 			'link'    => $this->url(true),
 			'title'   => $title = (string)$this->model->{$title}()
 		];
-	}
-
-	/**
-	 * Returns link url and title
-	 * for optional sibling model and
-	 * preserves tab selection
-	 */
-	protected function toPrevNextLink(
-		ModelWithContent|null $model = null,
-		string $title = 'title'
-	): array|null {
-		if ($model === null) {
-			return null;
-		}
-
-		$data = $model->panel()->toLink($title);
-
-		if ($tab = $model->kirby()->request()->get('tab')) {
-			$uri = new Uri($data['link'], [
-				'query' => ['tab' => $tab]
-			]);
-
-			$data['link'] = $uri->toString();
-		}
-
-		return $data;
 	}
 
 	/**
@@ -443,37 +394,24 @@ abstract class Model
 	}
 
 	/**
-	 * Creates an array with two versions of the content:
-	 * `latest` and `changes`.
-	 *
-	 * The content is passed through the Fields class
-	 * to ensure that the content is in the correct format
-	 * for the Panel. If there's no `changes` version, the `latest`
-	 * version is used for both.
+	 * @deprecated 6.0.0 Use `Kirby\Panel\Controller\View\ModelViewController::versions()` instead
 	 */
 	public function versions(): array
 	{
-		$language = Language::ensure('current');
-		$fields   = Fields::for($this->model, $language);
-
-		$latestVersion  = $this->model->version('latest');
-		$changesVersion = $this->model->version('changes');
-
-		$latestContent  = $latestVersion->content($language)->toArray();
-		$changesContent = $latestContent;
-
-		if ($changesVersion->exists($language) === true) {
-			$changesContent = $changesVersion->content($language)->toArray();
-		}
-
-		return [
-			'latest'  => $fields->reset()->fill($latestContent)->toFormValues(),
-			'changes' => $fields->reset()->fill($changesContent)->toFormValues()
-		];
+		return $this->viewController()->versions();
 	}
 
 	/**
 	 * Returns the data array for this model's Panel view
+	 * @deprecated 6.0.0 Use `Kirby\Panel\Controller\View\ModelViewController::load()` instead
 	 */
-	abstract public function view(): array;
+	public function view(): array
+	{
+		return $this->viewController()->load()->render();
+	}
+
+	/**
+	 * @codeCoverageIgnore
+	 */
+	abstract protected function viewController(): ModelViewController;
 }

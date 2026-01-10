@@ -20,7 +20,7 @@ use Throwable;
  */
 class Layouts extends Items
 {
-	public const ITEM_CLASS = Layout::class;
+	public const string ITEM_CLASS = Layout::class;
 
 	/**
 	 * All registered layouts methods
@@ -81,7 +81,7 @@ class Layouts extends Items
 			is_array($input) === false
 		) {
 			try {
-				$input = Json::decode((string)$input);
+				$input = Json::decode($input);
 			} catch (Throwable) {
 				return [];
 			}

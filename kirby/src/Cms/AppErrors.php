@@ -4,8 +4,8 @@ namespace Kirby\Cms;
 
 use Closure;
 use Kirby\Exception\Exception;
-use Kirby\Filesystem\F;
 use Kirby\Http\Response;
+use Kirby\Http\Url;
 use Kirby\Toolkit\I18n;
 use Throwable;
 use Whoops\Handler\CallbackHandler;
@@ -37,6 +37,25 @@ trait AppErrors
 	 * Whoops instance cache
 	 */
 	protected Whoops $whoops;
+
+	/**
+	 * Replaces absolute file paths with placeholders such as
+	 * {kirby_folder}, {site_folder} or {index_folder} to avoid
+	 * exposing too many details about the filesystem and keeping
+	 * error responses short and readable in debug mode.
+	 *
+	 * @since 5.3.0
+	 */
+	protected function disguiseFilePath(string $file): string
+	{
+		$disguise = [
+			$this->root('kirby') => '{kirby}',
+			$this->root('site')  => '{site}',
+			$this->root('index') => '{index}'
+		];
+
+		return str_replace(array_keys($disguise), array_values($disguise), $file);
+	}
 
 	/**
 	 * Registers the PHP error handler for CLI usage
@@ -143,6 +162,8 @@ trait AppErrors
 				$details  = null;
 			}
 
+			$editor = $this->option('editor', false);
+
 			if ($this->option('debug') === true) {
 				echo Response::json([
 					'status'    => 'error',
@@ -150,11 +171,10 @@ trait AppErrors
 					'code'      => $code,
 					'message'   => $exception->getMessage(),
 					'details'   => $details,
-					'file'      => F::relativepath(
-						$exception->getFile(),
-						$this->environment()->get('DOCUMENT_ROOT', '')
-					),
-					'line'      => $exception->getLine(),
+					'file'      => $this->disguiseFilePath($file = $exception->getFile()),
+					'line'      => $line = $exception->getLine(),
+					'editor'    => Url::editor($editor, $file, $line),
+					'trace'     => $this->trace($exception, $editor),
 				], $httpCode);
 			} else {
 				echo Response::json([
@@ -170,6 +190,24 @@ trait AppErrors
 
 		$this->setWhoopsHandler($handler);
 		$this->whoops()->sendHttpCode(false);
+	}
+
+	/**
+	 * @since 6.0.0
+	 */
+	protected function trace(Throwable $exception, string|false $editor): array
+	{
+		return array_map(function ($item) use ($editor) {
+			if (isset($item['file']) === true) {
+				$item['url']  = Url::editor($editor, $item['file'], $item['line']);
+				$item['file'] = $this->disguiseFilePath($item['file']);
+			}
+
+			$item['function'] = $this->disguiseFilePath($item['function']);
+
+			unset($item['args']);
+			return $item;
+		}, $exception->getTrace());
 	}
 
 	/**

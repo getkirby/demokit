@@ -22,8 +22,8 @@ use stdClass;
  */
 class Remote
 {
-	public const CA_INTERNAL = 1;
-	public const CA_SYSTEM   = 2;
+	public const int CA_INTERNAL = 1;
+	public const int CA_SYSTEM   = 2;
 
 	public static array $defaults = [
 		'agent'     => null,
@@ -68,7 +68,7 @@ class Remote
 
 		// update the defaults with App config if set;
 		// request the App instance lazily
-		if ($app = App::instance(null, true)) {
+		if ($app = App::instance(lazy: true)) {
 			$defaults = [...$defaults, ...$app->option('remote', [])];
 		}
 

@@ -3,6 +3,7 @@
 namespace Kirby\Cms;
 
 use Closure;
+use Kirby\Blueprint\Blueprint;
 use Kirby\Toolkit\A;
 use Kirby\Toolkit\I18n;
 use Kirby\Toolkit\Str;
@@ -21,7 +22,7 @@ use Kirby\Toolkit\Str;
  */
 class Fieldsets extends Items
 {
-	public const ITEM_CLASS = Fieldset::class;
+	public const string ITEM_CLASS = Fieldset::class;
 
 	/**
 	 * All registered fieldsets methods

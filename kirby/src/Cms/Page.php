@@ -3,6 +3,8 @@
 namespace Kirby\Cms;
 
 use Closure;
+use Kirby\Blueprint\Blueprint;
+use Kirby\Blueprint\PageBlueprint;
 use Kirby\Content\Field;
 use Kirby\Content\VersionId;
 use Kirby\Exception\Exception;
@@ -42,13 +44,7 @@ class Page extends ModelWithContent
 	use PageActions;
 	use PageSiblings;
 
-	public const CLASS_ALIAS = 'page';
-
-	/**
-	 * All registered page methods
-	 * @todo Remove when support for PHP 8.2 is dropped
-	 */
-	public static array $methods = [];
+	public const string CLASS_ALIAS = 'page';
 
 	/**
 	 * The PageBlueprint object

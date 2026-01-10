@@ -4,7 +4,6 @@ namespace Kirby\Panel\Ui;
 
 use Kirby\Cms\ModelWithContent;
 use Kirby\Exception\InvalidArgumentException;
-use Kirby\Toolkit\I18n;
 
 /**
  * @package   Kirby Panel
@@ -32,16 +31,12 @@ class Stat extends Component
 
 	public function dialog(): string|null
 	{
-		return $this->stringTemplate(
-			$this->i18n($this->dialog)
-		);
+		return $this->stringTemplate($this->dialog);
 	}
 
 	public function drawer(): string|null
 	{
-		return $this->stringTemplate(
-			$this->i18n($this->drawer)
-		);
+		return $this->stringTemplate($this->drawer);
 	}
 
 	public static function from(
@@ -86,9 +81,7 @@ class Stat extends Component
 
 	public function link(): string|null
 	{
-		return $this->stringTemplate(
-			$this->i18n($this->link)
-		);
+		return $this->stringTemplate($this->link);
 	}
 
 	public function props(): array
@@ -121,11 +114,6 @@ class Stat extends Component
 	public function theme(): string|null
 	{
 		return $this->stringTemplate($this->theme);
-	}
-
-	protected function i18n(string|array|null $param = null): string|null
-	{
-		return empty($param) === false ? I18n::translate($param, $param) : null;
 	}
 
 	public function value(): string

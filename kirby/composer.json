@@ -3,7 +3,7 @@
 	"description": "The Kirby core",
 	"license": "proprietary",
 	"type": "kirby-cms",
-	"version": "5.2.2",
+	"version": "6.0.0-alpha.1",
 	"keywords": [
 		"kirby",
 		"cms",
@@ -24,7 +24,7 @@
 		"source": "https://github.com/getkirby/kirby"
 	},
 	"require": {
-		"php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+		"php": "~8.3.0 || ~8.4.0 || ~8.5.0",
 		"ext-ctype": "*",
 		"ext-curl": "*",
 		"ext-dom": "*",
@@ -47,9 +47,6 @@
 		"symfony/polyfill-intl-idn": "1.33.0",
 		"symfony/polyfill-mbstring": "1.33.0",
 		"symfony/yaml": "7.4.1"
-	},
-	"replace": {
-		"symfony/polyfill-php72": "*"
 	},
 	"suggest": {
 		"ext-apcu": "Support for the Apcu cache driver",
@@ -90,11 +87,9 @@
 		"post-update-cmd": "curl -o cacert.pem https://curl.se/ca/cacert.pem",
 		"analyze": [
 			"@analyze:composer",
-			"@analyze:psalm",
-			"@analyze:phpmd"
+			"@analyze:psalm"
 		],
 		"analyze:composer": "composer validate --strict --no-check-version --no-check-all",
-		"analyze:phpmd": "phpmd . ansi phpmd.xml.dist --exclude 'dependencies/*,tests/*,vendor/*'",
 		"analyze:psalm": "psalm",
 		"build": "./scripts/build",
 		"ci": [

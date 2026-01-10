@@ -4,6 +4,7 @@ namespace Kirby\Cms;
 
 use Closure;
 use Exception;
+use Kirby\Blueprint\UserBlueprint;
 use Kirby\Content\Field;
 use Kirby\Exception\InvalidArgumentException;
 use Kirby\Exception\NotFoundException;
@@ -36,13 +37,7 @@ class User extends ModelWithContent
 	use HasSiblings;
 	use UserActions;
 
-	public const CLASS_ALIAS = 'user';
-
-	/**
-	 * All registered user methods
-	 * @todo Remove when support for PHP 8.2 is dropped
-	 */
-	public static array $methods = [];
+	public const string CLASS_ALIAS = 'user';
 
 	protected UserBlueprint|null $blueprint = null;
 	protected array $credentials;
@@ -81,6 +76,10 @@ class User extends ModelWithContent
 		$this->name     = $set('name', fn ($name) => trim(strip_tags($name)));
 		$this->password = $props['password'] ?? null;
 		$this->role     = $set('role', fn ($role) => Str::lower(trim($role)));
+
+		if (isset($props['credentials'])) {
+			$this->credentials = $props['credentials'];
+		}
 
 		// Set blueprint before setting content
 		// or translations in the parent constructor.

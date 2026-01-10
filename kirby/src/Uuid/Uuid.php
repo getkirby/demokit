@@ -45,7 +45,7 @@ use Stringable;
  */
 abstract class Uuid implements Stringable
 {
-	protected const TYPE = 'uuid';
+	protected const string TYPE = 'uuid';
 
 	/**
 	 * Customizable callback function for generating new ID strings instead
@@ -159,51 +159,16 @@ abstract class Uuid implements Stringable
 	}
 
 	/**
-	 * Shorthand to create instance
-	 * by passing either UUID or model
+	 * Creates a UUID object for a model object
 	 */
 	final public static function for(
-		string|Identifiable $seed,
+		Identifiable $seed,
 		Collection|null $context = null
 	): static|null {
-		// if globally disabled, return null
 		if (Uuids::enabled() === false) {
 			return null;
 		}
 
-		// for UUID string
-		if (is_string($seed) === true) {
-			if ($uri = Str::before($seed, '://')) {
-				return match ($uri) {
-					'page'   => new PageUuid(uuid: $seed, context: $context),
-					'file'   => new FileUuid(uuid: $seed, context: $context),
-					'site'   => new SiteUuid(uuid: $seed, context: $context),
-					'user'   => new UserUuid(uuid: $seed, context: $context),
-					// TODO: activate for uuid-block-structure-support
-					// 'block'  => new BlockUuid(uuid: $seed, context: $context),
-					// 'struct' => new StructureUuid(uuid: $seed, context: $context),
-					default  => throw new InvalidArgumentException(
-						message: 'Invalid UUID URI: ' . $seed
-					)
-				};
-			}
-
-			// permalinks
-			if ($url = Str::after($seed, '/@/')) {
-				$parts = explode('/', $url);
-
-				return static::for(
-					$parts[0] . '://' . $parts[1],
-					$context
-				);
-			}
-
-			throw new InvalidArgumentException(
-				message: 'Invalid UUID string: ' . $seed
-			);
-		}
-
-		// for model object
 		return match (true) {
 			$seed instanceof Page
 				=> new PageUuid(model: $seed, context: $context),
@@ -222,6 +187,43 @@ abstract class Uuid implements Stringable
 				message: 'UUID not supported for: ' . $seed::class
 			)
 		};
+	}
+
+	/**
+	 * Creates a UUID object from a UUID string
+	 * @since 6.0.0
+	 */
+	final public static function from(
+		string $uuid,
+		string|array|null $type = null,
+		Collection|null $context = null
+	): static|null {
+		if (Uuids::enabled() === false) {
+			return null;
+		}
+
+		if ($type !== null && static::is($uuid, $type) === false) {
+			return null;
+		}
+
+		if ($type = Str::before($uuid, '://')) {
+			return match ($type) {
+				'page'   => new PageUuid(uuid: $uuid, context: $context),
+				'file'   => new FileUuid(uuid: $uuid, context: $context),
+				'site'   => new SiteUuid(uuid: $uuid, context: $context),
+				'user'   => new UserUuid(uuid: $uuid, context: $context),
+				// TODO: activate for uuid-block-structure-support
+				// 'block'  => new BlockUuid(uuid: $seed, context: $context),
+				// 'struct' => new StructureUuid(uuid: $seed, context: $context),
+				default  => throw new InvalidArgumentException(
+					message: 'Invalid UUID type "' . $type . '" in ' . $uuid
+				)
+			};
+		}
+
+		throw new InvalidArgumentException(
+			message: 'Invalid UUID string: ' . $uuid
+		);
 	}
 
 	/**
@@ -439,18 +441,27 @@ abstract class Uuid implements Stringable
 	}
 
 	/**
-	 * Returns value to be stored in cache
-	 */
-	public function value(): string|array
-	{
-		return $this->model()->id();
-	}
-
-	/**
 	 * @see self::render()
 	 */
 	public function __toString(): string
 	{
 		return $this->toString();
+	}
+
+	/**
+	 * Returns the type of the UUID
+	 * @since 6.0.0
+	 */
+	public function type(): string
+	{
+		return static::TYPE;
+	}
+
+	/**
+	 * Returns value to be stored in cache
+	 */
+	public function value(): string|array
+	{
+		return $this->model()->id();
 	}
 }

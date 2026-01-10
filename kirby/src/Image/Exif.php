@@ -2,7 +2,6 @@
 
 namespace Kirby\Image;
 
-use Kirby\Toolkit\A;
 use Kirby\Toolkit\V;
 
 /**
@@ -95,12 +94,8 @@ class Exif
 	/**
 	 * Returns the iso value
 	 */
-	public function iso(): string|null
+	public function iso(): string|array|null
 	{
-		if (is_array($this->iso) === true) {
-			return A::first($this->iso);
-		}
-
 		return $this->iso;
 	}
 

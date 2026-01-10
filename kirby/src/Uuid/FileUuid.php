@@ -3,22 +3,23 @@
 namespace Kirby\Uuid;
 
 use Generator;
-use Kirby\Cms\App;
 use Kirby\Cms\File;
 
 /**
  * UUID for \Kirby\Cms\File
- * @since 3.8.0
  *
  * @package   Kirby Uuid
  * @author    Nico Hoffmann <nico@getkirby.com>
  * @link      https://getkirby.com
  * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
+ * @since     3.8.0
+ *
+ * @method \Kirby\Cms\File|null model(bool $lazy = false)
  */
 class FileUuid extends ModelUuid
 {
-	protected const TYPE = 'file';
+	protected const string TYPE = 'file';
 
 	/**
 	 * @var \Kirby\Cms\File|null
@@ -38,7 +39,7 @@ class FileUuid extends ModelUuid
 			if ($value = Uuids::cache()->get($key)) {
 				// value is an array containing
 				// the UUID for the parent and the filename
-				$parent = Uuid::for($value['parent'])->model();
+				$parent = Uuid::from($value['parent'])->model();
 				return $parent?->file($value['filename']);
 			}
 		}
@@ -90,20 +91,6 @@ class FileUuid extends ModelUuid
 	 */
 	public function toPermalink(): string
 	{
-		// make sure UUID is cached because the permalink
-		// route only looks up UUIDs from cache
-		if ($this->isCached() === false) {
-			$this->populate();
-		}
-
-		return App::instance()->url() . '/@/' . static::TYPE . '/' . $this->id();
-	}
-
-	/**
-	 * @deprecated 5.1.0 Use `::toPermalink()` instead
-	 */
-	public function url(): string
-	{
-		return $this->toPermalink();
+		return (new Permalink($this))->url();
 	}
 }

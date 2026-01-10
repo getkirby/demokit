@@ -3,6 +3,7 @@
 namespace Kirby\Panel\Ui;
 
 use Kirby\Exception\LogicException;
+use Kirby\Toolkit\HasI18n;
 use Kirby\Toolkit\Str;
 
 /**
@@ -18,6 +19,8 @@ use Kirby\Toolkit\Str;
  */
 abstract class Component
 {
+	use HasI18n;
+
 	protected string $key;
 	public array $attrs = [];
 

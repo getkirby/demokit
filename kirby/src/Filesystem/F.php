@@ -580,9 +580,6 @@ class F
 			$size = static::size($size);
 		}
 
-		// make sure it's an int
-		$size = (int)$size;
-
 		// avoid errors for invalid sizes
 		if ($size <= 0) {
 			return '0 KB';
@@ -686,8 +683,6 @@ class F
 	/**
 	 * Returns the relative path of the file
 	 * starting after $in
-	 *
-	 * @SuppressWarnings(PHPMD.CountInLoopExpression)
 	 */
 	public static function relativepath(
 		string $file,

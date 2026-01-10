@@ -9,7 +9,11 @@
 	"alpha": "Alpha",
 	"author": "Author",
 	"avatar": "Profile picture",
+
 	"back": "Back",
+
+	"buttons.empty": "No buttons",
+
 	"cancel": "Cancel",
 	"change": "Change",
 	"close": "Close",
@@ -146,6 +150,7 @@
 
 	"error.form.incomplete": "Please fix all form errors…",
 	"error.form.notSaved": "The form could not be saved",
+	"error.form.validation": "Form validation failed",
 
 	"error.language.code": "Please enter a valid code for the language",
 	"error.language.create.permission": "You are not allowed to create a language",
@@ -430,11 +435,9 @@
 	"installation.disabled": "The panel installer is disabled on public servers by default. Please run the installer on a local machine or enable it with the <code>panel.install</code> option.",
 	"installation.issues.accounts": "The <code>/site/accounts</code> folder does not exist or is not writable",
 	"installation.issues.content": "The <code>/content</code> folder does not exist or is not writable",
-	"installation.issues.curl": "The <code>CURL</code> extension is required",
+	"installation.issues.extension": "The <code>{extension}</code> PHP extension is required",
 	"installation.issues.headline": "The panel cannot be installed",
-	"installation.issues.mbstring": "The <code>MB String</code> extension is required",
 	"installation.issues.media": "The <code>/media</code> folder does not exist or is not writable",
-	"installation.issues.php": "Make sure to use <code>PHP 8+</code>",
 	"installation.issues.sessions": "The <code>/site/sessions</code> folder does not exist or is not writable",
 
 	"language": "Language",
@@ -529,12 +532,11 @@
 	"login.email.login.subject": "Your login code",
 	"login.email.password-reset.body": "Hi {user.nameOrEmail},\n\nYou recently requested a password reset code for the Panel of {site}.\nThe following password reset code will be valid for {timeout} minutes:\n\n{code}\n\nIf you did not request a password reset code, please ignore this email or contact your administrator if you have questions.\nFor security, please DO NOT forward this email.",
 	"login.email.password-reset.subject": "Your password reset code",
+	"login.method.code.label": "Login via email",
+	"login.method.password.label": "Login with password",
+	"login.method.password-reset.label": "Forgot your password?",
 	"login.remember": "Keep me logged in",
 	"login.reset": "Reset password",
-	"login.toggleText.code.email": "Login via email",
-	"login.toggleText.code.email-password": "Login with password",
-	"login.toggleText.password-reset.email": "Forgot your password?",
-	"login.toggleText.password-reset.email-password": "← Back to login",
 	"login.totp.enable.option": "Set up one‑time codes",
 	"login.totp.enable.intro": "Authenticator apps can generate one‑time codes that are used as a second factor when signing into your account.",
 	"login.totp.enable.qr.label": "1. Scan this QR code",
@@ -635,7 +637,10 @@
 	"plugin": "Plugin",
 	"plugins": "Plugins",
 	"prev": "Previous",
+
 	"preview": "Preview",
+	"preview.browser.pin": "Toggle whether preview navigation should be in sync or independent",
+	"preview.browser.scroll": "Sync scroll",
 
 	"publish": "Publish",
 	"published": "Published",
@@ -697,7 +702,6 @@
 	"system.issues.kirby": "The kirby folder seems to be exposed",
 	"system.issues.local": "The site is running locally with relaxed security checks",
 	"system.issues.site": "The site folder seems to be exposed",
-	"system.issues.vue.compiler": "The Vue template compiler is enabled",
 	"system.issues.vulnerability.kirby": "Your installation might be affected by the following vulnerability ({ severity } severity): { description }",
 	"system.issues.vulnerability.plugin": "Your installation might be affected by the following vulnerability in the { plugin } plugin ({ severity } severity): { description }",
 	"system.updateStatus": "Update status",
@@ -793,6 +797,7 @@
 	"version.changes": "Changed version",
 	"version.compare": "Compare versions",
 	"version.current": "Current version",
+	"version.form": "Live editor",
 	"version.latest": "Latest version",
 	"versionInformation": "Version information",
 

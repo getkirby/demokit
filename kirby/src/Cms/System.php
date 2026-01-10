@@ -53,14 +53,6 @@ class System
 	}
 
 	/**
-	 * Check for an existing curl extension
-	 */
-	public function curl(): bool
-	{
-		return extension_loaded('curl') === true;
-	}
-
-	/**
 	 * Returns the URL to the file within a system folder
 	 * if the file is located in the document
 	 * root. Otherwise it will return null.
@@ -103,6 +95,27 @@ class System
 			default:
 				return null;
 		}
+	}
+
+	/**
+	 * Returns the status of all required PHP extensions
+	 * @since 6.0.0
+	 */
+	public function extensions(): array
+	{
+		return [
+			'ctype'     => extension_loaded('ctype'),
+			'curl'      => extension_loaded('curl'),
+			'dom'       => extension_loaded('dom'),
+			'filter'    => extension_loaded('filter'),
+			'hash'      => extension_loaded('hash'),
+			'iconv'     => extension_loaded('iconv'),
+			'json'      => extension_loaded('json'),
+			'libxml'    => extension_loaded('libxml'),
+			'mbstring'  => extension_loaded('mbstring'),
+			'openssl'   => extension_loaded('openssl'),
+			'SimpleXML' => extension_loaded('SimpleXML')
+		];
 	}
 
 	/**
@@ -248,9 +261,7 @@ class System
 	 */
 	public function isInstallable(): bool
 	{
-		return
-			$this->isLocal() === true ||
-			$this->app->option('panel.install', false) === true;
+		return in_array(false, array_values($this->extensions()), true) === false && ($this->isLocal() === true || $this->app->option('panel.install', false) === true);
 	}
 
 	/**
@@ -347,29 +358,11 @@ class System
 	}
 
 	/**
-	 * Check for an existing mbstring extension
-	 */
-	public function mbString(): bool
-	{
-		return extension_loaded('mbstring') === true;
-	}
-
-	/**
 	 * Check for a writable media folder
 	 */
 	public function media(): bool
 	{
 		return is_writable($this->app->root('media')) === true;
-	}
-
-	/**
-	 * Check for a valid PHP version
-	 */
-	public function php(): bool
-	{
-		return
-			version_compare(PHP_VERSION, '8.2.0', '>=') === true &&
-			version_compare(PHP_VERSION, '8.6.0', '<')  === true;
 	}
 
 	/**
@@ -436,11 +429,8 @@ class System
 		return [
 			'accounts' => $this->accounts(),
 			'content'  => $this->content(),
-			'curl'     => $this->curl(),
-			'sessions' => $this->sessions(),
-			'mbstring' => $this->mbstring(),
 			'media'    => $this->media(),
-			'php'      => $this->php()
+			'sessions' => $this->sessions(),
 		];
 	}
 
@@ -460,6 +450,9 @@ class System
 		return $site->blueprint()->title();
 	}
 
+	/**
+	 * @see `self::status()`
+	 */
 	public function toArray(): array
 	{
 		return $this->status();

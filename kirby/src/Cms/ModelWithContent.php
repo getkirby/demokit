@@ -3,6 +3,7 @@
 namespace Kirby\Cms;
 
 use Closure;
+use Kirby\Blueprint\Blueprint;
 use Kirby\Content\Content;
 use Kirby\Content\ImmutableMemoryStorage;
 use Kirby\Content\Lock;
@@ -40,7 +41,7 @@ abstract class ModelWithContent implements Identifiable, Stringable
 	 * The CLASS_ALIAS is a short human-readable
 	 * version of the class name, i.e. page.
 	 */
-	public const CLASS_ALIAS = null;
+	public const string|null CLASS_ALIAS = null;
 
 	/**
 	 * Cached array of valid blueprints

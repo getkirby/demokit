@@ -1,6 +1,6 @@
 <?php
 
-use Kirby\Panel\UserTotpEnableDialog;
+use Kirby\Panel\Controller\Dialog\UserTotpEnableDialogController;
 
 $dialogs = require __DIR__ . '/../users/dialogs.php';
 
@@ -33,6 +33,10 @@ return [
 		...$dialogs['user.fields'],
 		'pattern' => '(account)/fields/(:any)/(:all?)',
 	],
+	'account.sections' => [
+		...$dialogs['user.sections'],
+		'pattern' => '(account)/sections/(:any)/(:all?)',
+	],
 	'account.file.changeName' => [
 		...$dialogs['user.file.changeName'],
 		'pattern' => '(account)/files/(:any)/changeName',
@@ -53,10 +57,13 @@ return [
 		...$dialogs['user.file.fields'],
 		'pattern' => '(account)/files/(:any)/fields/(:any)/(:all?)',
 	],
+	'account.file.sections' => [
+		...$dialogs['user.file.sections'],
+		'pattern' => '(account)/files/(:any)/sections/(:any)/(:all?)',
+	],
 	'account.totp.enable' => [
 		'pattern' => '(account)/totp/enable',
-		'load'    => fn () => (new UserTotpEnableDialog())->load(),
-		'submit'  => fn () => (new UserTotpEnableDialog())->submit()
+		'action'  => UserTotpEnableDialogController::class
 	],
 	'account.totp.disable' => [
 		'pattern' => '(account)/totp/disable',

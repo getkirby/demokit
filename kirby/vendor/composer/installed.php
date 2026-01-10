@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'getkirby/cms',
-        'pretty_version' => '5.2.2',
-        'version' => '5.2.2.0',
+        'pretty_version' => '6.0.0-alpha.1',
+        'version' => '6.0.0.0-alpha1',
         'reference' => null,
         'type' => 'kirby-cms',
         'install_path' => __DIR__ . '/../../',
@@ -47,8 +47,8 @@
             'dev_requirement' => false,
         ),
         'getkirby/cms' => array(
-            'pretty_version' => '5.2.2',
-            'version' => '5.2.2.0',
+            'pretty_version' => '6.0.0-alpha.1',
+            'version' => '6.0.0.0-alpha1',
             'reference' => null,
             'type' => 'kirby-cms',
             'install_path' => __DIR__ . '/../../',
@@ -159,12 +159,6 @@
             'install_path' => __DIR__ . '/../symfony/polyfill-mbstring',
             'aliases' => array(),
             'dev_requirement' => false,
-        ),
-        'symfony/polyfill-php72' => array(
-            'dev_requirement' => false,
-            'replaced' => array(
-                0 => '*',
-            ),
         ),
         'symfony/yaml' => array(
             'pretty_version' => 'v7.4.1',
