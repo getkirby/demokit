@@ -1,9 +1,11 @@
 <?php
 
+use Kirby\Cms\App;
 use Kirby\Demo\Demo;
 use Kirby\Demo\Instance;
 use Kirby\Demo\Instances;
 use Kirby\Http\Response;
+use Kirby\Panel\Controller\View\LoginViewController;
 
 $demo = $instance = null;
 
@@ -40,34 +42,23 @@ if (class_exists(Demo::class) === true) {
 	}
 }
 
-Kirby::plugin('getkirby/demo', [
+App::plugin('getkirby/demo', [
 	'areas' => [
-		'login' => function ($kirby) {
-			return [
-				'views' => [
-					'login' => [
-						'action'  => function () use ($kirby) {
-							$system = $kirby->system();
-							$status = $kirby->auth()->status();
+		'login' => fn () => [
+			'views' => [
+				'login' => [
+					'action'  => fn() => new class() extends LoginViewController {
+						public function value(): array
+						{
 							return [
-								'component' => 'k-login-view',
-								'props'     => [
-									'methods' => array_keys($system->loginMethods()),
-									'pending' => [
-										'email'     => $status->email(),
-										'challenge' => $status->challenge()
-									],
-									'value' => [
-										'email'    => 'demo@getkirby.com',
-										'password' => 'demodemo'
-									]
-								],
+								'email'    => 'demo@getkirby.com',
+								'password' => 'demodemo'
 							];
 						}
-					],
-				]
-			];
-		}
+					}
+				],
+			]
+		]
 	],
 	'siteMethods' => [
 		'demoExpiry' => function (bool $max = false) use ($instance) {
