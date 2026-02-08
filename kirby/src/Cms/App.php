@@ -29,6 +29,7 @@ use Kirby\Query\Query;
 use Kirby\Session\AutoSession;
 use Kirby\Session\Session;
 use Kirby\Template\Snippet;
+use Kirby\Template\Stack;
 use Kirby\Template\Template;
 use Kirby\Text\KirbyTag;
 use Kirby\Text\KirbyTags;
@@ -109,6 +110,7 @@ class App
 
 		// start with a fresh snippet and version cache
 		Snippet::$cache = [];
+		Stack::reset();
 		VersionCache::reset();
 
 		// start with a fresh Query runner option
@@ -432,6 +434,7 @@ class App
 	public function contentToken(object|null $model, string $value): string
 	{
 		$default = $this->root('content');
+		$default = realpath($default) ?: $default;
 
 		if ($model !== null && method_exists($model, 'id') === true) {
 			$default .= '/' . $model->id();
@@ -1040,7 +1043,7 @@ class App
 
 		// load the main config options
 		$root    = $this->root('config');
-		$options = F::load($root . '/config.php', [], allowOutput: false);
+		$options = F::load($root . '/config.php', [], allowOutput: false, cache: true);
 
 		// merge into one clean options array
 		return $this->options = array_replace_recursive(Config::$data, $options);
@@ -1055,7 +1058,7 @@ class App
 		$root = $this->root('config');
 
 		// first load `config/env.php` to access its `url` option
-		$envOptions = F::load($root . '/env.php', [], allowOutput: false);
+		$envOptions = F::load($root . '/env.php', [], allowOutput: false, cache: true);
 
 		// use the option from the main `config.php`,
 		// but allow the `env.php` to override it
