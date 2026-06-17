@@ -1,5 +1,7 @@
 <?php
 
+Kirby\Http\Cookie::$key = 'demodemo';
+
 return [
 	'debug' => false,
 	'yaml.handler' => 'symfony',
