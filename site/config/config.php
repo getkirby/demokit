@@ -4,6 +4,9 @@ Kirby\Http\Cookie::$key = 'demodemo';
 
 return [
 	'debug' => false,
+	'markdown' => [
+		'safe' => true
+	],
 	'yaml.handler' => 'symfony',
 	'content' => [
 		// make the media tokens independent from the instance
