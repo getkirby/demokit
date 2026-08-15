@@ -1,5 +1,5 @@
-type: files
-headline: Cover
+type: filelist
+label: Cover
 max: 1
 layout: cards
 info: "{{ file.dimensions }}"

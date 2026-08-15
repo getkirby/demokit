@@ -1,5 +1,5 @@
-type: pages
-headline: Clients
+type: pagelist
+label: Clients
 parent: kirby.page("agency/clients")
 template: agency-client
 empty: No clients yet

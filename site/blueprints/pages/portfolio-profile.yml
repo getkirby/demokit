@@ -9,10 +9,10 @@ options:
 
 columns:
   - width: 1/3
-    sections:
+    fields:
       images:
-        headline: Profile image
-        type: files
+        label: Profile image
+        type: filelist
         layout: cards
         template: portfolio-profile-image
         info: "{{ file.dimensions }}"

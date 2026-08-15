@@ -27,23 +27,20 @@ columns:
         type: blocks
 
   - width: 1/3
-    sections:
-      meta:
-        type: fields
-        fields:
-          date:
-            type: date
-            time: false
-            display: "DD.MM.YYYY"
-            default: now
-            required: true
-          author:
-            type: users
-          tags:
-            type: tags
-            options:
-              type: query
-              query: page.siblings.pluck("tags", ",", true)
+    fields:
+      date:
+        type: date
+        time: false
+        display: "DD.MM.YYYY"
+        default: now
+        required: true
+      author:
+        type: users
+      tags:
+        type: tags
+        options:
+          type: query
+          query: page.siblings.pluck("tags", ",", true)
       images:
-        type: files
+        type: filelist
         template: image

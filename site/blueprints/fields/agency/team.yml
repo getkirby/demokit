@@ -1,5 +1,5 @@
-type: pages
-headline: Team
+type: pagelist
+label: Team
 parent: site.find("agency/team")
 size: tiny
 info: "{{ page.position }}"

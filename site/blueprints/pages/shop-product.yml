@@ -59,9 +59,9 @@ tabs:
             type: writer
 
       - width: 1/3
-        sections:
+        fields:
           image:
-            extends: sections/shop/image
+            extends: fields/shop/image
             template: shop-product-cover
             min: 1
             size: large

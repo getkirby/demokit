@@ -1,5 +1,5 @@
-type: pages
-headline: Notes
+type: pagelist
+label: Notes
 parent: site.find("blog")
 info: "{{ page.dateFormatted }}"
 template: blog-article

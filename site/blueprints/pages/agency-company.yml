@@ -34,17 +34,14 @@ tabs:
             type: writer
 
       - width: 2/3
-        sections:
+        fields:
+          line1:
+            type: line
           teamHeading:
-            type: fields
-            fields:
-              line1:
-                type: line
-              teamHeading:
-                label: Team heading
-                type: text
+            label: Team heading
+            type: text
           team:
-            extends: sections/agency/team
+            extends: fields/agency/team
             status: listed
             layout: cards
             size: small
@@ -101,9 +98,9 @@ tabs:
               - "4"
 
   images:
-    sections:
+    fields:
       images:
-        type: files
+        type: filelist
         size: small
         layout: cards
         info: "{{ file.dimensions }}"

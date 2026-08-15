@@ -12,22 +12,22 @@ tabs:
   articles:
     columns:
       - width: 1/3
-        sections:
+        fields:
           drafts:
-            extends: sections/blog/articles
-            headline: Drafts
+            extends: fields/blog/articles
+            label: Drafts
             info: false
             status: draft
           unlisted:
-            extends: sections/blog/articles
-            headline: In Review
+            extends: fields/blog/articles
+            label: In Review
             info: false
             status: unlisted
       - width: 2/3
-        sections:
+        fields:
           listed:
-            extends: sections/blog/articles
-            headline: Published
+            extends: fields/blog/articles
+            label: Published
             status: listed
             layout: cards
             image:

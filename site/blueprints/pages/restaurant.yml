@@ -10,9 +10,9 @@ options:
 
 columns:
   - width: 1/1
-    sections:
+    fields:
       cover:
-        type: files
+        type: filelist
         template: restaurant-cover-image
         layout: cards
         max: 1
@@ -62,10 +62,10 @@ columns:
         label: Dessert
 
   - width: 1/1
-    sections:
+    fields:
       gallery:
-        headline: Impressions
-        type: files
+        label: Impressions
+        type: filelist
         template: restaurant-gallery-image
         layout: cards
         size: huge

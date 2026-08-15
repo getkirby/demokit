@@ -13,18 +13,18 @@ options:
   url: false
   delete: false
 
-sections:
+fields:
   drafts:
-    extends: sections/agency/projects
+    extends: fields/agency/projects
     layout: list
-    headline: Drafts
+    label: Drafts
     status: draft
   inReview:
-    extends: sections/agency/projects
+    extends: fields/agency/projects
     layout: list
-    headline: Client approval needed
+    label: Client approval needed
     status: unlisted
   projects:
-    extends: sections/agency/projects
-    headline: Published
+    extends: fields/agency/projects
+    label: Published
     status: listed

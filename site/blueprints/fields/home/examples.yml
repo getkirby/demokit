@@ -1,5 +1,5 @@
-headline: Examples
-type: pages
+label: Examples
+type: pagelist
 status: listed
 parent: site
 info: "{{ page.description }}"

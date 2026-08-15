@@ -1,5 +1,5 @@
-type: pages
-headline: Photography
+type: pagelist
+label: Photography
 parent: site.find("portfolio/projects")
 size: small
 info: "{{ page.images.count }} image(s)"

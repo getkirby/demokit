@@ -32,10 +32,10 @@ columns:
 
   sidebar:
     width: 1/3
-    sections:
+    fields:
       image:
-        type: files
-        headline: Profile image
+        type: filelist
+        label: Profile image
         layout: cards
         info: "{{ file.dimensions }}"
         max: 1

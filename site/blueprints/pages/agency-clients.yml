@@ -13,9 +13,9 @@ options:
   url: false
   delete: false
 
-sections:
+fields:
   clients:
-    extends: sections/agency/clients
+    extends: fields/agency/clients
     layout: table
     columns:
       email:

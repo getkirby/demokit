@@ -8,7 +8,7 @@ options:
   url: false
   delete: false
 
-sections:
+fields:
   stats:
     type: stats
     size: huge
@@ -32,7 +32,7 @@ sections:
         theme: positive
 
   products:
-    type: pages
+    type: pagelist
     empty: No products yet
     layout: cards
     size: small

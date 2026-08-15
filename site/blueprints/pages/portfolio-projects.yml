@@ -13,14 +13,14 @@ options:
   url: false
   delete: false
 
-sections:
+fields:
   drafts:
-    extends: sections/portfolio/projects
-    headline: Drafts
+    extends: fields/portfolio/projects
+    label: Drafts
     layout: list
     status: draft
 
   listed:
-    extends: sections/portfolio/projects
-    headline: Published Projects
+    extends: fields/portfolio/projects
+    label: Published Projects
     status: listed

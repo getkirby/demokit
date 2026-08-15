@@ -7,16 +7,15 @@ status:
   listed: true
 
 columns:
-
   - width: 1/3
     fields:
       text:
         type: writer
 
   - width: 2/3
-    sections:
+    fields:
       images:
-        type: files
+        type: filelist
         layout: cards
         template: portfolio-project-image
         info: "{{ file.dimensions }}"

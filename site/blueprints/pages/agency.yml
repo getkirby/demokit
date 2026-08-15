@@ -10,22 +10,22 @@ options:
 
 columns:
   - width: 1/2
-    sections:
+    fields:
       projects:
-        extends: sections/agency/projects
+        extends: fields/agency/projects
         size: small
 
   - width: 1/2
-    sections:
+    fields:
       team:
-        extends: sections/agency/team
+        extends: fields/agency/team
 
       clients:
-        extends: sections/agency/clients
+        extends: fields/agency/clients
         layout: list
 
       pages:
-        type: pages
+        type: pagelist
         layout: list
         template:
           - agency-home
