@@ -42,32 +42,7 @@ if (class_exists(Demo::class) === true) {
 
 Kirby::plugin('getkirby/demo', [
 	'areas' => [
-		'login' => function ($kirby) {
-			return [
-				'views' => [
-					'login' => [
-						'action'  => function () use ($kirby) {
-							$system = $kirby->system();
-							$status = $kirby->auth()->status();
-							return [
-								'component' => 'k-login-view',
-								'props'     => [
-									'methods' => array_keys($system->loginMethods()),
-									'pending' => [
-										'email'     => $status->email(),
-										'challenge' => $status->challenge()
-									],
-									'value' => [
-										'email'    => 'demo@getkirby.com',
-										'password' => 'demodemo'
-									]
-								],
-							];
-						}
-					],
-				]
-			];
-		}
+		'login' => require __DIR__ . '/areas/login.php',
 	],
 	'siteMethods' => [
 		'demoExpiry' => function (bool $max = false) use ($instance) {
