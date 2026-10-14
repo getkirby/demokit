@@ -3,6 +3,7 @@
 namespace Kirby\Panel\Lab;
 
 use Kirby\Cms\App;
+use Kirby\Cms\Inventory;
 use Kirby\Filesystem\Dir;
 use Kirby\Filesystem\F;
 use Kirby\Toolkit\A;
@@ -11,12 +12,10 @@ use Kirby\Toolkit\Str;
 /**
  * Docs for Vue components
  *
- * @package   Kirby Panel
- * @author    Nico Hoffmann <nico@getkirby.com>
- * @link      https://getkirby.com
  * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  * @since     4.0.0
+ *
  * @internal
  * @codeCoverageIgnore
  */
@@ -31,10 +30,10 @@ class Docs
 		$docs  = [];
 		$dist  = static::root();
 		$tmp   = static::root(true);
-		$files = Dir::inventory($dist)['files'];
+		$files = Inventory::for($dist)['files'];
 
-		if (Dir::exists($tmp) === true) {
-			$files = [...$files, ...Dir::inventory($tmp)['files']];
+		if (static::isDev() === true && Dir::exists($tmp) === true) {
+			$files = [...$files, ...Inventory::for($tmp)['files']];
 		}
 
 		$docs = A::map(
@@ -49,6 +48,20 @@ class Docs
 		usort($docs, fn ($a, $b) => $a['text'] <=> $b['text']);
 
 		return $docs;
+	}
+
+	/**
+	 * Whether the Panel runs in dev mode, where the
+	 * Vite dev server writes fresh docs to `tmp`
+	 * @since 6.0.0
+	 */
+	public static function isDev(): bool
+	{
+		$kirby = App::instance();
+
+		return
+			$kirby->option('panel.dev', false) !== false &&
+			is_file($kirby->root('panel') . '/.vite-running') === true;
 	}
 
 	/**

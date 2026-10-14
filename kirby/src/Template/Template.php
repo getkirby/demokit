@@ -4,17 +4,15 @@ namespace Kirby\Template;
 
 use Exception;
 use Kirby\Cms\App;
+use Kirby\Exception\LogicException;
 use Kirby\Filesystem\F;
-use Kirby\Toolkit\Tpl;
+use Kirby\Toolkit\Str;
 use Stringable;
 
 /**
  * Represents a Kirby template and takes care
  * of loading the correct file.
  *
- * @package   Kirby Template
- * @author    Bastian Allgeier <bastian@getkirby.com>
- * @link      https://getkirby.com
  * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  */
@@ -155,39 +153,8 @@ class Template implements Stringable
 	 */
 	public function render(array $data = []): string
 	{
-		// if the template is rendered inside a snippet,
-		// we need to keep the "outside" snippet object
-		// to compare it later
-		$snippet = Snippet::$current;
-
-		// load the template
-		$template = Tpl::load($this->file(), $data);
-
-		// if last `endsnippet()` inside the current template
-		// has been omitted (= snippet was used as layout snippet),
-		// `Snippet::$current` will point to a snippet that was
-		// opened inside the template; if that snippet is the direct
-		// child of the snippet that was open before the template was
-		// rendered (which could be `null` if no snippet was open),
-		// take the buffer output from the template as default slot
-		// and render the snippet as final template output
-		if (
-			Snippet::$current === null ||
-			Snippet::$current->parent() !== $snippet
-		) {
-			return $template;
-		}
-
-		// no slots have been defined, but the template code
-		// should be used as default slot
-		if (Snippet::$current->hasSlots() === false) {
-			return Snippet::$current->render($data, [
-				'default' => $template
-			]);
-		}
-
-		// let the snippet close and render natively
-		return Snippet::$current->render($data);
+		// Treat the template file as snippet and load it accordingly
+		return Snippet::load($this->file(), $data);
 	}
 
 	/**
@@ -195,7 +162,28 @@ class Template implements Stringable
 	 */
 	public function root(): string
 	{
-		return App::instance()->root($this->store());
+		$store = $this->store();
+		$root  = App::instance()->root($store);
+
+		if ($root === null) {
+			throw new LogicException(
+				message: 'Kirby root "' . $store . '" does not exist'
+			);
+		}
+
+		return $root;
+	}
+
+	/**
+	 * Sanitizes a template name to prevent path traversal,
+	 * as the name is used to build the content file name;
+	 * dots are kept for representations, but slashes are removed;
+	 * can return an empty string, it's up to the caller to decide
+	 * whether to fall back to a default template name
+	 */
+	public static function sanitizeName(string|null $name): string
+	{
+		return Str::slug($name, allowed: 'a-z0-9._-');
 	}
 
 	/**

@@ -4,17 +4,15 @@ namespace Kirby\Cms;
 
 use Kirby\Exception\DuplicateException;
 use Kirby\Filesystem\F;
+use Kirby\Toolkit\Str;
 
 /**
  * A collection of all defined site languages
  *
- * @package   Kirby Cms
- * @author    Bastian Allgeier <bastian@getkirby.com>
- * @link      https://getkirby.com
  * @copyright Bastian Allgeier
  * @license   https://getkirby.com/license
  *
- * @extends \Kirby\Cms\Collection<\Kirby\Cms\Language>
+ * @extends Collection<Language>
  */
 class Languages extends Collection
 {
@@ -27,7 +25,7 @@ class Languages extends Collection
 	 * Creates a new collection with the given language objects
 	 *
 	 * @param null $parent
-	 * @throws \Kirby\Exception\DuplicateException
+	 * @throws DuplicateException
 	 */
 	public function __construct(
 		array $objects = [],
@@ -87,6 +85,30 @@ class Languages extends Collection
 		}
 
 		return new static([Language::single()]);
+	}
+
+	/**
+	 * Returns the language whose URL path prefix
+	 * matches the given path
+	 */
+	public function findByPath(string|null $path): Language|null
+	{
+		foreach ($this->data as $language) {
+			$prefix = $language->path();
+
+			if ($prefix === '') {
+				continue;
+			}
+
+			if (
+				$path === $prefix ||
+				Str::startsWith($path ?? '', $prefix . '/') === true
+			) {
+				return $language;
+			}
+		}
+
+		return null;
 	}
 
 	/**

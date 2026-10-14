@@ -5,7 +5,7 @@ use Kirby\Toolkit\I18n;
 
 return function ($kirby) {
 	return [
-		'icon'  => 'user',
+		'icon'  => 'logout',
 		'label' => I18n::translate('logout'),
 		'views' => [
 			'logout' => [
@@ -13,7 +13,11 @@ return function ($kirby) {
 				'auth'    => false,
 				'action'  => function () use ($kirby) {
 					$kirby->auth()->logout();
-					Panel::go('login');
+
+					// the Panel follows this redirect in place and has to
+					// refresh the globals it cached, above all the CSRF token
+					// that has just been removed by the logout
+					Panel::go('login?_globals=$system,$translation');
 				},
 			]
 		]

@@ -8,9 +8,6 @@ use NumberFormatter;
 /**
  * Localization class, roughly inspired by VueI18n
  *
- * @package   Kirby Toolkit
- * @author    Bastian Allgeier <bastian@getkirby.com>
- * @link      https://getkirby.com
  * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
@@ -40,6 +37,29 @@ class I18n
 	 * Cache of `NumberFormatter` objects by locale
 	 */
 	protected static array $decimalsFormatters = [];
+
+	/**
+	 * Returns the entry for the key or `null`
+	 * if it is missing or an empty string
+	 *
+	 * @since 5.6.1
+	 */
+	protected static function entry(
+		array|string|null $values,
+		string $key
+	): mixed {
+		if (is_array($values) === false) {
+			return null;
+		}
+
+		$value = $values[$key] ?? null;
+
+		if ($value === '') {
+			return null;
+		}
+
+		return $value;
+	}
 
 	/**
 	 * Returns the list of fallback locales
@@ -153,7 +173,9 @@ class I18n
 		// (1) string $key: look up i18n string from global translations
 		if (is_string($key) === true) {
 			// look up locale in global translations list,
-			if ($result = static::translation($locale)[$key] ?? null) {
+			$result = static::entry(static::translation($locale), $key);
+
+			if ($result !== null) {
 				return $result;
 			}
 
@@ -174,7 +196,9 @@ class I18n
 					continue;
 				}
 
-				if ($result = static::translation($fallback)[$key] ?? null) {
+				$result = static::entry(static::translation($fallback), $key);
+
+				if ($result !== null) {
 					return $result;
 				}
 			}
@@ -186,18 +210,23 @@ class I18n
 		// (2) array|null $key with entries per locale
 
 		// try entry for long and short locale
-		if ($result = $key[$locale] ?? null) {
-			return $result;
-		}
-		if ($result = $key[$shortLocale] ?? null) {
+		$result =
+			static::entry($key, $locale) ??
+			static::entry($key, $shortLocale);
+
+		if ($result !== null) {
 			return $result;
 		}
 
 		// if the array as a global wildcard entry,
 		// use this one as i18n key and try to resolve
 		// this via part (1) of this method
-		if ($wildcard = $key['*'] ?? null) {
-			if ($result = static::translate($wildcard, $wildcard, $locale)) {
+		$wildcard = static::entry($key, '*');
+
+		if ($wildcard !== null) {
+			$result = static::translate($wildcard, $wildcard, $locale);
+
+			if ($result !== null) {
 				return $result;
 			}
 		}
@@ -205,22 +234,23 @@ class I18n
 		// if the $fallback parameter is an array, we can assume
 		// that it's also an array with entries per locale:
 		// check with long and short locale if we find a matching entry
-		if ($result = $fallback[$locale] ?? null) {
-			return $result;
-		}
-		if ($result = $fallback[$shortLocale] ?? null) {
+		$result =
+			static::entry($fallback, $locale) ??
+			static::entry($fallback, $shortLocale);
+
+		if ($result !== null) {
 			return $result;
 		}
 
 		// all options for long/short actual locale have been exhausted,
 		// revert to the list of fallback locales and try with each of them
 		foreach (static::fallbacks() as $locale) {
-			// first on the original input
-			if ($result = $key[$locale] ?? null) {
-				return $result;
-			}
-			// then on the fallback
-			if ($result = $fallback[$locale] ?? null) {
+			// first on the original input, then on the fallback
+			$result =
+				static::entry($key, $locale) ??
+				static::entry($fallback, $locale);
+
+			if ($result !== null) {
 				return $result;
 			}
 		}
@@ -232,10 +262,11 @@ class I18n
 
 		// otherwise the first array element of the input
 		// or the first array element of the fallback
-		if (is_array($key) === true) {
+		if (is_array($key) === true && $key !== []) {
 			return reset($key);
 		}
-		if (is_array($fallback) === true) {
+
+		if (is_array($fallback) === true && $fallback !== []) {
 			return reset($fallback);
 		}
 

@@ -4,14 +4,10 @@ namespace Kirby\Sane;
 
 /**
  * Sane handler for HTML files
- * @since 3.5.8
  *
- * @package   Kirby Sane
- * @author    Bastian Allgeier <bastian@getkirby.com>,
- *            Lukas Bestle <lukas@getkirby.com>
- * @link      https://getkirby.com
  * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
+ * @since     3.5.8
  */
 class Html extends DomHandler
 {
@@ -107,11 +103,12 @@ class Html extends DomHandler
 
 	/**
 	 * Returns the sanitization options for the handler
+	 * @internal
 	 *
 	 * @param bool $isExternal Whether the string is from an external file
 	 *                         that may be accessed directly
 	 */
-	protected static function options(bool $isExternal): array
+	public static function options(bool $isExternal): array
 	{
 		return [
 			...parent::options($isExternal),

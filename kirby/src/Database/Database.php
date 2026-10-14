@@ -6,6 +6,7 @@ use Closure;
 use Kirby\Database\Sql\Mysql;
 use Kirby\Database\Sql\Sqlite;
 use Kirby\Exception\InvalidArgumentException;
+use Kirby\Exception\LogicException;
 use Kirby\Toolkit\A;
 use Kirby\Toolkit\Collection;
 use Kirby\Toolkit\Obj;
@@ -17,9 +18,6 @@ use Throwable;
 /**
  * A simple database class
  *
- * @package   Kirby Database
- * @author    Bastian Allgeier <bastian@getkirby.com>
- * @link      https://getkirby.com
  * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  */
@@ -140,10 +138,9 @@ class Database
 	/**
 	 * Connects to a database
 	 *
-	 * @param array|null $params This can either be a config key or an array of parameters for the connection
-	 * @throws \Kirby\Exception\InvalidArgumentException
+	 * @throws InvalidArgumentException
 	 */
-	public function connect(array|null $params = null): PDO|null
+	public function connect(array $params = []): PDO|null
 	{
 		$options = [
 			'database' => null,
@@ -155,31 +152,41 @@ class Database
 			...$params
 		];
 
-		// store the database information
-		$this->database = $options['database'];
-		$this->type     = $options['type'];
-		$this->prefix   = $options['prefix'];
-		$this->id       = $options['id'];
-
-		if (isset(static::$types[$this->type]) === false) {
+		if (isset(static::$types[$options['type']]) === false) {
 			throw new InvalidArgumentException(
-				message: 'Invalid database type: ' . $this->type
+				message: 'Invalid database type: ' . $options['type']
 			);
 		}
 
-		// fetch the dsn and store it
-		$this->dsn = (static::$types[$this->type]['dsn'])($options);
+		// fetch the dsn; the connectors validate their own required params
+		$dsn = (static::$types[$options['type']]['dsn'])($options);
+
+		// backstop for connectors registered by plugins, which might not
+		// validate; the property below is a plain string
+		if ($options['database'] === null) {
+			throw new InvalidArgumentException(
+				message: 'The ' . $options['type'] . ' connection requires a "database" parameter'
+			);
+		}
 
 		// try to connect
-		$this->connection = new PDO($this->dsn, $options['user'], $options['password']);
-		$this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		$this->connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+		$connection = new PDO($dsn, $options['user'], $options['password']);
+		$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$connection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
 		// TODO: behavior without this attribute would be preferrable
 		// (actual types instead of all strings) but would be a breaking change
-		if ($this->type === 'sqlite') {
-			$this->connection->setAttribute(PDO::ATTR_STRINGIFY_FETCHES, true);
+		if ($options['type'] === 'sqlite') {
+			$connection->setAttribute(PDO::ATTR_STRINGIFY_FETCHES, true);
 		}
+
+		// only mutate the instance once the connection actually succeeded
+		$this->database   = $options['database'];
+		$this->type       = $options['type'];
+		$this->prefix     = $options['prefix'];
+		$this->id         = $options['id'];
+		$this->dsn        = $dsn;
+		$this->connection = $connection;
 
 		// store the connection
 		static::$connections[$this->id] = $this;
@@ -326,11 +333,29 @@ class Database
 			$this->statement->execute();
 
 			$this->affected  = $this->statement->rowCount();
-			$this->lastId    = Str::startsWith($query, 'insert ', true) ? $this->connection->lastInsertId() : null;
 			$this->lastError = null;
+
+			if (Str::startsWith($query, 'insert ', true) === true) {
+				$lastId = $this->connection->lastInsertId();
+
+				if ($lastId === false) {
+					$this->lastId = null;
+				} elseif (is_numeric($lastId) === true) {
+					$this->lastId = (int)$lastId;
+				} else {
+					// @codeCoverageIgnoreStart
+					throw new LogicException(
+						message: 'Database::lastId() only supports integer primary keys, got "' . $lastId . '"'
+					);
+					// @codeCoverageIgnoreEnd
+				}
+			} else {
+				$this->lastId = null;
+			}
 
 			// store the final sql to add it to the trace later
 			$this->lastQuery = $this->statement->queryString;
+
 		} catch (Throwable $e) {
 			// store the error
 			$this->affected  = 0;

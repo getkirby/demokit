@@ -10,9 +10,6 @@ use Kirby\Image\Focus;
 /**
  * Legacy ImageMagick driver using the convert CLI
  *
- * @package   Kirby Image
- * @author    Bastian Allgeier <bastian@getkirby.com>
- * @link      https://getkirby.com
  * @copyright Bastian Allgeier
  * @license   https://opensource.org/licenses/MIT
  *
@@ -113,7 +110,7 @@ class ImageMagick extends Darkroom
 	 * Creates and runs the full imagemagick command
 	 * to process the image
 	 *
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function process(string $file, array $options = []): array
 	{
@@ -161,21 +158,23 @@ class ImageMagick extends Darkroom
 	protected function resize(string $file, array $options): string
 	{
 		if ($crop = $options['crop'] ?? null) {
+			$downscale = $this->downscale($options);
+
 			if ($focus = Focus::coords(
 				$crop,
-				$options['sourceWidth'],
-				$options['sourceHeight'],
+				$downscale->width(),
+				$downscale->height(),
 				$options['width'],
 				$options['height']
 			)) {
 				return sprintf(
-					'-crop %sx%s+%s+%s -thumbnail %sx%s^',
-					$focus['width'],
-					$focus['height'],
-					$focus['x1'],
-					$focus['y1'],
+					'-thumbnail %sx%s! -crop %sx%s+%s+%s +repage',
+					$downscale->width(),
+					$downscale->height(),
 					$options['width'],
-					$options['height']
+					$options['height'],
+					$focus['x1'],
+					$focus['y1']
 				);
 			}
 		}
