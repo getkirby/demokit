@@ -19,5 +19,8 @@
     "kirbyup": "^4.0.0-alpha.9",
     "leaflet": "^1.7.1",
     "prettier": "^2.4.1"
+  },
+  "overrides": {
+    "rolldown": "1.2.12"
   }
 }
