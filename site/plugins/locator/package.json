@@ -1,0 +1,23 @@
+{
+  "name": "kirby-locator",
+  "version": "0.0.1",
+  "description": "A map & geolocation field, built on top of open-source services / Mapbox",
+  "main": "index.js",
+  "author": "Sylvain Julé",
+  "license": "MIT",
+  "scripts": {
+    "dev": "kirbyup dev src/index.js",
+    "build": "kirbyup src/index.js",
+    "lint": "eslint \"src/**/*.{js,vue}\"",
+    "lint:fix": "npm run lint -- --fix",
+    "format": "prettier --write \"src/**/*.{css,js,vue}\""
+  },
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "kirbyup": "^4.0.0-alpha.9",
+    "leaflet": "^1.7.1",
+    "prettier": "^2.4.1"
+  }
+}

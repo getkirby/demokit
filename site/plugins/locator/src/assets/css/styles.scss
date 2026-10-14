@@ -14,6 +14,7 @@
 
 .k-locator-field {
 	--text-xxs: .75rem;
+	container-type: inline-size;
 
     .k-field-header {
     	--icon-size: 16px;
@@ -227,17 +228,10 @@
 	}
 }
 
-.k-locator-error-dialog {
-	.k-dialog-buttons {
-		grid-template-columns: 1fr;
-	}
-}
-
-
 /* Columns adjustments
 ----------------------------*/
 
-.k-sections > .k-column[data-width="1/1"] {
+@container (min-width: 60rem) {
 	.k-locator-field:not(.closed) {
 		.map-container {
 			padding-top: 35%;
@@ -246,7 +240,7 @@
 	}
 }
 
-.k-sections > .k-column[data-width="3/4"] {
+@container (48rem <= width < 60rem) {
 	.k-locator-field:not(.closed) {
 		.map-container {
 			padding-top: 45%;
@@ -255,7 +249,7 @@
 	}
 }
 
-.k-sections > .k-column[data-width="2/3"] {
+@container (40rem <= width < 48rem) {
 	.k-locator-field:not(.closed) {
 		.map-container {
 			padding-top: 50%;
@@ -264,24 +258,23 @@
 	}
 }
 
-.k-sections > .k-column[data-width="1/3"],
-.k-sections > .k-column[data-width="1/4"] {
+@container (max-width: 28rem) {
 	.k-locator-field {
 		&.filled.closed {
 			.k-locator-container {
-				display: block
+				display: block;
+				.map-container {
+					width: 100%;
+					padding-top: 50%;
+					margin-top: 0;
+					.leaflet-bottom.leaflet-right,
+					.leaflet-top.leaflet-left {
+						display: none;
+					}
+				}
 			}
 			.k-locator-input {
 				display: none;
-			}
-			.map-container {
-				width: 100%;
-				padding-top: 50%;
-				margin-top: 0;
-				.leaflet-bottom.leaflet-right,
-				.leaflet-top.leaflet-left {
-					display: none;
-				}
 			}
 		}
 	}
