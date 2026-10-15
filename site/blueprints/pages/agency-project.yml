@@ -15,7 +15,7 @@ columns:
           - Web
         width: 1/2
       client:
-        type: pages
+        type: pagepicker
         query: kirby.page("agency/clients").childrenAndDrafts
         subpages: false
         multiple: false

@@ -19,7 +19,7 @@ tabs:
       - width: 2/3
         fields:
           cover:
-            type: files
+            type: filepicker
             layout: cards
             max: 1
             size: full

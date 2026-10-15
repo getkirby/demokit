@@ -19,7 +19,7 @@ columns:
       subheading:
         type: text
       cover:
-        type: files
+        type: filepicker
         max: 1
         uploads:
           template: image
@@ -35,7 +35,7 @@ columns:
         default: now
         required: true
       author:
-        type: users
+        type: userpicker
       tags:
         type: tags
         options:

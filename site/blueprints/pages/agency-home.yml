@@ -19,7 +19,7 @@ columns:
       heading:
         type: text
       cover:
-        type: files
+        type: filepicker
         layout: cards
         query: kirby.page("agency/company").images
         size: full
@@ -39,7 +39,7 @@ columns:
         type: text
       featuredProjects:
         label: Featured projects
-        type: pages
+        type: pagepicker
         query: kirby.collection("agency/projects")
         layout: cards
         info: "{{ page.category }}"
@@ -72,7 +72,7 @@ columns:
         type: text
       featuredClients:
         label: Featured clients
-        type: pages
+        type: pagepicker
         query: kirby.collection("agency/clients")
         layout: list
         image:
